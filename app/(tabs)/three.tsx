@@ -1,16 +1,26 @@
-import { StyleSheet } from 'react-native';
-
-import EditScreenInfo from '@/components/EditScreenInfo';
-import { Text, View } from '@/components/Themed';
-import { Word } from '../../constants/Types';
+import React from 'react';
+import { View, Text, Button, StyleSheet } from 'react-native';
 import { useWords } from '@/contexts/WordsContext';
+import { useRouter } from 'expo-router';
+import { setOptions } from 'expo-splash-screen';
 
 export default function TabThreeScreen() {
+  const { words } = useWords();
+  const router = useRouter();
+
+  const seen = words.filter(w => w.stage >= 1).length;
+  const practiced = words.filter(w => w.stage >= 2).length;
+  const mastered = words.filter(w => w.stage === 3).length;
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab Three</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/(tabs)/three.tsx" />
+      <Text style={styles.title}>Your Progress</Text>
+      <View style={styles.statsRow}>
+        <Text style={styles.stat}>Seen: {seen}</Text>
+        <Text style={styles.stat}>Practiced: {practiced}</Text>
+        <Text style={styles.stat}>Mastered: {mastered}</Text>
+      </View>
+      <Button title="View All Words" onPress={() => router.push('/all-words')} />
     </View>
   );
 }
@@ -18,16 +28,23 @@ export default function TabThreeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    paddingTop: 80,
+    paddingHorizontal: 20,
+    backgroundColor: '#fff',
   },
   title: {
-    fontSize: 20,
-    fontWeight: 'bold',
+    fontSize: 24,
+    fontWeight: '600',
+    marginBottom: 24,
+    textAlign: 'center',
   },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
+  statsRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    marginBottom: 24,
+  },
+  stat: {
+    fontSize: 16,
+    fontWeight: '500',
   },
 });
