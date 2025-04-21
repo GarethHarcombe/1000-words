@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { StyleSheet, Button, Text, View } from 'react-native';
+import { StyleSheet, Button } from 'react-native';
+import { Text, View } from '@/components/Themed';
+
 import Flashcard from '@/components/Flashcard';
 import { Word } from '../../constants/Types';
 import { useWords } from '@/contexts/WordsContext';
@@ -188,7 +190,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     paddingHorizontal: 20,
-    backgroundColor: '#fff',
   },
   buttonContainer: {
     marginTop: 20,

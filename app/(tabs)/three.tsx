@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { Button, StyleSheet } from 'react-native';
+import { Text, View } from '@/components/Themed';
 import { useWords } from '@/contexts/WordsContext';
 import { useRouter } from 'expo-router';
 import { setOptions } from 'expo-splash-screen';
@@ -30,7 +31,6 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 80,
     paddingHorizontal: 20,
-    backgroundColor: '#fff',
   },
   title: {
     fontSize: 24,

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, FlatList, StyleSheet, TouchableOpacity } from 'react-native';
+import { TextInput, FlatList, StyleSheet, TouchableOpacity } from 'react-native';
+import { Text, View } from '@/components/Themed';
+
 import { useWords } from '@/contexts/WordsContext';
 
 export default function AllWordsScreen() {
@@ -56,7 +58,6 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 40,
     paddingHorizontal: 20,
-    backgroundColor: '#fff',
   },
   title: {
     fontSize: 24,
@@ -66,11 +67,12 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 40,
-    borderColor: '#999',
+    borderColor: '#DDD',
     borderWidth: 1,
     borderRadius: 8,
     paddingHorizontal: 10,
     marginBottom: 12,
+    color: "#888",
   },
   sortRow: {
     flexDirection: 'row',
@@ -79,11 +81,9 @@ const styles = StyleSheet.create({
   },
   sortButton: {
     fontSize: 14,
-    color: '#666',
   },
   activeSort: {
     fontWeight: '700',
-    color: '#000',
     textDecorationLine: 'underline',
   },
   wordItem: {
@@ -97,6 +97,5 @@ const styles = StyleSheet.create({
   },
   stageText: {
     fontSize: 12,
-    color: '#555',
   },
 });
