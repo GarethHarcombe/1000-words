@@ -4,12 +4,13 @@ import EditScreenInfo from '@/components/EditScreenInfo';
 import { Text, View } from '@/components/Themed';
 import { Word } from '../../constants/Types';
 import { useWords } from '@/contexts/WordsContext';
-import MapScreen from '@/components/MapScreen';
 
-export default function TabTwoScreen() {
+export default function TabThreeScreen() {
   return (
     <View style={styles.container}>
-      <MapScreen/>
+      <Text style={styles.title}>Tab Three</Text>
+      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+      <EditScreenInfo path="app/(tabs)/three.tsx" />
     </View>
   );
 }

@@ -1,0 +1,4987 @@
+[
+ {
+  "index": 1,
+  "welsh": "fel",
+  "english": "as"
+ },
+ {
+  "index": 2,
+  "welsh": "fi",
+  "english": "I"
+ },
+ {
+  "index": 3,
+  "welsh": "ei",
+  "english": "his"
+ },
+ {
+  "index": 4,
+  "welsh": "bod",
+  "english": "that"
+ },
+ {
+  "index": 5,
+  "welsh": "e",
+  "english": "he"
+ },
+ {
+  "index": 6,
+  "welsh": "oedd",
+  "english": "was"
+ },
+ {
+  "index": 7,
+  "welsh": "gyfer",
+  "english": "for"
+ },
+ {
+  "index": 8,
+  "welsh": "ar",
+  "english": "on"
+ },
+ {
+  "index": 9,
+  "welsh": "yn",
+  "english": "are"
+ },
+ {
+  "index": 10,
+  "welsh": "gyda",
+  "english": "with"
+ },
+ {
+  "index": 11,
+  "welsh": "maent",
+  "english": "they"
+ },
+ {
+  "index": 12,
+  "welsh": "fod yn",
+  "english": "be"
+ },
+ {
+  "index": 13,
+  "welsh": "yn",
+  "english": "in"
+ },
+ {
+  "index": 14,
+  "welsh": "un",
+  "english": "one"
+ },
+ {
+  "index": 15,
+  "welsh": "wedi",
+  "english": "have"
+ },
+ {
+  "index": 16,
+  "welsh": "hwn",
+  "english": "this"
+ },
+ {
+  "index": 17,
+  "welsh": "o",
+  "english": "from"
+ },
+ {
+  "index": 18,
+  "welsh": "gan",
+  "english": "by"
+ },
+ {
+  "index": 19,
+  "welsh": "poeth",
+  "english": "hot"
+ },
+ {
+  "index": 20,
+  "welsh": "gair",
+  "english": "word"
+ },
+ {
+  "index": 21,
+  "welsh": "ond",
+  "english": "but"
+ },
+ {
+  "index": 22,
+  "welsh": "beth",
+  "english": "what"
+ },
+ {
+  "index": 23,
+  "welsh": "rhai",
+  "english": "some"
+ },
+ {
+  "index": 24,
+  "welsh": "yw",
+  "english": "is"
+ },
+ {
+  "index": 25,
+  "welsh": "mae’n",
+  "english": "it"
+ },
+ {
+  "index": 26,
+  "welsh": "ti",
+  "english": "you"
+ },
+ {
+  "index": 27,
+  "welsh": "neu",
+  "english": "or"
+ },
+ {
+  "index": 28,
+  "welsh": "cael",
+  "english": "had"
+ },
+ {
+  "index": 29,
+  "welsh": "y",
+  "english": "the"
+ },
+ {
+  "index": 30,
+  "welsh": "o",
+  "english": "of"
+ },
+ {
+  "index": 31,
+  "welsh": "i",
+  "english": "to"
+ },
+ {
+  "index": 32,
+  "welsh": "a",
+  "english": "and"
+ },
+ {
+  "index": 33,
+  "welsh": "mae",
+  "english": "a"
+ },
+ {
+  "index": 35,
+  "welsh": "ni",
+  "english": "we"
+ },
+ {
+  "index": 36,
+  "welsh": "gall",
+  "english": "can"
+ },
+ {
+  "index": 37,
+  "welsh": "allan",
+  "english": "out"
+ },
+ {
+  "index": 38,
+  "welsh": "arall",
+  "english": "other"
+ },
+ {
+  "index": 39,
+  "welsh": "roedd",
+  "english": "were"
+ },
+ {
+  "index": 40,
+  "welsh": "sy’n",
+  "english": "which"
+ },
+ {
+  "index": 41,
+  "welsh": "wneud",
+  "english": "do"
+ },
+ {
+  "index": 42,
+  "welsh": "eu",
+  "english": "their"
+ },
+ {
+  "index": 43,
+  "welsh": "amser",
+  "english": "time"
+ },
+ {
+  "index": 44,
+  "welsh": "os",
+  "english": "if"
+ },
+ {
+  "index": 45,
+  "welsh": "bydd",
+  "english": "will"
+ },
+ {
+  "index": 46,
+  "welsh": "sut",
+  "english": "how"
+ },
+ {
+  "index": 47,
+  "welsh": "dywedodd",
+  "english": "said"
+ },
+ {
+  "index": 49,
+  "welsh": "pob un",
+  "english": "each"
+ },
+ {
+  "index": 50,
+  "welsh": "dweud",
+  "english": "tell"
+ },
+ {
+  "index": 51,
+  "welsh": "gwneud",
+  "english": "does"
+ },
+ {
+  "index": 52,
+  "welsh": "set",
+  "english": "set"
+ },
+ {
+  "index": 53,
+  "welsh": "tri",
+  "english": "three"
+ },
+ {
+  "index": 54,
+  "welsh": "eisiau",
+  "english": "want"
+ },
+ {
+  "index": 55,
+  "welsh": "aer",
+  "english": "air"
+ },
+ {
+  "index": 56,
+  "welsh": "yn dda",
+  "english": "well"
+ },
+ {
+  "index": 57,
+  "welsh": "hefyd",
+  "english": "also"
+ },
+ {
+  "index": 58,
+  "welsh": "chwarae",
+  "english": "play"
+ },
+ {
+  "index": 59,
+  "welsh": "bach",
+  "english": "small"
+ },
+ {
+  "index": 60,
+  "welsh": "pen",
+  "english": "end"
+ },
+ {
+  "index": 61,
+  "welsh": "rhoi",
+  "english": "put"
+ },
+ {
+  "index": 62,
+  "welsh": "cartref",
+  "english": "home"
+ },
+ {
+  "index": 63,
+  "welsh": "darllen",
+  "english": "read"
+ },
+ {
+  "index": 64,
+  "welsh": "llaw",
+  "english": "hand"
+ },
+ {
+  "index": 65,
+  "welsh": "porthladd",
+  "english": "port"
+ },
+ {
+  "index": 66,
+  "welsh": "mawr",
+  "english": "large"
+ },
+ {
+  "index": 67,
+  "welsh": "sillafu",
+  "english": "spell"
+ },
+ {
+  "index": 68,
+  "welsh": "ychwanegu",
+  "english": "add"
+ },
+ {
+  "index": 69,
+  "welsh": "hyd yn oed",
+  "english": "even"
+ },
+ {
+  "index": 70,
+  "welsh": "tir",
+  "english": "land"
+ },
+ {
+  "index": 71,
+  "welsh": "yma",
+  "english": "here"
+ },
+ {
+  "index": 72,
+  "welsh": "rhaid",
+  "english": "must"
+ },
+ {
+  "index": 73,
+  "welsh": "mawr",
+  "english": "big"
+ },
+ {
+  "index": 74,
+  "welsh": "uchel",
+  "english": "high"
+ },
+ {
+  "index": 75,
+  "welsh": "fath",
+  "english": "such"
+ },
+ {
+  "index": 76,
+  "welsh": "dilyn",
+  "english": "follow"
+ },
+ {
+  "index": 77,
+  "welsh": "gweithredu",
+  "english": "act"
+ },
+ {
+  "index": 78,
+  "welsh": "pam",
+  "english": "why"
+ },
+ {
+  "index": 79,
+  "welsh": "gofyn",
+  "english": "ask"
+ },
+ {
+  "index": 80,
+  "welsh": "dynion",
+  "english": "men"
+ },
+ {
+  "index": 81,
+  "welsh": "newid",
+  "english": "change"
+ },
+ {
+  "index": 82,
+  "welsh": "aeth",
+  "english": "went"
+ },
+ {
+  "index": 83,
+  "welsh": "golau",
+  "english": "light"
+ },
+ {
+  "index": 84,
+  "welsh": "fath",
+  "english": "kind"
+ },
+ {
+  "index": 85,
+  "welsh": "off",
+  "english": "off"
+ },
+ {
+  "index": 86,
+  "welsh": "angen",
+  "english": "need"
+ },
+ {
+  "index": 87,
+  "welsh": "tŷ",
+  "english": "house"
+ },
+ {
+  "index": 88,
+  "welsh": "llun",
+  "english": "picture"
+ },
+ {
+  "index": 89,
+  "welsh": "ceisiwch",
+  "english": "try"
+ },
+ {
+  "index": 91,
+  "welsh": "eto",
+  "english": "again"
+ },
+ {
+  "index": 92,
+  "welsh": "anifail",
+  "english": "animal"
+ },
+ {
+  "index": 93,
+  "welsh": "pwynt",
+  "english": "point"
+ },
+ {
+  "index": 94,
+  "welsh": "mam",
+  "english": "mother"
+ },
+ {
+  "index": 95,
+  "welsh": "byd",
+  "english": "world"
+ },
+ {
+  "index": 96,
+  "welsh": "ger",
+  "english": "near"
+ },
+ {
+  "index": 97,
+  "welsh": "adeiladu",
+  "english": "build"
+ },
+ {
+  "index": 98,
+  "welsh": "hunan",
+  "english": "self"
+ },
+ {
+  "index": 99,
+  "welsh": "ddaear",
+  "english": "earth"
+ },
+ {
+  "index": 100,
+  "welsh": "tad",
+  "english": "father"
+ },
+ {
+  "index": 101,
+  "welsh": "unrhyw",
+  "english": "any"
+ },
+ {
+  "index": 102,
+  "welsh": "newydd",
+  "english": "new"
+ },
+ {
+  "index": 103,
+  "welsh": "gwaith",
+  "english": "work"
+ },
+ {
+  "index": 104,
+  "welsh": "rhan",
+  "english": "part"
+ },
+ {
+  "index": 105,
+  "welsh": "cymryd",
+  "english": "take"
+ },
+ {
+  "index": 106,
+  "welsh": "cael",
+  "english": "get"
+ },
+ {
+  "index": 107,
+  "welsh": "lle",
+  "english": "place"
+ },
+ {
+  "index": 108,
+  "welsh": "wnaed",
+  "english": "made"
+ },
+ {
+  "index": 109,
+  "welsh": "byw",
+  "english": "live"
+ },
+ {
+  "index": 110,
+  "welsh": "lle",
+  "english": "where"
+ },
+ {
+  "index": 111,
+  "welsh": "ar ôl",
+  "english": "after"
+ },
+ {
+  "index": 112,
+  "welsh": "yn ôl",
+  "english": "back"
+ },
+ {
+  "index": 113,
+  "welsh": "bach",
+  "english": "little"
+ },
+ {
+  "index": 114,
+  "welsh": "dim ond",
+  "english": "only"
+ },
+ {
+  "index": 115,
+  "welsh": "rownd",
+  "english": "round"
+ },
+ {
+  "index": 116,
+  "welsh": "dyn",
+  "english": "man"
+ },
+ {
+  "index": 117,
+  "welsh": "flwyddyn",
+  "english": "year"
+ },
+ {
+  "index": 118,
+  "welsh": "Daeth",
+  "english": "came"
+ },
+ {
+  "index": 119,
+  "welsh": "sioe",
+  "english": "show"
+ },
+ {
+  "index": 120,
+  "welsh": "bob",
+  "english": "every"
+ },
+ {
+  "index": 121,
+  "welsh": "dda",
+  "english": "good"
+ },
+ {
+  "index": 122,
+  "welsh": "mi",
+  "english": "me"
+ },
+ {
+  "index": 123,
+  "welsh": "rhoi",
+  "english": "give"
+ },
+ {
+  "index": 124,
+  "welsh": "ein",
+  "english": "our"
+ },
+ {
+  "index": 125,
+  "welsh": "o dan",
+  "english": "under"
+ },
+ {
+  "index": 126,
+  "welsh": "enw",
+  "english": "name"
+ },
+ {
+  "index": 127,
+  "welsh": "iawn",
+  "english": "very"
+ },
+ {
+  "index": 128,
+  "welsh": "trwy",
+  "english": "through"
+ },
+ {
+  "index": 129,
+  "welsh": "yn unig",
+  "english": "just"
+ },
+ {
+  "index": 130,
+  "welsh": "ffurflen",
+  "english": "form"
+ },
+ {
+  "index": 131,
+  "welsh": "dedfryd",
+  "english": "sentence"
+ },
+ {
+  "index": 132,
+  "welsh": "mawr",
+  "english": "great"
+ },
+ {
+  "index": 133,
+  "welsh": "meddwl",
+  "english": "think"
+ },
+ {
+  "index": 134,
+  "welsh": "dweud",
+  "english": "say"
+ },
+ {
+  "index": 135,
+  "welsh": "helpu",
+  "english": "help"
+ },
+ {
+  "index": 136,
+  "welsh": "isel",
+  "english": "low"
+ },
+ {
+  "index": 137,
+  "welsh": "llinell",
+  "english": "line"
+ },
+ {
+  "index": 138,
+  "welsh": "yn wahanol",
+  "english": "differ"
+ },
+ {
+  "index": 139,
+  "welsh": "dro",
+  "english": "turn"
+ },
+ {
+  "index": 140,
+  "welsh": "achos",
+  "english": "cause"
+ },
+ {
+  "index": 141,
+  "welsh": "llawer",
+  "english": "much"
+ },
+ {
+  "index": 142,
+  "welsh": "golygu",
+  "english": "mean"
+ },
+ {
+  "index": 143,
+  "welsh": "cyn",
+  "english": "before"
+ },
+ {
+  "index": 144,
+  "welsh": "symud",
+  "english": "move"
+ },
+ {
+  "index": 145,
+  "welsh": "hawl",
+  "english": "right"
+ },
+ {
+  "index": 146,
+  "welsh": "bachgen",
+  "english": "boy"
+ },
+ {
+  "index": 147,
+  "welsh": "oed",
+  "english": "old"
+ },
+ {
+  "index": 148,
+  "welsh": "rhy",
+  "english": "too"
+ },
+ {
+  "index": 149,
+  "welsh": "un fath",
+  "english": "same"
+ },
+ {
+  "index": 150,
+  "welsh": "hi",
+  "english": "she"
+ },
+ {
+  "index": 151,
+  "welsh": "gyd",
+  "english": "all"
+ },
+ {
+  "index": 152,
+  "welsh": "yno",
+  "english": "there"
+ },
+ {
+  "index": 153,
+  "welsh": "pan",
+  "english": "when"
+ },
+ {
+  "index": 154,
+  "welsh": "i fyny",
+  "english": "up"
+ },
+ {
+  "index": 155,
+  "welsh": "defnydd",
+  "english": "use"
+ },
+ {
+  "index": 156,
+  "welsh": "eich",
+  "english": "your"
+ },
+ {
+  "index": 157,
+  "welsh": "ffordd",
+  "english": "way"
+ },
+ {
+  "index": 158,
+  "welsh": "tua",
+  "english": "about"
+ },
+ {
+  "index": 159,
+  "welsh": "llawer",
+  "english": "many"
+ },
+ {
+  "index": 160,
+  "welsh": "yna,",
+  "english": "then"
+ },
+ {
+  "index": 161,
+  "welsh": "nhw",
+  "english": "them"
+ },
+ {
+  "index": 162,
+  "welsh": "ysgrifennu",
+  "english": "write"
+ },
+ {
+  "index": 163,
+  "welsh": "byddai",
+  "english": "would"
+ },
+ {
+  "index": 164,
+  "welsh": "hoffi",
+  "english": "like"
+ },
+ {
+  "index": 165,
+  "welsh": "felly",
+  "english": "so"
+ },
+ {
+  "index": 166,
+  "welsh": "rhain",
+  "english": "these"
+ },
+ {
+  "index": 167,
+  "welsh": "hi",
+  "english": "her"
+ },
+ {
+  "index": 168,
+  "welsh": "hir",
+  "english": "long"
+ },
+ {
+  "index": 169,
+  "welsh": "gwneud",
+  "english": "make"
+ },
+ {
+  "index": 170,
+  "welsh": "beth",
+  "english": "thing"
+ },
+ {
+  "index": 171,
+  "welsh": "gweld",
+  "english": "see"
+ },
+ {
+  "index": 172,
+  "welsh": "iddo",
+  "english": "him"
+ },
+ {
+  "index": 173,
+  "welsh": "dau",
+  "english": "two"
+ },
+ {
+  "index": 174,
+  "welsh": "Mae gan",
+  "english": "has"
+ },
+ {
+  "index": 175,
+  "welsh": "edrych",
+  "english": "look"
+ },
+ {
+  "index": 176,
+  "welsh": "mwy",
+  "english": "more"
+ },
+ {
+  "index": 177,
+  "welsh": "diwrnod",
+  "english": "day"
+ },
+ {
+  "index": 178,
+  "welsh": "gallai",
+  "english": "could"
+ },
+ {
+  "index": 179,
+  "welsh": "fynd",
+  "english": "go"
+ },
+ {
+  "index": 180,
+  "welsh": "dod",
+  "english": "come"
+ },
+ {
+  "index": 181,
+  "welsh": "wnaeth",
+  "english": "did"
+ },
+ {
+  "index": 182,
+  "welsh": "rhif",
+  "english": "number"
+ },
+ {
+  "index": 183,
+  "welsh": "sain",
+  "english": "sound"
+ },
+ {
+  "index": 184,
+  "welsh": "dim",
+  "english": "no"
+ },
+ {
+  "index": 185,
+  "welsh": "y rhan fwyaf",
+  "english": "most"
+ },
+ {
+  "index": 186,
+  "welsh": "pobl",
+  "english": "people"
+ },
+ {
+  "index": 187,
+  "welsh": "fy",
+  "english": "my"
+ },
+ {
+  "index": 188,
+  "welsh": "dros",
+  "english": "over"
+ },
+ {
+  "index": 189,
+  "welsh": "gwybod",
+  "english": "know"
+ },
+ {
+  "index": 190,
+  "welsh": "dŵr",
+  "english": "water"
+ },
+ {
+  "index": 191,
+  "welsh": "nag",
+  "english": "than"
+ },
+ {
+  "index": 192,
+  "welsh": "alwad",
+  "english": "call"
+ },
+ {
+  "index": 193,
+  "welsh": "yn gyntaf",
+  "english": "first"
+ },
+ {
+  "index": 194,
+  "welsh": "pwy",
+  "english": "who"
+ },
+ {
+  "index": 195,
+  "welsh": "gall",
+  "english": "may"
+ },
+ {
+  "index": 196,
+  "welsh": "i lawr",
+  "english": "down"
+ },
+ {
+  "index": 197,
+  "welsh": "ochr",
+  "english": "side"
+ },
+ {
+  "index": 198,
+  "welsh": "bod",
+  "english": "been"
+ },
+ {
+  "index": 199,
+  "welsh": "awr",
+  "english": "now"
+ },
+ {
+  "index": 200,
+  "welsh": "dod o hyd i",
+  "english": "find"
+ },
+ {
+  "index": 201,
+  "welsh": "pen",
+  "english": "head"
+ },
+ {
+  "index": 202,
+  "welsh": "sefyll",
+  "english": "stand"
+ },
+ {
+  "index": 203,
+  "welsh": "eu hunain",
+  "english": "own"
+ },
+ {
+  "index": 204,
+  "welsh": "dudalen",
+  "english": "page"
+ },
+ {
+  "index": 205,
+  "welsh": "Dylai",
+  "english": "should"
+ },
+ {
+  "index": 206,
+  "welsh": "gwlad",
+  "english": "country"
+ },
+ {
+  "index": 207,
+  "welsh": "dod o hyd i",
+  "english": "found"
+ },
+ {
+  "index": 208,
+  "welsh": "ateb",
+  "english": "answer"
+ },
+ {
+  "index": 209,
+  "welsh": "ysgol",
+  "english": "school"
+ },
+ {
+  "index": 210,
+  "welsh": "tyfu",
+  "english": "grow"
+ },
+ {
+  "index": 211,
+  "welsh": "astudiaeth",
+  "english": "study"
+ },
+ {
+  "index": 212,
+  "welsh": "dal",
+  "english": "still"
+ },
+ {
+  "index": 213,
+  "welsh": "dysgu",
+  "english": "learn"
+ },
+ {
+  "index": 214,
+  "welsh": "planhigion",
+  "english": "plant"
+ },
+ {
+  "index": 215,
+  "welsh": "clawr",
+  "english": "cover"
+ },
+ {
+  "index": 216,
+  "welsh": "bwyd",
+  "english": "food"
+ },
+ {
+  "index": 217,
+  "welsh": "haul",
+  "english": "sun"
+ },
+ {
+  "index": 218,
+  "welsh": "pedwar",
+  "english": "four"
+ },
+ {
+  "index": 219,
+  "welsh": "rhwng",
+  "english": "between"
+ },
+ {
+  "index": 220,
+  "welsh": "cyflwr",
+  "english": "state"
+ },
+ {
+  "index": 221,
+  "welsh": "cadw",
+  "english": "keep"
+ },
+ {
+  "index": 222,
+  "welsh": "llygad",
+  "english": "eye"
+ },
+ {
+  "index": 223,
+  "welsh": "byth",
+  "english": "never"
+ },
+ {
+  "index": 224,
+  "welsh": "diwethaf",
+  "english": "last"
+ },
+ {
+  "index": 225,
+  "welsh": "gadewch",
+  "english": "let"
+ },
+ {
+  "index": 226,
+  "welsh": "meddwl",
+  "english": "thought"
+ },
+ {
+  "index": 227,
+  "welsh": "ddinas",
+  "english": "city"
+ },
+ {
+  "index": 228,
+  "welsh": "goeden",
+  "english": "tree"
+ },
+ {
+  "index": 229,
+  "welsh": "croesi",
+  "english": "cross"
+ },
+ {
+  "index": 230,
+  "welsh": "fferm",
+  "english": "farm"
+ },
+ {
+  "index": 231,
+  "welsh": "caled",
+  "english": "hard"
+ },
+ {
+  "index": 232,
+  "welsh": "cychwyn",
+  "english": "start"
+ },
+ {
+  "index": 233,
+  "welsh": "allai",
+  "english": "might"
+ },
+ {
+  "index": 234,
+  "welsh": "stori",
+  "english": "story"
+ },
+ {
+  "index": 235,
+  "welsh": "welodd",
+  "english": "saw"
+ },
+ {
+  "index": 236,
+  "welsh": "yn hyn",
+  "english": "far"
+ },
+ {
+  "index": 237,
+  "welsh": "môr",
+  "english": "sea"
+ },
+ {
+  "index": 238,
+  "welsh": "tynnu",
+  "english": "draw"
+ },
+ {
+  "index": 239,
+  "welsh": "Gadawodd",
+  "english": "left"
+ },
+ {
+  "index": 240,
+  "welsh": "hwyr",
+  "english": "late"
+ },
+ {
+  "index": 241,
+  "welsh": "rhedeg",
+  "english": "run"
+ },
+ {
+  "index": 242,
+  "welsh": "peidiwch â",
+  "english": "don’t"
+ },
+ {
+  "index": 243,
+  "welsh": "tra",
+  "english": "while"
+ },
+ {
+  "index": 244,
+  "welsh": "wasg",
+  "english": "press"
+ },
+ {
+  "index": 245,
+  "welsh": "agos",
+  "english": "close"
+ },
+ {
+  "index": 246,
+  "welsh": "nos",
+  "english": "night"
+ },
+ {
+  "index": 247,
+  "welsh": "go iawn",
+  "english": "real"
+ },
+ {
+  "index": 248,
+  "welsh": "bywyd",
+  "english": "life"
+ },
+ {
+  "index": 249,
+  "welsh": "ychydig",
+  "english": "few"
+ },
+ {
+  "index": 250,
+  "welsh": "gogledd",
+  "english": "north"
+ },
+ {
+  "index": 251,
+  "welsh": "llyfr",
+  "english": "book"
+ },
+ {
+  "index": 252,
+  "welsh": "cario",
+  "english": "carry"
+ },
+ {
+  "index": 253,
+  "welsh": "cymerodd",
+  "english": "took"
+ },
+ {
+  "index": 254,
+  "welsh": "gwyddoniaeth",
+  "english": "science"
+ },
+ {
+  "index": 255,
+  "welsh": "bwyta",
+  "english": "eat"
+ },
+ {
+  "index": 256,
+  "welsh": "ystafell",
+  "english": "room"
+ },
+ {
+  "index": 257,
+  "welsh": "ffrind",
+  "english": "friend"
+ },
+ {
+  "index": 258,
+  "welsh": "dechreuodd",
+  "english": "began"
+ },
+ {
+  "index": 259,
+  "welsh": "syniad",
+  "english": "idea"
+ },
+ {
+  "index": 260,
+  "welsh": "pysgod",
+  "english": "fish"
+ },
+ {
+  "index": 261,
+  "welsh": "mynydd",
+  "english": "mountain"
+ },
+ {
+  "index": 262,
+  "welsh": "rhoi’r gorau i",
+  "english": "stop"
+ },
+ {
+  "index": 263,
+  "welsh": "unwaith",
+  "english": "once"
+ },
+ {
+  "index": 264,
+  "welsh": "sylfaen",
+  "english": "base"
+ },
+ {
+  "index": 265,
+  "welsh": "clywed",
+  "english": "hear"
+ },
+ {
+  "index": 266,
+  "welsh": "ceffyl",
+  "english": "horse"
+ },
+ {
+  "index": 267,
+  "welsh": "torri",
+  "english": "cut"
+ },
+ {
+  "index": 268,
+  "welsh": "siwr",
+  "english": "sure"
+ },
+ {
+  "index": 269,
+  "welsh": "gwylio",
+  "english": "watch"
+ },
+ {
+  "index": 270,
+  "welsh": "lliw",
+  "english": "color"
+ },
+ {
+  "index": 271,
+  "welsh": "wyneb",
+  "english": "face"
+ },
+ {
+  "index": 272,
+  "welsh": "pren",
+  "english": "wood"
+ },
+ {
+  "index": 273,
+  "welsh": "prif",
+  "english": "main"
+ },
+ {
+  "index": 274,
+  "welsh": "agored",
+  "english": "open"
+ },
+ {
+  "index": 275,
+  "welsh": "ymddangos",
+  "english": "seem"
+ },
+ {
+  "index": 276,
+  "welsh": "gyda’i gilydd",
+  "english": "together"
+ },
+ {
+  "index": 277,
+  "welsh": "nesaf",
+  "english": "next"
+ },
+ {
+  "index": 278,
+  "welsh": "gwyn",
+  "english": "white"
+ },
+ {
+  "index": 279,
+  "welsh": "plant",
+  "english": "children"
+ },
+ {
+  "index": 280,
+  "welsh": "dechrau",
+  "english": "begin"
+ },
+ {
+  "index": 281,
+  "welsh": "got",
+  "english": "got"
+ },
+ {
+  "index": 282,
+  "welsh": "cerdded",
+  "english": "walk"
+ },
+ {
+  "index": 283,
+  "welsh": "enghraifft",
+  "english": "example"
+ },
+ {
+  "index": 284,
+  "welsh": "leddfu",
+  "english": "ease"
+ },
+ {
+  "index": 285,
+  "welsh": "papur",
+  "english": "paper"
+ },
+ {
+  "index": 286,
+  "welsh": "grŵp",
+  "english": "group"
+ },
+ {
+  "index": 287,
+  "welsh": "bob amser",
+  "english": "always"
+ },
+ {
+  "index": 288,
+  "welsh": "cerddoriaeth",
+  "english": "music"
+ },
+ {
+  "index": 289,
+  "welsh": "y rhai",
+  "english": "those"
+ },
+ {
+  "index": 290,
+  "welsh": "ddau",
+  "english": "both"
+ },
+ {
+  "index": 291,
+  "welsh": "marc",
+  "english": "mark"
+ },
+ {
+  "index": 292,
+  "welsh": "yn aml",
+  "english": "often"
+ },
+ {
+  "index": 293,
+  "welsh": "llythyr",
+  "english": "letter"
+ },
+ {
+  "index": 294,
+  "welsh": "nes",
+  "english": "until"
+ },
+ {
+  "index": 295,
+  "welsh": "milltir",
+  "english": "mile"
+ },
+ {
+  "index": 296,
+  "welsh": "afon",
+  "english": "river"
+ },
+ {
+  "index": 297,
+  "welsh": "car",
+  "english": "car"
+ },
+ {
+  "index": 298,
+  "welsh": "traed",
+  "english": "feet"
+ },
+ {
+  "index": 299,
+  "welsh": "gofal",
+  "english": "care"
+ },
+ {
+  "index": 300,
+  "welsh": "yn ail",
+  "english": "second"
+ },
+ {
+  "index": 301,
+  "welsh": "ddigon",
+  "english": "enough"
+ },
+ {
+  "index": 302,
+  "welsh": "plaen",
+  "english": "plain"
+ },
+ {
+  "index": 303,
+  "welsh": "merch",
+  "english": "girl"
+ },
+ {
+  "index": 304,
+  "welsh": "arferol",
+  "english": "usual"
+ },
+ {
+  "index": 305,
+  "welsh": "ifanc",
+  "english": "young"
+ },
+ {
+  "index": 306,
+  "welsh": "barod",
+  "english": "ready"
+ },
+ {
+  "index": 307,
+  "welsh": "uchod",
+  "english": "above"
+ },
+ {
+  "index": 308,
+  "welsh": "erioed",
+  "english": "ever"
+ },
+ {
+  "index": 309,
+  "welsh": "coch",
+  "english": "red"
+ },
+ {
+  "index": 310,
+  "welsh": "rhestr",
+  "english": "list"
+ },
+ {
+  "index": 311,
+  "welsh": "er bod",
+  "english": "though"
+ },
+ {
+  "index": 312,
+  "welsh": "teimlo",
+  "english": "feel"
+ },
+ {
+  "index": 313,
+  "welsh": "sgwrs",
+  "english": "talk"
+ },
+ {
+  "index": 314,
+  "welsh": "adar",
+  "english": "bird"
+ },
+ {
+  "index": 315,
+  "welsh": "yn fuan",
+  "english": "soon"
+ },
+ {
+  "index": 316,
+  "welsh": "corff",
+  "english": "body"
+ },
+ {
+  "index": 317,
+  "welsh": "ci",
+  "english": "dog"
+ },
+ {
+  "index": 318,
+  "welsh": "teulu",
+  "english": "family"
+ },
+ {
+  "index": 319,
+  "welsh": "uniongyrchol",
+  "english": "direct"
+ },
+ {
+  "index": 320,
+  "welsh": "peri",
+  "english": "pose"
+ },
+ {
+  "index": 321,
+  "welsh": "gadael",
+  "english": "leave"
+ },
+ {
+  "index": 322,
+  "welsh": "cân",
+  "english": "song"
+ },
+ {
+  "index": 323,
+  "welsh": "mesur",
+  "english": "measure"
+ },
+ {
+  "index": 324,
+  "welsh": "drws",
+  "english": "door"
+ },
+ {
+  "index": 325,
+  "welsh": "cynnyrch",
+  "english": "product"
+ },
+ {
+  "index": 326,
+  "welsh": "du",
+  "english": "black"
+ },
+ {
+  "index": 327,
+  "welsh": "byr",
+  "english": "short"
+ },
+ {
+  "index": 328,
+  "welsh": "rhifolyn",
+  "english": "numeral"
+ },
+ {
+  "index": 329,
+  "welsh": "dosbarth",
+  "english": "class"
+ },
+ {
+  "index": 330,
+  "welsh": "gwynt",
+  "english": "wind"
+ },
+ {
+  "index": 331,
+  "welsh": "cwestiwn",
+  "english": "question"
+ },
+ {
+  "index": 332,
+  "welsh": "yn digwydd",
+  "english": "happen"
+ },
+ {
+  "index": 333,
+  "welsh": "cwblhau",
+  "english": "complete"
+ },
+ {
+  "index": 334,
+  "welsh": "llong",
+  "english": "ship"
+ },
+ {
+  "index": 335,
+  "welsh": "ardal",
+  "english": "area"
+ },
+ {
+  "index": 336,
+  "welsh": "hanner",
+  "english": "half"
+ },
+ {
+  "index": 337,
+  "welsh": "graig",
+  "english": "rock"
+ },
+ {
+  "index": 338,
+  "welsh": "gorchymyn",
+  "english": "order"
+ },
+ {
+  "index": 339,
+  "welsh": "tân",
+  "english": "fire"
+ },
+ {
+  "index": 340,
+  "welsh": "de",
+  "english": "south"
+ },
+ {
+  "index": 341,
+  "welsh": "problem",
+  "english": "problem"
+ },
+ {
+  "index": 342,
+  "welsh": "darn",
+  "english": "piece"
+ },
+ {
+  "index": 343,
+  "welsh": "gwybod",
+  "english": "told"
+ },
+ {
+  "index": 344,
+  "welsh": "gwybod",
+  "english": "knew"
+ },
+ {
+  "index": 345,
+  "welsh": "pasio",
+  "english": "pass"
+ },
+ {
+  "index": 346,
+  "welsh": "ers",
+  "english": "since"
+ },
+ {
+  "index": 347,
+  "welsh": "top",
+  "english": "top"
+ },
+ {
+  "index": 348,
+  "welsh": "cyfan",
+  "english": "whole"
+ },
+ {
+  "index": 349,
+  "welsh": "brenin",
+  "english": "king"
+ },
+ {
+  "index": 350,
+  "welsh": "stryd",
+  "english": "street"
+ },
+ {
+  "index": 351,
+  "welsh": "modfedd",
+  "english": "inch"
+ },
+ {
+  "index": 352,
+  "welsh": "lluosi",
+  "english": "multiply"
+ },
+ {
+  "index": 353,
+  "welsh": "dim byd",
+  "english": "nothing"
+ },
+ {
+  "index": 354,
+  "welsh": "cwrs",
+  "english": "course"
+ },
+ {
+  "index": 355,
+  "welsh": "aros",
+  "english": "stay"
+ },
+ {
+  "index": 356,
+  "welsh": "olwyn",
+  "english": "wheel"
+ },
+ {
+  "index": 357,
+  "welsh": "llawn",
+  "english": "full"
+ },
+ {
+  "index": 358,
+  "welsh": "grym",
+  "english": "force"
+ },
+ {
+  "index": 359,
+  "welsh": "glas",
+  "english": "blue"
+ },
+ {
+  "index": 360,
+  "welsh": "gwrthrych",
+  "english": "object"
+ },
+ {
+  "index": 361,
+  "welsh": "penderfynu",
+  "english": "decide"
+ },
+ {
+  "index": 362,
+  "welsh": "wyneb",
+  "english": "surface"
+ },
+ {
+  "index": 363,
+  "welsh": "dwfn",
+  "english": "deep"
+ },
+ {
+  "index": 364,
+  "welsh": "lleuad",
+  "english": "moon"
+ },
+ {
+  "index": 365,
+  "welsh": "ynys",
+  "english": "island"
+ },
+ {
+  "index": 366,
+  "welsh": "droed",
+  "english": "foot"
+ },
+ {
+  "index": 367,
+  "welsh": "system",
+  "english": "system"
+ },
+ {
+  "index": 368,
+  "welsh": "brysur",
+  "english": "busy"
+ },
+ {
+  "index": 369,
+  "welsh": "prawf",
+  "english": "test"
+ },
+ {
+  "index": 370,
+  "welsh": "cofnod",
+  "english": "record"
+ },
+ {
+  "index": 371,
+  "welsh": "cwch",
+  "english": "boat"
+ },
+ {
+  "index": 372,
+  "welsh": "gyffredin",
+  "english": "common"
+ },
+ {
+  "index": 373,
+  "welsh": "aur",
+  "english": "gold"
+ },
+ {
+  "index": 374,
+  "welsh": "bosibl",
+  "english": "possible"
+ },
+ {
+  "index": 375,
+  "welsh": "awyren",
+  "english": "plane"
+ },
+ {
+  "index": 376,
+  "welsh": "le ef",
+  "english": "stead"
+ },
+ {
+  "index": 377,
+  "welsh": "sych",
+  "english": "dry"
+ },
+ {
+  "index": 378,
+  "welsh": "Tybed",
+  "english": "wonder"
+ },
+ {
+  "index": 379,
+  "welsh": "chwerthin",
+  "english": "laugh"
+ },
+ {
+  "index": 380,
+  "welsh": "mil",
+  "english": "thousand"
+ },
+ {
+  "index": 381,
+  "welsh": "yn ôl",
+  "english": "ago"
+ },
+ {
+  "index": 382,
+  "welsh": "rhedodd",
+  "english": "ran"
+ },
+ {
+  "index": 383,
+  "welsh": "gwirio",
+  "english": "check"
+ },
+ {
+  "index": 384,
+  "welsh": "gêm",
+  "english": "game"
+ },
+ {
+  "index": 385,
+  "welsh": "siâp",
+  "english": "shape"
+ },
+ {
+  "index": 386,
+  "welsh": "cyfateb",
+  "english": "equate"
+ },
+ {
+  "index": 387,
+  "welsh": "poeth",
+  "english": "hot"
+ },
+ {
+  "index": 388,
+  "welsh": "miss",
+  "english": "miss"
+ },
+ {
+  "index": 389,
+  "welsh": "dwyn",
+  "english": "brought"
+ },
+ {
+  "index": 390,
+  "welsh": "gwres",
+  "english": "heat"
+ },
+ {
+  "index": 391,
+  "welsh": "eira",
+  "english": "snow"
+ },
+ {
+  "index": 392,
+  "welsh": "teiars",
+  "english": "tire"
+ },
+ {
+  "index": 393,
+  "welsh": "dod â",
+  "english": "bring"
+ },
+ {
+  "index": 394,
+  "welsh": "ie",
+  "english": "yes"
+ },
+ {
+  "index": 395,
+  "welsh": "bell",
+  "english": "distant"
+ },
+ {
+  "index": 396,
+  "welsh": "llenwi",
+  "english": "fill"
+ },
+ {
+  "index": 397,
+  "welsh": "ddwyrain",
+  "english": "east"
+ },
+ {
+  "index": 398,
+  "welsh": "paent",
+  "english": "paint"
+ },
+ {
+  "index": 399,
+  "welsh": "iaith",
+  "english": "language"
+ },
+ {
+  "index": 400,
+  "welsh": "ymhlith",
+  "english": "among"
+ },
+ {
+  "index": 401,
+  "welsh": "uned",
+  "english": "unit"
+ },
+ {
+  "index": 402,
+  "welsh": "pŵer",
+  "english": "power"
+ },
+ {
+  "index": 403,
+  "welsh": "dref",
+  "english": "town"
+ },
+ {
+  "index": 404,
+  "welsh": "dirwy",
+  "english": "fine"
+ },
+ {
+  "index": 405,
+  "welsh": "penodol",
+  "english": "certain"
+ },
+ {
+  "index": 406,
+  "welsh": "hedfan",
+  "english": "fly"
+ },
+ {
+  "index": 407,
+  "welsh": "disgyn",
+  "english": "fall"
+ },
+ {
+  "index": 408,
+  "welsh": "arwain",
+  "english": "lead"
+ },
+ {
+  "index": 409,
+  "welsh": "crio",
+  "english": "cry"
+ },
+ {
+  "index": 410,
+  "welsh": "tywyll",
+  "english": "dark"
+ },
+ {
+  "index": 411,
+  "welsh": "peiriant",
+  "english": "machine"
+ },
+ {
+  "index": 412,
+  "welsh": "nodyn",
+  "english": "note"
+ },
+ {
+  "index": 413,
+  "welsh": "aros",
+  "english": "wait"
+ },
+ {
+  "index": 414,
+  "welsh": "cynllun",
+  "english": "plan"
+ },
+ {
+  "index": 415,
+  "welsh": "ffigur",
+  "english": "figure"
+ },
+ {
+  "index": 416,
+  "welsh": "seren",
+  "english": "star"
+ },
+ {
+  "index": 417,
+  "welsh": "blwch",
+  "english": "box"
+ },
+ {
+  "index": 418,
+  "welsh": "enw",
+  "english": "noun"
+ },
+ {
+  "index": 419,
+  "welsh": "maes",
+  "english": "field"
+ },
+ {
+  "index": 420,
+  "welsh": "gorffwys",
+  "english": "rest"
+ },
+ {
+  "index": 421,
+  "welsh": "gywir",
+  "english": "correct"
+ },
+ {
+  "index": 422,
+  "welsh": "gallu",
+  "english": "able"
+ },
+ {
+  "index": 423,
+  "welsh": "punt",
+  "english": "pound"
+ },
+ {
+  "index": 424,
+  "welsh": "Da",
+  "english": "done"
+ },
+ {
+  "index": 425,
+  "welsh": "harddwch",
+  "english": "beauty"
+ },
+ {
+  "index": 426,
+  "welsh": "gyriant",
+  "english": "drive"
+ },
+ {
+  "index": 427,
+  "welsh": "sefyll",
+  "english": "stood"
+ },
+ {
+  "index": 428,
+  "welsh": "cynnwys",
+  "english": "contain"
+ },
+ {
+  "index": 429,
+  "welsh": "blaen",
+  "english": "front"
+ },
+ {
+  "index": 430,
+  "welsh": "dysgu",
+  "english": "teach"
+ },
+ {
+  "index": 431,
+  "welsh": "wythnos",
+  "english": "week"
+ },
+ {
+  "index": 432,
+  "welsh": "terfynol",
+  "english": "final"
+ },
+ {
+  "index": 433,
+  "welsh": "Rhoddodd",
+  "english": "gave"
+ },
+ {
+  "index": 434,
+  "welsh": "gwyrdd",
+  "english": "green"
+ },
+ {
+  "index": 435,
+  "welsh": "oh",
+  "english": "oh"
+ },
+ {
+  "index": 436,
+  "welsh": "cyflym",
+  "english": "quick"
+ },
+ {
+  "index": 437,
+  "welsh": "datblygu",
+  "english": "develop"
+ },
+ {
+  "index": 438,
+  "welsh": "cefnfor",
+  "english": "ocean"
+ },
+ {
+  "index": 439,
+  "welsh": "gynnes",
+  "english": "warm"
+ },
+ {
+  "index": 440,
+  "welsh": "rhad ac am ddim",
+  "english": "free"
+ },
+ {
+  "index": 441,
+  "welsh": "munud",
+  "english": "minute"
+ },
+ {
+  "index": 442,
+  "welsh": "gryf",
+  "english": "strong"
+ },
+ {
+  "index": 443,
+  "welsh": "arbennig",
+  "english": "special"
+ },
+ {
+  "index": 444,
+  "welsh": "meddwl",
+  "english": "mind"
+ },
+ {
+  "index": 445,
+  "welsh": "y tu ôl i",
+  "english": "behind"
+ },
+ {
+  "index": 446,
+  "welsh": "glir",
+  "english": "clear"
+ },
+ {
+  "index": 447,
+  "welsh": "gynffon",
+  "english": "tail"
+ },
+ {
+  "index": 448,
+  "welsh": "cynhyrchu",
+  "english": "produce"
+ },
+ {
+  "index": 449,
+  "welsh": "ffaith",
+  "english": "fact"
+ },
+ {
+  "index": 450,
+  "welsh": "gofod",
+  "english": "space"
+ },
+ {
+  "index": 451,
+  "welsh": "clywed",
+  "english": "heard"
+ },
+ {
+  "index": 452,
+  "welsh": "gorau",
+  "english": "best"
+ },
+ {
+  "index": 453,
+  "welsh": "awr",
+  "english": "hour"
+ },
+ {
+  "index": 454,
+  "welsh": "gwell",
+  "english": "better"
+ },
+ {
+  "index": 455,
+  "welsh": "yn wir",
+  "english": "true"
+ },
+ {
+  "index": 456,
+  "welsh": "yn ystod",
+  "english": "during"
+ },
+ {
+  "index": 457,
+  "welsh": "cant",
+  "english": "hundred"
+ },
+ {
+  "index": 458,
+  "welsh": "pump",
+  "english": "five"
+ },
+ {
+  "index": 459,
+  "welsh": "cofio",
+  "english": "remember"
+ },
+ {
+  "index": 460,
+  "welsh": "cam",
+  "english": "step"
+ },
+ {
+  "index": 461,
+  "welsh": "gynnar",
+  "english": "early"
+ },
+ {
+  "index": 462,
+  "welsh": "dal",
+  "english": "hold"
+ },
+ {
+  "index": 463,
+  "welsh": "orllewin",
+  "english": "west"
+ },
+ {
+  "index": 464,
+  "welsh": "ddaear",
+  "english": "ground"
+ },
+ {
+  "index": 465,
+  "welsh": "llog",
+  "english": "interest"
+ },
+ {
+  "index": 466,
+  "welsh": "cyrraedd",
+  "english": "reach"
+ },
+ {
+  "index": 467,
+  "welsh": "cyflym",
+  "english": "fast"
+ },
+ {
+  "index": 468,
+  "welsh": "berf",
+  "english": "verb"
+ },
+ {
+  "index": 469,
+  "welsh": "canu",
+  "english": "sing"
+ },
+ {
+  "index": 470,
+  "welsh": "gwrando",
+  "english": "listen"
+ },
+ {
+  "index": 471,
+  "welsh": "chwech",
+  "english": "six"
+ },
+ {
+  "index": 472,
+  "welsh": "tabl",
+  "english": "table"
+ },
+ {
+  "index": 473,
+  "welsh": "teithio",
+  "english": "travel"
+ },
+ {
+  "index": 474,
+  "welsh": "llai",
+  "english": "less"
+ },
+ {
+  "index": 475,
+  "welsh": "bore",
+  "english": "morning"
+ },
+ {
+  "index": 476,
+  "welsh": "deg",
+  "english": "ten"
+ },
+ {
+  "index": 477,
+  "welsh": "syml",
+  "english": "simple"
+ },
+ {
+  "index": 478,
+  "welsh": "nifer",
+  "english": "several"
+ },
+ {
+  "index": 479,
+  "welsh": "llafariad",
+  "english": "vowel"
+ },
+ {
+  "index": 480,
+  "welsh": "tuag",
+  "english": "toward"
+ },
+ {
+  "index": 481,
+  "welsh": "rhyfel",
+  "english": "war"
+ },
+ {
+  "index": 482,
+  "welsh": "lleyg",
+  "english": "lay"
+ },
+ {
+  "index": 483,
+  "welsh": "erbyn",
+  "english": "against"
+ },
+ {
+  "index": 484,
+  "welsh": "patrwm",
+  "english": "pattern"
+ },
+ {
+  "index": 485,
+  "welsh": "araf",
+  "english": "slow"
+ },
+ {
+  "index": 486,
+  "welsh": "canolfan",
+  "english": "center"
+ },
+ {
+  "index": 487,
+  "welsh": "wrth eu bodd",
+  "english": "love"
+ },
+ {
+  "index": 488,
+  "welsh": "person",
+  "english": "person"
+ },
+ {
+  "index": 489,
+  "welsh": "arian",
+  "english": "money"
+ },
+ {
+  "index": 490,
+  "welsh": "gwasanaethu",
+  "english": "serve"
+ },
+ {
+  "index": 491,
+  "welsh": "ymddangos",
+  "english": "appear"
+ },
+ {
+  "index": 492,
+  "welsh": "ffordd",
+  "english": "road"
+ },
+ {
+  "index": 493,
+  "welsh": "fap",
+  "english": "map"
+ },
+ {
+  "index": 494,
+  "welsh": "glaw",
+  "english": "rain"
+ },
+ {
+  "index": 495,
+  "welsh": "rheol",
+  "english": "rule"
+ },
+ {
+  "index": 496,
+  "welsh": "llywodraethu",
+  "english": "govern"
+ },
+ {
+  "index": 497,
+  "welsh": "tynnu",
+  "english": "pull"
+ },
+ {
+  "index": 498,
+  "welsh": "oer",
+  "english": "cold"
+ },
+ {
+  "index": 499,
+  "welsh": "rhybudd",
+  "english": "notice"
+ },
+ {
+  "index": 500,
+  "welsh": "llais",
+  "english": "voice"
+ },
+ {
+  "index": 501,
+  "welsh": "ynni",
+  "english": "energy"
+ },
+ {
+  "index": 502,
+  "welsh": "helfa",
+  "english": "hunt"
+ },
+ {
+  "index": 503,
+  "welsh": "tebygol",
+  "english": "probable"
+ },
+ {
+  "index": 504,
+  "welsh": "gwely",
+  "english": "bed"
+ },
+ {
+  "index": 505,
+  "welsh": "brawd",
+  "english": "brother"
+ },
+ {
+  "index": 506,
+  "welsh": "wy",
+  "english": "egg"
+ },
+ {
+  "index": 507,
+  "welsh": "taith",
+  "english": "ride"
+ },
+ {
+  "index": 508,
+  "welsh": "cell",
+  "english": "cell"
+ },
+ {
+  "index": 509,
+  "welsh": "yn credu",
+  "english": "believe"
+ },
+ {
+  "index": 510,
+  "welsh": "efallai",
+  "english": "perhaps"
+ },
+ {
+  "index": 511,
+  "welsh": "ddewis",
+  "english": "pick"
+ },
+ {
+  "index": 512,
+  "welsh": "sydyn",
+  "english": "sudden"
+ },
+ {
+  "index": 513,
+  "welsh": "cyfrif",
+  "english": "count"
+ },
+ {
+  "index": 514,
+  "welsh": "sgwâr",
+  "english": "square"
+ },
+ {
+  "index": 515,
+  "welsh": "rheswm",
+  "english": "reason"
+ },
+ {
+  "index": 516,
+  "welsh": "hyd",
+  "english": "length"
+ },
+ {
+  "index": 517,
+  "welsh": "cynrychioli",
+  "english": "represent"
+ },
+ {
+  "index": 518,
+  "welsh": "celf",
+  "english": "art"
+ },
+ {
+  "index": 519,
+  "welsh": "pwnc",
+  "english": "subject"
+ },
+ {
+  "index": 520,
+  "welsh": "rhanbarth",
+  "english": "region"
+ },
+ {
+  "index": 521,
+  "welsh": "maint y",
+  "english": "size"
+ },
+ {
+  "index": 522,
+  "welsh": "amrywio",
+  "english": "vary"
+ },
+ {
+  "index": 523,
+  "welsh": "setlo",
+  "english": "settle"
+ },
+ {
+  "index": 524,
+  "welsh": "siarad",
+  "english": "speak"
+ },
+ {
+  "index": 525,
+  "welsh": "pwysau",
+  "english": "weight"
+ },
+ {
+  "index": 526,
+  "welsh": "gyffredinol",
+  "english": "general"
+ },
+ {
+  "index": 527,
+  "welsh": "iâ",
+  "english": "ice"
+ },
+ {
+  "index": 528,
+  "welsh": "mater",
+  "english": "matter"
+ },
+ {
+  "index": 529,
+  "welsh": "cylch",
+  "english": "circle"
+ },
+ {
+  "index": 530,
+  "welsh": "pâr",
+  "english": "pair"
+ },
+ {
+  "index": 531,
+  "welsh": "cynnwys",
+  "english": "include"
+ },
+ {
+  "index": 532,
+  "welsh": "rhaniad",
+  "english": "divide"
+ },
+ {
+  "index": 533,
+  "welsh": "sillaf",
+  "english": "syllable"
+ },
+ {
+  "index": 534,
+  "welsh": "Teimlwyd",
+  "english": "felt"
+ },
+ {
+  "index": 535,
+  "welsh": "mawreddog",
+  "english": "grand"
+ },
+ {
+  "index": 536,
+  "welsh": "pêl",
+  "english": "ball"
+ },
+ {
+  "index": 537,
+  "welsh": "eto",
+  "english": "yet"
+ },
+ {
+  "index": 538,
+  "welsh": "don",
+  "english": "wave"
+ },
+ {
+  "index": 539,
+  "welsh": "gollwng",
+  "english": "drop"
+ },
+ {
+  "index": 540,
+  "welsh": "galon",
+  "english": "heart"
+ },
+ {
+  "index": 541,
+  "welsh": "wyf",
+  "english": "am"
+ },
+ {
+  "index": 542,
+  "welsh": "bresennol",
+  "english": "present"
+ },
+ {
+  "index": 543,
+  "welsh": "trwm",
+  "english": "heavy"
+ },
+ {
+  "index": 544,
+  "welsh": "dawns",
+  "english": "dance"
+ },
+ {
+  "index": 545,
+  "welsh": "peiriant",
+  "english": "engine"
+ },
+ {
+  "index": 546,
+  "welsh": "sefyllfa",
+  "english": "position"
+ },
+ {
+  "index": 547,
+  "welsh": "braich",
+  "english": "arm"
+ },
+ {
+  "index": 548,
+  "welsh": "eang",
+  "english": "wide"
+ },
+ {
+  "index": 549,
+  "welsh": "hwylio",
+  "english": "sail"
+ },
+ {
+  "index": 550,
+  "welsh": "deunydd",
+  "english": "material"
+ },
+ {
+  "index": 551,
+  "welsh": "ffracsiwn",
+  "english": "fraction"
+ },
+ {
+  "index": 552,
+  "welsh": "goedwig",
+  "english": "forest"
+ },
+ {
+  "index": 553,
+  "welsh": "eistedd",
+  "english": "sit"
+ },
+ {
+  "index": 554,
+  "welsh": "hil",
+  "english": "race"
+ },
+ {
+  "index": 555,
+  "welsh": "ffenestr",
+  "english": "window"
+ },
+ {
+  "index": 556,
+  "welsh": "siop",
+  "english": "store"
+ },
+ {
+  "index": 557,
+  "welsh": "haf",
+  "english": "summer"
+ },
+ {
+  "index": 558,
+  "welsh": "trên",
+  "english": "train"
+ },
+ {
+  "index": 559,
+  "welsh": "cysgu",
+  "english": "sleep"
+ },
+ {
+  "index": 560,
+  "welsh": "profi",
+  "english": "prove"
+ },
+ {
+  "index": 561,
+  "welsh": "eich pen eich hun",
+  "english": "lone"
+ },
+ {
+  "index": 562,
+  "welsh": "goes",
+  "english": "leg"
+ },
+ {
+  "index": 563,
+  "welsh": "ymarfer corff",
+  "english": "exercise"
+ },
+ {
+  "index": 564,
+  "welsh": "wal",
+  "english": "wall"
+ },
+ {
+  "index": 565,
+  "welsh": "dal",
+  "english": "catch"
+ },
+ {
+  "index": 566,
+  "welsh": "mynydd",
+  "english": "mount"
+ },
+ {
+  "index": 567,
+  "welsh": "dymuno",
+  "english": "wish"
+ },
+ {
+  "index": 568,
+  "welsh": "awyr",
+  "english": "sky"
+ },
+ {
+  "index": 569,
+  "welsh": "bwrdd",
+  "english": "board"
+ },
+ {
+  "index": 570,
+  "welsh": "llawenydd",
+  "english": "joy"
+ },
+ {
+  "index": 571,
+  "welsh": "gaeaf",
+  "english": "winter"
+ },
+ {
+  "index": 572,
+  "welsh": "sat",
+  "english": "sat"
+ },
+ {
+  "index": 573,
+  "welsh": "ysgrifenedig",
+  "english": "written"
+ },
+ {
+  "index": 574,
+  "welsh": "gwyllt",
+  "english": "wild"
+ },
+ {
+  "index": 575,
+  "welsh": "offeryn",
+  "english": "instrument"
+ },
+ {
+  "index": 576,
+  "welsh": "cadw",
+  "english": "kept"
+ },
+ {
+  "index": 577,
+  "welsh": "gwydr",
+  "english": "glass"
+ },
+ {
+  "index": 578,
+  "welsh": "glaswellt",
+  "english": "grass"
+ },
+ {
+  "index": 579,
+  "welsh": "buwch",
+  "english": "cow"
+ },
+ {
+  "index": 580,
+  "welsh": "swydd",
+  "english": "job"
+ },
+ {
+  "index": 581,
+  "welsh": "ymyl",
+  "english": "edge"
+ },
+ {
+  "index": 582,
+  "welsh": "arwydd",
+  "english": "sign"
+ },
+ {
+  "index": 583,
+  "welsh": "ymweliad",
+  "english": "visit"
+ },
+ {
+  "index": 584,
+  "welsh": "gorffennol",
+  "english": "past"
+ },
+ {
+  "index": 585,
+  "welsh": "meddal",
+  "english": "soft"
+ },
+ {
+  "index": 586,
+  "welsh": "hwyl",
+  "english": "fun"
+ },
+ {
+  "index": 587,
+  "welsh": "llachar",
+  "english": "bright"
+ },
+ {
+  "index": 588,
+  "welsh": "nwy",
+  "english": "gas"
+ },
+ {
+  "index": 589,
+  "welsh": "tywydd",
+  "english": "weather"
+ },
+ {
+  "index": 590,
+  "welsh": "mis",
+  "english": "month"
+ },
+ {
+  "index": 591,
+  "welsh": "miliwn",
+  "english": "million"
+ },
+ {
+  "index": 592,
+  "welsh": "arth",
+  "english": "bear"
+ },
+ {
+  "index": 593,
+  "welsh": "gorffen",
+  "english": "finish"
+ },
+ {
+  "index": 594,
+  "welsh": "hapus",
+  "english": "happy"
+ },
+ {
+  "index": 595,
+  "welsh": "gobeithio",
+  "english": "hope"
+ },
+ {
+  "index": 596,
+  "welsh": "blodyn",
+  "english": "flower"
+ },
+ {
+  "index": 597,
+  "welsh": "dilladu",
+  "english": "clothe"
+ },
+ {
+  "index": 598,
+  "welsh": "rhyfedd",
+  "english": "strange"
+ },
+ {
+  "index": 599,
+  "welsh": "wedi mynd",
+  "english": "gone"
+ },
+ {
+  "index": 600,
+  "welsh": "masnach",
+  "english": "trade"
+ },
+ {
+  "index": 601,
+  "welsh": "alaw",
+  "english": "melody"
+ },
+ {
+  "index": 602,
+  "welsh": "daith",
+  "english": "trip"
+ },
+ {
+  "index": 603,
+  "welsh": "swyddfa",
+  "english": "office"
+ },
+ {
+  "index": 604,
+  "welsh": "derbyn",
+  "english": "receive"
+ },
+ {
+  "index": 605,
+  "welsh": "rhes",
+  "english": "row"
+ },
+ {
+  "index": 606,
+  "welsh": "geg",
+  "english": "mouth"
+ },
+ {
+  "index": 607,
+  "welsh": "union",
+  "english": "exact"
+ },
+ {
+  "index": 608,
+  "welsh": "arwydd",
+  "english": "symbol"
+ },
+ {
+  "index": 609,
+  "welsh": "marw",
+  "english": "die"
+ },
+ {
+  "index": 610,
+  "welsh": "lleiaf",
+  "english": "least"
+ },
+ {
+  "index": 611,
+  "welsh": "trafferth",
+  "english": "trouble"
+ },
+ {
+  "index": 612,
+  "welsh": "gweiddi",
+  "english": "shout"
+ },
+ {
+  "index": 613,
+  "welsh": "ac eithrio",
+  "english": "except"
+ },
+ {
+  "index": 614,
+  "welsh": "ysgrifennodd",
+  "english": "wrote"
+ },
+ {
+  "index": 615,
+  "welsh": "hadau",
+  "english": "seed"
+ },
+ {
+  "index": 616,
+  "welsh": "tôn",
+  "english": "tone"
+ },
+ {
+  "index": 617,
+  "welsh": "ymuno",
+  "english": "join"
+ },
+ {
+  "index": 618,
+  "welsh": "awgrymu",
+  "english": "suggest"
+ },
+ {
+  "index": 619,
+  "welsh": "lân",
+  "english": "clean"
+ },
+ {
+  "index": 620,
+  "welsh": "egwyl",
+  "english": "break"
+ },
+ {
+  "index": 621,
+  "welsh": "wraig",
+  "english": "lady"
+ },
+ {
+  "index": 622,
+  "welsh": "iard",
+  "english": "yard"
+ },
+ {
+  "index": 623,
+  "welsh": "codi",
+  "english": "rise"
+ },
+ {
+  "index": 624,
+  "welsh": "drwg",
+  "english": "bad"
+ },
+ {
+  "index": 625,
+  "welsh": "ergyd",
+  "english": "blow"
+ },
+ {
+  "index": 626,
+  "welsh": "olew",
+  "english": "oil"
+ },
+ {
+  "index": 627,
+  "welsh": "gwaed",
+  "english": "blood"
+ },
+ {
+  "index": 628,
+  "welsh": "cyffwrdd",
+  "english": "touch"
+ },
+ {
+  "index": 629,
+  "welsh": "Tyfodd",
+  "english": "grew"
+ },
+ {
+  "index": 630,
+  "welsh": "cant",
+  "english": "cent"
+ },
+ {
+  "index": 631,
+  "welsh": "cymysgu",
+  "english": "mix"
+ },
+ {
+  "index": 632,
+  "welsh": "tîm",
+  "english": "team"
+ },
+ {
+  "index": 633,
+  "welsh": "gwifren",
+  "english": "wire"
+ },
+ {
+  "index": 634,
+  "welsh": "chost",
+  "english": "cost"
+ },
+ {
+  "index": 635,
+  "welsh": "gollwyd",
+  "english": "lost"
+ },
+ {
+  "index": 636,
+  "welsh": "brown",
+  "english": "brown"
+ },
+ {
+  "index": 637,
+  "welsh": "gwisgo",
+  "english": "wear"
+ },
+ {
+  "index": 638,
+  "welsh": "gardd",
+  "english": "garden"
+ },
+ {
+  "index": 639,
+  "welsh": "gyfartal",
+  "english": "equal"
+ },
+ {
+  "index": 640,
+  "welsh": "anfon",
+  "english": "sent"
+ },
+ {
+  "index": 641,
+  "welsh": "dewis",
+  "english": "choose"
+ },
+ {
+  "index": 642,
+  "welsh": "syrthiodd",
+  "english": "fell"
+ },
+ {
+  "index": 643,
+  "welsh": "ffitio",
+  "english": "fit"
+ },
+ {
+  "index": 644,
+  "welsh": "llif",
+  "english": "flow"
+ },
+ {
+  "index": 645,
+  "welsh": "deg",
+  "english": "fair"
+ },
+ {
+  "index": 646,
+  "welsh": "banc",
+  "english": "bank"
+ },
+ {
+  "index": 647,
+  "welsh": "casglu",
+  "english": "collect"
+ },
+ {
+  "index": 648,
+  "welsh": "arbed",
+  "english": "save"
+ },
+ {
+  "index": 649,
+  "welsh": "rheoli",
+  "english": "control"
+ },
+ {
+  "index": 650,
+  "welsh": "degol",
+  "english": "decimal"
+ },
+ {
+  "index": 651,
+  "welsh": "clust",
+  "english": "ear"
+ },
+ {
+  "index": 652,
+  "welsh": "arall",
+  "english": "else"
+ },
+ {
+  "index": 653,
+  "welsh": "eithaf",
+  "english": "quite"
+ },
+ {
+  "index": 654,
+  "welsh": "torrodd",
+  "english": "broke"
+ },
+ {
+  "index": 655,
+  "welsh": "achos",
+  "english": "case"
+ },
+ {
+  "index": 656,
+  "welsh": "canol",
+  "english": "middle"
+ },
+ {
+  "index": 657,
+  "welsh": "lladd",
+  "english": "kill"
+ },
+ {
+  "index": 658,
+  "welsh": "mab",
+  "english": "son"
+ },
+ {
+  "index": 659,
+  "welsh": "llyn",
+  "english": "lake"
+ },
+ {
+  "index": 660,
+  "welsh": "hyn o bryd",
+  "english": "moment"
+ },
+ {
+  "index": 661,
+  "welsh": "graddfa",
+  "english": "scale"
+ },
+ {
+  "index": 662,
+  "welsh": "uchel",
+  "english": "loud"
+ },
+ {
+  "index": 663,
+  "welsh": "gwanwyn",
+  "english": "spring"
+ },
+ {
+  "index": 664,
+  "welsh": "arsylwi",
+  "english": "observe"
+ },
+ {
+  "index": 665,
+  "welsh": "plentyn",
+  "english": "child"
+ },
+ {
+  "index": 666,
+  "welsh": "syth",
+  "english": "straight"
+ },
+ {
+  "index": 667,
+  "welsh": "cytseiniaid",
+  "english": "consonant"
+ },
+ {
+  "index": 668,
+  "welsh": "cenedl",
+  "english": "nation"
+ },
+ {
+  "index": 669,
+  "welsh": "geiriadur",
+  "english": "dictionary"
+ },
+ {
+  "index": 670,
+  "welsh": "llaeth",
+  "english": "milk"
+ },
+ {
+  "index": 671,
+  "welsh": "cyflymder",
+  "english": "speed"
+ },
+ {
+  "index": 672,
+  "welsh": "dull",
+  "english": "method"
+ },
+ {
+  "index": 673,
+  "welsh": "organ",
+  "english": "organ"
+ },
+ {
+  "index": 674,
+  "welsh": "talu",
+  "english": "pay"
+ },
+ {
+  "index": 675,
+  "welsh": "oedran",
+  "english": "age"
+ },
+ {
+  "index": 676,
+  "welsh": "adran",
+  "english": "section"
+ },
+ {
+  "index": 677,
+  "welsh": "gwisg",
+  "english": "dress"
+ },
+ {
+  "index": 678,
+  "welsh": "cwmwl",
+  "english": "cloud"
+ },
+ {
+  "index": 679,
+  "welsh": "syndod",
+  "english": "surprise"
+ },
+ {
+  "index": 680,
+  "welsh": "dawel",
+  "english": "quiet"
+ },
+ {
+  "index": 681,
+  "welsh": "cerrig",
+  "english": "stone"
+ },
+ {
+  "index": 682,
+  "welsh": "bach",
+  "english": "tiny"
+ },
+ {
+  "index": 683,
+  "welsh": "dringo",
+  "english": "climb"
+ },
+ {
+  "index": 684,
+  "welsh": "oer",
+  "english": "cool"
+ },
+ {
+  "index": 685,
+  "welsh": "dylunio",
+  "english": "design"
+ },
+ {
+  "index": 686,
+  "welsh": "gwael",
+  "english": "poor"
+ },
+ {
+  "index": 687,
+  "welsh": "llawer",
+  "english": "lot"
+ },
+ {
+  "index": 688,
+  "welsh": "arbrawf",
+  "english": "experiment"
+ },
+ {
+  "index": 689,
+  "welsh": "gwaelod",
+  "english": "bottom"
+ },
+ {
+  "index": 690,
+  "welsh": "allweddol",
+  "english": "key"
+ },
+ {
+  "index": 691,
+  "welsh": "haearn",
+  "english": "iron"
+ },
+ {
+  "index": 692,
+  "welsh": "sengl",
+  "english": "single"
+ },
+ {
+  "index": 693,
+  "welsh": "ffon",
+  "english": "stick"
+ },
+ {
+  "index": 694,
+  "welsh": "fflat",
+  "english": "flat"
+ },
+ {
+  "index": 695,
+  "welsh": "ugain",
+  "english": "twenty"
+ },
+ {
+  "index": 696,
+  "welsh": "croen",
+  "english": "skin"
+ },
+ {
+  "index": 697,
+  "welsh": "gwenu",
+  "english": "smile"
+ },
+ {
+  "index": 698,
+  "welsh": "cris",
+  "english": "crease"
+ },
+ {
+  "index": 699,
+  "welsh": "twll",
+  "english": "hole"
+ },
+ {
+  "index": 700,
+  "welsh": "neidio",
+  "english": "jump"
+ },
+ {
+  "index": 701,
+  "welsh": "babi",
+  "english": "baby"
+ },
+ {
+  "index": 702,
+  "welsh": "wyth",
+  "english": "eight"
+ },
+ {
+  "index": 703,
+  "welsh": "pentref",
+  "english": "village"
+ },
+ {
+  "index": 704,
+  "welsh": "cwrdd",
+  "english": "meet"
+ },
+ {
+  "index": 705,
+  "welsh": "gwraidd",
+  "english": "root"
+ },
+ {
+  "index": 706,
+  "welsh": "prynu",
+  "english": "buy"
+ },
+ {
+  "index": 707,
+  "welsh": "codi",
+  "english": "raise"
+ },
+ {
+  "index": 708,
+  "welsh": "datrys",
+  "english": "solve"
+ },
+ {
+  "index": 709,
+  "welsh": "metel",
+  "english": "metal"
+ },
+ {
+  "index": 710,
+  "welsh": "p’un a",
+  "english": "whether"
+ },
+ {
+  "index": 711,
+  "welsh": "gwthio",
+  "english": "push"
+ },
+ {
+  "index": 712,
+  "welsh": "saith",
+  "english": "seven"
+ },
+ {
+  "index": 713,
+  "welsh": "paragraff",
+  "english": "paragraph"
+ },
+ {
+  "index": 714,
+  "welsh": "trydydd",
+  "english": "third"
+ },
+ {
+  "index": 715,
+  "welsh": "rhaid",
+  "english": "shall"
+ },
+ {
+  "index": 716,
+  "welsh": "a gedwir yn",
+  "english": "held"
+ },
+ {
+  "index": 717,
+  "welsh": "gwallt",
+  "english": "hair"
+ },
+ {
+  "index": 718,
+  "welsh": "disgrifio",
+  "english": "describe"
+ },
+ {
+  "index": 719,
+  "welsh": "cogydd",
+  "english": "cook"
+ },
+ {
+  "index": 720,
+  "welsh": "llawr",
+  "english": "floor"
+ },
+ {
+  "index": 721,
+  "welsh": "naill ai",
+  "english": "either"
+ },
+ {
+  "index": 722,
+  "welsh": "canlyniad",
+  "english": "result"
+ },
+ {
+  "index": 723,
+  "welsh": "llosgi",
+  "english": "burn"
+ },
+ {
+  "index": 724,
+  "welsh": "bryn",
+  "english": "hill"
+ },
+ {
+  "index": 725,
+  "welsh": "yn ddiogel",
+  "english": "safe"
+ },
+ {
+  "index": 726,
+  "welsh": "cath",
+  "english": "cat"
+ },
+ {
+  "index": 727,
+  "welsh": "ganrif",
+  "english": "century"
+ },
+ {
+  "index": 728,
+  "welsh": "ystyried",
+  "english": "consider"
+ },
+ {
+  "index": 729,
+  "welsh": "math",
+  "english": "type"
+ },
+ {
+  "index": 730,
+  "welsh": "gyfraith",
+  "english": "law"
+ },
+ {
+  "index": 731,
+  "welsh": "bit",
+  "english": "bit"
+ },
+ {
+  "index": 732,
+  "welsh": "arfordir",
+  "english": "coast"
+ },
+ {
+  "index": 733,
+  "welsh": "copi",
+  "english": "copy"
+ },
+ {
+  "index": 734,
+  "welsh": "ymadrodd",
+  "english": "phrase"
+ },
+ {
+  "index": 735,
+  "welsh": "dawel",
+  "english": "silent"
+ },
+ {
+  "index": 736,
+  "welsh": "tal",
+  "english": "tall"
+ },
+ {
+  "index": 737,
+  "welsh": "tywod",
+  "english": "sand"
+ },
+ {
+  "index": 738,
+  "welsh": "pridd",
+  "english": "soil"
+ },
+ {
+  "index": 739,
+  "welsh": "gofrestr",
+  "english": "roll"
+ },
+ {
+  "index": 740,
+  "welsh": "tymheredd",
+  "english": "temperature"
+ },
+ {
+  "index": 741,
+  "welsh": "bys",
+  "english": "finger"
+ },
+ {
+  "index": 742,
+  "welsh": "diwydiant",
+  "english": "industry"
+ },
+ {
+  "index": 743,
+  "welsh": "gwerth",
+  "english": "value"
+ },
+ {
+  "index": 744,
+  "welsh": "frwydr",
+  "english": "fight"
+ },
+ {
+  "index": 745,
+  "welsh": "gorwedd",
+  "english": "lie"
+ },
+ {
+  "index": 746,
+  "welsh": "guro",
+  "english": "beat"
+ },
+ {
+  "index": 747,
+  "welsh": "cyffroi",
+  "english": "excite"
+ },
+ {
+  "index": 748,
+  "welsh": "naturiol",
+  "english": "natural"
+ },
+ {
+  "index": 749,
+  "welsh": "barn",
+  "english": "view"
+ },
+ {
+  "index": 750,
+  "welsh": "synnwyr",
+  "english": "sense"
+ },
+ {
+  "index": 751,
+  "welsh": "cyfalaf",
+  "english": "capital"
+ },
+ {
+  "index": 752,
+  "welsh": "Ni fydd",
+  "english": "won’t"
+ },
+ {
+  "index": 753,
+  "welsh": "gadeirydd",
+  "english": "chair"
+ },
+ {
+  "index": 754,
+  "welsh": "perygl",
+  "english": "danger"
+ },
+ {
+  "index": 755,
+  "welsh": "ffrwythau",
+  "english": "fruit"
+ },
+ {
+  "index": 756,
+  "welsh": "gyfoethog",
+  "english": "rich"
+ },
+ {
+  "index": 757,
+  "welsh": "trwchus",
+  "english": "thick"
+ },
+ {
+  "index": 758,
+  "welsh": "milwr",
+  "english": "soldier"
+ },
+ {
+  "index": 759,
+  "welsh": "broses",
+  "english": "process"
+ },
+ {
+  "index": 760,
+  "welsh": "gweithredu",
+  "english": "operate"
+ },
+ {
+  "index": 761,
+  "welsh": "ymarfer",
+  "english": "practice"
+ },
+ {
+  "index": 762,
+  "welsh": "ar wahân",
+  "english": "separate"
+ },
+ {
+  "index": 763,
+  "welsh": "anodd",
+  "english": "difficult"
+ },
+ {
+  "index": 764,
+  "welsh": "meddyg",
+  "english": "doctor"
+ },
+ {
+  "index": 765,
+  "welsh": "os gwelwch yn dda",
+  "english": "please"
+ },
+ {
+  "index": 766,
+  "welsh": "amddiffyn",
+  "english": "protect"
+ },
+ {
+  "index": 767,
+  "welsh": "canol dydd",
+  "english": "noon"
+ },
+ {
+  "index": 768,
+  "welsh": "cnwd",
+  "english": "crop"
+ },
+ {
+  "index": 769,
+  "welsh": "modern",
+  "english": "modern"
+ },
+ {
+  "index": 770,
+  "welsh": "elfen",
+  "english": "element"
+ },
+ {
+  "index": 771,
+  "welsh": "taro",
+  "english": "hit"
+ },
+ {
+  "index": 772,
+  "welsh": "myfyriwr",
+  "english": "student"
+ },
+ {
+  "index": 773,
+  "welsh": "cornel",
+  "english": "corner"
+ },
+ {
+  "index": 774,
+  "welsh": "parti",
+  "english": "party"
+ },
+ {
+  "index": 775,
+  "welsh": "cyflenwad",
+  "english": "supply"
+ },
+ {
+  "index": 776,
+  "welsh": "y mae ei",
+  "english": "whose"
+ },
+ {
+  "index": 777,
+  "welsh": "o hyd",
+  "english": "locate"
+ },
+ {
+  "index": 778,
+  "welsh": "ffoniwch",
+  "english": "ring"
+ },
+ {
+  "index": 779,
+  "welsh": "cymeriad",
+  "english": "character"
+ },
+ {
+  "index": 780,
+  "welsh": "pryfed",
+  "english": "insect"
+ },
+ {
+  "index": 781,
+  "welsh": "dal",
+  "english": "caught"
+ },
+ {
+  "index": 782,
+  "welsh": "cyfnod",
+  "english": "period"
+ },
+ {
+  "index": 783,
+  "welsh": "dangos",
+  "english": "indicate"
+ },
+ {
+  "index": 784,
+  "welsh": "Cymru",
+  "english": "radio"
+ },
+ {
+  "index": 785,
+  "welsh": "Siaradodd",
+  "english": "spoke"
+ },
+ {
+  "index": 786,
+  "welsh": "atom",
+  "english": "atom"
+ },
+ {
+  "index": 787,
+  "welsh": "dynol",
+  "english": "human"
+ },
+ {
+  "index": 788,
+  "welsh": "hanes",
+  "english": "history"
+ },
+ {
+  "index": 789,
+  "welsh": "effaith",
+  "english": "effect"
+ },
+ {
+  "index": 790,
+  "welsh": "trydan",
+  "english": "electric"
+ },
+ {
+  "index": 791,
+  "welsh": "disgwyl",
+  "english": "expect"
+ },
+ {
+  "index": 792,
+  "welsh": "esgyrn",
+  "english": "bone"
+ },
+ {
+  "index": 793,
+  "welsh": "rheilffyrdd",
+  "english": "rail"
+ },
+ {
+  "index": 794,
+  "welsh": "dychmygu",
+  "english": "imagine"
+ },
+ {
+  "index": 795,
+  "welsh": "darparu",
+  "english": "provide"
+ },
+ {
+  "index": 796,
+  "welsh": "cytuno",
+  "english": "agree"
+ },
+ {
+  "index": 797,
+  "welsh": "felly",
+  "english": "thus"
+ },
+ {
+  "index": 798,
+  "welsh": "ysgafn",
+  "english": "gentle"
+ },
+ {
+  "index": 799,
+  "welsh": "fenyw",
+  "english": "woman"
+ },
+ {
+  "index": 800,
+  "welsh": "capten",
+  "english": "captain"
+ },
+ {
+  "index": 801,
+  "welsh": "dyfalu",
+  "english": "guess"
+ },
+ {
+  "index": 802,
+  "welsh": "angenrheidiol",
+  "english": "necessary"
+ },
+ {
+  "index": 803,
+  "welsh": "miniog",
+  "english": "sharp"
+ },
+ {
+  "index": 804,
+  "welsh": "adain",
+  "english": "wing"
+ },
+ {
+  "index": 805,
+  "welsh": "creu",
+  "english": "create"
+ },
+ {
+  "index": 806,
+  "welsh": "cymydog",
+  "english": "neighbor"
+ },
+ {
+  "index": 807,
+  "welsh": "golchi",
+  "english": "wash"
+ },
+ {
+  "index": 808,
+  "welsh": "ystlumod",
+  "english": "bat"
+ },
+ {
+  "index": 809,
+  "welsh": "yn hytrach",
+  "english": "rather"
+ },
+ {
+  "index": 810,
+  "welsh": "dorf",
+  "english": "crowd"
+ },
+ {
+  "index": 811,
+  "welsh": "corn",
+  "english": "corn"
+ },
+ {
+  "index": 812,
+  "welsh": "cymharu",
+  "english": "compare"
+ },
+ {
+  "index": 813,
+  "welsh": "cerdd",
+  "english": "poem"
+ },
+ {
+  "index": 814,
+  "welsh": "llinyn",
+  "english": "string"
+ },
+ {
+  "index": 815,
+  "welsh": "cloch",
+  "english": "bell"
+ },
+ {
+  "index": 816,
+  "welsh": "dibynnu",
+  "english": "depend"
+ },
+ {
+  "index": 817,
+  "welsh": "cig",
+  "english": "meat"
+ },
+ {
+  "index": 818,
+  "welsh": "rhwbio",
+  "english": "rub"
+ },
+ {
+  "index": 819,
+  "welsh": "tiwb",
+  "english": "tube"
+ },
+ {
+  "index": 820,
+  "welsh": "enwog",
+  "english": "famous"
+ },
+ {
+  "index": 921,
+  "welsh": "doler",
+  "english": "dollar"
+ },
+ {
+  "index": 822,
+  "welsh": "nant",
+  "english": "stream"
+ },
+ {
+  "index": 823,
+  "welsh": "ofn",
+  "english": "fear"
+ },
+ {
+  "index": 284,
+  "welsh": "golwg",
+  "english": "sight"
+ },
+ {
+  "index": 825,
+  "welsh": "tenau",
+  "english": "thin"
+ },
+ {
+  "index": 826,
+  "welsh": "triongl",
+  "english": "triangle"
+ },
+ {
+  "index": 827,
+  "welsh": "blaned",
+  "english": "planet"
+ },
+ {
+  "index": 828,
+  "welsh": "frys",
+  "english": "hurry"
+ },
+ {
+  "index": 829,
+  "welsh": "prif",
+  "english": "chief"
+ },
+ {
+  "index": 830,
+  "welsh": "nythfa",
+  "english": "colony"
+ },
+ {
+  "index": 831,
+  "welsh": "cloc",
+  "english": "clock"
+ },
+ {
+  "index": 832,
+  "welsh": "mwynglawdd",
+  "english": "mine"
+ },
+ {
+  "index": 833,
+  "welsh": "tei",
+  "english": "tie"
+ },
+ {
+  "index": 834,
+  "welsh": "fynd i mewn",
+  "english": "enter"
+ },
+ {
+  "index": 835,
+  "welsh": "mawr",
+  "english": "major"
+ },
+ {
+  "index": 836,
+  "welsh": "ffres",
+  "english": "fresh"
+ },
+ {
+  "index": 837,
+  "welsh": "chwilio",
+  "english": "search"
+ },
+ {
+  "index": 838,
+  "welsh": "anfon",
+  "english": "send"
+ },
+ {
+  "index": 839,
+  "welsh": "melyn",
+  "english": "yellow"
+ },
+ {
+  "index": 840,
+  "welsh": "gwn",
+  "english": "gun"
+ },
+ {
+  "index": 841,
+  "welsh": "caniatáu",
+  "english": "allow"
+ },
+ {
+  "index": 842,
+  "welsh": "print",
+  "english": "print"
+ },
+ {
+  "index": 843,
+  "welsh": "marw",
+  "english": "dead"
+ },
+ {
+  "index": 844,
+  "welsh": "fan a’r lle",
+  "english": "spot"
+ },
+ {
+  "index": 845,
+  "welsh": "anialwch",
+  "english": "desert"
+ },
+ {
+  "index": 846,
+  "welsh": "siwt",
+  "english": "suit"
+ },
+ {
+  "index": 847,
+  "welsh": "ar hyn o bryd",
+  "english": "current"
+ },
+ {
+  "index": 848,
+  "welsh": "lifft",
+  "english": "lift"
+ },
+ {
+  "index": 840,
+  "welsh": "rhosyn",
+  "english": "rose"
+ },
+ {
+  "index": 850,
+  "welsh": "cyrraedd",
+  "english": "arrive"
+ },
+ {
+  "index": 851,
+  "welsh": "meistr",
+  "english": "master"
+ },
+ {
+  "index": 852,
+  "welsh": "trac",
+  "english": "track"
+ },
+ {
+  "index": 853,
+  "welsh": "rhiant",
+  "english": "parent"
+ },
+ {
+  "index": 854,
+  "welsh": "lan",
+  "english": "shore"
+ },
+ {
+  "index": 855,
+  "welsh": "is-adran",
+  "english": "division"
+ },
+ {
+  "index": 856,
+  "welsh": "taflen",
+  "english": "sheet"
+ },
+ {
+  "index": 857,
+  "welsh": "sylweddau",
+  "english": "substance"
+ },
+ {
+  "index": 858,
+  "welsh": "ffafrio",
+  "english": "favor"
+ },
+ {
+  "index": 859,
+  "welsh": "cysylltu",
+  "english": "connect"
+ },
+ {
+  "index": 860,
+  "welsh": "swydd",
+  "english": "post"
+ },
+ {
+  "index": 861,
+  "welsh": "gwario",
+  "english": "spend"
+ },
+ {
+  "index": 862,
+  "welsh": "tant",
+  "english": "chord"
+ },
+ {
+  "index": 863,
+  "welsh": "braster",
+  "english": "fat"
+ },
+ {
+  "index": 864,
+  "welsh": "falch",
+  "english": "glad"
+ },
+ {
+  "index": 865,
+  "welsh": "gwreiddiol",
+  "english": "original"
+ },
+ {
+  "index": 866,
+  "welsh": "rhannu",
+  "english": "share"
+ },
+ {
+  "index": 867,
+  "welsh": "orsaf",
+  "english": "station"
+ },
+ {
+  "index": 868,
+  "welsh": "dad",
+  "english": "dad"
+ },
+ {
+  "index": 869,
+  "welsh": "bara",
+  "english": "bread"
+ },
+ {
+  "index": 870,
+  "welsh": "codi tâl",
+  "english": "charge"
+ },
+ {
+  "index": 871,
+  "welsh": "briodol",
+  "english": "proper"
+ },
+ {
+  "index": 872,
+  "welsh": "bar",
+  "english": "bar"
+ },
+ {
+  "index": 873,
+  "welsh": "cynnig",
+  "english": "offer"
+ },
+ {
+  "index": 874,
+  "welsh": "gylchran",
+  "english": "segment"
+ },
+ {
+  "index": 875,
+  "welsh": "gaethweision",
+  "english": "slave"
+ },
+ {
+  "index": 876,
+  "welsh": "hwyaden",
+  "english": "duck"
+ },
+ {
+  "index": 877,
+  "welsh": "amrantiad",
+  "english": "instant"
+ },
+ {
+  "index": 878,
+  "welsh": "farchnad",
+  "english": "market"
+ },
+ {
+  "index": 879,
+  "welsh": "gradd",
+  "english": "degree"
+ },
+ {
+  "index": 880,
+  "welsh": "boblogi",
+  "english": "populate"
+ },
+ {
+  "index": 881,
+  "welsh": "cyw",
+  "english": "chick"
+ },
+ {
+  "index": 882,
+  "welsh": "annwyl",
+  "english": "dear"
+ },
+ {
+  "index": 883,
+  "welsh": "gelyn",
+  "english": "enemy"
+ },
+ {
+  "index": 884,
+  "welsh": "ateb",
+  "english": "reply"
+ },
+ {
+  "index": 885,
+  "welsh": "diod",
+  "english": "drink"
+ },
+ {
+  "index": 886,
+  "welsh": "yn digwydd",
+  "english": "occur"
+ },
+ {
+  "index": 887,
+  "welsh": "cymorth",
+  "english": "support"
+ },
+ {
+  "index": 888,
+  "welsh": "lleferydd",
+  "english": "speech"
+ },
+ {
+  "index": 889,
+  "welsh": "natur",
+  "english": "nature"
+ },
+ {
+  "index": 890,
+  "welsh": "amrediad",
+  "english": "range"
+ },
+ {
+  "index": 891,
+  "welsh": "stêm",
+  "english": "steam"
+ },
+ {
+  "index": 892,
+  "welsh": "cynnig",
+  "english": "motion"
+ },
+ {
+  "index": 893,
+  "welsh": "llwybr",
+  "english": "path"
+ },
+ {
+  "index": 894,
+  "welsh": "hylif",
+  "english": "liquid"
+ },
+ {
+  "index": 895,
+  "welsh": "log",
+  "english": "log"
+ },
+ {
+  "index": 896,
+  "welsh": "golygu",
+  "english": "meant"
+ },
+ {
+  "index": 897,
+  "welsh": "cyniferydd",
+  "english": "quotient"
+ },
+ {
+  "index": 898,
+  "welsh": "dannedd",
+  "english": "teeth"
+ },
+ {
+  "index": 899,
+  "welsh": "cragen",
+  "english": "shell"
+ },
+ {
+  "index": 900,
+  "welsh": "gwddf",
+  "english": "neck"
+ },
+ {
+  "index": 901,
+  "welsh": "ocsigen",
+  "english": "oxygen"
+ },
+ {
+  "index": 902,
+  "welsh": "siwgr",
+  "english": "sugar"
+ },
+ {
+  "index": 903,
+  "welsh": "marwolaeth",
+  "english": "death"
+ },
+ {
+  "index": 904,
+  "welsh": "’n bert",
+  "english": "pretty"
+ },
+ {
+  "index": 905,
+  "welsh": "sgiliau",
+  "english": "skill"
+ },
+ {
+  "index": 906,
+  "welsh": "menywod",
+  "english": "women"
+ },
+ {
+  "index": 907,
+  "welsh": "tymor",
+  "english": "season"
+ },
+ {
+  "index": 908,
+  "welsh": "ateb",
+  "english": "solution"
+ },
+ {
+  "index": 909,
+  "welsh": "magnet",
+  "english": "magnet"
+ },
+ {
+  "index": 910,
+  "welsh": "arian",
+  "english": "silver"
+ },
+ {
+  "index": 911,
+  "welsh": "diolch",
+  "english": "thank"
+ },
+ {
+  "index": 912,
+  "welsh": "gangen",
+  "english": "branch"
+ },
+ {
+  "index": 913,
+  "welsh": "gêm",
+  "english": "match"
+ },
+ {
+  "index": 914,
+  "welsh": "ôl-ddodiad",
+  "english": "suffix"
+ },
+ {
+  "index": 915,
+  "welsh": "yn enwedig",
+  "english": "especially"
+ },
+ {
+  "index": 916,
+  "welsh": "ffig",
+  "english": "fig"
+ },
+ {
+  "index": 917,
+  "welsh": "ofn",
+  "english": "afraid"
+ },
+ {
+  "index": 918,
+  "welsh": "enfawr",
+  "english": "huge"
+ },
+ {
+  "index": 919,
+  "welsh": "chwaer",
+  "english": "sister"
+ },
+ {
+  "index": 920,
+  "welsh": "dur",
+  "english": "steel"
+ },
+ {
+  "index": 921,
+  "welsh": "trafod",
+  "english": "discuss"
+ },
+ {
+  "index": 922,
+  "welsh": "ymlaen",
+  "english": "forward"
+ },
+ {
+  "index": 923,
+  "welsh": "tebyg",
+  "english": "similar"
+ },
+ {
+  "index": 924,
+  "welsh": "arwain",
+  "english": "guide"
+ },
+ {
+  "index": 925,
+  "welsh": "profiad",
+  "english": "experience"
+ },
+ {
+  "index": 926,
+  "welsh": "sgôr",
+  "english": "score"
+ },
+ {
+  "index": 927,
+  "welsh": "afal",
+  "english": "apple"
+ },
+ {
+  "index": 928,
+  "welsh": "brynwyd",
+  "english": "bought"
+ },
+ {
+  "index": 929,
+  "welsh": "arweinir",
+  "english": "led"
+ },
+ {
+  "index": 930,
+  "welsh": "traw",
+  "english": "pitch"
+ },
+ {
+  "index": 931,
+  "welsh": "côt",
+  "english": "coat"
+ },
+ {
+  "index": 932,
+  "welsh": "màs",
+  "english": "mass"
+ },
+ {
+  "index": 933,
+  "welsh": "cerdyn",
+  "english": "card"
+ },
+ {
+  "index": 934,
+  "welsh": "mand",
+  "english": "band"
+ },
+ {
+  "index": 935,
+  "welsh": "rhaff",
+  "english": "rope"
+ },
+ {
+  "index": 936,
+  "welsh": "slip",
+  "english": "slip"
+ },
+ {
+  "index": 937,
+  "welsh": "ennill",
+  "english": "win"
+ },
+ {
+  "index": 938,
+  "welsh": "freuddwyd",
+  "english": "dream"
+ },
+ {
+  "index": 939,
+  "welsh": "gyda’r nos",
+  "english": "evening"
+ },
+ {
+  "index": 940,
+  "welsh": "cyflwr",
+  "english": "condition"
+ },
+ {
+  "index": 941,
+  "welsh": "porthiant",
+  "english": "feed"
+ },
+ {
+  "index": 942,
+  "welsh": "offeryn",
+  "english": "tool"
+ },
+ {
+  "index": 943,
+  "welsh": "cyfanswm",
+  "english": "total"
+ },
+ {
+  "index": 944,
+  "welsh": "sylfaenol",
+  "english": "basic"
+ },
+ {
+  "index": 945,
+  "welsh": "arogl",
+  "english": "smell"
+ },
+ {
+  "index": 946,
+  "welsh": "dyffryn",
+  "english": "valley"
+ },
+ {
+  "index": 947,
+  "welsh": "nac",
+  "english": "nor"
+ },
+ {
+  "index": 948,
+  "welsh": "dwbl",
+  "english": "double"
+ },
+ {
+  "index": 949,
+  "welsh": "sedd",
+  "english": "seat"
+ },
+ {
+  "index": 950,
+  "welsh": "parhau",
+  "english": "continue"
+ },
+ {
+  "index": 951,
+  "welsh": "bloc",
+  "english": "block"
+ },
+ {
+  "index": 952,
+  "welsh": "siart",
+  "english": "chart"
+ },
+ {
+  "index": 953,
+  "welsh": "het",
+  "english": "hat"
+ },
+ {
+  "index": 954,
+  "welsh": "gwerthu",
+  "english": "sell"
+ },
+ {
+  "index": 955,
+  "welsh": "llwyddiant",
+  "english": "success"
+ },
+ {
+  "index": 956,
+  "welsh": "cwmni",
+  "english": "company"
+ },
+ {
+  "index": 957,
+  "welsh": "tynnu",
+  "english": "subtract"
+ },
+ {
+  "index": 958,
+  "welsh": "digwyddiad",
+  "english": "event"
+ },
+ {
+  "index": 959,
+  "welsh": "penodol",
+  "english": "particular"
+ },
+ {
+  "index": 960,
+  "welsh": "delio",
+  "english": "deal"
+ },
+ {
+  "index": 961,
+  "welsh": "nofio",
+  "english": "swim"
+ },
+ {
+  "index": 962,
+  "welsh": "dymor",
+  "english": "term"
+ },
+ {
+  "index": 963,
+  "welsh": "gyferbyn",
+  "english": "opposite"
+ },
+ {
+  "index": 964,
+  "welsh": "gwraig",
+  "english": "wife"
+ },
+ {
+  "index": 965,
+  "welsh": "esgid",
+  "english": "shoe"
+ },
+ {
+  "index": 966,
+  "welsh": "ysgwydd",
+  "english": "shoulder"
+ },
+ {
+  "index": 967,
+  "welsh": "lledaenu",
+  "english": "spread"
+ },
+ {
+  "index": 968,
+  "welsh": "trefnu",
+  "english": "arrange"
+ },
+ {
+  "index": 969,
+  "welsh": "gwersyll",
+  "english": "camp"
+ },
+ {
+  "index": 970,
+  "welsh": "dyfeisio",
+  "english": "invent"
+ },
+ {
+  "index": 971,
+  "welsh": "cotwm",
+  "english": "cotton"
+ },
+ {
+  "index": 972,
+  "welsh": "anwyd",
+  "english": "born"
+ },
+ {
+  "index": 973,
+  "welsh": "penderfynu",
+  "english": "determine"
+ },
+ {
+  "index": 974,
+  "welsh": "chwart",
+  "english": "quart"
+ },
+ {
+  "index": 975,
+  "welsh": "naw",
+  "english": "nine"
+ },
+ {
+  "index": 976,
+  "welsh": "lori",
+  "english": "truck"
+ },
+ {
+  "index": 977,
+  "welsh": "sŵn",
+  "english": "noise"
+ },
+ {
+  "index": 978,
+  "welsh": "lefel",
+  "english": "level"
+ },
+ {
+  "index": 979,
+  "welsh": "cyfle",
+  "english": "chance"
+ },
+ {
+  "index": 980,
+  "welsh": "casglu",
+  "english": "gather"
+ },
+ {
+  "index": 981,
+  "welsh": "siop",
+  "english": "shop"
+ },
+ {
+  "index": 982,
+  "welsh": "ymestyn",
+  "english": "stretch"
+ },
+ {
+  "index": 983,
+  "welsh": "taflu",
+  "english": "throw"
+ },
+ {
+  "index": 984,
+  "welsh": "disgleirio",
+  "english": "shine"
+ },
+ {
+  "index": 985,
+  "welsh": "eiddo",
+  "english": "property"
+ },
+ {
+  "index": 986,
+  "welsh": "colofn",
+  "english": "column"
+ },
+ {
+  "index": 987,
+  "welsh": "moleciwl",
+  "english": "molecule"
+ },
+ {
+  "index": 988,
+  "welsh": "dewis",
+  "english": "select"
+ },
+ {
+  "index": 989,
+  "welsh": "anghywir",
+  "english": "wrong"
+ },
+ {
+  "index": 990,
+  "welsh": "llwyd",
+  "english": "gray"
+ },
+ {
+  "index": 991,
+  "welsh": "ailadrodd",
+  "english": "repeat"
+ },
+ {
+  "index": 992,
+  "welsh": "ei gwneud yn ofynnol",
+  "english": "require"
+ },
+ {
+  "index": 993,
+  "welsh": "eang",
+  "english": "broad"
+ },
+ {
+  "index": 994,
+  "welsh": "paratoi",
+  "english": "prepare"
+ },
+ {
+  "index": 995,
+  "welsh": "halen",
+  "english": "salt"
+ },
+ {
+  "index": 996,
+  "welsh": "trwyn",
+  "english": "nose"
+ },
+ {
+  "index": 997,
+  "welsh": "lluosog",
+  "english": "plural"
+ },
+ {
+  "index": 998,
+  "welsh": "dicter",
+  "english": "anger"
+ },
+ {
+  "index": 999,
+  "welsh": "hawliad",
+  "english": "claim"
+ },
+ {
+  "index": 1000,
+  "welsh": "cyfandir",
+  "english": "continent"
+ }
+]
