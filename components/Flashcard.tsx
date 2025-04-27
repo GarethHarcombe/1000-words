@@ -118,39 +118,40 @@ function shuffle(array: string[]) {
 }
 
 const styles = StyleSheet.create({
-    screen: {
-        flex: 1,
-        position: 'relative',
-      },
+  screen: {
+    flex: 1,
+    position: 'relative',
+  },
       
-      stage: {
-        position: 'absolute',
-        top: '20%',
-        width: '100%',
-        textAlign: 'center',
-        fontSize: 18,
-        fontWeight: 'bold',
-      },
-      
-      welshWord: {
-        position: 'absolute',
-        top: '30%',
-        width: '100%',
-        textAlign: 'center',
-        fontSize: 26,
-        fontWeight: '600',
-      },
-      
-      contentBelow: {
-        marginTop: '80%', // pushes rest of the content below the Welsh word
-        alignItems: 'center',
-      },
+  stage: {
+    position: 'absolute',
+    top: '20%',
+    width: '100%',
+    textAlign: 'center',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  
+  welshWord: {
+    position: 'absolute',
+    top: '30%',
+    width: '100%',
+    textAlign: 'center',
+    fontSize: 26,
+    fontWeight: '600',
+  },
+  
+  contentBelow: {
+    marginTop: '80%', // pushes rest of the content below the Welsh word
+    alignItems: 'center',
+  },
 
-    cardContainer: {
+  cardContainer: {
     alignItems: 'center',
     gap: 12,
-    },
-    cardButton: {
+   },
+
+  cardButton: {
     backgroundColor: '#ddd',
     paddingVertical: 16,
     paddingHorizontal: 24,
@@ -158,15 +159,18 @@ const styles = StyleSheet.create({
     marginVertical: 6,
     width: '100%',
     alignItems: 'center',
-    },
-    cardText: {
+  },
+
+  cardText: {
     fontSize: 22,
     fontWeight: '600',
-    },
+  },
+
   container: {
     alignItems: 'center',
     margin: 20
   },
+
   card: {
     backgroundColor: '#fff',
     padding: 32,
@@ -174,17 +178,20 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     elevation: 5,
   },
+
   translation: {
     fontSize: 20,
     marginTop: 10,
     color: 'gray',
   },
+
   optionsContainer: {
     marginTop: 20,
     gap: 10,
     width: '100%',
     alignItems: 'center',
   },
+
   optionCard: {
     backgroundColor: '#888',
     padding: 12,
@@ -192,6 +199,7 @@ const styles = StyleSheet.create({
     width: '80%',
     alignItems: 'center'
   },
+
   input: {
     marginTop: 20,
     borderBottomWidth: 1,
@@ -200,6 +208,7 @@ const styles = StyleSheet.create({
     padding: 8,
     color: "#888",
   },
+  
   mastered: {
     fontSize: 18,
     color: 'green',

@@ -1,11 +1,11 @@
 import React from 'react';
 import { Button, StyleSheet } from 'react-native';
 import { Text, View } from '@/components/Themed';
-import { useWords } from '@/contexts/WordsContext';
+import { useWords } from '@/contexts/UserContext';
 import { useRouter } from 'expo-router';
 import { setOptions } from 'expo-splash-screen';
 
-export default function TabThreeScreen() {
+export default function ProfileScreen() {
   const { words } = useWords();
   const router = useRouter();
 
@@ -21,7 +21,7 @@ export default function TabThreeScreen() {
         <Text style={styles.stat}>Practiced: {practiced}</Text>
         <Text style={styles.stat}>Mastered: {mastered}</Text>
       </View>
-      <Button title="View All Words" onPress={() => router.push('/all-words')} />
+      <Button title="View All Words" onPress={() => router.push('/AllWordsScreen')} />
     </View>
   );
 }

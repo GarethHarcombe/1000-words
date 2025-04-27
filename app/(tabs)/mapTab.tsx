@@ -3,13 +3,13 @@ import { StyleSheet } from 'react-native';
 import EditScreenInfo from '@/components/EditScreenInfo';
 import { Text, View } from '@/components/Themed';
 import { Word } from '../../constants/Types';
-import { useWords } from '@/contexts/WordsContext';
-import MapScreen from '@/components/MapScreen';
+import { useWords } from '@/contexts/UserContext';
+import Map from '@/components/Map';
 
-export default function TabTwoScreen() {
+export default function MapScreen() {
   return (
     <View style={styles.container}>
-      <MapScreen/>
+      <Map/>
     </View>
   );
 }

@@ -4,30 +4,31 @@ import { Word } from '@/constants/Types';
 
 const initialWords: Word[] = rawWords.map(word => ({
   ...word,
+  numCorrect: 0,
   stage: 0,
 }));
 
-type WordsContextType = {
+type UserContextType = {
   words: Word[];
   setWords: React.Dispatch<React.SetStateAction<Word[]>>;
 };
 
-const WordsContext = createContext<WordsContextType | undefined>(undefined);
+const UserContext = createContext<UserContextType | undefined>(undefined);
 
-export const WordsProvider = ({ children }: { children: ReactNode }) => {
+export const UserProvider = ({ children }: { children: ReactNode }) => {
   const [words, setWords] = useState<Word[]>(initialWords);
 
   return (
-    <WordsContext.Provider value={{ words, setWords }}>
+    <UserContext.Provider value={{ words, setWords }}>
       {children}
-    </WordsContext.Provider>
+    </UserContext.Provider>
   );
 };
 
 export const useWords = () => {
-  const context = useContext(WordsContext);
+  const context = useContext(UserContext);
   if (!context) {
-    throw new Error('useWords must be used within a WordsProvider');
+    throw new Error('useWords must be used within a UserProvider');
   }
   return context;
 };

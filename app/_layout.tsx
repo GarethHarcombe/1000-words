@@ -7,7 +7,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 import 'react-native-reanimated';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { WordsProvider } from '@/contexts/WordsContext';
+import { UserProvider } from '@/contexts/UserContext';
 import { useColorScheme } from '@/components/useColorScheme';
 
 export {
@@ -41,9 +41,9 @@ export default function RootLayout() {
   }
 
   return (
-    <WordsProvider>
+    <UserProvider>
       <RootLayoutNav />
-    </WordsProvider>
+    </UserProvider>
   );
 }
 
