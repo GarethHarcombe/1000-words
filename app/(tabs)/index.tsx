@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Button } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { Text, View } from '@/components/Themed';
 
 import Flashcard from '@/components/Flashcard';
@@ -116,17 +116,6 @@ export default function TabOneScreen() {
   };
 
   const nextWord = () => {
-    // // find the next word that isn't already mastered
-    // let nextIndex = index;
-    // const total = words.length;
-    // let attempts = 0;
-  
-    // do {
-    //   nextIndex = (nextIndex + 1) % total;
-    //   attempts++;
-    // } while (words[nextIndex].stage === 3 && attempts < total);
-  
-    // setIndex(nextIndex);
     // Update history
     const now = Date.now();
     setWordHistory(prev => [...prev, { index: words[index].index, timestamp: now }]);
@@ -135,8 +124,6 @@ export default function TabOneScreen() {
     suggestNextWord();
   };
   
-
-
   const seenCount = words.filter(w => w.stage >= 1).length;
   const practicedCount = words.filter(w => w.stage >= 2).length;
   const masteredCount = words.filter(w => w.stage === 3).length;
@@ -160,9 +147,6 @@ export default function TabOneScreen() {
           nextWord();
         }}
       />
-      {/* <View style={styles.buttonContainer}>
-        <Button title="Next" onPress={nextWord} />
-      </View> */}
     </View>
   );
 }
@@ -170,7 +154,6 @@ export default function TabOneScreen() {
 function getFillerAnswers(words: Word[], selectedWord: Word){
   const selectedWords: string[] = words.filter(w => w.stage >= 0 && w != selectedWord)
                              .map(word => word.english);
-  // return ["hello", "thank you", "goodbye"];
   return [...selectedWords, "hello", "thank you", "goodbye"].slice(0, 3);
 }
 
@@ -190,9 +173,5 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     paddingHorizontal: 20,
-  },
-  buttonContainer: {
-    marginTop: 20,
-    alignItems: 'center',
   },
 });
