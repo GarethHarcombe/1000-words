@@ -18,7 +18,7 @@ type ThemeProps = {
 
 export type TextProps = ThemeProps & DefaultText['props'];
 export type ViewProps = ThemeProps & DefaultView['props'];
-export type TouchableOpacityProps = ThemeProps & typeof DefaultTouchableOpacity['props'];
+export type TouchableOpacityProps = ThemeProps & React.ComponentProps<typeof DefaultTouchableOpacity>;
 export type TextInputProps = ThemeProps & DefaultTextInput['props'];
 
 
@@ -56,8 +56,10 @@ export function TouchableOpacity(props: TouchableOpacityProps) {
 
   return <DefaultTouchableOpacity style={[
     { backgroundColor, 
-      padding: 12,
-      borderRadius: 8 
+      padding: 10,
+      borderRadius: 8,
+      alignItems: 'center',
+      
     }, style]} {...otherProps} />;
 }
 

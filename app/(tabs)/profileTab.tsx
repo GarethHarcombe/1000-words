@@ -21,7 +21,7 @@ export default function ProfileScreen() {
         <Text style={styles.stat}>Practiced: {practiced}</Text>
         <Text style={styles.stat}>Mastered: {mastered}</Text>
       </View>
-      <Button title="View All Words" onPress={() => router.push('/AllWordsScreen')} />
+      <Button title="View All Words" onPress={() => router.push('/all-words')} />
     </View>
   );
 }

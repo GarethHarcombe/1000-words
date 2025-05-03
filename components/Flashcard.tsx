@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { TouchableOpacity, StyleSheet, TextInput } from 'react-native';
+import { StyleSheet, TextInput } from 'react-native';
 import { Word } from '../constants/Types';
-import { Text, View } from './Themed';
+import { Text, View, TouchableOpacity } from './Themed';
 
 type FlashcardProps = {
   word: Word;
@@ -151,16 +151,6 @@ const styles = StyleSheet.create({
     gap: 12,
    },
 
-  cardButton: {
-    backgroundColor: '#ddd',
-    paddingVertical: 16,
-    paddingHorizontal: 24,
-    borderRadius: 12,
-    marginVertical: 6,
-    width: '100%',
-    alignItems: 'center',
-  },
-
   cardText: {
     fontSize: 22,
     fontWeight: '600',
@@ -169,14 +159,6 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     margin: 20
-  },
-
-  card: {
-    backgroundColor: '#fff',
-    padding: 32,
-    marginVertical: 16,
-    borderRadius: 12,
-    elevation: 5,
   },
 
   translation: {
@@ -193,11 +175,7 @@ const styles = StyleSheet.create({
   },
 
   optionCard: {
-    backgroundColor: '#888',
-    padding: 12,
-    borderRadius: 8,
     width: '80%',
-    alignItems: 'center'
   },
 
   input: {
