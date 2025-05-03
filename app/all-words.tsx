@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { TextInput, FlatList, StyleSheet, TouchableOpacity } from 'react-native';
 import { Text, View } from '@/components/Themed';
 
-import { useWords } from '@/contexts/WordsContext';
+import { useWords } from '@/contexts/UserContext';
 
 export default function AllWordsScreen() {
   const { words } = useWords();

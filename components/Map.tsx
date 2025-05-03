@@ -52,7 +52,7 @@ const towns = [
   // Add more towns here
 ];
 
-export default function MapScreen() {
+export default function Map() {
   const mapContainerRef = useRef(null);
   
   const scale = useSharedValue(1);
@@ -254,7 +254,7 @@ export default function MapScreen() {
       <GestureDetector gesture={combinedGesture}>
         <Animated.View style={[styles.animatedContainer, animatedStyle]}>
           <ImageBackground
-            source={require('@/assets/welsh-map-background.jpeg')}
+            source={require('@/assets/images/welsh-map-background.jpeg')}
             style={[styles.imageBackground, { width: mapWidth, height: mapHeight }]}
             resizeMode="contain"
           >
@@ -273,7 +273,7 @@ export default function MapScreen() {
             
             {/* Caravan image */}
             <Animated.Image
-              source={require('@/assets/caravan.jpg')}
+              source={require('@/assets/images/caravan.jpg')}
               style={caravanStyle}
               resizeMode="contain"
             />

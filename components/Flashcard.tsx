@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { TouchableOpacity, StyleSheet, TextInput } from 'react-native';
+import { StyleSheet, TextInput } from 'react-native';
 import { Word } from '../constants/Types';
-import { Text, View } from './Themed';
+import { Text, View, TouchableOpacity } from './Themed';
 
 type FlashcardProps = {
   word: Word;
@@ -180,6 +180,7 @@ const styles = StyleSheet.create({
     flex: 1,
     position: 'relative',
   },
+
   stage: {
     position: 'absolute',
     top: '20%',
@@ -188,6 +189,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
   },
+
   welshWord: {
     position: 'absolute',
     top: '30%',
@@ -196,32 +198,41 @@ const styles = StyleSheet.create({
     fontSize: 26,
     fontWeight: '600',
   },
+
   contentBelow: {
     marginTop: '80%', // pushes rest of the content below the Welsh word
     alignItems: 'center',
   },
+
   cardContainer: {
     alignItems: 'center',
     gap: 12,
-  },
+   },
+
   cardText: {
     fontSize: 22,
     fontWeight: '600',
   },
+
   container: {
     alignItems: 'center',
     margin: 20
   },
+
+  translation: {
+    fontSize: 20,
+    marginTop: 10,
+    color: 'gray',
+  },
+
   optionsContainer: {
     marginTop: 20,
     gap: 10,
     width: '100%',
     alignItems: 'center',
   },
+
   optionCard: {
-    backgroundColor: '#888',
-    padding: 12,
-    borderRadius: 8,
     width: '80%',
     alignItems: 'center',
     flexDirection: 'row',
@@ -251,6 +262,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
   },
+
   input: {
     flex: 1,
     borderBottomWidth: 1,
@@ -259,6 +271,7 @@ const styles = StyleSheet.create({
     color: "#888",
     marginRight: 10,
   },
+  
   mastered: {
     fontSize: 18,
     color: 'green',

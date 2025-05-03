@@ -52,14 +52,14 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="two"
+        name="mapTab"
         options={{
           title: '',
           tabBarIcon: ({ color }) => <TabBarIcon name="map" color={color} />,
         }}
       />
       <Tabs.Screen
-        name="three"
+        name="profileTab"
         options={{
           title: '',
           tabBarIcon: ({ color }) => <TabBarIcon name="user" color={color} />,

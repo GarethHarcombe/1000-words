@@ -4,10 +4,10 @@ import { Text, View } from '@/components/Themed';
 
 import Flashcard from '@/components/Flashcard';
 import { Word } from '../../constants/Types';
-import { useWords } from '@/contexts/WordsContext';
+import { useWords } from '@/contexts/UserContext';
 
 
-export default function TabOneScreen() {
+export default function CardsScreen() {
   const {words, setWords} = useWords();
   const [index, setIndex] = useState(0);
   const [wordHistory, setWordHistory] = useState<{index: number, timestamp: number}[]>([]);

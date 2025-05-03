@@ -1,11 +1,11 @@
 import React from 'react';
 import { Button, StyleSheet } from 'react-native';
 import { Text, View } from '@/components/Themed';
-import { useWords } from '@/contexts/WordsContext';
+import { useWords } from '@/contexts/UserContext';
 import { useRouter } from 'expo-router';
 import { setOptions } from 'expo-splash-screen';
 
-export default function TabThreeScreen() {
+export default function ProfileScreen() {
   const { words } = useWords();
   const router = useRouter();
 
