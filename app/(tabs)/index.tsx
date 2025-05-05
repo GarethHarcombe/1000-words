@@ -130,20 +130,27 @@ export default function CardsScreen() {
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
+      {/* <View style={styles.header}>
         <Text style={styles.headerText}>Seen: {seenCount}</Text>
         <Text style={styles.headerText}>Practiced: {practicedCount}</Text>
         <Text style={styles.headerText}>Mastered: {masteredCount}</Text>
-      </View>
+      </View> */}
 
       <Flashcard
         word={words[index]}
         fillerAnswers={getFillerAnswers(words, words[index])}
         onCorrectAnswer={() => {
-          advanceStage();
+          words[index].streak += 1;
+          if (words[index].stage == 0 || words[index].streak == 3)
+          {
+            advanceStage();
+            words[index].streak = 0;
+          }
+          setWords
           nextWord();
         }}
         onFalseAnswer={() => {
+          words[index].streak = 0;
           nextWord();
         }}
       />

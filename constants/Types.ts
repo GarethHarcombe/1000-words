@@ -3,5 +3,6 @@ export type Word = {
     welsh: string;
     english: string;
     numCorrect: number;
+    streak: number;
     stage: number;
   };

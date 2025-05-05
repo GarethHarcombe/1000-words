@@ -5,6 +5,7 @@ import { Word } from '@/constants/Types';
 const initialWords: Word[] = rawWords.map(word => ({
   ...word,
   numCorrect: 0,
+  streak: 0,
   stage: 0,
 }));
 

@@ -5,7 +5,11 @@ export default {
   light: {
     text: '#000',
     background: '#fff',
-    button: "#888",
+    upperButtonGradient: '#93A7B1',
+    lowerButtonGradient: '#BACAC1',
+    correct: '#92A56E',
+    incorrect: '#9D491B',
+    button: "#A8BABA",
     tint: tintColorLight,
     tabIconDefault: '#ccc',
     tabIconSelected: tintColorLight,
@@ -13,7 +17,7 @@ export default {
   dark: {
     text: '#fff',
     background: '#000',
-    button: "#888",
+    button: "#A8BABA",
     tint: tintColorDark,
     tabIconDefault: '#ccc',
     tabIconSelected: tintColorDark,

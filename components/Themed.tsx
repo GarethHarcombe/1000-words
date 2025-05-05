@@ -26,7 +26,8 @@ export function useThemeColor(
   props: { light?: string; dark?: string },
   colorName: keyof typeof Colors.light & keyof typeof Colors.dark
 ) {
-  const theme = useColorScheme() ?? 'light';
+  // const theme = useColorScheme() ?? 'light';
+  const theme = 'light';
   const colorFromProps = props[theme];
 
   if (colorFromProps) {
@@ -40,7 +41,7 @@ export function Text(props: TextProps) {
   const { style, lightColor, darkColor, ...otherProps } = props;
   const color = useThemeColor({ light: lightColor, dark: darkColor }, 'text');
 
-  return <DefaultText style={[{ color }, style]} {...otherProps} />;
+  return <DefaultText style={[{ color, fontFamily: 'Raleway'}, style]} {...otherProps} />;
 }
 
 export function View(props: ViewProps) {
@@ -55,9 +56,13 @@ export function TouchableOpacity(props: TouchableOpacityProps) {
   const backgroundColor = useThemeColor({ light: lightColor, dark: darkColor }, 'button');
 
   return <DefaultTouchableOpacity style={[
-    { backgroundColor, 
-      padding: 10,
-      borderRadius: 8,
+    {
+      // Figma config: box-shadow: 0px 4px 4px 0px #00000040;
+      backgroundColor: '#fff',
+      // height: 56,
+      // // padding: 10,
+      // borderRadius: 28,
+
       alignItems: 'center',
       
     }, style]} {...otherProps} />;

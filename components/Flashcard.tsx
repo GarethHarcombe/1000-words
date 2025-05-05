@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, TextInput } from 'react-native';
 import { Word } from '../constants/Types';
 import { Text, View, TouchableOpacity } from './Themed';
+import { LinearGradient } from 'expo-linear-gradient';
+import { Heading } from '@/components/StyledText';
+import Colors from '@/constants/Colors';
+import Icon from 'react-native-vector-icons/Feather';
 
 type FlashcardProps = {
   word: Word;
@@ -74,16 +78,45 @@ export default function Flashcard({ word, fillerAnswers, onCorrectAnswer, onFals
     setSelectedOption(null);
   };
 
-  const renderTickButton = () => {
+  // Get the appropriate gradient colors based on feedback state
+  const getGradientColors = () => {
+    if (!showFeedback) {
+      return [
+        Colors['light']['upperButtonGradient'], 
+        Colors['light']['lowerButtonGradient']
+      ];
+    }
+    
+    if (isCorrect) {
+      return [
+        Colors['light']['correct'],
+        Colors['light']['correct']
+      ];
+    } else {
+      return [
+        Colors['light']['incorrect'],
+        Colors['light']['incorrect']
+      ];
+    }
+  };
+
+  const renderNextButton = () => {
+    // Only show next button for stage 1 if an option is selected or feedback is shown
+    if (word.stage === 1 && !selectedOption && !showFeedback) {
+      return null;
+    }
+
     return (
-      <TouchableOpacity 
-        style={[
-          styles.tickButton,
-          showFeedback && (isCorrect ? styles.correctButton : styles.incorrectButton)
-        ]}
+      <TouchableOpacity
+        style={styles.tickButton}
         onPress={showFeedback ? handleNextAfterFeedback : handleConfirmAnswer}
       >
-        <Text style={styles.tickText}>✓</Text>
+        <LinearGradient
+          colors={getGradientColors()}
+          style={styles.gradient}
+        >
+          <Icon name="chevron-right" size={32} color="#fff" />
+        </LinearGradient>
       </TouchableOpacity>
     );
   };
@@ -94,7 +127,6 @@ export default function Flashcard({ word, fillerAnswers, onCorrectAnswer, onFals
         return (
           <View style={styles.cardContainer}>
             <Text style={styles.cardText}>{word.english}</Text>
-            {renderTickButton()}
           </View>
         );
       case 1:
@@ -106,13 +138,16 @@ export default function Flashcard({ word, fillerAnswers, onCorrectAnswer, onFals
                 key={option}
                 style={[
                   styles.optionCard,
-                  selectedOption === option && styles.selectedOption,
                   showFeedback && selectedOption === option && !isCorrect && styles.incorrectOption,
                   showFeedback && option === word.english && styles.correctOption
                 ]}
                 onPress={() => {
                   if (!showFeedback) {
                     setSelectedOption(option);
+                    // For stage 1, immediately show feedback after selection
+                    const correct = option === word.english;
+                    setIsCorrect(correct);
+                    setShowFeedback(true);
                   }
                 }}
                 disabled={showFeedback}
@@ -123,7 +158,6 @@ export default function Flashcard({ word, fillerAnswers, onCorrectAnswer, onFals
                 )}
               </TouchableOpacity>
             ))}
-            {renderTickButton()}
           </View>
         );
       case 2:
@@ -135,15 +169,16 @@ export default function Flashcard({ word, fillerAnswers, onCorrectAnswer, onFals
                 style={styles.input}
                 value={input}
                 onChangeText={setInput}
-                placeholder="Enter the English translation"
+                placeholder="Enter English word"
+                placeholderTextColor="#888" 
                 editable={!showFeedback}
               />
-              {renderTickButton()}
+              {renderNextButton()}
             </View>
             {showFeedback && !isCorrect && (
               <View style={styles.correctAnswerContainer}>
                 <Text style={styles.correctAnswerText}>
-                  Correct answer: <Text style={styles.correctAnswer}>{word.english}</Text>
+                  <Text style={styles.correctAnswer}>{word.english}</Text>
                 </Text>
               </View>
             )}
@@ -162,11 +197,46 @@ export default function Flashcard({ word, fillerAnswers, onCorrectAnswer, onFals
 
   return (
     <View style={styles.screen}>
-      <Text style={styles.stage}>Stage: {word.stage}</Text>
-      <Text style={styles.welshWord}>{word.welsh}</Text>
+      <View style={styles.stageProgressContainer}>
+        {[0, 1, 2].map((stageIndex) => (
+          <View 
+            key={stageIndex}
+            style={[
+              styles.stageBar,
+              stageIndex < word.stage ? styles.completedStageBar : {},
+              word.stage === stageIndex ? 
+                { 
+                  backgroundColor: 'transparent',
+                  overflow: 'hidden',
+                } : {}
+            ]}
+          >
+            {word.stage === stageIndex && (
+              <LinearGradient
+                colors={[
+                  Colors['light']['upperButtonGradient'], 
+                  Colors['light']['lowerButtonGradient']
+                ]}
+                style={[
+                  styles.progressGradient,
+                  { 
+                    width: `${(0.1 + 0.9 * (word.streak / 3)) * 100}%` 
+                  }
+                ]}
+              />
+            )}
+          </View>
+        ))}
+      </View>
+      <Heading style={styles.welshWord}>{word.welsh}</Heading>
       <View style={styles.contentBelow}>
         {renderStageContent()}
       </View>
+      {word.stage !== 2 && (
+        <View style={styles.nextButtonContainer}>
+          {renderNextButton()}
+        </View>
+      )}
     </View>
   );
 }
@@ -179,6 +249,7 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
     position: 'relative',
+    
   },
 
   stage: {
@@ -192,7 +263,7 @@ const styles = StyleSheet.create({
 
   welshWord: {
     position: 'absolute',
-    top: '30%',
+    top: '25%',
     width: '100%',
     textAlign: 'center',
     fontSize: 26,
@@ -200,18 +271,36 @@ const styles = StyleSheet.create({
   },
 
   contentBelow: {
-    marginTop: '80%', // pushes rest of the content below the Welsh word
+    marginTop: '75%', // Reduced from 80% to make content more visible
     alignItems: 'center',
+    width: '100%',
   },
 
   cardContainer: {
+    marginTop: '15%',
+    width: '100%',
     alignItems: 'center',
     gap: 12,
    },
 
   cardText: {
-    fontSize: 22,
-    fontWeight: '600',
+    fontSize: 27,
+    fontWeight: '400',
+  },
+
+  stageZeroHighlight: {
+    backgroundColor: '#f0f0f0',
+    padding: 12,
+    borderRadius: 8,
+    marginTop: 10,
+    width: '80%',
+    alignItems: 'center',
+  },
+
+  stageZeroDescription: {
+    fontSize: 16,
+    color: '#555',
+    fontStyle: 'italic',
   },
 
   container: {
@@ -227,28 +316,40 @@ const styles = StyleSheet.create({
 
   optionsContainer: {
     marginTop: 20,
-    gap: 10,
+    gap: 20,
     width: '100%',
     alignItems: 'center',
   },
 
   optionCard: {
+    height: 56,
+    borderRadius: 28,
     width: '80%',
     alignItems: 'center',
     flexDirection: 'row',
     justifyContent: 'center',
     position: 'relative',
+
+    // iOS shadow
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.25, // #00000040 = rgba(0,0,0,0.25)
+    shadowRadius: 4,
+
+    // Android shadow
+    elevation: 4,
   },
   selectedOption: {
     backgroundColor: '#aaa',
-    borderWidth: 2,
-    borderColor: '#ffffff',
+    // borderWidth: 2,
+    // borderColor: '#ffffff',
   },
   correctOption: {
-    backgroundColor: '#4CAF50', // Green
+    backgroundColor: Colors['light']['correct'], // Green
   },
   incorrectOption: {
-    backgroundColor: '#F44336', // Red
+    borderWidth: 4,
+    borderColor: Colors['light']['incorrect'],
   },
   checkMark: {
     position: 'absolute',
@@ -258,17 +359,18 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     width: '80%',
+    position: 'relative',
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
   },
 
   input: {
     flex: 1,
     borderBottomWidth: 1,
-    fontSize: 18,
+    fontSize: 26,
     padding: 8,
-    color: "#888",
+    textAlign: 'left',
     marginRight: 10,
   },
   
@@ -279,22 +381,37 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   tickButton: {
-    width: 48,
-    height: 48,
-    borderRadius: 24,
-    backgroundColor: '#888',
+    overflow: 'hidden',
+  },
+  nextButtonContainer: {
+    position: 'absolute',
+    bottom: 90,
+    left: 0,
+    right: 0,
+    alignItems: 'center',
+    zIndex: 100,
+  },
+  
+  gradient: {
+    width: 69,
+    height: 69,
+    borderRadius: 35,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 20,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 4,
   },
   correctButton: {
-    backgroundColor: '#4CAF50', // Green
+    backgroundColor: Colors['light']['correct'], // Green
   },
   incorrectButton: {
-    backgroundColor: '#F44336', // Red
+    backgroundColor: Colors['light']['incorrect'], // Red
   },
   tickText: {
-    color: 'white',
+    color: 'black',
     fontSize: 24,
     fontWeight: 'bold',
   },
@@ -302,13 +419,45 @@ const styles = StyleSheet.create({
     marginTop: 15,
     padding: 10,
     borderRadius: 8,
-    backgroundColor: 'rgba(76, 175, 80, 0.2)', // Light green
+    backgroundColor: '#f8f8f8', // Light background
+    borderWidth: 1,
+    borderColor: Colors['light']['incorrect'],
   },
   correctAnswerText: {
     fontSize: 16,
+    color: '#333',
   },
   correctAnswer: {
     fontWeight: 'bold',
-    color: '#4CAF50',
+    color: Colors['light']['incorrect'],
+  },
+  stageProgressContainer: {
+    position: 'absolute',
+    top: '20%',
+    width: '40%',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignSelf: 'center',
+    gap: 8,
+  },
+  
+  stageBar: {
+    height: 15,
+    flex: 1,
+    backgroundColor: '#e0e0e0',
+    borderRadius: 4,
+    position: 'relative',
+  },
+  
+  completedStageBar: {
+    backgroundColor: Colors['light']['correct'],
+  },
+  
+  progressGradient: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    bottom: 0,
+    borderRadius: 4,
   }
 });
