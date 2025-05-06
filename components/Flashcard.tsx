@@ -251,7 +251,7 @@ export default function Flashcard({ word, fillerAnswers, onCorrectAnswer, onFals
             key={stageIndex}
             style={[
               styles.stageBar,
-              stageIndex < word.stage ? styles.completedStageBar : {},
+              // Don't use completedStageBar style here since we're using gradients
               word.stage === stageIndex ? 
                 { 
                   backgroundColor: 'transparent',
@@ -259,7 +259,20 @@ export default function Flashcard({ word, fillerAnswers, onCorrectAnswer, onFals
                 } : {}
             ]}
           >
-            {word.stage === stageIndex && (
+            {word.stage > stageIndex ? (
+              // For completed stages, use a full-width gradient view
+              <LinearGradient
+                colors={[
+                  Colors['light']['upperButtonGradient'], 
+                  Colors['light']['lowerButtonGradient']
+                ]}
+                style={[
+                  StyleSheet.absoluteFill,
+                  { borderRadius: 10 } // Ensure the gradient respects rounded corners
+                ]}
+              />
+            ) : word.stage === stageIndex ? (
+              // For current stage, use animated partial gradient
               <Animated.View
                 style={[
                   styles.progressGradient,
@@ -270,10 +283,13 @@ export default function Flashcard({ word, fillerAnswers, onCorrectAnswer, onFals
                     Colors['light']['upperButtonGradient'], 
                     Colors['light']['lowerButtonGradient']
                   ]}
-                  style={StyleSheet.absoluteFill}
+                  style={[
+                    StyleSheet.absoluteFill,
+                    { borderRadius: 10 } // Ensure the gradient respects rounded corners
+                  ]}
                 />
               </Animated.View>
-            )}
+            ) : null}
           </View>
         ))}
       </View>

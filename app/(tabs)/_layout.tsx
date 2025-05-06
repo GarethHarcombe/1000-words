@@ -10,6 +10,8 @@ import Colors from '@/constants/Colors';
 import { useColorScheme } from '@/components/useColorScheme';
 import { useClientOnlyValue } from '@/components/useClientOnlyValue';
 
+import { LinearGradient } from 'expo-linear-gradient';
+
 
 // You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
 function TabBarIcon(props: {
@@ -29,6 +31,15 @@ export default function TabLayout() {
         // Disable the static render of the header on web
         // to prevent a hydration error in React Navigation v6.
         headerShown: useClientOnlyValue(false, false),
+        tabBarBackground: () => (
+          <LinearGradient
+            colors={[Colors['light']['upperButtonGradient'], 
+              Colors['light']['lowerButtonGradient']]}
+            style={{ flex: 1 }}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 0 }}
+          />
+        ),
       }}>
       <Tabs.Screen
         name="index"
