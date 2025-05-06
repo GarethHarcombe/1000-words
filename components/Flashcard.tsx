@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { StyleSheet, TextInput } from 'react-native';
 import { Word } from '../constants/Types';
 import { Text, View, TouchableOpacity } from './Themed';
@@ -6,6 +6,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { Heading } from '@/components/StyledText';
 import Colors from '@/constants/Colors';
 import Icon from 'react-native-vector-icons/Feather';
+import { Animated } from 'react-native';
 
 type FlashcardProps = {
   word: Word;
@@ -22,6 +23,26 @@ export default function Flashcard({ word, fillerAnswers, onCorrectAnswer, onFals
   const [showFeedback, setShowFeedback] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
   const [shuffledOptions, setShuffledOptions] = useState<string[]>([]);
+
+  // Helper to compute fraction 0–1 from streak 0–3
+  const computeFraction = (streak: number) => 0.1 + 0.9 * (streak / 3);
+
+  // Use a ref to hold the Animated.Value across renders
+  const initialFraction = computeFraction(word.streak);
+  const progress = useRef(new Animated.Value(initialFraction)).current;  // ← holds 0–1
+
+  const widthInterpolated = progress.interpolate({
+    inputRange: [0, 1],
+    outputRange: ['0%', '100%'],
+  });
+
+  const animateProgressTo = (targetFraction: number) => {
+    Animated.timing(progress, {
+      toValue: targetFraction,
+      duration: 300,
+      useNativeDriver: false,
+    }).start();
+  };
   
   // Reset states when word changes
   useEffect(() => {
@@ -31,6 +52,9 @@ export default function Flashcard({ word, fillerAnswers, onCorrectAnswer, onFals
     setIsCorrect(false);
 
     setShuffledOptions(shuffle([word.english, ...fillerAnswers]));
+    
+    // Reset progress animation to current streak value
+    progress.setValue(computeFraction(word.streak));
     
     // Focus the input for stage 2
     if (word.stage === 2 && inputRef.current) {
@@ -43,23 +67,43 @@ export default function Flashcard({ word, fillerAnswers, onCorrectAnswer, onFals
   const handleConfirmAnswer = () => {
     switch (word.stage) {
       case 0:
-        // Simply proceed
-        onCorrectAnswer();
+        // For stage 0, animate to next streak and wait for animation to complete
+        const nextStreak0 = word.streak + 3;
+        Animated.timing(progress, {
+          toValue: computeFraction(nextStreak0),
+          duration: 300,
+          useNativeDriver: false,
+        }).start(({ finished }) => {
+          // Only proceed when animation is finished
+          if (finished) {
+            setTimeout(() => {
+              onCorrectAnswer();
+            }, 300);
+          }
+        });
         break;
       case 1:
         // Check if an option is selected
         if (selectedOption !== null) {
-          setShowFeedback(true);
           const correct = selectedOption === word.english;
           setIsCorrect(correct);
+          setShowFeedback(true);
+
+          // animate to next fraction (or reset if wrong)
+          const nextStreak = correct ? word.streak + 1 : 0;
+          animateProgressTo(computeFraction(nextStreak));
         }
         break;
       case 2:
         // Check text input
         if (input.trim()) {
-          setShowFeedback(true);
           const correct = input.trim().toLowerCase() === word.english.toLowerCase();
           setIsCorrect(correct);
+          setShowFeedback(true);
+
+          // animate bar
+          const nextStreak = correct ? word.streak + 1 : 0;
+          animateProgressTo(computeFraction(nextStreak));
         }
         break;
     }
@@ -148,6 +192,10 @@ export default function Flashcard({ word, fillerAnswers, onCorrectAnswer, onFals
                     const correct = option === word.english;
                     setIsCorrect(correct);
                     setShowFeedback(true);
+                    
+                    // Add animation here - this was missing
+                    const nextStreak = correct ? word.streak + 1 : 0;
+                    animateProgressTo(computeFraction(nextStreak));
                   }
                 }}
                 disabled={showFeedback}
@@ -212,18 +260,19 @@ export default function Flashcard({ word, fillerAnswers, onCorrectAnswer, onFals
             ]}
           >
             {word.stage === stageIndex && (
-              <LinearGradient
-                colors={[
-                  Colors['light']['upperButtonGradient'], 
-                  Colors['light']['lowerButtonGradient']
-                ]}
+              <Animated.View
                 style={[
                   styles.progressGradient,
-                  { 
-                    width: `${(0.1 + 0.9 * (word.streak / 3)) * 100}%` 
-                  }
-                ]}
-              />
+                  { width: widthInterpolated }
+                ]}>
+                <LinearGradient
+                  colors={[
+                    Colors['light']['upperButtonGradient'], 
+                    Colors['light']['lowerButtonGradient']
+                  ]}
+                  style={StyleSheet.absoluteFill}
+                />
+              </Animated.View>
             )}
           </View>
         ))}
@@ -434,7 +483,8 @@ const styles = StyleSheet.create({
   stageProgressContainer: {
     position: 'absolute',
     top: '20%',
-    width: '40%',
+    // width: '40%',
+    maxWidth: '40%',
     flexDirection: 'row',
     justifyContent: 'center',
     alignSelf: 'center',
@@ -443,9 +493,10 @@ const styles = StyleSheet.create({
   
   stageBar: {
     height: 15,
+    width: 55,
     flex: 1,
     backgroundColor: '#e0e0e0',
-    borderRadius: 4,
+    borderRadius: 10,
     position: 'relative',
   },
   
