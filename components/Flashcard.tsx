@@ -314,11 +314,11 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
     position: 'relative',
-    
+    height: '100%',
   },
 
   stage: {
-    position: 'absolute',
+    // position: 'absolute',
     top: '20%',
     width: '100%',
     textAlign: 'center',
@@ -327,7 +327,7 @@ const styles = StyleSheet.create({
   },
 
   welshWord: {
-    position: 'absolute',
+    // position: 'absolute',
     top: '25%',
     width: '100%',
     textAlign: 'center',
@@ -336,13 +336,13 @@ const styles = StyleSheet.create({
   },
 
   contentBelow: {
-    marginTop: '75%', // Reduced from 80% to make content more visible
+    marginTop: 200, // Reduced from 80% to make content more visible
     alignItems: 'center',
     width: '100%',
   },
 
   cardContainer: {
-    marginTop: '15%',
+    // marginTop:  100,
     width: '100%',
     alignItems: 'center',
     gap: 12,
@@ -390,6 +390,7 @@ const styles = StyleSheet.create({
     height: 56,
     borderRadius: 28,
     width: '80%',
+    maxWidth: 350,
     alignItems: 'center',
     flexDirection: 'row',
     justifyContent: 'center',
@@ -446,7 +447,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   tickButton: {
-    overflow: 'hidden',
+    // overflow: 'hidden',
   },
   nextButtonContainer: {
     position: 'absolute',
@@ -454,6 +455,7 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     alignItems: 'center',
+    // paddingBottom: 10,
     zIndex: 100,
   },
   
