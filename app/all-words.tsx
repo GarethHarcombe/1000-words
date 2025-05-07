@@ -7,7 +7,7 @@ import { useWords } from '@/contexts/UserContext';
 export default function AllWordsScreen() {
   const { words } = useWords();
   const [query, setQuery] = useState('');
-  const [sortBy, setSortBy] = useState<'welsh' | 'stage'>('welsh');
+  const [sortBy, setSortBy] = useState<'welsh' | 'stage'>('stage');
 
   const filtered = words
     .filter(w => w.welsh.toLowerCase().includes(query.toLowerCase()))

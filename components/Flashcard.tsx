@@ -5,8 +5,10 @@ import { Text, View, TouchableOpacity } from './Themed';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Heading } from '@/components/StyledText';
 import Colors from '@/constants/Colors';
-import Icon from 'react-native-vector-icons/Feather';
 import { Animated } from 'react-native';
+import SubmitNextButton from './flashcardcomponents/SubmitNextButton';
+import ProgressBar from './flashcardcomponents/ProgressBar';
+
 
 type FlashcardProps = {
   word: Word;
@@ -69,6 +71,7 @@ export default function Flashcard({ word, fillerAnswers, onCorrectAnswer, onFals
       case 0:
         // For stage 0, animate to next streak and wait for animation to complete
         const nextStreak0 = word.streak + 3;
+
         Animated.timing(progress, {
           toValue: computeFraction(nextStreak0),
           duration: 300,
@@ -83,16 +86,11 @@ export default function Flashcard({ word, fillerAnswers, onCorrectAnswer, onFals
         });
         break;
       case 1:
-        // Check if an option is selected
-        if (selectedOption !== null) {
-          const correct = selectedOption === word.english;
-          setIsCorrect(correct);
           setShowFeedback(true);
 
           // animate to next fraction (or reset if wrong)
-          const nextStreak = correct ? word.streak + 1 : 0;
+          const nextStreak = isCorrect ? word.streak + 1 : 0;
           animateProgressTo(computeFraction(nextStreak));
-        }
         break;
       case 2:
         // Check text input
@@ -122,47 +120,20 @@ export default function Flashcard({ word, fillerAnswers, onCorrectAnswer, onFals
     setSelectedOption(null);
   };
 
-  // Get the appropriate gradient colors based on feedback state
-  const getGradientColors = () => {
-    if (!showFeedback) {
-      return [
-        Colors['light']['upperButtonGradient'], 
-        Colors['light']['lowerButtonGradient']
-      ];
+  // Handle key press for Enter submission
+  const handleKeyPress = (e: any) => {
+    // Check if it's the Enter/Return key and we're in stage 2
+    if (e.key === 'Enter' && word.stage === 2 && !showFeedback) {
+      handleConfirmAnswer();
     }
-    
-    if (isCorrect) {
-      return [
-        Colors['light']['correct'],
-        Colors['light']['correct']
-      ];
-    } else {
-      return [
-        Colors['light']['incorrect'],
-        Colors['light']['incorrect']
-      ];
+    // For web also support "keypress" event with key code 13 (Enter)
+    if (e.nativeEvent && e.nativeEvent.keyCode === 13 && word.stage === 2 && !showFeedback) {
+      handleConfirmAnswer();
     }
-  };
-
-  const renderNextButton = () => {
-    // Only show next button for stage 1 if an option is selected or feedback is shown
-    if (word.stage === 1 && !selectedOption && !showFeedback) {
-      return null;
+    // for web advance to next stage if already submitted
+    if (e.nativeEvent && e.nativeEvent.keyCode === 13 && word.stage === 2 && showFeedback) {
+      handleNextAfterFeedback();
     }
-
-    return (
-      <TouchableOpacity
-        style={styles.tickButton}
-        onPress={showFeedback ? handleNextAfterFeedback : handleConfirmAnswer}
-      >
-        <LinearGradient
-          colors={getGradientColors()}
-          style={styles.gradient}
-        >
-          <Icon name="chevron-right" size={32} color="#fff" />
-        </LinearGradient>
-      </TouchableOpacity>
-    );
   };
 
   const renderStageContent = () => {
@@ -174,16 +145,15 @@ export default function Flashcard({ word, fillerAnswers, onCorrectAnswer, onFals
           </View>
         );
       case 1:
-        const options = shuffledOptions;
         return (
           <View style={styles.optionsContainer}>
-            {options.map((option) => (
+            {shuffledOptions.map((option) => (
               <TouchableOpacity
                 key={option}
                 style={[
                   styles.optionCard,
                   showFeedback && selectedOption === option && !isCorrect && styles.incorrectOption,
-                  showFeedback && option === word.english && styles.correctOption
+                  showFeedback && option === word.english && styles.correctOption  // e.g. if correct
                 ]}
                 onPress={() => {
                   if (!showFeedback) {
@@ -219,9 +189,16 @@ export default function Flashcard({ word, fillerAnswers, onCorrectAnswer, onFals
                 onChangeText={setInput}
                 placeholder="Enter English word"
                 placeholderTextColor="#888" 
+                onKeyPress={handleKeyPress}
+                onSubmitEditing={handleConfirmAnswer} // This handles Enter/Return on mobile
                 editable={!showFeedback}
               />
-              {renderNextButton()}
+              <SubmitNextButton 
+                showFeedback={showFeedback}
+                isCorrect={isCorrect}
+                handleNextAfterFeedback={handleNextAfterFeedback}
+                handleConfirmAnswer={handleNextAfterFeedback}
+              />
             </View>
             {showFeedback && !isCorrect && (
               <View style={styles.correctAnswerContainer}>
@@ -232,7 +209,7 @@ export default function Flashcard({ word, fillerAnswers, onCorrectAnswer, onFals
             )}
           </View>
         );
-      case 3:
+      case 3: // what to do if all words are mastered - not likely to be shown 
         return (
           <View>
             <Text style={styles.mastered}>All Words Mastered ✅</Text>
@@ -246,60 +223,25 @@ export default function Flashcard({ word, fillerAnswers, onCorrectAnswer, onFals
   return (
     <View style={styles.screen}>
       <View style={styles.stageProgressContainer}>
-        {[0, 1, 2].map((stageIndex) => (
-          <View 
-            key={stageIndex}
-            style={[
-              styles.stageBar,
-              // Don't use completedStageBar style here since we're using gradients
-              word.stage === stageIndex ? 
-                { 
-                  backgroundColor: 'transparent',
-                  overflow: 'hidden',
-                } : {}
-            ]}
-          >
-            {word.stage > stageIndex ? (
-              // For completed stages, use a full-width gradient view
-              <LinearGradient
-                colors={[
-                  Colors['light']['upperButtonGradient'], 
-                  Colors['light']['lowerButtonGradient']
-                ]}
-                style={[
-                  StyleSheet.absoluteFill,
-                  { borderRadius: 10 } // Ensure the gradient respects rounded corners
-                ]}
-              />
-            ) : word.stage === stageIndex ? (
-              // For current stage, use animated partial gradient
-              <Animated.View
-                style={[
-                  styles.progressGradient,
-                  { width: widthInterpolated }
-                ]}>
-                <LinearGradient
-                  colors={[
-                    Colors['light']['upperButtonGradient'], 
-                    Colors['light']['lowerButtonGradient']
-                  ]}
-                  style={[
-                    StyleSheet.absoluteFill,
-                    { borderRadius: 10 } // Ensure the gradient respects rounded corners
-                  ]}
-                />
-              </Animated.View>
-            ) : null}
-          </View>
-        ))}
+        <ProgressBar 
+          word={word}
+          widthInterpolated={widthInterpolated}
+        />
       </View>
       <Heading style={styles.welshWord}>{word.welsh}</Heading>
       <View style={styles.contentBelow}>
         {renderStageContent()}
       </View>
-      {word.stage !== 2 && (
+
+      {/* position the submit/next button at the bottom of the screen if stage 0, or stage 1 and user has submitted */}
+      {(word.stage == 0 || (word.stage == 1 && showFeedback)) && (
         <View style={styles.nextButtonContainer}>
-          {renderNextButton()}
+          <SubmitNextButton 
+            showFeedback={showFeedback}
+            isCorrect={isCorrect}
+            handleNextAfterFeedback={handleNextAfterFeedback}
+            handleConfirmAnswer={handleConfirmAnswer}
+          />
         </View>
       )}
     </View>
@@ -405,11 +347,6 @@ const styles = StyleSheet.create({
     // Android shadow
     elevation: 4,
   },
-  selectedOption: {
-    backgroundColor: '#aaa',
-    // borderWidth: 2,
-    // borderColor: '#ffffff',
-  },
   correctOption: {
     backgroundColor: Colors['light']['correct'], // Green
   },
@@ -425,6 +362,7 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     width: '80%',
+    // maxWidth: 400,
     position: 'relative',
     flexDirection: 'row',
     alignItems: 'center',
@@ -433,6 +371,7 @@ const styles = StyleSheet.create({
 
   input: {
     flex: 1,
+    maxWidth: 400,
     borderBottomWidth: 1,
     fontSize: 26,
     padding: 8,
@@ -446,9 +385,6 @@ const styles = StyleSheet.create({
     marginTop: 10,
     textAlign: 'center',
   },
-  tickButton: {
-    // overflow: 'hidden',
-  },
   nextButtonContainer: {
     position: 'absolute',
     bottom: 90,
@@ -457,19 +393,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     // paddingBottom: 10,
     zIndex: 100,
-  },
-  
-  gradient: {
-    width: 69,
-    height: 69,
-    borderRadius: 35,
-    justifyContent: 'center',
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 4,
   },
   correctButton: {
     backgroundColor: Colors['light']['correct'], // Green
@@ -508,25 +431,5 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     gap: 8,
   },
-  
-  stageBar: {
-    height: 15,
-    width: 55,
-    flex: 1,
-    backgroundColor: '#e0e0e0',
-    borderRadius: 10,
-    position: 'relative',
-  },
-  
-  completedStageBar: {
-    backgroundColor: Colors['light']['correct'],
-  },
-  
-  progressGradient: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    bottom: 0,
-    borderRadius: 4,
-  }
+
 });
