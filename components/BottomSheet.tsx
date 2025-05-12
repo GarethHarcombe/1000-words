@@ -1,104 +1,121 @@
-import { Word } from '@/constants/Types';
-import { View } from '@/components/Themed';
+import { View, Text } from '@/components/Themed';
 import { StyleSheet } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
+import { useEffect } from 'react';
 import Colors from '@/constants/Colors';
 import { GestureDetector, Gesture } from 'react-native-gesture-handler';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
-  withTiming,
   withSpring,
-  clamp,
-  Easing,
   runOnJS,
 } from 'react-native-reanimated';
+import { View as DefaultView } from 'react-native';
 
 
 
-type BottomSheetProps = {
-    bottomSheetHeight: number;
-    closeSheet: () => void;
-};
+export type BottomSheetProps = {
+        bottomSheetHeight: number;
+        isBottomSheetUp: boolean;
+        setIsTownPopup: (value: React.SetStateAction<boolean>) => void;
+    } & DefaultView['props'];
 
-export default function BottomSheet ({ bottomSheetHeight, closeSheet }: BottomSheetProps) {
     
+export default function BottomSheet (props: BottomSheetProps) {
+    const { style, bottomSheetHeight, isBottomSheetUp, setIsTownPopup, ...otherProps } = props;
+    // const backgroundColor = useThemeColor({ light: lightColor, dark: darkColor }, 'background');
+
     const bottomSheetTranslateY = useSharedValue(bottomSheetHeight);
 
-    // Function to close the bottom sheet
-      const closeBottomSheet = () => {
-        bottomSheetTranslateY.value = withSpring(bottomSheetHeight, {
-          damping: 15,
-          stiffness: 150,
-        });
-        closeSheet();
-        // setSelectedTown(null);
-      };
 
-    return (<GestureDetector gesture={bottomSheetGesture}>
-            <Animated.View style={[styles.bottomSheet, bottomSheetStyle]}>
-              <View style={styles.bottomSheetHandle} />
-              
-              {selectedTown && (
-                <View style={styles.townDetailsContainer}>
-                  <View style={styles.townHeader}>
-                    <Text style={styles.townName}>{selectedTown.name}</Text>
-                    <View style={[styles.stageBadge, { backgroundColor: getStageColor(selectedTown.stage) }]}>
-                      <Text style={styles.stageText}>Checkpoint {selectedTown.stage}</Text>
-                    </View>
-                  </View>
-                  
-                  <View style={styles.townImageContainer}>
-                    <Image
-                      source={selectedTown.image ? { uri: selectedTown.image } : getTownPlaceholderImage(selectedTown.stage)}
-                      style={styles.townImage}
-                      resizeMode="cover"
-                    />
-                  </View>
-                  
-                  <Text style={styles.townDescription}>{selectedTown.description}</Text>
-                  
-                  <View style={styles.actionsContainer}>
-                    <TouchableOpacity 
-                      style={styles.actionButton}
-                      onPress={() => {
-                        closeBottomSheet();
-                        // Set caravan to move to this town
-                        setTargetPosition({ x: selectedTown.x, y: selectedTown.y });
-                        setIsMoving(true);
-                      }}
-                    >
-                      <Text style={styles.actionButtonText}>Travel Here</Text>
-                    </TouchableOpacity>
-                    
-                    <TouchableOpacity 
-                      style={[styles.actionButton, styles.secondaryButton]}
-                      onPress={closeBottomSheet}
-                    >
-                      <Text style={styles.secondaryButtonText}>Close</Text>
-                    </TouchableOpacity>
-                  </View>
-                </View>
-              )}
-            </Animated.View>
-          </GestureDetector>)
-};
+    // Function to close the bottom sheet
+    const closeBottomSheet = () => {
+        bottomSheetTranslateY.value = withSpring(bottomSheetHeight, {
+        damping: 15,
+        stiffness: 150,
+    });
+        setIsTownPopup(false);
+    // setSelectedTown(null);
+    };
+
+    const openBottomSheet = () => {
+        bottomSheetTranslateY.value = withSpring(0, {
+        damping: 15,
+        stiffness: 150,
+        });
+    };
+
+    useEffect(() => {
+        if(isBottomSheetUp)
+        {
+            openBottomSheet();
+        } else {
+            closeBottomSheet();
+        }
+    }, [isBottomSheetUp])
+
+    // Bottom sheet drag gesture
+    const bottomSheetGesture = Gesture.Pan()
+    .onUpdate((event) => {
+        const newTranslateY = Math.max(0, event.translationY);
+        bottomSheetTranslateY.value = newTranslateY;
+    })
+    .onEnd((event) => {
+        if (event.translationY > bottomSheetHeight / 3) {
+        // Close the sheet if dragged down more than 1/3
+        runOnJS(closeBottomSheet)();
+        } else {
+        // Otherwise snap back to open position
+        bottomSheetTranslateY.value = withSpring(0, {
+            damping: 15,
+            stiffness: 150,
+        });
+        }
+    });
+
+    // Animated style for the bottom sheet
+    const bottomSheetStyle = useAnimatedStyle(() => {
+        return {
+        transform: [{ translateY: bottomSheetTranslateY.value }],
+        };
+    });
+    
+    return (
+    <GestureDetector gesture={bottomSheetGesture}>
+        <Animated.View style={[styles.bottomSheet, { height: bottomSheetHeight}, bottomSheetStyle]}>
+            <View style={[styles.bottomSheetHandle]}/>
+            
+            <DefaultView style={[style]} {...otherProps} >
+
+
+            </DefaultView>
+        </Animated.View>
+    </GestureDetector>
+    )};
 
 const styles = StyleSheet.create({
-    stageBar: {
-        height: 15,
-        width: 55,
-        flex: 1,
-        backgroundColor: '#e0e0e0',
-        borderRadius: 10,
-        position: 'relative',
-      },
-      
-    progressGradient: {
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        bottom: 0,
-        borderRadius: 10,
-    }
+      // Bottom sheet styles
+  bottomSheet: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: '#fff',
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    padding: 20,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: -3 },
+    shadowOpacity: 0.27,
+    shadowRadius: 4.65,
+    elevation: 6,
+    zIndex: 100,
+  },
+  bottomSheetHandle: {
+    width: 40,
+    height: 5,
+    backgroundColor: '#ccc',
+    borderRadius: 3,
+    alignSelf: 'center',
+    // marginBottom: 5,
+  },
 });

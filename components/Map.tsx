@@ -12,7 +12,8 @@ import Animated, {
 } from 'react-native-reanimated';
 import { Town } from '@/constants/Types'
 import rawTowns from '@/data/welsh-towns.json'
-
+import BottomSheet from './BottomSheet'
+import TownInfo from './mapComponents/TownInfo'
 
 
 // Define types for the gesture events
@@ -69,7 +70,7 @@ export default function Map() {
 
   // Bottom sheet animation value
   const bottomSheetHeight = height * 0.4; // 40% of screen height
-  const bottomSheetTranslateY = useSharedValue(bottomSheetHeight);
+  // const bottomSheetTranslateY = useSharedValue(bottomSheetHeight);
 
   // Caravan state and animation values
   const [caravanPosition, setCaravanPosition] = useState<Position>({ x: 150, y: 150 });
@@ -81,6 +82,7 @@ export default function Map() {
   
   // Selected town state
   const [selectedTown, setSelectedTown] = useState<Town | null>(null);
+  const [isTownPopup, setIsTownPopup] = useState(false);
   
   // Debug state
   const [lastTap, setLastTap] = useState<Position | null>(null);
@@ -124,6 +126,15 @@ export default function Map() {
     }
   }, [targetPosition, isMoving]);
 
+  useEffect(() => {
+    if(selectedTown)
+    {
+      setIsTownPopup(true);
+    } else {
+      setIsTownPopup(false);
+    }
+  }, [selectedTown])
+
   // Setting zIndex might not be sufficient on Android, so we need to improve tap handling
   // This function checks if a touch event is on a town and returns the town if found
   const findTownAtPosition = (mapX: number, mapY: number): Town | null => {
@@ -147,7 +158,7 @@ export default function Map() {
   const handleMapTap = (event: TapGestureEvent) => {
     // Close the town popup if open
     if (selectedTown) {
-      closeBottomSheet();
+      setIsTownPopup(false);
       return;
     }
     
@@ -187,24 +198,7 @@ export default function Map() {
   // Function to handle town selection
   const handleTownSelect = (town: Town) => {
     setSelectedTown(town);
-    openBottomSheet();
-  };
-
-  // Function to open the bottom sheet
-  const openBottomSheet = () => {
-    bottomSheetTranslateY.value = withSpring(0, {
-      damping: 15,
-      stiffness: 150,
-    });
-  };
-
-  // Function to close the bottom sheet
-  const closeBottomSheet = () => {
-    bottomSheetTranslateY.value = withSpring(bottomSheetHeight, {
-      damping: 15,
-      stiffness: 150,
-    });
-    setSelectedTown(null);
+    setIsTownPopup(true);
   };
 
   const pinchGesture = Gesture.Pinch()
@@ -252,26 +246,6 @@ export default function Map() {
       savedTranslateY.value = translateY.value;
     });
 
-  // We've replaced this with mapBackgroundTapGesture above
-
-  // Bottom sheet drag gesture
-  const bottomSheetGesture = Gesture.Pan()
-    .onUpdate((event) => {
-      const newTranslateY = Math.max(0, event.translationY);
-      bottomSheetTranslateY.value = newTranslateY;
-    })
-    .onEnd((event) => {
-      if (event.translationY > bottomSheetHeight / 3) {
-        // Close the sheet if dragged down more than 1/3
-        runOnJS(closeBottomSheet)();
-      } else {
-        // Otherwise snap back to open position
-        bottomSheetTranslateY.value = withSpring(0, {
-          damping: 15,
-          stiffness: 150,
-        });
-      }
-    });
 
   // Create a comprehensive touch handler for our map background tap
   const mapBackgroundTapGesture = Gesture.Tap()
@@ -314,13 +288,6 @@ export default function Map() {
     };
   });
 
-  // Animated style for the bottom sheet
-  const bottomSheetStyle = useAnimatedStyle(() => {
-    return {
-      transform: [{ translateY: bottomSheetTranslateY.value }],
-    };
-  });
-
   // Debug visualization
   const renderDebugOverlay = () => {
     if (!lastTap) return null;
@@ -352,27 +319,18 @@ export default function Map() {
     zIndex: 15,
   } : null;
 
-  // Get placeholder image based on town stage
-  const getTownPlaceholderImage = (stage: number) => {
-    switch (stage) {
-      case 0:
-        return require('@/assets/images/caravan.jpg'); // You'll need to add these images
-      case 1:
-        return require('@/assets/images/caravan.jpg');
-      case 2:
-        return require('@/assets/images/caravan.jpg');
-      case 3:
-        return require('@/assets/images/caravan.jpg');
-      default:
-        return require('@/assets/images/caravan.jpg');
-    }
-  };
-
   // New function to explicitly log and handle town selection
   const onTownPress = (town: Town) => {
     console.log(`Town selected: ${town.name}`);
     handleTownSelect(town);
   };
+
+  const townAction = (town: Town) => {
+    setSelectedTown(null);
+    // Set caravan to move to this town
+    setTargetPosition({ x: town.x, y: town.y });
+    setIsMoving(true);
+  }
 
   return (
     <View style={styles.container} ref={mapContainerRef}>
@@ -425,53 +383,12 @@ export default function Map() {
       {renderDebugOverlay()}
       
       {/* Bottom sheet for town details */}
-      <GestureDetector gesture={bottomSheetGesture}>
-        <Animated.View style={[styles.bottomSheet, bottomSheetStyle]}>
-          <View style={styles.bottomSheetHandle} />
+      <BottomSheet bottomSheetHeight={bottomSheetHeight} isBottomSheetUp={isTownPopup} setIsTownPopup={setIsTownPopup} >
           
-          {selectedTown && (
-            <View style={styles.townDetailsContainer}>
-              <View style={styles.townHeader}>
-                <Text style={styles.townName}>{selectedTown.name}</Text>
-                <View style={[styles.stageBadge, { backgroundColor: getStageColor(selectedTown.stage) }]}>
-                  <Text style={styles.stageText}>Checkpoint {selectedTown.stage}</Text>
-                </View>
-              </View>
-              
-              <View style={styles.townImageContainer}>
-                <Image
-                  source={selectedTown.image ? { uri: selectedTown.image } : getTownPlaceholderImage(selectedTown.stage)}
-                  style={styles.townImage}
-                  resizeMode="cover"
-                />
-              </View>
-              
-              <Text style={styles.townDescription}>{selectedTown.description}</Text>
-              
-              <View style={styles.actionsContainer}>
-                <TouchableOpacity 
-                  style={styles.actionButton}
-                  onPress={() => {
-                    closeBottomSheet();
-                    // Set caravan to move to this town
-                    setTargetPosition({ x: selectedTown.x, y: selectedTown.y });
-                    setIsMoving(true);
-                  }}
-                >
-                  <Text style={styles.actionButtonText}>Travel Here</Text>
-                </TouchableOpacity>
-                
-                <TouchableOpacity 
-                  style={[styles.actionButton, styles.secondaryButton]}
-                  onPress={closeBottomSheet}
-                >
-                  <Text style={styles.secondaryButtonText}>Close</Text>
-                </TouchableOpacity>
-              </View>
-            </View>
+        {selectedTown && (
+          <TownInfo town={selectedTown} action={townAction} />
           )}
-        </Animated.View>
-      </GestureDetector>
+        </BottomSheet>
     </View>
   );
 }
@@ -523,95 +440,5 @@ const styles = StyleSheet.create({
   imageBackground: {
     // Dimensions are set dynamically in the component
   },
-  // Bottom sheet styles
-  bottomSheet: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    height: height * 0.4, // 40% of screen height
-    backgroundColor: '#fff',
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
-    padding: 20,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: -3 },
-    shadowOpacity: 0.27,
-    shadowRadius: 4.65,
-    elevation: 6,
-    zIndex: 100,
-  },
-  bottomSheetHandle: {
-    width: 40,
-    height: 5,
-    backgroundColor: '#ccc',
-    borderRadius: 3,
-    alignSelf: 'center',
-    marginBottom: 15,
-  },
-  townDetailsContainer: {
-    flex: 1,
-  },
-  townHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 15,
-  },
-  townName: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#333',
-  },
-  stageBadge: {
-    paddingHorizontal: 10,
-    paddingVertical: 5,
-    borderRadius: 12,
-  },
-  stageText: {
-    color: '#fff',
-    fontWeight: 'bold',
-  },
-  townImageContainer: {
-    height: 120,
-    borderRadius: 10,
-    overflow: 'hidden',
-    marginBottom: 15,
-  },
-  townImage: {
-    width: '100%',
-    height: '100%',
-  },
-  townDescription: {
-    fontSize: 16,
-    color: '#555',
-    marginBottom: 15,
-    lineHeight: 22,
-  },
-  actionsContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginTop: 'auto', // Push to bottom
-  },
-  actionButton: {
-    flex: 1,
-    backgroundColor: '#3399ff',
-    paddingVertical: 12,
-    borderRadius: 8,
-    marginHorizontal: 5,
-    alignItems: 'center',
-  },
-  actionButtonText: {
-    color: '#fff',
-    fontWeight: 'bold',
-    fontSize: 16,
-  },
-  secondaryButton: {
-    backgroundColor: '#f0f0f0',
-  },
-  secondaryButtonText: {
-    color: '#333',
-    fontWeight: 'bold',
-    fontSize: 16,
-  },
+  
 });
