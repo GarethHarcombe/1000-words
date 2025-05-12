@@ -1,13 +1,13 @@
 [
  {
-  "index": 1,
-  "welsh": "fel",
-  "english": "as"
+    "index": 1,
+    "welsh": "fi",
+    "english": "I"
  },
  {
   "index": 2,
-  "welsh": "fi",
-  "english": "I"
+  "welsh": "fel",
+  "english": "as"
  },
  {
   "index": 3,
@@ -26,7 +26,7 @@
  },
  {
   "index": 6,
-  "welsh": "oedd",
+  "welsh": "roedd",
   "english": "was"
  },
  {
@@ -42,7 +42,7 @@
  {
   "index": 9,
   "welsh": "yn",
-  "english": "are"
+  "english": "in"
  },
  {
   "index": 10,
@@ -51,12 +51,12 @@
  },
  {
   "index": 11,
-  "welsh": "maent",
+  "welsh": "nhw",
   "english": "they"
  },
  {
   "index": 12,
-  "welsh": "fod yn",
+  "welsh": "fod",
   "english": "be"
  },
  {
@@ -72,7 +72,7 @@
  {
   "index": 15,
   "welsh": "wedi",
-  "english": "have"
+  "english": "past"
  },
  {
   "index": 16,
@@ -121,7 +121,7 @@
  },
  {
   "index": 25,
-  "welsh": "mae’n",
+  "welsh": "mae",
   "english": "it"
  },
  {
@@ -161,8 +161,13 @@
  },
  {
   "index": 33,
-  "welsh": "mae",
-  "english": "a"
+  "welsh": "crys",
+  "english": "shirt"
+ },
+ {
+    "index": 34,
+    "welsh": "INDEX34",
+    "english": "INDEX34"
  },
  {
   "index": 35,
@@ -186,12 +191,12 @@
  },
  {
   "index": 39,
-  "welsh": "roedd",
-  "english": "were"
+  "welsh": "eisiau",
+  "english": "want"
  },
  {
   "index": 40,
-  "welsh": "sy’n",
+  "welsh": "pa",
   "english": "which"
  },
  {
@@ -256,7 +261,7 @@
  },
  {
   "index": 54,
-  "welsh": "eisiau",
+  "welsh": "eisiau byd",
   "english": "want"
  },
  {
@@ -351,8 +356,8 @@
  },
  {
   "index": 73,
-  "welsh": "mawr",
-  "english": "big"
+  "welsh": "INDEX73",
+  "english": "INDEX73"
  },
  {
   "index": 74,
@@ -361,8 +366,8 @@
  },
  {
   "index": 75,
-  "welsh": "fath",
-  "english": "such"
+  "welsh": "INDEX75",
+  "english": "INDEX75"
  },
  {
   "index": 76,
@@ -511,8 +516,8 @@
  },
  {
   "index": 106,
-  "welsh": "cael",
-  "english": "get"
+  "welsh": "INDEX106",
+  "english": "INDEX106"
  },
  {
   "index": 107,
@@ -531,7 +536,7 @@
  },
  {
   "index": 110,
-  "welsh": "lle",
+  "welsh": "ble",
   "english": "where"
  },
  {
@@ -546,8 +551,8 @@
  },
  {
   "index": 113,
-  "welsh": "bach",
-  "english": "little"
+  "welsh": "INDEX113",
+  "english": "INDEX113"
  },
  {
   "index": 114,
@@ -571,7 +576,7 @@
  },
  {
   "index": 118,
-  "welsh": "Daeth",
+  "welsh": "daeth",
   "english": "came"
  },
  {
@@ -641,8 +646,8 @@
  },
  {
   "index": 132,
-  "welsh": "mawr",
-  "english": "great"
+  "welsh": "INDEX132",
+  "english": "INDEX132"
  },
  {
   "index": 133,
@@ -682,12 +687,12 @@
  {
   "index": 140,
   "welsh": "achos",
-  "english": "cause"
+  "english": "because"
  },
  {
   "index": 141,
-  "welsh": "llawer",
-  "english": "much"
+  "welsh": "INDEX141",
+  "english": "INDEX141"
  },
  {
   "index": 142,
@@ -736,7 +741,7 @@
  },
  {
   "index": 151,
-  "welsh": "gyd",
+  "welsh": "bob",
   "english": "all"
  },
  {
@@ -746,7 +751,7 @@
  },
  {
   "index": 153,
-  "welsh": "pan",
+  "welsh": "pryd",
   "english": "when"
  },
  {
@@ -761,7 +766,7 @@
  },
  {
   "index": 156,
-  "welsh": "eich",
+  "welsh": "dy",
   "english": "your"
  },
  {
@@ -851,8 +856,8 @@
  },
  {
   "index": 174,
-  "welsh": "Mae gan",
-  "english": "has"
+  "welsh": "INDEX174",
+  "english": "INDEX174"
  },
  {
   "index": 175,
@@ -906,7 +911,7 @@
  },
  {
   "index": 185,
-  "welsh": "y rhan fwyaf",
+  "welsh": "mwyaf",
   "english": "most"
  },
  {
@@ -936,7 +941,7 @@
  },
  {
   "index": 191,
-  "welsh": "nag",
+  "welsh": "na",
   "english": "than"
  },
  {
@@ -946,7 +951,7 @@
  },
  {
   "index": 193,
-  "welsh": "yn gyntaf",
+  "welsh": "gyntaf",
   "english": "first"
  },
  {
@@ -1176,7 +1181,7 @@
  },
  {
   "index": 239,
-  "welsh": "Gadawodd",
+  "welsh": "gadawodd",
   "english": "left"
  },
  {
@@ -3391,8 +3396,8 @@
  },
  {
   "index": 682,
-  "welsh": "bach",
-  "english": "tiny"
+  "welsh": "INDEX682",
+  "english": "INDEX682"
  },
  {
   "index": 683,
@@ -4156,8 +4161,8 @@
  },
  {
   "index": 835,
-  "welsh": "mawr",
-  "english": "major"
+  "welsh": "INDEX835",
+  "english": "INDEX835"
  },
  {
   "index": 836,

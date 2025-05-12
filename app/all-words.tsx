@@ -10,7 +10,7 @@ export default function AllWordsScreen() {
   const [sortBy, setSortBy] = useState<'welsh' | 'stage'>('stage');
 
   const filtered = words
-    .filter(w => w.welsh.toLowerCase().includes(query.toLowerCase()))
+    .filter(w => w.welsh.toLowerCase().includes(query.toLowerCase()) && w.stage > 0)
     .sort((a, b) => {
       if (sortBy === 'welsh') return a.welsh.localeCompare(b.welsh);
       return b.stage - a.stage;
@@ -59,12 +59,12 @@ const styles = StyleSheet.create({
     paddingTop: 40,
     paddingHorizontal: 20,
   },
-  title: {
-    fontSize: 24,
-    fontWeight: '600',
-    marginBottom: 16,
-    textAlign: 'center',
-  },
+  // title: {
+  //   fontSize: 24,
+  //   fontWeight: '600',
+  //   marginBottom: 16,
+  //   textAlign: 'center',
+  // },
   input: {
     height: 40,
     borderColor: '#DDD',
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   sortButton: {
-    fontSize: 14,
+    // fontSize: 14,
   },
   activeSort: {
     fontWeight: '700',
@@ -92,10 +92,10 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
   },
   wordText: {
-    fontSize: 16,
+    // fontSize: 16,
     fontWeight: '500',
   },
   stageText: {
-    fontSize: 12,
+    // fontSize: 12,
   },
 });

@@ -62,6 +62,11 @@ export function TouchableOpacity(props: TouchableOpacityProps) {
       // height: 56,
       // // padding: 10,
       // borderRadius: 28,
+      // shadowColor: '#000',
+      // shadowOffset: { width: 0, height: 4 },
+      // shadowOpacity: 0.25,
+      // shadowRadius: 4,
+      // elevation: 4,
 
       alignItems: 'center',
       

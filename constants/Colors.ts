@@ -11,7 +11,7 @@ export default {
     incorrect: '#9D491B',
     button: "#A8BABA",
     tint: tintColorLight,
-    tabIconDefault: '#ccc',
+    tabIconDefault: '#fff',
     tabIconSelected: tintColorLight,
   },
   dark: {
@@ -19,7 +19,7 @@ export default {
     background: '#000',
     button: "#A8BABA",
     tint: tintColorDark,
-    tabIconDefault: '#ccc',
+    tabIconDefault: '#fff',
     tabIconSelected: tintColorDark,
   },
 };

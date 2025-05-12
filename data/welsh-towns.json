@@ -1,0 +1,30 @@
+[
+    { 
+      "name": "Aberlyn", 
+      "x": 100, 
+      "y": 200, 
+      "stage": 0,
+      "description": "A quiet fishing village nestled on the western coast. Known for its fresh seafood and annual boat festival."
+    },
+    { 
+      "name": "Cardale", 
+      "x": 250, 
+      "y": 400, 
+      "stage": 1,
+      "description": "A bustling market town at the crossroads of major trade routes. Famous for its textile industry and colorful weekly market."
+    },
+    { 
+      "name": "Dunreach", 
+      "x": 180, 
+      "y": 650, 
+      "stage": 2,
+      "description": "An ancient fortress town built into the mountainside. Home to the prestigious Dunreach Academy of Magic and Alchemy."
+    },
+    { 
+      "name": "Fynmere", 
+      "x": 300, 
+      "y": 300, 
+      "stage": 3,
+      "description": "A vibrant town surrounded by lush forests. Known for its medicinal herbs and the annual Harvest Moon Festival."
+    }
+]

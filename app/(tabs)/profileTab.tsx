@@ -1,6 +1,6 @@
 import React from 'react';
-import { Button, StyleSheet } from 'react-native';
-import { Text, View } from '@/components/Themed';
+import { StyleSheet } from 'react-native';
+import { Text, View, TouchableOpacity } from '@/components/Themed';
 import { useWords } from '@/contexts/UserContext';
 import { useRouter } from 'expo-router';
 import { setOptions } from 'expo-splash-screen';
@@ -21,7 +21,13 @@ export default function ProfileScreen() {
         <Text style={styles.stat}>Practiced: {practiced}</Text>
         <Text style={styles.stat}>Mastered: {mastered}</Text>
       </View>
-      <Button title="View All Words" onPress={() => router.push('/all-words')} />
+      <View style={styles.buttonsContainer}>
+        <TouchableOpacity
+          style={styles.button} 
+          onPress={() => router.push('/all-words')}>
+            <Text>View all Words</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
@@ -43,8 +49,24 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     marginBottom: 24,
   },
+  buttonsContainer: {
+    justifyContent: 'space-around',
+    alignItems: 'center',
+  },
   stat: {
     fontSize: 16,
     fontWeight: '500',
   },
+  button: {
+    width: 300,
+    height: 56,
+    // padding: 10,
+    justifyContent: 'center',
+    borderRadius: 28,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 4,
+  }
 });

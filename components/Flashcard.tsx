@@ -6,8 +6,8 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { Heading } from '@/components/StyledText';
 import Colors from '@/constants/Colors';
 import { Animated } from 'react-native';
-import SubmitNextButton from './flashcardcomponents/SubmitNextButton';
-import ProgressBar from './flashcardcomponents/ProgressBar';
+import SubmitNextButton from './flashCardComponents/SubmitNextButton';
+import ProgressBar from './flashCardComponents/ProgressBar';
 
 
 type FlashcardProps = {
