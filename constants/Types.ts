@@ -14,5 +14,5 @@ export type Word = {
     y: number;
     stage: number;
     description: string;
-    image?: string; // Path to the town image
+    imagePath?: string; // Path to the town image
   }

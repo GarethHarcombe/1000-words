@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { StyleSheet, TextInput } from 'react-native';
+import { StyleSheet, TextInput, TouchableOpacity as RNTouchableOpacity } from 'react-native';
 import { Word } from '../constants/Types';
 import { Text, View, TouchableOpacity } from './Themed';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -8,7 +8,8 @@ import Colors from '@/constants/Colors';
 import { Animated } from 'react-native';
 import SubmitNextButton from './flashCardComponents/SubmitNextButton';
 import ProgressBar from './flashCardComponents/ProgressBar';
-
+import BottomSheet from './BottomSheet';
+import { Ionicons } from '@expo/vector-icons';
 
 type FlashcardProps = {
   word: Word;
@@ -25,6 +26,9 @@ export default function Flashcard({ word, fillerAnswers, onCorrectAnswer, onFals
   const [showFeedback, setShowFeedback] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
   const [shuffledOptions, setShuffledOptions] = useState<string[]>([]);
+  
+  // Info bottom sheet state
+  const [isInfoSheetOpen, setIsInfoSheetOpen] = useState(false);
 
   // Helper to compute fraction 0–1 from streak 0–3
   const computeFraction = (streak: number) => 0.1 + 0.9 * (streak / 3);
@@ -220,8 +224,27 @@ export default function Flashcard({ word, fillerAnswers, onCorrectAnswer, onFals
     }
   };
 
+  // Helper to determine the current stage text
+  const getStageText = () => {
+    switch (word.stage) {
+      case 0: return "Introduction";
+      case 1: return "Multiple Choice";
+      case 2: return "Recall";
+      case 3: return "Mastered";
+      default: return "";
+    }
+  };
+
   return (
     <View style={styles.screen}>
+      {/* Info button in the top right corner */}
+      <RNTouchableOpacity 
+        style={styles.infoButton}
+        onPress={() => setIsInfoSheetOpen(true)}
+      >
+        <Ionicons name="information-circle" size={28} color={Colors.light.upperButtonGradient} />
+      </RNTouchableOpacity>
+      
       <View style={styles.stageProgressContainer}>
         <ProgressBar 
           word={word}
@@ -244,6 +267,54 @@ export default function Flashcard({ word, fillerAnswers, onCorrectAnswer, onFals
           />
         </View>
       )}
+      
+      {/* Bottom sheet for stage information */}
+      <BottomSheet 
+        bottomSheetHeight={400}
+        isBottomSheetUp={isInfoSheetOpen}
+        setIsTownPopup={setIsInfoSheetOpen}
+      >
+        <StageInfoContent currentStage={word.stage} />
+      </BottomSheet>
+    </View>
+  );
+}
+
+function StageInfoContent({ currentStage }: { currentStage: number }) {
+  return (
+    <View style={styles.infoContentContainer}>
+      <Heading style={styles.infoTitle}>How Flashcards Work</Heading>
+      
+      <View style={[styles.stageInfoCard, currentStage === 0 && styles.highlightedStage]}>
+        <Text style={styles.stageTitle}>Stage 1: Introduction</Text>
+        <Text style={styles.stageDescription}>
+          Words start here. You're shown both the Welsh word and its English meaning.
+          Look at the word, pronounce it, and press "Next" to continue.
+        </Text>
+      </View>
+      
+      <View style={[styles.stageInfoCard, currentStage === 1 && styles.highlightedStage]}>
+        <Text style={styles.stageTitle}>Stage 2: Multiple Choice</Text>
+        <Text style={styles.stageDescription}>
+          Select the correct English translation from the options.
+          This helps reinforce your recognition of the word.
+        </Text>
+      </View>
+      
+      <View style={[styles.stageInfoCard, currentStage === 2 && styles.highlightedStage]}>
+        <Text style={styles.stageTitle}>Stage 3: Recall</Text>
+        <Text style={styles.stageDescription}>
+          Type the English meaning of the Welsh word.
+          This tests your active recall - the strongest form of memory.
+        </Text>
+      </View>
+      
+      <View style={styles.stageProgressInfo}>
+        <Text style={styles.progressDescription}>
+          The progress bar shows how close you are to mastering each word.
+          Get answers right to fill the bar. Three correct answers in a row masters a word!
+        </Text>
+      </View>
     </View>
   );
 }
@@ -260,7 +331,6 @@ const styles = StyleSheet.create({
   },
 
   stage: {
-    // position: 'absolute',
     top: '20%',
     width: '100%',
     textAlign: 'center',
@@ -269,7 +339,6 @@ const styles = StyleSheet.create({
   },
 
   welshWord: {
-    // position: 'absolute',
     top: '25%',
     width: '100%',
     textAlign: 'center',
@@ -284,7 +353,6 @@ const styles = StyleSheet.create({
   },
 
   cardContainer: {
-    // marginTop:  100,
     width: '100%',
     alignItems: 'center',
     gap: 12,
@@ -362,7 +430,6 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     width: '80%',
-    // maxWidth: 400,
     position: 'relative',
     flexDirection: 'row',
     alignItems: 'center',
@@ -391,7 +458,6 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     alignItems: 'center',
-    // paddingBottom: 10,
     zIndex: 100,
   },
   correctButton: {
@@ -424,12 +490,66 @@ const styles = StyleSheet.create({
   stageProgressContainer: {
     position: 'absolute',
     top: '20%',
-    // width: '40%',
     maxWidth: '40%',
     flexDirection: 'row',
     justifyContent: 'center',
     alignSelf: 'center',
     gap: 8,
   },
-
+  
+  // Info button styles
+  infoButton: {
+    position: 'absolute',
+    top: 40,
+    right: 20,
+    zIndex: 10,
+    padding: 5,
+  },
+  
+  // Info content styles
+  infoContentContainer: {
+    paddingTop: 10,
+    paddingHorizontal: 16,
+  },
+  infoTitle: {
+    fontSize: 22,
+    fontWeight: '600',
+    marginBottom: 20,
+    textAlign: 'center',
+  },
+  stageInfoCard: {
+    backgroundColor: '#f8f8f8',
+    borderRadius: 12,
+    padding: 16,
+    marginBottom: 12,
+    borderLeftWidth: 4,
+    borderLeftColor: '#ddd',
+  },
+  highlightedStage: {
+    borderLeftColor: Colors.light.upperButtonGradient,
+    backgroundColor: '#f0f7ff',
+  },
+  stageTitle: {
+    fontSize: 18,
+    fontWeight: '600',
+    marginBottom: 8,
+  },
+  stageDescription: {
+    fontSize: 14,
+    lineHeight: 20,
+    color: '#444',
+  },
+  stageProgressInfo: {
+    marginTop: 10,
+    padding: 12,
+    backgroundColor: '#f5f5f5',
+    borderRadius: 10,
+    borderLeftWidth: 4,
+    borderLeftColor: Colors.light.tint,
+  },
+  progressDescription: {
+    fontSize: 14,
+    lineHeight: 20,
+    color: '#444',
+  }
 });

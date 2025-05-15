@@ -1,0 +1,80 @@
+{
+  "locations": [
+    {
+      "name": "Cardiff",
+      "description": "Wales' capital city features the stunning Cardiff Castle, ultra-modern Cardiff Bay waterfront, and the iconic Principality Stadium. This vibrant metropolis blends medieval heritage with contemporary architecture and hosts major sporting and cultural events throughout the year."
+    },
+    {
+      "name": "Principality Stadium",
+      "description": "The national stadium of Wales and home to Welsh rugby, with its distinctive retractable roof and central Cardiff location. This 74,500-capacity venue vibrates with the sound of passionate Welsh rugby fans singing hymns like 'Bread of Heaven' and 'Calon Lân', creating one of sport's most spine-tingling atmospheres."
+    },
+    {
+      "name": "Big Pit National Coal Museum",
+      "description": "An award-winning mining museum in Blaenavon where visitors can descend 300 feet underground with former miners as guides. This preserved coal mine offers an authentic glimpse into Wales' mining heritage that shaped generations of communities, culture, and political identity across the Welsh valleys."
+    },
+    {
+      "name": "The Welsh Dragon at Caerphilly Castle",
+      "description": "Home to 'Dewi', a dramatic 8-meter-long red dragon sculpture that breathes real fire. This impressive symbol of Welsh national identity is installed at one of Europe's greatest medieval fortresses, which also features an infamous leaning tower that out-leans the Tower of Pisa."
+    },
+    {
+      "name": "Snowdonia National Park",
+      "description": "Home to Wales' highest mountain (Snowdon/Yr Wyddfa), this breathtaking national park spans 823 square miles of dramatic mountains, pristine lakes, and ancient woodlands. Visitors can summit Snowdon via hiking trails or the historic mountain railway for panoramic views across Wales."
+    },
+    {
+      "name": "Portmeirion",
+      "description": "A whimsical Italianate village built by architect Sir Clough Williams-Ellis between 1925 and 1975. Famous as the filming location for the cult TV series 'The Prisoner,' this colorful coastal resort features Mediterranean-style buildings, exotic gardens, and ornate architectural details."
+    },
+    {
+      "name": "Smallest House in Great Britain",
+      "description": "Located in Conwy, this tiny red house measures just 72 inches wide and 122 inches high. This minuscule dwelling on Conwy's quayside was actually inhabited until 1900 and now serves as a quirky tourist attraction that can be viewed in its entirety in under a minute."
+    },
+    {
+      "name": "Pembrokeshire Coast",
+      "description": "Britain's only coastal national park features 186 miles of spectacular limestone cliffs, golden beaches, and hidden coves. The Pembrokeshire Coast Path offers breathtaking views while the waters host diverse marine life including seals, dolphins, and puffins on nearby islands."
+    },
+    {
+      "name": "St. Davids",
+      "description": "The UK's smallest city contains the magnificent 12th-century St. Davids Cathedral built in a valley to hide it from Viking raiders. Every March 1st, it becomes the focal point for St. David's Day celebrations with parades, concerts, and locals adorned in national symbols of daffodils and leeks to honor Wales' patron saint."
+    },
+    {
+      "name": "The Rhondda Heritage Park",
+      "description": "A cultural attraction on the former Lewis Merthyr Colliery site where visitors can experience Welsh mining life. The park houses the famous Treorchy Male Voice Choir Hall of Fame, celebrating Wales' iconic choral tradition that emerged from mining communities and continues to be a cornerstone of Welsh cultural identity."
+    },
+    {
+      "name": "Brecon Beacons National Park", 
+      "description": "A mountain range of spectacular peaks, caves, waterfalls, and moorland. This International Dark Sky Reserve offers some of the UK's best stargazing opportunities alongside outdoor adventures from hiking and mountain biking to caving and wild swimming."
+    },
+    {
+      "name": "Swansea",
+      "description": "Wales' second city offers the beautiful sweep of Swansea Bay, the historic Mumbles lighthouse, and the birthplace of poet Dylan Thomas. The renovated maritime quarter and nearby Gower Peninsula (the UK's first Area of Outstanding Natural Beauty) attract visitors year-round."
+    },
+    {
+      "name": "The Great Glasshouse at National Botanic Garden of Wales",
+      "description": "The world's largest single-span glasshouse houses Mediterranean plants and spectacular daffodil displays. Located in Carmarthenshire, this botanical paradise celebrates Wales' national flower with the annual 'Daffodil Day' festival featuring over 50 varieties of narcissi throughout its themed gardens."
+    },
+    {
+      "name": "Fabulous Welshcakes Bakery",
+      "description": "A traditional bakery in Cardiff Bay where visitors can watch Welsh cakes being made on cast iron griddles. These spiced, currant-filled treats cooked on a bakestone (planc) are a beloved Welsh delicacy with recipes passed down through generations, offering warm samples straight off the griddle."
+    },
+    {
+      "name": "The Roald Dahl Trail",
+      "description": "A self-guided tour through Cardiff Bay exploring the childhood of Wales' most famous children's author. The trail includes Dahl's birthplace in Llandaff, the Norwegian Church where he was baptized, and sites that inspired his stories, showcasing the Welsh influences on classics like 'Charlie and the Chocolate Factory'."
+    },
+    {
+      "name": "Castell Coch",
+      "description": "A fairytale castle near Cardiff built in the 1870s as an elaborate Victorian fantasy. This Gothic Revival masterpiece features conical towers, opulent interiors, and ornate decorations that look straight out of a Disney film but hide sophisticated Victorian engineering."
+    },
+    {
+      "name": "Conwy",
+      "description": "A picturesque medieval walled town dominated by the imposing Conwy Castle, a UNESCO World Heritage Site. The remarkably intact town walls, historic suspension bridge, and quaint harbor make this one of North Wales' most photogenic destinations."
+    },
+    {
+      "name": "Tenby",
+      "description": "A colorful harbor town enclosed by 13th-century walls with pristine beaches and pastel-colored Georgian houses. This charming seaside resort features narrow cobbled streets, boat trips to Caldey Island's monastery, and the distinctive Tenby Lifeboat Station perched above the harbor."
+    },
+    {
+      "name": "Llanfairpwllgwyngyllgogerychwyrndrobwllllantysiliogogogoch",
+      "description": "The village with the longest place name in Europe (and second longest in the world) at 58 characters. Originally a publicity stunt in the 1860s, the name translates to 'St Mary's Church in the hollow of the white hazel near a rapid whirlpool and the Church of St. Tysilio near the red cave.'"
+    }
+  ]
+}

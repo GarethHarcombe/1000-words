@@ -29,6 +29,20 @@ interface Position {
   y: number;
 }
 
+const townImages = {
+  "The Great Orme Copper Mines": require('@/assets/images/town-icons/copper-mines.png'),
+  "Conwy": require('@/assets/images/town-icons/conwy.png'),
+  "Snowdonia National Park": require('@/assets/images/town-icons/snowdonia.png'),
+  "Portmeirion": require('@/assets/images/town-icons/portmeirion.png'),
+  "Smallest House in Great Britain": require('@/assets/images/town-icons/smallest-house.png'),
+  "Brecon Beacons National Park": require('@/assets/images/town-icons/brecon-beacons.png'),
+  "Pembrokeshire Coast": require('@/assets/images/town-icons/pembrokeshire-coast.png'),
+  "St. Davids": require('@/assets/images/town-icons/st-davids.png'),
+  "Swansea": require('@/assets/images/town-icons/swansea.png'),
+  "Cardiff": require('@/assets/images/town-icons/cardiff.png'),
+  "default": require('@/assets/images/adaptive-icon.png')
+};
+
 const { width, height } = Dimensions.get('window');
 const viewportWidth = width;
 const viewportHeight = height;
@@ -332,13 +346,18 @@ export default function Map() {
     setIsMoving(true);
   }
 
+
+  const getTownImage = (town: Town) => {
+    return townImages[town.name] || townImages.default;
+  };
+
   return (
     <View style={styles.container} ref={mapContainerRef}>
       {/* Main map layer with gestures */}
       <GestureDetector gesture={combinedGesture}>
         <Animated.View style={[styles.animatedContainer, animatedStyle]}>
           <ImageBackground
-            source={require('@/assets/images/welsh-map-background.jpeg')}
+            source={require('@/assets/images/welsh-map-background.png')}
             style={[styles.imageBackground, { width: mapWidth, height: mapHeight }]}
             resizeMode="contain"
           >
@@ -347,7 +366,7 @@ export default function Map() {
             
             {/* Caravan image */}
             <Animated.Image
-              source={require('@/assets/images/caravan.jpg')}
+              source={require('@/assets/images/caravan.png')}
               style={caravanStyle}
               resizeMode="contain"
             />
@@ -369,7 +388,11 @@ export default function Map() {
                 activeOpacity={0.7}
                 hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }} // Make touch target larger
               >
-                <Text style={styles.townText}>{town.name}</Text>
+                {/* <Text style={styles.townText}>{town.name}</Text> */}
+                <Image
+                  source={getTownImage(town)}
+                  style={{ width: 20, height: 20 }}
+                  resizeMode="contain"/>
               </TouchableOpacity>
             ))}
           </ImageBackground>

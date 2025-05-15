@@ -1,30 +1,72 @@
 [
-    { 
-      "name": "Aberlyn", 
-      "x": 100, 
-      "y": 200, 
-      "stage": 0,
-      "description": "A quiet fishing village nestled on the western coast. Known for its fresh seafood and annual boat festival."
-    },
-    { 
-      "name": "Cardale", 
-      "x": 250, 
-      "y": 400, 
-      "stage": 1,
-      "description": "A bustling market town at the crossroads of major trade routes. Famous for its textile industry and colorful weekly market."
-    },
-    { 
-      "name": "Dunreach", 
-      "x": 180, 
-      "y": 650, 
-      "stage": 2,
-      "description": "An ancient fortress town built into the mountainside. Home to the prestigious Dunreach Academy of Magic and Alchemy."
-    },
-    { 
-      "name": "Fynmere", 
-      "x": 300, 
-      "y": 300, 
-      "stage": 3,
-      "description": "A vibrant town surrounded by lush forests. Known for its medicinal herbs and the annual Harvest Moon Festival."
-    }
+  {
+    "stage": 1,
+    "name": "The Great Orme Copper Mines",
+    "x": 300,
+    "y": 80,
+    "description": "Bronze Age copper mines in Llandudno dating back 4,000 years that form the largest prehistoric mine discovered in the world. Visitors can explore the ancient underground passages where miners as young as children once worked."
+  },
+  {
+    "stage": 2,
+    "name": "Conwy",
+    "x": 300,
+    "y": 130,
+    "description": "A picturesque medieval walled town dominated by the imposing Conwy Castle, a UNESCO World Heritage Site. The remarkably intact town walls, historic suspension bridge, and quaint harbor make this one of North Wales' most photogenic destinations."
+  },
+  {
+    "stage": 3,
+    "name": "Snowdonia National Park",
+    "x": 260,
+    "y": 200,
+    "description": "Home to Wales' highest mountain (Snowdon/Yr Wyddfa), this breathtaking national park spans 823 square miles of dramatic mountains, pristine lakes, and ancient woodlands. Visitors can summit Snowdon via hiking trails or the historic mountain railway for panoramic views across Wales."
+  },
+  {
+    "stage": 4,
+    "name": "Portmeirion",
+    "x": 200,
+    "y": 260,
+    "description": "A whimsical Italianate village built by architect Sir Clough Williams-Ellis between 1925 and 1975. Famous as the filming location for the cult TV series 'The Prisoner,' this colorful coastal resort features Mediterranean-style buildings, exotic gardens, and ornate architectural details."
+  },
+  {
+    "stage": 5,
+    "name": "Smallest House in Great Britain",
+    "x": 280,
+    "y": 280,
+    "description": "Located in Conwy, this tiny red house measures just 72 inches wide and 122 inches high. This minuscule dwelling on Conwy's quayside was actually inhabited until 1900 and now serves as a quirky tourist attraction that can be viewed in its entirety in under a minute."
+  },
+  {
+    "stage": 6,
+    "name": "Brecon Beacons National Park",
+    "x": 300,
+    "y": 380,
+    "description": "A mountain range of spectacular peaks, caves, waterfalls, and moorland. This International Dark Sky Reserve offers some of the UK's best stargazing opportunities alongside outdoor adventures from hiking and mountain biking to caving and wild swimming."
+  },
+  {
+    "stage": 7,
+    "name": "Pembrokeshire Coast",
+    "x": 220,
+    "y": 450,
+    "description": "Britain's only coastal national park features 186 miles of spectacular limestone cliffs, golden beaches, and hidden coves. The Pembrokeshire Coast Path offers breathtaking views while the waters host diverse marine life including seals, dolphins, and puffins on nearby islands."
+  },
+  {
+    "stage": 8,
+    "name": "St. Davids",
+    "x": 240,
+    "y": 500,
+    "description": "The UK's smallest city contains the magnificent 12th-century St. Davids Cathedral built in a valley to hide it from Viking raiders. Despite its city status, this charming settlement has the population of a small village and sits within the spectacular Pembrokeshire Coast National Park."
+  },
+  {
+    "stage": 9,
+    "name": "Swansea",
+    "x": 350,
+    "y": 520,
+    "description": "Wales' second city offers the beautiful sweep of Swansea Bay, the historic Mumbles lighthouse, and the birthplace of poet Dylan Thomas. The renovated maritime quarter and nearby Gower Peninsula (the UK's first Area of Outstanding Natural Beauty) attract visitors year-round."
+  },
+  {
+    "stage": 10,
+    "name": "Cardiff",
+    "x": 400,
+    "y": 560,
+    "description": "Wales' capital city features the stunning Cardiff Castle, ultra-modern Cardiff Bay waterfront, and the iconic Principality Stadium. This vibrant metropolis blends medieval heritage with contemporary architecture and hosts major sporting and cultural events throughout the year."
+  }
 ]
