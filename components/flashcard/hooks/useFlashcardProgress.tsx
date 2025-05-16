@@ -1,17 +1,7 @@
-// index.tsx
-import React, { useState } from 'react';
-import { StyleSheet } from 'react-native';
-import { Text, View } from '@/components/Themed';
+import { useState } from 'react';
+import { Word } from '@/constants/Types';
 
-import Flashcard from '@/components/flashcard/Flashcard';
-import { Word } from '../../constants/Types';
-import { useWords } from '@/contexts/UserContext';
-
-
-// https://geiriadur.uwtsd.ac.uk/
-
-export default function CardsScreen() {
-  const {words, setWords} = useWords();
+export function useFlashcardProgress(words: Word[], setWords: (words: Word[]) => void) {
   const [index, setIndex] = useState(0);
   const [wordHistory, setWordHistory] = useState<{index: number, timestamp: number}[]>([]);
 
@@ -21,7 +11,6 @@ export default function CardsScreen() {
     // First, count words in each stage category
     const stageCounts = {0: 0, 1: 0, 2: 0, 3: 0};
     words.forEach(word => {
-      // Check if the stage is a valid key
       if (word.stage === 0 || word.stage === 1 || word.stage === 2 || word.stage === 3) {
         stageCounts[word.stage]++;
       }
@@ -110,7 +99,6 @@ export default function CardsScreen() {
     setIndex(selected.idx);
   };
 
-
   const advanceStage = () => {
     const updatedWords = [...words];
     if (updatedWords[index].stage < 3) {
@@ -128,52 +116,38 @@ export default function CardsScreen() {
     suggestNextWord();
   };
 
-  return (
-    <View style={styles.container}>
+  const handleCorrectAnswer = () => {
+    const updatedWords = [...words];
+    updatedWords[index].streak += 1;
+    if (updatedWords[index].stage == 0 || updatedWords[index].streak == 3) {
+      if (updatedWords[index].stage < 3) {
+        updatedWords[index].stage += 1;
+      }
+      updatedWords[index].streak = 0;
+    }
+    setWords(updatedWords);
+    nextWord();
+  };
 
-      <Flashcard
-        word={words[index]}
-        fillerAnswers={getFillerAnswers(words, words[index])}
-        onCorrectAnswer={() => {
-          words[index].streak += 1;
-          if (words[index].stage == 0 || words[index].streak == 3)
-          {
-            advanceStage();
-            words[index].streak = 0;
-          }
-          setWords
-          nextWord();
-        }}
-        onFalseAnswer={() => {
-          words[index].streak = 0;
-          nextWord();
-        }}
-      />
-    </View>
-  );
+  const handleFalseAnswer = () => {
+    const updatedWords = [...words];
+    updatedWords[index].streak = 0;
+    setWords(updatedWords);
+    nextWord();
+  };
+
+  const getFillerAnswers = (selectedWord: Word) => {
+    const selectedWords: string[] = words
+      .filter(w => w.stage >= 0 && w !== selectedWord)
+      .map(word => word.english);
+    return [...selectedWords, "hello", "thank you", "goodbye"].slice(0, 3);
+  };
+
+  return {
+    currentWord: words[index],
+    handleCorrectAnswer,
+    handleFalseAnswer,
+    getFillerAnswers,
+    suggestNextWord,
+  };
 }
-
-function getFillerAnswers(words: Word[], selectedWord: Word){
-  const selectedWords: string[] = words.filter(w => w.stage >= 0 && w != selectedWord)
-                             .map(word => word.english);
-  return [...selectedWords, "hello", "thank you", "goodbye"].slice(0, 3);
-}
-
-const styles = StyleSheet.create({
-  header: {
-    marginTop: 50,
-    marginBottom: 20,
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    paddingHorizontal: 10,
-  },
-  headerText: {
-    fontSize: 16,
-    fontWeight: '600',
-  },
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    paddingHorizontal: 20,
-  },
-});

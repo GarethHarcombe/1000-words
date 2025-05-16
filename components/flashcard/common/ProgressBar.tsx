@@ -1,3 +1,4 @@
+// ProgressBar.tsx
 import { Word } from '@/constants/Types';
 import { View } from '@/components/Themed';
 import { StyleSheet, Animated } from 'react-native';
