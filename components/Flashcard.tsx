@@ -201,7 +201,7 @@ export default function Flashcard({ word, fillerAnswers, onCorrectAnswer, onFals
                 showFeedback={showFeedback}
                 isCorrect={isCorrect}
                 handleNextAfterFeedback={handleNextAfterFeedback}
-                handleConfirmAnswer={handleNextAfterFeedback}
+                handleConfirmAnswer={handleConfirmAnswer}
               />
             </View>
             {showFeedback && !isCorrect && (

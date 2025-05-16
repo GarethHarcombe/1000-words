@@ -29,12 +29,13 @@ export default function CardsScreen() {
     
     // Determine if we should introduce a new word
     // Introduce new words if less than 3 words in stages 1-2
-    const shouldIntroduceNew = seenPracticedCount < 3 && stageCounts[0] > 0;
+    const MAX_SEEN_PRACTICED = 7;
+    const shouldIntroduceNew = seenPracticedCount < MAX_SEEN_PRACTICED && stageCounts[0] > 0;
     
     // Define optimal review intervals for each stage (in milliseconds)
     const reviewIntervals = {
-      1: 5 * 60 * 1000,      // 5 minutes for stage 1
-      2: 60 * 60 * 1000      // 1 hour for stage 2
+      1: 20 * 1000,         // 20 seconds for stage 1
+      2: 2 * 60 * 1000      // 2 minutes for stage 2
     };
     
     // Calculate a "readiness score" for each word
