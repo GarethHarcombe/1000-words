@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { TextInput, FlatList, StyleSheet, TouchableOpacity } from 'react-native';
+
+import { TextInput, FlatList, StyleSheet, TouchableOpacity, Animated } from 'react-native';
 import { Text, View } from '@/components/Themed';
 
 import { useWords } from '@/contexts/UserContext';
+import ProgressBar from '@/components/flashcard/common/ProgressBar';
 
 export default function AllWordsScreen() {
   const { words } = useWords();
@@ -14,7 +16,7 @@ export default function AllWordsScreen() {
     .sort((a, b) => {
       if (sortBy === 'welsh') return a.welsh.localeCompare(b.welsh);
       return b.stage - a.stage;
-    });
+  }); 
 
   return (
     <View style={styles.container}>
@@ -42,12 +44,24 @@ export default function AllWordsScreen() {
       <FlatList
         data={filtered}
         keyExtractor={item => item.index.toString()}
-        renderItem={({ item }) => (
-          <View style={styles.wordItem}>
-            <Text style={styles.wordText}>{item.welsh} — {item.english}</Text>
-            <Text style={styles.stageText}>Stage: {item.stage}</Text>
-          </View>
-        )}
+        renderItem={({ item }) => {
+           // Create a static animated value of 1
+          const animatedValue = new Animated.Value(1);
+          // Interpolate it to get the desired width as a percentage string
+          const widthInterpolated = animatedValue.interpolate({
+            inputRange: [0, 1],
+            outputRange: ['0%', `${(0.1 + 0.9 * (item.streak) / 3) * 100}%`]
+          });
+          
+          return (
+            <View style={styles.wordItem}>
+              <Text style={styles.wordText}>{item.welsh} — {item.english}</Text>
+              <View style={styles.stageProgressContainer}>
+                <ProgressBar word={item} widthInterpolated={widthInterpolated} />
+              </View>
+            </View>
+          );
+        }}
       />
     </View>
   );
@@ -66,10 +80,11 @@ const styles = StyleSheet.create({
   //   textAlign: 'center',
   // },
   input: {
-    height: 40,
+    height: 60,
     borderColor: '#DDD',
     borderWidth: 1,
     borderRadius: 8,
+    fontSize: 27,
     paddingHorizontal: 10,
     marginBottom: 12,
     color: "#888",
@@ -77,7 +92,7 @@ const styles = StyleSheet.create({
   sortRow: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    marginBottom: 16,
+    margin: 16,
   },
   sortButton: {
     // fontSize: 14,
@@ -97,5 +112,14 @@ const styles = StyleSheet.create({
   },
   stageText: {
     // fontSize: 12,
+  },
+  stageProgressContainer: {
+    top: '20%',
+    maxWidth: '40%',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignSelf: 'flex-start',
+    marginBottom: 6,
+    gap: 8,
   },
 });

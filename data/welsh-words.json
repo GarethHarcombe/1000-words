@@ -1932,7 +1932,7 @@
  {
   "index": 389,
   "welsh": "dwyn",
-  "english": "brought"
+  "english": "steal"
  },
  {
   "index": 390,
@@ -3916,8 +3916,8 @@
  },
  {
   "index": 786,
-  "welsh": "atom",
-  "english": "atom"
+  "welsh": "INDEX786",
+  "english": "INDEX786"
  },
  {
   "index": 787,
@@ -3972,7 +3972,7 @@
  {
   "index": 797,
   "welsh": "felly",
-  "english": "thus"
+  "english": "so"
  },
  {
   "index": 798,
@@ -3981,7 +3981,7 @@
  },
  {
   "index": 799,
-  "welsh": "fenyw",
+  "welsh": "menyw",
   "english": "woman"
  },
  {
@@ -4026,8 +4026,8 @@
  },
  {
   "index": 808,
-  "welsh": "ystlumod",
-  "english": "bat"
+  "welsh": "batio",
+  "english": "to bat"
  },
  {
   "index": 809,
@@ -4211,8 +4211,8 @@
  },
  {
   "index": 845,
-  "welsh": "anialwch",
-  "english": "desert"
+  "welsh": "pwdin",
+  "english": "dessert"
  },
  {
   "index": 846,
@@ -4222,7 +4222,7 @@
  {
   "index": 847,
   "welsh": "ar hyn o bryd",
-  "english": "current"
+  "english": "at the moment"
  },
  {
   "index": 848,

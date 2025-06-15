@@ -153,9 +153,13 @@ export default function CardsScreen() {
   );
 }
 
+function shuffle(array: string[]) {
+  return [...array].sort(() => 0.5 - Math.random());
+}
+
 function getFillerAnswers(words: Word[], selectedWord: Word){
-  const selectedWords: string[] = words.filter(w => w.stage >= 0 && w != selectedWord)
-                             .map(word => word.english);
+  const selectedWords: string[] = shuffle(words.filter(w => w.stage > 0 && w != selectedWord)
+                                          .map(word => word.english));
   return [...selectedWords, "hello", "thank you", "goodbye"].slice(0, 3);
 }
 

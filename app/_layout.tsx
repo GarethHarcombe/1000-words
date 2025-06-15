@@ -57,7 +57,7 @@ function RootLayoutNav() {
         <Stack>
           <Stack.Screen name="(tabs)" options={{ headerShown: false, title: "Home" }} />
           <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
-          <Stack.Screen name="all-words" options={{ title: "All Words" }} />
+          <Stack.Screen name="all-words" options={{ title: "All Words", headerTitleStyle: { fontSize: 27 } }} />
         </Stack>
       </ThemeProvider>
     </GestureHandlerRootView>

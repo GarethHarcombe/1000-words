@@ -33,7 +33,14 @@ type FlashcardProps = {
 
 export default function Flashcard({ word, fillerAnswers, onCorrectAnswer, onFalseAnswer }: FlashcardProps) {
   const [isInfoSheetOpen, setIsInfoSheetOpen] = useState(false);
-  const { widthInterpolated, computeFraction, animateProgressTo } = useFlashcardAnimations(word);
+  const { 
+    widthInterpolated, 
+    animateProgressTo, 
+    computeFraction,
+    pulseScale,
+    pulseOpacity,
+    particles 
+  } = useFlashcardAnimations(word);
   
   const {
     input, setInput,
@@ -97,6 +104,9 @@ export default function Flashcard({ word, fillerAnswers, onCorrectAnswer, onFals
         <ProgressBar 
           word={word}
           widthInterpolated={widthInterpolated}
+          pulseScale={pulseScale}
+          pulseOpacity={pulseOpacity}
+          particles={particles}
         />
       </RNView>
       

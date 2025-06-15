@@ -42,7 +42,7 @@ export function useFlashcardState(
         animateProgressTo(1);
         setTimeout(() => {
           onCorrectAnswer();
-        }, 500);
+        }, 600);
         break;
       case 1:
         if (!showFeedback) {

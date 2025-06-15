@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import { Text, View, TouchableOpacity } from '@/components/Themed';
+import { Heading } from '@/components/StyledText';
 import { useWords } from '@/contexts/UserContext';
 import { useRouter } from 'expo-router';
 import { setOptions } from 'expo-splash-screen';
@@ -15,7 +16,7 @@ export default function ProfileScreen() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Your Progress</Text>
+      <Heading style={styles.title}>Your Progress</Heading>
       <View style={styles.statsRow}>
         <Text style={styles.stat}>Seen: {seen}</Text>
         <Text style={styles.stat}>Practiced: {practiced}</Text>
@@ -39,8 +40,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   title: {
-    fontSize: 24,
-    fontWeight: '600',
     marginBottom: 24,
     textAlign: 'center',
   },
@@ -54,8 +53,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   stat: {
-    fontSize: 16,
-    fontWeight: '500',
   },
   button: {
     width: 300,
