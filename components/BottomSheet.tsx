@@ -56,7 +56,19 @@ export default function BottomSheet (props: BottomSheetProps) {
     // Bottom sheet drag gesture
     const bottomSheetGesture = Gesture.Pan()
     .onUpdate((event) => {
-        const newTranslateY = Math.max(0, event.translationY);
+        let newTranslateY = event.translationY;
+
+        if (newTranslateY <= 0) {
+            // Overextending upwards, apply resistance
+            const resistance = 0.5; // Lower = more resistance
+            const overdrag = Math.abs(newTranslateY);
+            // Use a non-linear function for resistance
+            newTranslateY = -Math.pow(overdrag, resistance);
+        } else {
+            // Dragging down, allow up to bottomSheetHeight (which is negative)
+            newTranslateY = Math.min(newTranslateY, Math.abs(bottomSheetHeight));
+        }
+
         bottomSheetTranslateY.value = newTranslateY;
     })
     .onEnd((event) => {
@@ -96,13 +108,15 @@ const styles = StyleSheet.create({
       // Bottom sheet styles
   bottomSheet: {
     position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
+    bottom: -5,
+    width: '100%',
+    maxHeight: '100%',
+    alignSelf: 'center',
     backgroundColor: '#fff',
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     padding: 20,
+    maxWidth: 1000,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: -3 },
     shadowOpacity: 0.27,

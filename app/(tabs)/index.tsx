@@ -32,7 +32,7 @@ export default function CardsScreen() {
     
     // Determine if we should introduce a new word
     // Introduce new words if less than 3 words in stages 1-2
-    const MAX_SEEN_PRACTICED = 7;
+    const MAX_SEEN_PRACTICED = 3;
     const shouldIntroduceNew = seenPracticedCount < MAX_SEEN_PRACTICED && stageCounts[0] > 0;
     
     // Define optimal review intervals for each stage (in milliseconds)
@@ -178,6 +178,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    paddingHorizontal: 20,
+    // paddingHorizontal: 20,
   },
 });

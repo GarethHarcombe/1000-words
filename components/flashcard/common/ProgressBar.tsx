@@ -9,22 +9,22 @@ type ProgressBarProps = {
     word: Word;
     widthInterpolated: Animated.AnimatedInterpolation<string | number>;
     // New props for completion animation
-    pulseScale?: Animated.Value;
-    pulseOpacity?: Animated.Value;
-    particles?: Array<{
-      translateX: Animated.Value;
-      translateY: Animated.Value;
-      opacity: Animated.Value;
-      scale: Animated.Value;
-    }>;
+    // pulseScale?: Animated.Value;
+    // pulseOpacity?: Animated.Value;
+    // particles?: Array<{
+    //   translateX: Animated.Value;
+    //   translateY: Animated.Value;
+    //   opacity: Animated.Value;
+    //   scale: Animated.Value;
+    // }>;
 };
 
 export default function ProgressBar({
   word, 
   widthInterpolated,
-  pulseScale,
-  pulseOpacity,
-  particles
+  // pulseScale,
+  // pulseOpacity,
+  // particles
 }: ProgressBarProps) {
     
     return (
@@ -40,13 +40,13 @@ export default function ProgressBar({
                 overflow: 'hidden',
               } : {},
               // Apply pulse scale to completed stages
-              word.stage >= 3 && pulseScale ? {
-                transform: [{ scaleX: pulseScale }, { scaleY: pulseScale }]
-              } : {}
+              // word.stage >= 3 && pulseScale ? {
+              //   transform: [{ scaleX: pulseScale }, { scaleY: pulseScale }]
+              // } : {}
             ]}
           >
             {/* Pulse glow effect for completed stages */}
-            {word.streak >= 3 && pulseOpacity && (
+            {/* {word.streak >= 3 && pulseOpacity && (
               <Animated.View
                 style={[
                   StyleSheet.absoluteFill,
@@ -65,7 +65,7 @@ export default function ProgressBar({
                   style={[StyleSheet.absoluteFill, { borderRadius: 15 }]}
                 />
               </Animated.View>
-            )}
+            )} */}
 
             {/* Completed stage */}
             {word.stage > stageIndex ? (
@@ -89,14 +89,14 @@ export default function ProgressBar({
                     width: widthInterpolated, 
                     borderRadius: 10,
                     // Apply pulse scale to current stage
-                    ...(pulseScale ? {
-                      transform: [{ scaleX: pulseScale }, { scaleY: pulseScale }]
-                    } : {})
+                    // ...(pulseScale ? {
+                    //   transform: [{ scaleX: pulseScale }, { scaleY: pulseScale }]
+                    // } : {})
                   }
                 ]}
               >
                 {/* Pulse glow for current stage when completed */}
-                {pulseOpacity && (
+                {/* {pulseOpacity && (
                   <Animated.View
                     style={[
                       StyleSheet.absoluteFill,
@@ -115,7 +115,7 @@ export default function ProgressBar({
                       style={[StyleSheet.absoluteFill, { borderRadius: 15 }]}
                     />
                   </Animated.View>
-                )}
+                )} */}
                 
                 <LinearGradient
                   colors={[
@@ -133,7 +133,7 @@ export default function ProgressBar({
         ))}
 
         {/* Particle system */}
-        {particles && particles.map((particle, index) => (
+        {/* {particles && particles.map((particle, index) => (
           <Animated.View
             key={`particle-${index}`}
             style={[
@@ -148,7 +148,7 @@ export default function ProgressBar({
               }
             ]}
           />
-        ))}
+        ))} */}
       </View>
     );
 }
@@ -157,12 +157,12 @@ const styles = StyleSheet.create({
     container: {
       flexDirection: 'row',
       gap: 8,
-      position: 'relative',
+      // position: 'relative',
     },
     stageBar: {
         height: 15,
         width: 55,
-        flex: 1,
+        // flex: 1,
         backgroundColor: '#e0e0e0',
         borderRadius: 10,
         position: 'relative',
@@ -174,27 +174,27 @@ const styles = StyleSheet.create({
         bottom: 0,
         borderRadius: 10,
     },
-    pulseGlow: {
-      borderRadius: 15,
-      shadowColor: Colors['light']['upperButtonGradient'],
-      shadowOffset: { width: 0, height: 0 },
-      shadowOpacity: 0.8,
-      shadowRadius: 8,
-      elevation: 8,
-    },
-    particle: {
-      position: 'absolute',
-      width: 8,
-      height: 8,
-      borderRadius: 4,
-      backgroundColor: Colors['light']['upperButtonGradient'],
-      top: 7.5, // Center vertically on progress bar
-      left: '50%', // Start from center
-      marginLeft: -4, // Account for particle width
-      shadowColor: Colors['light']['upperButtonGradient'],
-      shadowOffset: { width: 0, height: 0 },
-      shadowOpacity: 0.6,
-      shadowRadius: 3,
-      elevation: 3,
-    },
+    // pulseGlow: {
+    //   borderRadius: 15,
+    //   shadowColor: Colors['light']['upperButtonGradient'],
+    //   shadowOffset: { width: 0, height: 0 },
+    //   shadowOpacity: 0.8,
+    //   shadowRadius: 8,
+    //   elevation: 8,
+    // },
+    // particle: {
+    //   position: 'absolute',
+    //   width: 8,
+    //   height: 8,
+    //   borderRadius: 4,
+    //   backgroundColor: Colors['light']['upperButtonGradient'],
+    //   top: 7.5, // Center vertically on progress bar
+    //   left: '50%', // Start from center
+    //   marginLeft: -4, // Account for particle width
+    //   shadowColor: Colors['light']['upperButtonGradient'],
+    //   shadowOffset: { width: 0, height: 0 },
+    //   shadowOpacity: 0.6,
+    //   shadowRadius: 3,
+    //   elevation: 3,
+    // },
 });

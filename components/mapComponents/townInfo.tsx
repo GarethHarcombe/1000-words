@@ -53,7 +53,7 @@ export default function TownInfo ({ town, action }: TownInfoProps) {
         
         <View style={styles.townImageContainer}>
             <Image
-                source={town.image ? { uri: town.image } : getTownPlaceholderImage(town.stage)}
+                source={town.imagePath ? { uri: town.imagePath } : getTownPlaceholderImage(town.stage)}
                 style={styles.townImage}
                 resizeMode="cover"
             />
@@ -74,8 +74,8 @@ export default function TownInfo ({ town, action }: TownInfoProps) {
 };
 
 const styles = StyleSheet.create({
-    townDetailsContainer: {
-    flex: 1,
+  townDetailsContainer: {
+    // flex: 1,
   },
   townHeader: {
     flexDirection: 'row',
@@ -94,6 +94,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
   },
   stageText: {
+    fontSize: 16,
     color: '#fff',
     fontWeight: 'bold',
   },
@@ -117,6 +118,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginTop: 'auto', // Push to bottom
+    height: 40, // Fixed height for buttons
   },
   actionButton: {
     flex: 1,

@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, View as RNView } from 'react-native';
 import { Heading } from '@/components/StyledText';
-import { View } from '@/components/Themed';
+import { View, Text } from '@/components/Themed';
 import { Ionicons } from '@expo/vector-icons';
 import { TouchableOpacity as RNTouchableOpacity } from 'react-native';
 import Colors from '@/constants/Colors';
@@ -37,9 +37,9 @@ export default function Flashcard({ word, fillerAnswers, onCorrectAnswer, onFals
     widthInterpolated, 
     animateProgressTo, 
     computeFraction,
-    pulseScale,
-    pulseOpacity,
-    particles 
+    // pulseScale,
+    // pulseOpacity,
+    // particles 
   } = useFlashcardAnimations(word);
   
   const {
@@ -100,17 +100,23 @@ export default function Flashcard({ word, fillerAnswers, onCorrectAnswer, onFals
     <View style={styles.screen}>
       <InfoButton onPress={() => setIsInfoSheetOpen(true)} />
       
-      <RNView style={styles.stageProgressContainer}>
+      <View style={styles.stageProgressContainer}>
         <ProgressBar 
           word={word}
           widthInterpolated={widthInterpolated}
-          pulseScale={pulseScale}
-          pulseOpacity={pulseOpacity}
-          particles={particles}
+          // pulseScale={pulseScale}
+          // pulseOpacity={pulseOpacity}
+          // particles={particles}
         />
-      </RNView>
+      </View>
       
       <Heading style={styles.welshWord}>{word.welsh}</Heading>
+
+      {/* {word.stage === 0 && (
+        <Text style={styles.newWordText}>
+          New Word! 🎉
+        </Text>
+      )} */}
       
       <View style={styles.contentBelow}>
         {renderStageContent()}
@@ -136,28 +142,44 @@ export default function Flashcard({ word, fillerAnswers, onCorrectAnswer, onFals
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    position: 'relative',
-    height: '100%',
   },
   welshWord: {
-    top: '25%',
-    width: '100%',
+    position: 'absolute',
+    top: '27%', // Increased from percentage to fixed value
+    left: 0,
+    right: 0,
     textAlign: 'center',
     fontSize: 26,
     fontWeight: '600',
+    zIndex: 10, // Add z-index
+    backgroundColor: 'transparent', // Ensure background is transparent
+  },
+  newWordText: {
+    textAlign: 'center',
+    top: '40%',
+    color: Colors.light.upperButtonGradient,
+    fontWeight: 'bold',
+    fontSize: 18,
+    marginTop: 8,
+    marginBottom: 4,
+    zIndex: 10,
   },
   contentBelow: {
-    marginTop: 200,
+    flex: 1,
+    justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
+    paddingTop: 180, // Make room for welsh word
   },
   stageProgressContainer: {
     position: 'absolute',
-    top: '20%',
-    maxWidth: '40%',
+    top: '20%', // Move down to avoid safe area
+    left: '10%',
+    right: '10%',
     flexDirection: 'row',
-    justifyContent: 'center',
     alignSelf: 'center',
+    justifyContent: 'center',
     gap: 8,
+    zIndex: 20, 
   },
 });

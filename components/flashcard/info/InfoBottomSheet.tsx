@@ -21,12 +21,12 @@ export default function InfoBottomSheet({
 }: InfoBottomSheetProps) {
   return (
     <BottomSheet 
-      bottomSheetHeight={400}
+      bottomSheetHeight={500}
       isBottomSheetUp={isOpen}
       setIsTownPopup={setIsOpen}
     >
       <View style={styles.infoContentContainer}>
-        <Heading style={styles.infoTitle}>How Flashcards Work</Heading>
+        <Text style={styles.infoTitle}>How Flashcards Work</Text>
         
         <View style={[styles.stageInfoCard, currentStage === 0 && styles.highlightedStage]}>
           <Text style={styles.stageTitle}>Stage 1: Introduction</Text>
@@ -69,8 +69,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
   },
   infoTitle: {
-    fontSize: 22,
-    fontWeight: '600',
+    fontSize: 30,
+    fontWeight: '400',
     marginBottom: 20,
     textAlign: 'center',
   },
