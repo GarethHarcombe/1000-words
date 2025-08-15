@@ -24,6 +24,7 @@ export default function AllWordsScreen() {
       <TextInput
         placeholder="Search Welsh word"
         value={query}
+        placeholderTextColor="#888"
         onChangeText={setQuery}
         style={styles.input}
       />
@@ -87,7 +88,7 @@ const styles = StyleSheet.create({
     fontSize: 27,
     paddingHorizontal: 10,
     marginBottom: 12,
-    color: "#888",
+    color: "#000",
   },
   sortRow: {
     flexDirection: 'row',

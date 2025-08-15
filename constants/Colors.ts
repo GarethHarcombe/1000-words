@@ -4,6 +4,7 @@ const tintColorDark = '#fff';
 export default {
   light: {
     text: '#000',
+    subtitle: '#666',
     background: '#fff',
     upperButtonGradient: '#93A7B1',
     lowerButtonGradient: '#BACAC1',
@@ -20,6 +21,6 @@ export default {
     button: "#A8BABA",
     tint: tintColorDark,
     tabIconDefault: '#fff',
-    tabIconSelected: tintColorDark,
+    tabIconSelected: tintColorLight,
   },
 };

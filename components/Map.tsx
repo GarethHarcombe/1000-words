@@ -334,7 +334,7 @@ export default function Map() {
             
             {/* Caravan is now INSIDE the transformed container */}
             <Animated.Image
-              source={require('@/assets/images/caravan.png')}
+              source={require('@/assets/images/caravan_new.png')}
               style={caravanStyle}
               resizeMode="contain"
             />

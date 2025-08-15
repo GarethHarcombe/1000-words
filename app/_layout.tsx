@@ -8,6 +8,8 @@ import { useEffect } from 'react';
 import 'react-native-reanimated';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { UserProvider } from '@/contexts/UserContext';
+
+import Colors from '@/constants/Colors';
 import { useColorScheme } from '@/components/useColorScheme';
 
 export {
@@ -50,6 +52,7 @@ export default function RootLayout() {
 
 function RootLayoutNav() {
   const colorScheme = useColorScheme();
+  const theme = colorScheme === 'dark' ? DarkTheme : DefaultTheme;
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
@@ -57,7 +60,11 @@ function RootLayoutNav() {
         <Stack>
           <Stack.Screen name="(tabs)" options={{ headerShown: false, title: "Home" }} />
           <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
-          <Stack.Screen name="all-words" options={{ title: "All Words", headerTitleStyle: { fontSize: 27 } }} />
+          <Stack.Screen name="all-words" options={{ 
+            title: "All Words", 
+            headerTitleStyle: { fontSize: 27, color: Colors['light'].text }, 
+            headerStyle: { backgroundColor: Colors['light'].background }, 
+          }} />
         </Stack>
       </ThemeProvider>
     </GestureHandlerRootView>
