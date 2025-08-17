@@ -1,18 +1,19 @@
 [
-  {
+    {
     "stage": 1,
+    "name": "Conwy",
+    "x": 400,
+    "y": 50,
+    "description": "A picturesque medieval walled town dominated by the imposing Conwy Castle, a UNESCO World Heritage Site. The remarkably intact town walls, historic suspension bridge, and quaint harbor make this one of North Wales' most photogenic destinations."
+  },
+  {
+    "stage": 2,
     "name": "The Great Orme Copper Mines",
     "x": 300,
     "y": 80,
     "description": "Bronze Age copper mines in Llandudno dating back 4,000 years that form the largest prehistoric mine discovered in the world. Visitors can explore the ancient underground passages where miners as young as children once worked."
   },
-  {
-    "stage": 2,
-    "name": "Conwy",
-    "x": 300,
-    "y": 130,
-    "description": "A picturesque medieval walled town dominated by the imposing Conwy Castle, a UNESCO World Heritage Site. The remarkably intact town walls, historic suspension bridge, and quaint harbor make this one of North Wales' most photogenic destinations."
-  },
+
   {
     "stage": 3,
     "name": "Snowdonia National Park",

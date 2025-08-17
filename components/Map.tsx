@@ -247,7 +247,7 @@ export default function Map() {
     transform: [
       { scaleX: isFacingLeft ? -1 : 1 },
     ],
-    zIndex: 10,
+    zIndex: 30,
   }));
 
   // Helper functions remain the same
@@ -316,7 +316,7 @@ export default function Map() {
                   { 
                     top: town.y, 
                     left: town.x, 
-                    backgroundColor: getStageColor(town.stage),
+                    // backgroundColor: getStageColor(town.stage),
                     zIndex: 20
                   }
                 ]}
@@ -332,15 +332,11 @@ export default function Map() {
               </TouchableOpacity>
             ))}
             
-            {/* Caravan is now INSIDE the transformed container */}
             <Animated.Image
               source={require('@/assets/images/caravan_new.png')}
               style={caravanStyle}
               resizeMode="contain"
             />
-            
-            {/* Debug overlay also inside */}
-            {/* {renderDebugOverlay()} */}
           </ImageBackground>
         </Animated.View>
       </GestureDetector>
@@ -382,7 +378,7 @@ const styles = StyleSheet.create({
   townMarker: {
     position: 'absolute',
     paddingVertical: 4,
-    paddingHorizontal: 8,
+    paddingHorizontal: 4,
     borderRadius: 12,
     borderWidth: 1,
     borderColor: '#222',

@@ -2,6 +2,7 @@ import { Town } from '@/constants/Types';
 import { View, Text, TouchableOpacity } from '@/components/Themed';
 import { StyleSheet, Image } from 'react-native';
 import Colors from '@/constants/Colors';
+import { useRouter } from 'expo-router';
 
 
 type TownInfoProps = {
@@ -11,6 +12,8 @@ type TownInfoProps = {
 
 export default function TownInfo ({ town, action }: TownInfoProps) {
     
+    const router = useRouter();
+
     function getStageColor(stage: number): string {
         switch (stage) {
             case 0:
@@ -30,9 +33,9 @@ export default function TownInfo ({ town, action }: TownInfoProps) {
     const getTownPlaceholderImage = (stage: number) => {
         switch (stage) {
           case 0:
-            return require('@/assets/images/caravan.jpg'); // You'll need to add these images
-          case 1:
             return require('@/assets/images/caravan.jpg');
+          case 1:
+            return require('@/assets/images/town-images/conwy.jpg');
           case 2:
             return require('@/assets/images/caravan.jpg');
           case 3:
@@ -62,11 +65,12 @@ export default function TownInfo ({ town, action }: TownInfoProps) {
         <Text style={styles.townDescription}>{town.description}</Text>
         
         <View style={styles.actionsContainer}>
-            <TouchableOpacity 
-                style={styles.actionButton}
-                onPress={() => action(town)}
+            
+            <TouchableOpacity
+              style={styles.actionButton}
+              onPress={() => router.push('/TownFlashcardsScreen')}
             >
-                <Text style={styles.actionButtonText}>Travel Here</Text>
+              <Text style={styles.actionButtonText}>Travel Here</Text>
             </TouchableOpacity>
         </View>
     </View>
@@ -99,7 +103,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   townImageContainer: {
-    height: 120,
+    height: 160,
     borderRadius: 10,
     overflow: 'hidden',
     marginBottom: 15,

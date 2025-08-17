@@ -65,6 +65,11 @@ function RootLayoutNav() {
             headerTitleStyle: { fontSize: 27, color: Colors['light'].text }, 
             headerStyle: { backgroundColor: Colors['light'].background }, 
           }} />
+          <Stack.Screen name="TownFlashcards" options={{ 
+            title: "Learn Welsh", 
+            headerTitleStyle: { fontSize: 27, color: Colors['light'].text }, 
+            headerStyle: { backgroundColor: Colors['light'].background }, 
+          }} />
         </Stack>
       </ThemeProvider>
     </GestureHandlerRootView>
