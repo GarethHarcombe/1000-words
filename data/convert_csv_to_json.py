@@ -5,7 +5,7 @@ import json
 input_file = "grouped_welsh_words.csv"
 output_file = "grouped_welsh_words.json"
 
-grouped_words = {}
+grouped_words = []
 
 # Try UTF-8 first, fallback to ISO-8859-1 if needed
 try:
@@ -20,12 +20,10 @@ with csvfile:
         welsh = row["Welsh"].strip()
         english = row["English"].strip()
 
-        if group not in grouped_words:
-            grouped_words[group] = []
-
-        grouped_words[group].append({
+        grouped_words.append({
             "welsh": welsh,
-            "english": english
+            "english": english,
+            "group": group
         })
 
 with open(output_file, mode="w", encoding="utf-8") as jsonfile:

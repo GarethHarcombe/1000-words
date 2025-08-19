@@ -252,7 +252,7 @@ export default function Map() {
 
   // Helper functions remain the same
   const findTownAtPosition = (mapX: number, mapY: number): Town | null => {
-    const tapThreshold = 30;
+    const tapThreshold = 5;
     for (const town of towns) {
       const distanceX = Math.abs(town.x - mapX);
       const distanceY = Math.abs(town.y - mapY);

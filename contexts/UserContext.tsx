@@ -1,8 +1,10 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 import rawWords from '@/data/welsh-words.json';
 import { Word } from '@/constants/Types';
+import wordsByGroup from '@/data/grouped_welsh_words.json'; // converted JSON
 
-const initialWords: Word[] = rawWords.map(word => ({
+
+const initialWords: Word[] = wordsByGroup.map(word => ({
   ...word,
   numCorrect: 0,
   streak: 0,

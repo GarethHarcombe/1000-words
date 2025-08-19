@@ -3,68 +3,75 @@ import { View, StyleSheet } from 'react-native';
 import { Stack, useLocalSearchParams, router } from 'expo-router';
 import Flashcard from '@/components/flashcard/Flashcard';
 import { Word } from '@/constants/Types';
-import wordsByGroup from '@/data/grouped_welsh_words.json'; // converted JSON
 import ExitButton from '@/components/flashcard/common/ExitButton';
+import { useWords } from '@/contexts/UserContext';
+
 
 export default function TownFlashcardsScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
+  const { words, setWords } = useWords();
 
-  // Convert JSON words into Word[] type
-  const groupKey = (id as keyof typeof wordsByGroup) || "1";
+  // Subset: only words belonging to this group
+  const groupKey = id || "1";
+  const groupWords = words.filter((w) => String(w.group) === groupKey);
 
-  const initialWords: Word[] = wordsByGroup[groupKey].map((w, index) => ({
-    index,
-    welsh: w.welsh,
-    english: w.english,
-    stage: 0,
-    streak: 0,
-    numCorrect: 0,
-  }));
-
-
-  const [words, setWords] = useState(initialWords);
   const [index, setIndex] = useState(0);
 
-  const nextWord = () => setIndex((prev) => (prev + 1) % words.length);
+  const nextWord = () =>
+    setIndex((prev) => (prev + 1) % groupWords.length);
 
   const advanceStage = () => {
     const updated = [...words];
-    if (updated[index].stage < 3) updated[index].stage += 1;
+    const globalIndex = words.findIndex(w => w.welsh === groupWords[index].welsh);
+    if (updated[globalIndex].stage < 3) updated[globalIndex].stage += 1;
     setWords(updated);
   };
 
-  
-  const fillerAnswers = words
+  const fillerAnswers = groupWords
     .filter((_, i) => i !== index)
     .map((w) => w.english)
     .slice(0, 3);
 
+  if (groupWords.length === 0) {
+    return (
+      <View style={styles.container}>
+        <Stack.Screen options={{ headerShown: false }} />
+        <ExitButton onPress={() => router.back()} />
+      </View>
+    );
+  }
 
   return (
     <View style={styles.container}>
       <Stack.Screen options={{ headerShown: false }} />
-      
       <ExitButton onPress={() => router.back()} />
 
       <Flashcard
-        word={words[index]}
+        word={groupWords[index]}
         fillerAnswers={fillerAnswers}
         onCorrectAnswer={() => {
-          words[index].streak += 1;
-          if (words[index].stage === 0 || words[index].streak === 3) {
+          const globalIndex = words.findIndex(w => w.welsh === groupWords[index].welsh);
+          words[globalIndex].streak += 1;
+
+          if (
+            words[globalIndex].stage === 0 ||
+            words[globalIndex].streak === 3
+          ) {
             advanceStage();
-            words[index].streak = 0;
+            words[globalIndex].streak = 0;
           }
           nextWord();
         }}
         onFalseAnswer={() => {
-          words[index].streak = 0;
+          const globalIndex = words.findIndex(w => w.welsh === groupWords[index].welsh);
+          words[globalIndex].streak = 0;
           nextWord();
         }}
       />
     </View>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#fff' },

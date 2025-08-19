@@ -1,454 +1,547 @@
-{
-  "1": [
-    {
-      "welsh": "y",
-      "english": "the"
-    },
-    {
-      "welsh": "a",
-      "english": "and"
-    },
-    {
-      "welsh": "o",
-      "english": "from"
-    },
-    {
-      "welsh": "i",
-      "english": "to"
-    },
-    {
-      "welsh": "ar",
-      "english": "on"
-    },
-    {
-      "welsh": "yn",
-      "english": "in"
-    },
-    {
-      "welsh": "gyda",
-      "english": "with"
-    },
-    {
-      "welsh": "ei",
-      "english": "his"
-    },
-    {
-      "welsh": "fi",
-      "english": "me"
-    },
-    {
-      "welsh": "ti",
-      "english": "you"
-    },
-    {
-      "welsh": "ni",
-      "english": "we"
-    },
-    {
-      "welsh": "nhw",
-      "english": "they"
-    },
-    {
-      "welsh": "hwn",
-      "english": "this"
-    },
-    {
-      "welsh": "she",
-      "english": "she"
-    },
-    {
-      "welsh": "fy",
-      "english": "my"
-    }
-  ],
-  "2": [
-    {
-      "welsh": "bod",
-      "english": "to be"
-    },
-    {
-      "welsh": "cael",
-      "english": "to have"
-    },
-    {
-      "welsh": "mynd",
-      "english": "to go"
-    },
-    {
-      "welsh": "dod",
-      "english": "to come"
-    },
-    {
-      "welsh": "gwneud",
-      "english": "to do"
-    },
-    {
-      "welsh": "dweud",
-      "english": "to say"
-    },
-    {
-      "welsh": "gweld",
-      "english": "to see"
-    },
-    {
-      "welsh": "rhoi",
-      "english": "to give"
-    },
-    {
-      "welsh": "cymryd",
-      "english": "to take"
-    },
-    {
-      "welsh": "bwyta",
-      "english": "to eat"
-    },
-    {
-      "welsh": "yfed",
-      "english": "to drink"
-    },
-    {
-      "welsh": "chwarae",
-      "english": "to play"
-    },
-    {
-      "welsh": "siarad",
-      "english": "to speak"
-    },
-    {
-      "welsh": "gweithio",
-      "english": "to work"
-    },
-    {
-      "welsh": "byw",
-      "english": "to live"
-    }
-  ],
-  "3": [
-    {
-      "welsh": "mawr",
-      "english": "big"
-    },
-    {
-      "welsh": "bach",
-      "english": "small"
-    },
-    {
-      "welsh": "newydd",
-      "english": "new"
-    },
-    {
-      "welsh": "hen",
-      "english": "old"
-    },
-    {
-      "welsh": "da",
-      "english": "good"
-    },
-    {
-      "welsh": "drwg",
-      "english": "bad"
-    },
-    {
-      "welsh": "uchel",
-      "english": "high"
-    },
-    {
-      "welsh": "isel",
-      "english": "low"
-    },
-    {
-      "welsh": "poeth",
-      "english": "hot"
-    },
-    {
-      "welsh": "oer",
-      "english": "cold"
-    },
-    {
-      "welsh": "cyflym",
-      "english": "fast"
-    },
-    {
-      "welsh": "araf",
-      "english": "slow"
-    },
-    {
-      "welsh": "gwyn",
-      "english": "white"
-    },
-    {
-      "welsh": "du",
-      "english": "black"
-    },
-    {
-      "welsh": "coch",
-      "english": "red"
-    }
-  ],
-  "4": [
-    {
-      "welsh": "un",
-      "english": "one"
-    },
-    {
-      "welsh": "dau",
-      "english": "two"
-    },
-    {
-      "welsh": "tri",
-      "english": "three"
-    },
-    {
-      "welsh": "pedwar",
-      "english": "four"
-    },
-    {
-      "welsh": "pump",
-      "english": "five"
-    },
-    {
-      "welsh": "deg",
-      "english": "ten"
-    },
-    {
-      "welsh": "cant",
-      "english": "hundred"
-    },
-    {
-      "welsh": "mil",
-      "english": "thousand"
-    },
-    {
-      "welsh": "amser",
-      "english": "time"
-    },
-    {
-      "welsh": "dydd",
-      "english": "day"
-    },
-    {
-      "welsh": "nos",
-      "english": "night"
-    },
-    {
-      "welsh": "wythnos",
-      "english": "week"
-    },
-    {
-      "welsh": "mis",
-      "english": "month"
-    },
-    {
-      "welsh": "blwyddyn",
-      "english": "year"
-    },
-    {
-      "welsh": "heddiw",
-      "english": "today"
-    }
-  ],
-  "5": [
-    {
-      "welsh": "lle",
-      "english": "place"
-    },
-    {
-      "welsh": "cartref",
-      "english": "home"
-    },
-    {
-      "welsh": "ysgol",
-      "english": "school"
-    },
-    {
-      "welsh": "tref",
-      "english": "town"
-    },
-    {
-      "welsh": "dinasy",
-      "english": "city"
-    },
-    {
-      "welsh": "afon",
-      "english": "river"
-    },
-    {
-      "welsh": "mynydd",
-      "english": "mountain"
-    },
-    {
-      "welsh": "mor",
-      "english": "sea"
-    },
-    {
-      "welsh": "coeden",
-      "english": "tree"
-    },
-    {
-      "welsh": "planhigyn",
-      "english": "plant"
-    },
-    {
-      "welsh": "byd",
-      "english": "world"
-    },
-    {
-      "welsh": "ynys",
-      "english": "island"
-    },
-    {
-      "welsh": "gwlad",
-      "english": "country"
-    }
-  ],
-  "6": [
-    {
-      "welsh": "teulu",
-      "english": "family"
-    },
-    {
-      "welsh": "mam",
-      "english": "mother"
-    },
-    {
-      "welsh": "tad",
-      "english": "father"
-    },
-    {
-      "welsh": "merch",
-      "english": "girl"
-    },
-    {
-      "welsh": "mab",
-      "english": "son"
-    },
-    {
-      "welsh": "plentyn",
-      "english": "child"
-    },
-    {
-      "welsh": "ffrind",
-      "english": "friend"
-    },
-    {
-      "welsh": "pobl",
-      "english": "people"
-    },
-    {
-      "welsh": "aelod",
-      "english": "member"
-    },
-    {
-      "welsh": "bardd",
-      "english": "poet"
-    },
-    {
-      "welsh": "gweithiwr",
-      "english": "worker"
-    }
-  ],
-  "7": [
-    {
-      "welsh": "llyfr",
-      "english": "book"
-    },
-    {
-      "welsh": "drws",
-      "english": "door"
-    },
-    {
-      "welsh": "bwyd",
-      "english": "food"
-    },
-    {
-      "welsh": "dwr",
-      "english": "water"
-    },
-    {
-      "welsh": "haul",
-      "english": "sun"
-    },
-    {
-      "welsh": "llygad",
-      "english": "eye"
-    },
-    {
-      "welsh": "pen",
-      "english": "head"
-    },
-    {
-      "welsh": "coes",
-      "english": "leg"
-    },
-    {
-      "welsh": "croen",
-      "english": "skin"
-    },
-    {
-      "welsh": "dillad",
-      "english": "clothes"
-    },
-    {
-      "welsh": "siop",
-      "english": "shop"
-    },
-    {
-      "welsh": "car",
-      "english": "car"
-    }
-  ],
-  "8": [
-    {
-      "welsh": "syniad",
-      "english": "idea"
-    },
-    {
-      "welsh": "cariad",
-      "english": "love"
-    },
-    {
-      "welsh": "ofn",
-      "english": "fear"
-    },
-    {
-      "welsh": "gobaith",
-      "english": "hope"
-    },
-    {
-      "welsh": "gwir",
-      "english": "truth"
-    },
-    {
-      "welsh": "achos",
-      "english": "because"
-    },
-    {
-      "welsh": "ond",
-      "english": "but"
-    },
-    {
-      "welsh": "neu",
-      "english": "or"
-    },
-    {
-      "welsh": "fel",
-      "english": "so"
-    },
-    {
-      "welsh": "pan",
-      "english": "when"
-    },
-    {
-      "welsh": "os",
-      "english": "if"
-    },
-    {
-      "welsh": "cyn",
-      "english": "before"
-    },
-    {
-      "welsh": "ar ol",
-      "english": "after"
-    }
-  ]
-}
+[
+  {
+    "welsh": "y",
+    "english": "the",
+    "group": "1"
+  },
+  {
+    "welsh": "a",
+    "english": "and",
+    "group": "1"
+  },
+  {
+    "welsh": "o",
+    "english": "from",
+    "group": "1"
+  },
+  {
+    "welsh": "i",
+    "english": "to",
+    "group": "1"
+  },
+  {
+    "welsh": "ar",
+    "english": "on",
+    "group": "1"
+  },
+  {
+    "welsh": "yn",
+    "english": "in",
+    "group": "1"
+  },
+  {
+    "welsh": "gyda",
+    "english": "with",
+    "group": "1"
+  },
+  {
+    "welsh": "ei",
+    "english": "his",
+    "group": "1"
+  },
+  {
+    "welsh": "fi",
+    "english": "me",
+    "group": "1"
+  },
+  {
+    "welsh": "ti",
+    "english": "you",
+    "group": "1"
+  },
+  {
+    "welsh": "ni",
+    "english": "we",
+    "group": "1"
+  },
+  {
+    "welsh": "nhw",
+    "english": "they",
+    "group": "1"
+  },
+  {
+    "welsh": "hwn",
+    "english": "this",
+    "group": "1"
+  },
+  {
+    "welsh": "she",
+    "english": "she",
+    "group": "1"
+  },
+  {
+    "welsh": "fy",
+    "english": "my",
+    "group": "1"
+  },
+  {
+    "welsh": "bod",
+    "english": "to be",
+    "group": "2"
+  },
+  {
+    "welsh": "cael",
+    "english": "to have",
+    "group": "2"
+  },
+  {
+    "welsh": "mynd",
+    "english": "to go",
+    "group": "2"
+  },
+  {
+    "welsh": "dod",
+    "english": "to come",
+    "group": "2"
+  },
+  {
+    "welsh": "gwneud",
+    "english": "to do",
+    "group": "2"
+  },
+  {
+    "welsh": "dweud",
+    "english": "to say",
+    "group": "2"
+  },
+  {
+    "welsh": "gweld",
+    "english": "to see",
+    "group": "2"
+  },
+  {
+    "welsh": "rhoi",
+    "english": "to give",
+    "group": "2"
+  },
+  {
+    "welsh": "cymryd",
+    "english": "to take",
+    "group": "2"
+  },
+  {
+    "welsh": "bwyta",
+    "english": "to eat",
+    "group": "2"
+  },
+  {
+    "welsh": "yfed",
+    "english": "to drink",
+    "group": "2"
+  },
+  {
+    "welsh": "chwarae",
+    "english": "to play",
+    "group": "2"
+  },
+  {
+    "welsh": "siarad",
+    "english": "to speak",
+    "group": "2"
+  },
+  {
+    "welsh": "gweithio",
+    "english": "to work",
+    "group": "2"
+  },
+  {
+    "welsh": "byw",
+    "english": "to live",
+    "group": "2"
+  },
+  {
+    "welsh": "mawr",
+    "english": "big",
+    "group": "3"
+  },
+  {
+    "welsh": "bach",
+    "english": "small",
+    "group": "3"
+  },
+  {
+    "welsh": "newydd",
+    "english": "new",
+    "group": "3"
+  },
+  {
+    "welsh": "hen",
+    "english": "old",
+    "group": "3"
+  },
+  {
+    "welsh": "da",
+    "english": "good",
+    "group": "3"
+  },
+  {
+    "welsh": "drwg",
+    "english": "bad",
+    "group": "3"
+  },
+  {
+    "welsh": "uchel",
+    "english": "high",
+    "group": "3"
+  },
+  {
+    "welsh": "isel",
+    "english": "low",
+    "group": "3"
+  },
+  {
+    "welsh": "poeth",
+    "english": "hot",
+    "group": "3"
+  },
+  {
+    "welsh": "oer",
+    "english": "cold",
+    "group": "3"
+  },
+  {
+    "welsh": "cyflym",
+    "english": "fast",
+    "group": "3"
+  },
+  {
+    "welsh": "araf",
+    "english": "slow",
+    "group": "3"
+  },
+  {
+    "welsh": "gwyn",
+    "english": "white",
+    "group": "3"
+  },
+  {
+    "welsh": "du",
+    "english": "black",
+    "group": "3"
+  },
+  {
+    "welsh": "coch",
+    "english": "red",
+    "group": "3"
+  },
+  {
+    "welsh": "un",
+    "english": "one",
+    "group": "4"
+  },
+  {
+    "welsh": "dau",
+    "english": "two",
+    "group": "4"
+  },
+  {
+    "welsh": "tri",
+    "english": "three",
+    "group": "4"
+  },
+  {
+    "welsh": "pedwar",
+    "english": "four",
+    "group": "4"
+  },
+  {
+    "welsh": "pump",
+    "english": "five",
+    "group": "4"
+  },
+  {
+    "welsh": "deg",
+    "english": "ten",
+    "group": "4"
+  },
+  {
+    "welsh": "cant",
+    "english": "hundred",
+    "group": "4"
+  },
+  {
+    "welsh": "mil",
+    "english": "thousand",
+    "group": "4"
+  },
+  {
+    "welsh": "amser",
+    "english": "time",
+    "group": "4"
+  },
+  {
+    "welsh": "dydd",
+    "english": "day",
+    "group": "4"
+  },
+  {
+    "welsh": "nos",
+    "english": "night",
+    "group": "4"
+  },
+  {
+    "welsh": "wythnos",
+    "english": "week",
+    "group": "4"
+  },
+  {
+    "welsh": "mis",
+    "english": "month",
+    "group": "4"
+  },
+  {
+    "welsh": "blwyddyn",
+    "english": "year",
+    "group": "4"
+  },
+  {
+    "welsh": "heddiw",
+    "english": "today",
+    "group": "4"
+  },
+  {
+    "welsh": "lle",
+    "english": "place",
+    "group": "5"
+  },
+  {
+    "welsh": "cartref",
+    "english": "home",
+    "group": "5"
+  },
+  {
+    "welsh": "ysgol",
+    "english": "school",
+    "group": "5"
+  },
+  {
+    "welsh": "tref",
+    "english": "town",
+    "group": "5"
+  },
+  {
+    "welsh": "dinasy",
+    "english": "city",
+    "group": "5"
+  },
+  {
+    "welsh": "afon",
+    "english": "river",
+    "group": "5"
+  },
+  {
+    "welsh": "mynydd",
+    "english": "mountain",
+    "group": "5"
+  },
+  {
+    "welsh": "mor",
+    "english": "sea",
+    "group": "5"
+  },
+  {
+    "welsh": "coeden",
+    "english": "tree",
+    "group": "5"
+  },
+  {
+    "welsh": "planhigyn",
+    "english": "plant",
+    "group": "5"
+  },
+  {
+    "welsh": "byd",
+    "english": "world",
+    "group": "5"
+  },
+  {
+    "welsh": "ynys",
+    "english": "island",
+    "group": "5"
+  },
+  {
+    "welsh": "gwlad",
+    "english": "country",
+    "group": "5"
+  },
+  {
+    "welsh": "teulu",
+    "english": "family",
+    "group": "6"
+  },
+  {
+    "welsh": "mam",
+    "english": "mother",
+    "group": "6"
+  },
+  {
+    "welsh": "tad",
+    "english": "father",
+    "group": "6"
+  },
+  {
+    "welsh": "merch",
+    "english": "girl",
+    "group": "6"
+  },
+  {
+    "welsh": "mab",
+    "english": "son",
+    "group": "6"
+  },
+  {
+    "welsh": "plentyn",
+    "english": "child",
+    "group": "6"
+  },
+  {
+    "welsh": "ffrind",
+    "english": "friend",
+    "group": "6"
+  },
+  {
+    "welsh": "pobl",
+    "english": "people",
+    "group": "6"
+  },
+  {
+    "welsh": "aelod",
+    "english": "member",
+    "group": "6"
+  },
+  {
+    "welsh": "bardd",
+    "english": "poet",
+    "group": "6"
+  },
+  {
+    "welsh": "gweithiwr",
+    "english": "worker",
+    "group": "6"
+  },
+  {
+    "welsh": "llyfr",
+    "english": "book",
+    "group": "7"
+  },
+  {
+    "welsh": "drws",
+    "english": "door",
+    "group": "7"
+  },
+  {
+    "welsh": "bwyd",
+    "english": "food",
+    "group": "7"
+  },
+  {
+    "welsh": "dwr",
+    "english": "water",
+    "group": "7"
+  },
+  {
+    "welsh": "haul",
+    "english": "sun",
+    "group": "7"
+  },
+  {
+    "welsh": "llygad",
+    "english": "eye",
+    "group": "7"
+  },
+  {
+    "welsh": "pen",
+    "english": "head",
+    "group": "7"
+  },
+  {
+    "welsh": "coes",
+    "english": "leg",
+    "group": "7"
+  },
+  {
+    "welsh": "croen",
+    "english": "skin",
+    "group": "7"
+  },
+  {
+    "welsh": "dillad",
+    "english": "clothes",
+    "group": "7"
+  },
+  {
+    "welsh": "siop",
+    "english": "shop",
+    "group": "7"
+  },
+  {
+    "welsh": "car",
+    "english": "car",
+    "group": "7"
+  },
+  {
+    "welsh": "syniad",
+    "english": "idea",
+    "group": "8"
+  },
+  {
+    "welsh": "cariad",
+    "english": "love",
+    "group": "8"
+  },
+  {
+    "welsh": "ofn",
+    "english": "fear",
+    "group": "8"
+  },
+  {
+    "welsh": "gobaith",
+    "english": "hope",
+    "group": "8"
+  },
+  {
+    "welsh": "gwir",
+    "english": "truth",
+    "group": "8"
+  },
+  {
+    "welsh": "achos",
+    "english": "because",
+    "group": "8"
+  },
+  {
+    "welsh": "ond",
+    "english": "but",
+    "group": "8"
+  },
+  {
+    "welsh": "neu",
+    "english": "or",
+    "group": "8"
+  },
+  {
+    "welsh": "fel",
+    "english": "so",
+    "group": "8"
+  },
+  {
+    "welsh": "pan",
+    "english": "when",
+    "group": "8"
+  },
+  {
+    "welsh": "os",
+    "english": "if",
+    "group": "8"
+  },
+  {
+    "welsh": "cyn",
+    "english": "before",
+    "group": "8"
+  },
+  {
+    "welsh": "ar ol",
+    "english": "after",
+    "group": "8"
+  }
+]
