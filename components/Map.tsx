@@ -89,7 +89,7 @@ export default function Map() {
   const [targetPosition, setTargetPosition] = useState<Position>({ x: 150, y: 150 });
   const [isMoving, setIsMoving] = useState(false);
   const [isFacingLeft, setIsFacingLeft] = useState(false);
-  const caravanX = useSharedValue(150);
+  const caravanX = useSharedValue(400);
   const caravanY = useSharedValue(150);
   
   // Selected town state
@@ -109,9 +109,9 @@ export default function Map() {
       const dy = targetPosition.y - currentY;
       
       // Determine facing direction
-      if (dx < 0) {
+      if (dx > 0) {
         setIsFacingLeft(true);
-      } else if (dx > 0) {
+      } else if (dx < 0) {
         setIsFacingLeft(false);
       }
       

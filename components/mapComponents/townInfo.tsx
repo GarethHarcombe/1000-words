@@ -50,7 +50,7 @@ export default function TownInfo ({ town, action }: TownInfoProps) {
         <View style={styles.townHeader}>
             <Text style={styles.townName}>{town.name}</Text>
             <View style={[styles.stageBadge, { backgroundColor: getStageColor(town.stage) }]}>
-                <Text style={styles.stageText}>Checkpoint {town.stage}</Text>
+                <Text style={styles.stageText}>Greetings & Basics</Text>
             </View>
         </View>
         
@@ -70,7 +70,7 @@ export default function TownInfo ({ town, action }: TownInfoProps) {
               style={styles.actionButton}
               onPress={() => router.push('/TownFlashcardsScreen')}
             >
-              <Text style={styles.actionButtonText}>Travel Here</Text>
+              <Text style={styles.actionButtonText}>Travel Here and Learn</Text>
             </TouchableOpacity>
         </View>
     </View>
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   townImageContainer: {
-    height: 160,
+    height: 200,
     borderRadius: 10,
     overflow: 'hidden',
     marginBottom: 15,
