@@ -1,46 +1,51 @@
 [
     {
     "stage": 1,
+    "name": "Wrecsam",
+    "group": "Greetings",
+    "x": 570,
+    "y": 120,
+    "description": ""
+  },
+    {
+    "stage": 2,
     "name": "Conwy",
+    "group": "Pronouns",
     "x": 400,
     "y": 50,
     "description": "A picturesque medieval walled town dominated by the imposing Conwy Castle, a UNESCO World Heritage Site. The remarkably intact town walls, historic suspension bridge, and quaint harbor make this one of North Wales' most photogenic destinations."
   },
   {
-    "stage": 2,
-    "name": "The Great Orme Copper Mines",
-    "x": 300,
-    "y": 80,
-    "description": "Bronze Age copper mines in Llandudno dating back 4,000 years that form the largest prehistoric mine discovered in the world. Visitors can explore the ancient underground passages where miners as young as children once worked."
-  },
-
-  {
     "stage": 3,
-    "name": "Snowdonia National Park",
-    "x": 260,
-    "y": 200,
-    "description": "Home to Wales' highest mountain (Snowdon/Yr Wyddfa), this breathtaking national park spans 823 square miles of dramatic mountains, pristine lakes, and ancient woodlands. Visitors can summit Snowdon via hiking trails or the historic mountain railway for panoramic views across Wales."
+    "name": "The Great Orme Copper Mines",
+    "group": "Question Words",
+    "x": 400,
+    "y": 20,
+    "description": "Bronze Age copper mines in Llandudno dating back 4,000 years that form the largest prehistoric mine discovered in the world. Visitors can explore the ancient underground passages where miners as young as children once worked."
   },
   {
     "stage": 4,
-    "name": "Portmeirion",
-    "x": 200,
-    "y": 260,
-    "description": "A whimsical Italianate village built by architect Sir Clough Williams-Ellis between 1925 and 1975. Famous as the filming location for the cult TV series 'The Prisoner,' this colorful coastal resort features Mediterranean-style buildings, exotic gardens, and ornate architectural details."
+    "name": "Betws-y-Coed",
+    "group": "Numbers",
+    "x": 410,
+    "y": 110,
+    "description": ""
   },
   {
     "stage": 5,
-    "name": "Smallest House in Great Britain",
-    "x": 280,
-    "y": 280,
-    "description": "Located in Conwy, this tiny red house measures just 72 inches wide and 122 inches high. This minuscule dwelling on Conwy's quayside was actually inhabited until 1900 and now serves as a quirky tourist attraction that can be viewed in its entirety in under a minute."
+    "name": "Llanfairpwllgwyngyllgogerychwyrndrobwllllantysiliogogogoch",
+    "group": "Places",
+    "x": 340,
+    "y": 80,
+    "description": "The village with the longest place name in Europe (and second longest in the world) at 58 characters. Originally a publicity stunt in the 1860s, the name translates to 'St Mary's Church in the hollow of the white hazel near a rapid whirlpool and the Church of St. Tysilio near the red cave.'"
   },
   {
     "stage": 6,
-    "name": "Brecon Beacons National Park",
-    "x": 300,
-    "y": 380,
-    "description": "A mountain range of spectacular peaks, caves, waterfalls, and moorland. This International Dark Sky Reserve offers some of the UK's best stargazing opportunities alongside outdoor adventures from hiking and mountain biking to caving and wild swimming."
+    "name": "Welsh Bakery",
+    "group": "Food & Drink",
+    "x": 260,
+    "y": 60,
+    "description": "Welsh cakes are soft, buttery griddle cakes studded with currants, offering a delicate balance of sweetness and spice with a melt-in-the-mouth texture. They hold a cherished place in Welsh culture as a traditional treat served at gatherings and celebrations, symbolizing warmth, hospitality, and heritage."
   },
   {
     "stage": 7,

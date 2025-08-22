@@ -9,22 +9,25 @@ grouped_words = []
 
 # Try UTF-8 first, fallback to ISO-8859-1 if needed
 try:
-    csvfile = open(input_file, mode="r", encoding="utf-8")
+    csvfile = open(input_file, mode="r", encoding="ISO-8859-1")
 except UnicodeDecodeError:
     csvfile = open(input_file, mode="r", encoding="ISO-8859-1")
 
 with csvfile:
     reader = csv.DictReader(csvfile)
-    for row in reader:
-        group = row["Group"].strip()
-        welsh = row["Welsh"].strip()
-        english = row["English"].strip()
+    for row_num, row in enumerate(reader, start=1):
+        try:
+            group = row["Group"].strip()
+            welsh = row["Welsh"].strip()
+            english = row["English"].strip()
 
-        grouped_words.append({
-            "welsh": welsh,
-            "english": english,
-            "group": group
-        })
+            grouped_words.append({
+                "welsh": welsh,
+                "english": english,
+                "group": group
+            })
+        except:
+            print(f"Skipping row {row_num} due to error:")
 
 with open(output_file, mode="w", encoding="utf-8") as jsonfile:
     json.dump(grouped_words, jsonfile, indent=2, ensure_ascii=False)

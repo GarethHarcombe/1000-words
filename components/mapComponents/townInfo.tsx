@@ -40,6 +40,12 @@ export default function TownInfo ({ town, action }: TownInfoProps) {
             return require('@/assets/images/caravan.jpg');
           case 3:
             return require('@/assets/images/caravan.jpg');
+          case 4:
+            return require('@/assets/images/town-images/llanfaipg.jpg');
+          case 5:
+            return require('@/assets/images/town-images/llanfaipg.jpg');
+          case 6:
+            return require('@/assets/images/town-images/bakery.jpg');
           default:
             return require('@/assets/images/caravan.jpg');
         }
@@ -50,7 +56,7 @@ export default function TownInfo ({ town, action }: TownInfoProps) {
         <View style={styles.townHeader}>
             <Text style={styles.townName}>{town.name}</Text>
             <View style={[styles.stageBadge, { backgroundColor: getStageColor(town.stage) }]}>
-                <Text style={styles.stageText}>Greetings & Basics</Text>
+                <Text style={styles.stageText}>{town.group}</Text>
             </View>
         </View>
         
@@ -68,7 +74,7 @@ export default function TownInfo ({ town, action }: TownInfoProps) {
             
             <TouchableOpacity
               style={styles.actionButton}
-              onPress={() => router.push('/TownFlashcardsScreen')}
+              onPress={() => router.push({ pathname: '/TownFlashcardsScreen', params: { id: town.stage } })}
             >
               <Text style={styles.actionButtonText}>Travel Here and Learn</Text>
             </TouchableOpacity>
