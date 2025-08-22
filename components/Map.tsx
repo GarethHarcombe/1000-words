@@ -30,16 +30,16 @@ interface Position {
 }
 
 const townImages: Record<string, any> = {
-  "The Great Orme Copper Mines": require('@/assets/images/town-icons/copper-mines.png'),
-  "Conwy": require('@/assets/images/town-icons/conwy.png'),
-  "Snowdonia National Park": require('@/assets/images/town-icons/snowdonia.png'),
-  "Portmeirion": require('@/assets/images/town-icons/portmeirion.png'),
-  "Smallest House in Great Britain": require('@/assets/images/town-icons/smallest-house.png'),
-  "Brecon Beacons National Park": require('@/assets/images/town-icons/brecon-beacons.png'),
-  "Pembrokeshire Coast": require('@/assets/images/town-icons/pembrokeshire-coast.png'),
-  "St. Davids": require('@/assets/images/town-icons/st-davids.png'),
-  "Swansea": require('@/assets/images/town-icons/swansea.png'),
-  "Cardiff": require('@/assets/images/town-icons/cardiff.png'),
+  "1": require('@/assets/images/town-icons/copper-mines.png'),
+  "2": require('@/assets/images/town-icons/conwy.png'),
+  "3": require('@/assets/images/town-icons/snowdonia.png'),
+  "4": require('@/assets/images/town-icons/portmeirion.png'),
+  "5": require('@/assets/images/town-icons/smallest-house.png'),
+  "6": require('@/assets/images/town-icons/brecon-beacons.png'),
+  "7": require('@/assets/images/town-icons/pembrokeshire-coast.png'),
+  "8": require('@/assets/images/town-icons/st-davids.png'),
+  "9": require('@/assets/images/town-icons/swansea.png'),
+  "10": require('@/assets/images/town-icons/cardiff.png'),
   "default": require('@/assets/images/adaptive-icon.png')
 };
 
@@ -277,7 +277,7 @@ export default function Map() {
   };
 
   const getTownImage = (town: Town) => {
-    return townImages[town.name] || townImages.default;
+    return townImages[town.stage] || townImages.default;
   };
 
   // Simple debug overlay
@@ -314,8 +314,8 @@ export default function Map() {
                 style={[
                   styles.townMarker, 
                   { 
-                    top: town.y, 
-                    left: town.x, 
+                    top: town.y * (viewportWidth / 1400), // scaling to give the same position on all devices
+                    left: town.x * (viewportWidth / 1550), 
                     // backgroundColor: getStageColor(town.stage),
                     zIndex: 20
                   }

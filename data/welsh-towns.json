@@ -50,6 +50,7 @@
   {
     "stage": 7,
     "name": "Pembrokeshire Coast",
+    "group": "",
     "x": 220,
     "y": 450,
     "description": "Britain's only coastal national park features 186 miles of spectacular limestone cliffs, golden beaches, and hidden coves. The Pembrokeshire Coast Path offers breathtaking views while the waters host diverse marine life including seals, dolphins, and puffins on nearby islands."
@@ -57,6 +58,7 @@
   {
     "stage": 8,
     "name": "St. Davids",
+    "group": "",
     "x": 240,
     "y": 500,
     "description": "The UK's smallest city contains the magnificent 12th-century St. Davids Cathedral built in a valley to hide it from Viking raiders. Despite its city status, this charming settlement has the population of a small village and sits within the spectacular Pembrokeshire Coast National Park."
@@ -64,6 +66,7 @@
   {
     "stage": 9,
     "name": "Swansea",
+    "group": "",
     "x": 350,
     "y": 520,
     "description": "Wales' second city offers the beautiful sweep of Swansea Bay, the historic Mumbles lighthouse, and the birthplace of poet Dylan Thomas. The renovated maritime quarter and nearby Gower Peninsula (the UK's first Area of Outstanding Natural Beauty) attract visitors year-round."
@@ -71,6 +74,7 @@
   {
     "stage": 10,
     "name": "Cardiff",
+    "group": "",
     "x": 400,
     "y": 560,
     "description": "Wales' capital city features the stunning Cardiff Castle, ultra-modern Cardiff Bay waterfront, and the iconic Principality Stadium. This vibrant metropolis blends medieval heritage with contemporary architecture and hosts major sporting and cultural events throughout the year."
