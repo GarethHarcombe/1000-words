@@ -17,12 +17,44 @@ export default function TownFlashcardsScreen() {
 
   const [index, setIndex] = useState(0);
 
-  const nextWord = () =>
-    setIndex((prev) => (prev + 1) % groupWords.length);
+  const intervals = [10 * 1000, 30 * 1000, 60 * 1000, 20 * 60 * 1000]; // ms
+
+  const scheduleNextReview = (word: Word, correct: boolean) => {
+    const now = Date.now();
+    if (correct) {
+      if (word.stage < 1 || (word.stage < 3 && word.streak >= 3)) {
+        word.stage += 1;
+        word.streak = 0;
+      }
+      word.nextReview = now + intervals[word.stage];
+    } else {
+      word.streak = 0;
+      word.nextReview = now + 60 * 1000; // 1 min for wrong answer
+    }
+  };
+
+  const nextWord = () => {
+    const now = Date.now();
+    const dueWords = groupWords.filter(w => !w.nextReview || w.nextReview <= now);
+    if (dueWords.length > 0) {
+      const nextIndex = groupWords.findIndex(w => w.welsh === dueWords[0].welsh);
+      setIndex(nextIndex);
+    } else {
+      // If none are due, pick the one with the earliest nextReview
+      const nextIndex = groupWords.reduce((earliestIdx, w, i) =>
+        !groupWords[earliestIdx].nextReview || (w.nextReview || Infinity) < (groupWords[earliestIdx].nextReview || Infinity)
+          ? i
+          : earliestIdx,
+        0
+      );
+      setIndex(nextIndex);
+    }
+  };
+
 
   const advanceStage = () => {
     const updated = [...words];
-    const globalIndex = words.findIndex(w => w.welsh === groupWords[index].welsh);
+    const globalIndex = words.findIndex(w => (w.welsh === groupWords[index].welsh && w.group === groupWords[index].group));
     if (updated[globalIndex].stage < 3) updated[globalIndex].stage += 1;
     setWords(updated);
   };
@@ -50,21 +82,17 @@ export default function TownFlashcardsScreen() {
         word={groupWords[index]}
         fillerAnswers={fillerAnswers}
         onCorrectAnswer={() => {
-          const globalIndex = words.findIndex(w => w.welsh === groupWords[index].welsh);
+          const globalIndex = words.findIndex(w => w.welsh === groupWords[index].welsh && w.group === groupWords[index].group);
           words[globalIndex].streak += 1;
-
-          if (
-            words[globalIndex].stage === 0 ||
-            words[globalIndex].streak === 3
-          ) {
-            advanceStage();
-            words[globalIndex].streak = 0;
-          }
+          scheduleNextReview(words[globalIndex], true);
+          setWords([...words]);
           nextWord();
         }}
+
         onFalseAnswer={() => {
-          const globalIndex = words.findIndex(w => w.welsh === groupWords[index].welsh);
-          words[globalIndex].streak = 0;
+          const globalIndex = words.findIndex(w => w.welsh === groupWords[index].welsh && w.group === groupWords[index].group);
+          scheduleNextReview(words[globalIndex], false);
+          setWords([...words]);
           nextWord();
         }}
       />

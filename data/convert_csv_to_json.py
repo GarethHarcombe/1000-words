@@ -13,6 +13,8 @@ try:
 except UnicodeDecodeError:
     csvfile = open(input_file, mode="r", encoding="ISO-8859-1")
 
+curr_index = 0
+
 with csvfile:
     reader = csv.DictReader(csvfile)
     for row_num, row in enumerate(reader, start=1):
@@ -20,11 +22,14 @@ with csvfile:
             group = row["Group"].strip()
             welsh = row["Welsh"].strip()
             english = row["English"].strip()
+            index = curr_index
+            curr_index += 1
 
             grouped_words.append({
                 "welsh": welsh,
                 "english": english,
-                "group": group
+                "group": group,
+                "index": index
             })
         except:
             print(f"Skipping row {row_num} due to error:")

@@ -20,7 +20,7 @@ export default function StageControls({
 }: StageControlsProps) {
   
   // Only show controls for stage 0, or stage 1 with feedback, or at bottom of screen
-  if (word.stage !== 0 && !(word.stage === 1 && showFeedback)) {
+  if (!(word.stage === 0 && !showFeedback) && !(word.stage === 1 && showFeedback)) {
     return null;
   }
   

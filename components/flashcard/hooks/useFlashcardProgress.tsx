@@ -3,7 +3,7 @@ import { Word } from '@/constants/Types';
 
 export function useFlashcardProgress(words: Word[], setWords: (words: Word[]) => void) {
   const [index, setIndex] = useState(0);
-  const [wordHistory, setWordHistory] = useState<{welsh: string, timestamp: number}[]>([]);
+  const [wordHistory, setWordHistory] = useState<{index: number, timestamp: number}[]>([]);
 
   const suggestNextWord = () => {
     const now = Date.now();
@@ -48,7 +48,7 @@ export function useFlashcardProgress(words: Word[], setWords: (words: Word[]) =>
       
       // Find when this word was last studied
       const lastSeen = wordHistory
-        .filter(entry => entry.welsh === word.welsh)
+        .filter(entry => entry.index === word.index)
         .sort((a, b) => b.timestamp - a.timestamp)[0];
       
       if (lastSeen) {
@@ -93,7 +93,7 @@ export function useFlashcardProgress(words: Word[], setWords: (words: Word[]) =>
     const selected = candidates[0];
     
     // Update word history
-    setWordHistory(prev => [...prev, { welsh: selected.word.welsh, timestamp: now }]);
+    setWordHistory(prev => [...prev, { index: selected.word.index, timestamp: now }]);
     
     // Set the index to the selected word
     setIndex(selected.idx);
@@ -110,7 +110,7 @@ export function useFlashcardProgress(words: Word[], setWords: (words: Word[]) =>
   const nextWord = () => {
     // Update history
     const now = Date.now();
-    setWordHistory(prev => [...prev, { welsh: words[index].welsh, timestamp: now }]);
+    setWordHistory(prev => [...prev, { index: index, timestamp: now }]);
     
     // Move to next word
     suggestNextWord();

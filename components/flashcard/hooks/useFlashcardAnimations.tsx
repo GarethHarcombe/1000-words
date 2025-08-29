@@ -53,7 +53,7 @@ export function useFlashcardAnimations(word: Word) {
     //   particle.opacity.setValue(0);
     //   particle.scale.setValue(0);
     // });
-  }, [word.welsh]); // Use word.id instead of entire word object
+  }, [word.index]); // Use word.id instead of entire word object
 
   const animateProgressTo = (targetFraction: number) => {
     if (!progressRef.current) return;

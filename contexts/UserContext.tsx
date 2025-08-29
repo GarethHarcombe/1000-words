@@ -9,6 +9,7 @@ const initialWords: Word[] = wordsByGroup.map(word => ({
   numCorrect: 0,
   streak: 0,
   stage: 0,
+  nextReview: 1000000000000000,
 }));
 
 type UserContextType = {

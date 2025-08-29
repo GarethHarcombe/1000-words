@@ -39,6 +39,7 @@ export function useFlashcardState(
     switch (word.stage) {
       case 0:
         // For stage 0, just move to next word
+        setShowFeedback(true);
         animateProgressTo(1);
         setTimeout(() => {
           onCorrectAnswer();

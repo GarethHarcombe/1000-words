@@ -44,7 +44,7 @@ export default function AllWordsScreen() {
 
       <FlatList
         data={filtered}
-        keyExtractor={item => item.welsh.toString()}
+        keyExtractor={item => item.index.toString()}
         renderItem={({ item }) => {
            // Create a static animated value of 1
           const animatedValue = new Animated.Value(1);

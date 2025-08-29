@@ -13,7 +13,7 @@ import { useWords } from '@/contexts/UserContext';
 export default function CardsScreen() {
   const {words, setWords} = useWords();
   const [index, setIndex] = useState(0);
-  const [wordHistory, setWordHistory] = useState<{welsh: string, timestamp: number}[]>([]);
+  const [wordHistory, setWordHistory] = useState<{index: number, timestamp: number}[]>([]);
 
   const suggestNextWord = () => {
     const now = Date.now();
@@ -59,7 +59,7 @@ export default function CardsScreen() {
       
       // Find when this word was last studied
       const lastSeen = wordHistory
-        .filter(entry => entry.welsh === word.welsh)
+        .filter(entry => entry.index === word.index)
         .sort((a, b) => b.timestamp - a.timestamp)[0];
       
       if (lastSeen) {
@@ -104,7 +104,7 @@ export default function CardsScreen() {
     const selected = candidates[0];
     
     // Update word history
-    setWordHistory(prev => [...prev, { welsh: selected.word.welsh, timestamp: now }]);
+    setWordHistory(prev => [...prev, { index: selected.word.index, timestamp: now }]);
     
     // Set the index to the selected word
     setIndex(selected.idx);
@@ -122,7 +122,7 @@ export default function CardsScreen() {
   const nextWord = () => {
     // Update history
     const now = Date.now();
-    setWordHistory(prev => [...prev, { welsh: words[index].welsh, timestamp: now }]);
+    setWordHistory(prev => [...prev, { index: words[index].index, timestamp: now }]);
     
     // Move to next word
     suggestNextWord();
