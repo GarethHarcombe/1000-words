@@ -1,4 +1,4 @@
-import { View, Text } from '@/components/Themed';
+import { View, Text, ScrollView } from '@/components/Themed';
 import { StyleSheet } from 'react-native';
 import { useEffect } from 'react';
 import Colors from '@/constants/Colors';
@@ -96,10 +96,10 @@ export default function BottomSheet (props: BottomSheetProps) {
         <Animated.View style={[styles.bottomSheet, { height: bottomSheetHeight}, bottomSheetStyle]}>
             <View style={[styles.bottomSheetHandle]}/>
             
-            <DefaultView style={[style]} {...otherProps} >
+            <ScrollView style={[style]} {...otherProps} >
 
 
-            </DefaultView>
+            </ScrollView>
         </Animated.View>
     </GestureDetector>
     )};

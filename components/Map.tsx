@@ -34,8 +34,8 @@ const townImages: Record<string, any> = {
   "2": require('@/assets/images/town-icons/conwy.png'),
   "3": require('@/assets/images/town-icons/snowdonia.png'),
   "4": require('@/assets/images/town-icons/portmeirion.png'),
-  "5": require('@/assets/images/town-icons/smallest-house.png'),
-  "6": require('@/assets/images/town-icons/brecon-beacons.png'),
+  "5": require('@/assets/images/town-icons/llanfairpg.png'),
+  "6": require('@/assets/images/town-icons/welsh_cakes.png'),
   "7": require('@/assets/images/town-icons/pembrokeshire-coast.png'),
   "8": require('@/assets/images/town-icons/st-davids.png'),
   "9": require('@/assets/images/town-icons/swansea.png'),
@@ -50,11 +50,21 @@ const MIN_SCALE = 1;
 const MAX_SCALE = 4;
 
 // Define the original image aspect ratio (width/height)
-const IMAGE_ASPECT_RATIO = 1 // 205 / 246; // Your welsh-map-background.jpeg aspect ratio
+const imgWidth = 2481;
+const imgHeight = 3508;
+const IMAGE_ASPECT_RATIO = imgWidth / imgHeight // Your welsh-map-background.jpeg aspect ratio
 
 // Calculate initial map dimensions
 const mapHeight = viewportHeight;
 const mapWidth = mapHeight * IMAGE_ASPECT_RATIO;
+
+const scaleX = mapWidth / imgWidth;
+const scaleY = mapHeight / imgHeight;
+
+
+const ICON_SIZE = 20;
+const ICON_HALF = ICON_SIZE / 2;
+
 
 // Navbar adjustment
 const NAVBAR_HEIGHT = 0;
@@ -65,12 +75,11 @@ const CARAVAN_SIZE = 40;
 const CARAVAN_SPEED = 100; // pixels per second (in unscaled map coordinates)
 
 // Town data with descriptions
-const towns: Town[] = rawTowns.map(town => ({
-  ...town,
-  // numCorrect: 0,
-  // streak: 0,
-  // stage: 0,
-}));
+const towns: Town[] = rawTowns
+  .map(town => ({
+    ...town, 
+  }))
+  .slice(1, 6);
 
 const bottomSheetHeight = height * 0.5; // 40% of screen height
 
@@ -314,8 +323,9 @@ export default function Map() {
                 style={[
                   styles.townMarker, 
                   { 
-                    top: town.y * (viewportWidth / 1400), // scaling to give the same position on all devices
-                    left: town.x * (viewportWidth / 1550), 
+                    
+                    top: town.y * scaleY - ICON_HALF,
+                    left: town.x * scaleX - ICON_HALF,
                     // backgroundColor: getStageColor(town.stage),
                     zIndex: 20
                   }
@@ -341,7 +351,6 @@ export default function Map() {
         </Animated.View>
       </GestureDetector>
       
-      {/* Bottom sheet stays outside */}
       <BottomSheet bottomSheetHeight={bottomSheetHeight} isBottomSheetUp={isTownPopup} setIsTownPopup={setIsTownPopup}>
         {selectedTown && (
           <TownInfo town={selectedTown} action={townAction} />

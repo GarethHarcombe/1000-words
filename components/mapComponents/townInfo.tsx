@@ -1,5 +1,5 @@
 import { Town } from '@/constants/Types';
-import { View, Text, TouchableOpacity } from '@/components/Themed';
+import { View, Text, TouchableOpacity, ScrollView } from '@/components/Themed';
 import { StyleSheet, Image } from 'react-native';
 import Colors from '@/constants/Colors';
 import { useRouter } from 'expo-router';
@@ -17,15 +17,17 @@ export default function TownInfo ({ town, action }: TownInfoProps) {
     function getStageColor(stage: number): string {
         switch (stage) {
             case 0:
-            return '#ccc';
+              return '#ccc';
             case 1:
-            return '#ffcc00';
+              return '#ffcc00';
             case 2:
-            return '#3399ff';
+              return '#3399ff';
             case 3:
-            return '#33cc66';
+              return '#33cc66';
+            case 6:
+              return '#dc9b44';
             default:
-            return '#ccc';
+              return '#ccc';
         }
     }
 
@@ -52,7 +54,7 @@ export default function TownInfo ({ town, action }: TownInfoProps) {
     };
 
     return (
-    <View style={styles.townDetailsContainer}>
+    <ScrollView style={styles.townDetailsContainer}>
         <View style={styles.townHeader}>
             <Text style={styles.townName}>{town.name}</Text>
             <View style={[styles.stageBadge, { backgroundColor: getStageColor(town.stage) }]}>
@@ -76,10 +78,10 @@ export default function TownInfo ({ town, action }: TownInfoProps) {
               style={styles.actionButton}
               onPress={() => router.push({ pathname: '/TownFlashcardsScreen', params: { id: town.stage } })}
             >
-              <Text style={styles.actionButtonText}>Travel Here and Learn</Text>
+              <Text style={styles.actionButtonText}>Travel Here and Learn {town.group}</Text>
             </TouchableOpacity>
         </View>
-    </View>
+    </ScrollView>
     )
 };
 
@@ -109,7 +111,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   townImageContainer: {
-    height: 200,
+    height: 400,
     borderRadius: 10,
     overflow: 'hidden',
     marginBottom: 15,

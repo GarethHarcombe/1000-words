@@ -6,7 +6,8 @@ export type Word = {
     numCorrect: number;
     streak: number;
     stage: number;
-    nextReview: number;
+    nextDue?: number;
+    lastSeen?: number;
   };
 
   
