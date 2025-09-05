@@ -312,7 +312,7 @@
     "index": 51
   },
   {
-    "welsh": "trên",
+    "welsh": "trn",
     "english": "train",
     "group": "0",
     "index": 52
@@ -462,7 +462,7 @@
     "index": 76
   },
   {
-    "welsh": "lôn",
+    "welsh": "ln",
     "english": "lane",
     "group": "0",
     "index": 77
@@ -660,7 +660,7 @@
     "index": 109
   },
   {
-    "welsh": "môr",
+    "welsh": "mr",
     "english": "sea",
     "group": "0",
     "index": 110
@@ -984,7 +984,7 @@
     "index": 163
   },
   {
-    "welsh": "tîm",
+    "welsh": "tm",
     "english": "team",
     "group": "0",
     "index": 164
@@ -1074,1022 +1074,1022 @@
     "index": 178
   },
   {
+    "welsh": "pls",
+    "english": "please",
+    "group": "1",
+    "index": 179
+  },
+  {
+    "welsh": "maer",
+    "english": "excuse me",
+    "group": "1",
+    "index": 180
+  },
+  {
     "welsh": "sori",
     "english": "sorry",
     "group": "1",
-    "index": 179
+    "index": 181
   },
   {
     "welsh": "ti",
     "english": "you",
     "group": "2",
-    "index": 180
+    "index": 182
   },
   {
     "welsh": "wyt ti",
     "english": "you are",
     "group": "2",
-    "index": 181
+    "index": 183
   },
   {
     "welsh": "dyn ni",
     "english": "we are",
     "group": "2",
-    "index": 182
+    "index": 184
   },
   {
     "welsh": "mae e",
     "english": "he is",
     "group": "2",
-    "index": 183
+    "index": 185
   },
   {
     "welsh": "mae hi",
     "english": "she is",
     "group": "2",
-    "index": 184
+    "index": 186
   },
   {
     "welsh": "maen nhw",
     "english": "they are",
     "group": "2",
-    "index": 185
+    "index": 187
   },
   {
     "welsh": "dw i",
     "english": "I am",
     "group": "2",
-    "index": 186
+    "index": 188
   },
   {
     "welsh": "dy",
     "english": "your",
     "group": "2",
-    "index": 187
+    "index": 189
   },
   {
     "welsh": "ei",
     "english": "his",
     "group": "2",
-    "index": 188
+    "index": 190
   },
   {
     "welsh": "eich",
     "english": "your",
     "group": "2",
-    "index": 189
+    "index": 191
   },
   {
     "welsh": "ein",
     "english": "our",
     "group": "2",
-    "index": 190
+    "index": 192
   },
   {
     "welsh": "eu",
     "english": "their",
     "group": "2",
-    "index": 191
+    "index": 193
   },
   {
     "welsh": "fe",
     "english": "he",
     "group": "2",
-    "index": 192
+    "index": 194
   },
   {
     "welsh": "fi",
     "english": "I",
     "group": "2",
-    "index": 193
+    "index": 195
   },
   {
     "welsh": "fy",
     "english": "my",
     "group": "2",
-    "index": 194
+    "index": 196
   },
   {
     "welsh": "hi",
     "english": "she",
     "group": "2",
-    "index": 195
+    "index": 197
   },
   {
     "welsh": "neb",
     "english": "nobody",
     "group": "2",
-    "index": 196
+    "index": 198
   },
   {
     "welsh": "nhw",
     "english": "they",
     "group": "2",
-    "index": 197
+    "index": 199
   },
   {
     "welsh": "ni",
     "english": "we",
     "group": "2",
-    "index": 198
+    "index": 200
   },
   {
     "welsh": "pawb",
     "english": "everyone",
     "group": "2",
-    "index": 199
+    "index": 201
   },
   {
     "welsh": "pwy bynnag",
     "english": "whoever",
     "group": "2",
-    "index": 200
+    "index": 202
   },
   {
     "welsh": "rhywun",
     "english": "someone",
     "group": "2",
-    "index": 201
+    "index": 203
   },
   {
     "welsh": "ti",
     "english": "you",
     "group": "2",
-    "index": 202
+    "index": 204
   },
   {
     "welsh": "beth",
     "english": "what",
     "group": "3",
-    "index": 203
+    "index": 205
   },
   {
     "welsh": "ble",
     "english": "where",
     "group": "3",
-    "index": 204
+    "index": 206
   },
   {
     "welsh": "faint",
     "english": "how much",
     "group": "3",
-    "index": 205
+    "index": 207
   },
   {
     "welsh": "ga",
     "english": "may I",
     "group": "3",
-    "index": 206
+    "index": 208
   },
   {
     "welsh": "oes",
     "english": "is there",
     "group": "3",
-    "index": 207
+    "index": 209
   },
   {
     "welsh": "pa",
     "english": "which",
     "group": "3",
-    "index": 208
+    "index": 210
   },
   {
     "welsh": "pa un",
     "english": "which one",
     "group": "3",
-    "index": 209
+    "index": 211
   },
   {
     "welsh": "pam",
     "english": "why",
     "group": "3",
-    "index": 210
+    "index": 212
   },
   {
     "welsh": "pryd",
     "english": "when",
     "group": "3",
-    "index": 211
+    "index": 213
   },
   {
     "welsh": "pwy",
     "english": "who",
     "group": "3",
-    "index": 212
+    "index": 214
   },
   {
     "welsh": "sut",
     "english": "how",
     "group": "3",
-    "index": 213
+    "index": 215
   },
   {
     "welsh": "dim",
     "english": "zero",
     "group": "4",
-    "index": 214
+    "index": 216
   },
   {
     "welsh": "un",
     "english": "one",
     "group": "4",
-    "index": 215
+    "index": 217
   },
   {
     "welsh": "dau",
     "english": "two",
     "group": "4",
-    "index": 216
+    "index": 218
   },
   {
     "welsh": "tri",
     "english": "three",
     "group": "4",
-    "index": 217
+    "index": 219
   },
   {
     "welsh": "pedwar",
     "english": "four",
     "group": "4",
-    "index": 218
+    "index": 220
   },
   {
     "welsh": "pump",
     "english": "five",
     "group": "4",
-    "index": 219
+    "index": 221
   },
   {
     "welsh": "chwe",
     "english": "six",
     "group": "4",
-    "index": 220
+    "index": 222
   },
   {
     "welsh": "saith",
     "english": "seven",
     "group": "4",
-    "index": 221
+    "index": 223
   },
   {
     "welsh": "wyth",
     "english": "eight",
     "group": "4",
-    "index": 222
+    "index": 224
   },
   {
     "welsh": "nau",
     "english": "nine",
     "group": "4",
-    "index": 223
+    "index": 225
   },
   {
     "welsh": "deg",
     "english": "ten",
     "group": "4",
-    "index": 224
+    "index": 226
   },
   {
     "welsh": "un deg un",
     "english": "eleven",
     "group": "4",
-    "index": 225
+    "index": 227
   },
   {
     "welsh": "un deg dau",
     "english": "twelve",
     "group": "4",
-    "index": 226
+    "index": 228
   },
   {
     "welsh": "un deg tri",
     "english": "thirteen",
     "group": "4",
-    "index": 227
+    "index": 229
   },
   {
     "welsh": "un deg pedwar",
     "english": "fourteen",
     "group": "4",
-    "index": 228
+    "index": 230
   },
   {
     "welsh": "un deg pump",
     "english": "fifteen",
     "group": "4",
-    "index": 229
+    "index": 231
   },
   {
     "welsh": "un deg chwe",
     "english": "sixteen",
     "group": "4",
-    "index": 230
+    "index": 232
   },
   {
     "welsh": "un deg saith",
     "english": "seventeen",
     "group": "4",
-    "index": 231
+    "index": 233
   },
   {
     "welsh": "un deg wyth",
     "english": "eighteen",
     "group": "4",
-    "index": 232
+    "index": 234
   },
   {
     "welsh": "un deg nau",
     "english": "nineteen",
     "group": "4",
-    "index": 233
+    "index": 235
   },
   {
     "welsh": "dau ddeg",
     "english": "twenty",
     "group": "4",
-    "index": 234
+    "index": 236
   },
   {
     "welsh": "tri deg",
     "english": "thirty",
     "group": "4",
-    "index": 235
+    "index": 237
   },
   {
     "welsh": "pedwar deg",
     "english": "forty",
     "group": "4",
-    "index": 236
+    "index": 238
   },
   {
     "welsh": "pump deg",
     "english": "fifty",
     "group": "4",
-    "index": 237
+    "index": 239
   },
   {
     "welsh": "chwe deg",
     "english": "sixty",
     "group": "4",
-    "index": 238
+    "index": 240
   },
   {
     "welsh": "saith deg",
     "english": "seventy",
     "group": "4",
-    "index": 239
+    "index": 241
   },
   {
     "welsh": "wyth deg",
     "english": "eighty",
     "group": "4",
-    "index": 240
+    "index": 242
   },
   {
     "welsh": "nau deg",
     "english": "ninety",
     "group": "4",
-    "index": 241
+    "index": 243
   },
   {
     "welsh": "cant",
     "english": "one hundred",
     "group": "4",
-    "index": 242
+    "index": 244
   },
   {
     "welsh": "mil",
     "english": "one thousand",
     "group": "4",
-    "index": 243
+    "index": 245
   },
   {
     "welsh": "ysbyty",
     "english": "hospital",
     "group": "5",
-    "index": 244
+    "index": 246
   },
   {
     "welsh": "ysgol",
     "english": "school",
     "group": "5",
-    "index": 245
+    "index": 247
   },
   {
     "welsh": "coleg",
     "english": "college",
     "group": "5",
-    "index": 246
+    "index": 248
   },
   {
     "welsh": "prifysgol",
     "english": "university",
     "group": "5",
-    "index": 247
+    "index": 249
   },
   {
     "welsh": "orsaf",
     "english": "station",
     "group": "5",
-    "index": 248
+    "index": 250
   },
   {
     "welsh": "tren",
     "english": "train",
     "group": "5",
-    "index": 249
+    "index": 251
   },
   {
     "welsh": "bws",
     "english": "bus",
     "group": "5",
-    "index": 250
+    "index": 252
   },
   {
     "welsh": "llyfrgell",
     "english": "library",
     "group": "5",
-    "index": 251
+    "index": 253
   },
   {
     "welsh": "swyddfa bost",
     "english": "post office",
     "group": "5",
-    "index": 252
+    "index": 254
   },
   {
     "welsh": "siop",
     "english": "shop",
     "group": "5",
-    "index": 253
+    "index": 255
   },
   {
     "welsh": "archfachnad",
     "english": "supermarket",
     "group": "5",
-    "index": 254
+    "index": 256
   },
   {
     "welsh": "tafarn",
     "english": "pub",
     "group": "5",
-    "index": 255
+    "index": 257
   },
   {
     "welsh": "eglwys",
     "english": "church",
     "group": "5",
-    "index": 256
+    "index": 258
   },
   {
     "welsh": "capel",
     "english": "chapel",
     "group": "5",
-    "index": 257
+    "index": 259
   },
   {
     "welsh": "theatr",
     "english": "theatre",
     "group": "5",
-    "index": 258
+    "index": 260
   },
   {
     "welsh": "sinema",
     "english": "cinema",
     "group": "5",
-    "index": 259
+    "index": 261
   },
   {
     "welsh": "parc",
     "english": "park",
     "group": "5",
-    "index": 260
+    "index": 262
   },
   {
     "welsh": "maes parcio",
     "english": "car park",
     "group": "5",
-    "index": 261
+    "index": 263
   },
   {
     "welsh": "ffordd",
     "english": "road",
     "group": "5",
-    "index": 262
+    "index": 264
   },
   {
     "welsh": "heol",
     "english": "street",
     "group": "5",
-    "index": 263
+    "index": 265
   },
   {
     "welsh": "pont",
     "english": "bridge",
     "group": "5",
-    "index": 264
+    "index": 266
   },
   {
     "welsh": "tref",
     "english": "town",
     "group": "5",
-    "index": 265
+    "index": 267
   },
   {
     "welsh": "dinas",
     "english": "city",
     "group": "5",
-    "index": 266
+    "index": 268
   },
   {
     "welsh": "maes chwarae",
     "english": "playground",
     "group": "5",
-    "index": 267
+    "index": 269
   },
   {
     "welsh": "afon",
     "english": "river",
     "group": "5",
-    "index": 268
+    "index": 270
   },
   {
     "welsh": "mynydd",
     "english": "mountain",
     "group": "5",
-    "index": 269
+    "index": 271
   },
   {
     "welsh": "bryn",
     "english": "hill",
     "group": "5",
-    "index": 270
+    "index": 272
   },
   {
     "welsh": "traeth",
     "english": "beach",
     "group": "5",
-    "index": 271
+    "index": 273
   },
   {
     "welsh": "aber",
     "english": "estuary",
     "group": "5",
-    "index": 272
+    "index": 274
   },
   {
     "welsh": "cefn gwlad",
     "english": "countryside",
     "group": "5",
-    "index": 273
+    "index": 275
   },
   {
     "welsh": "coedwig",
     "english": "forest",
     "group": "5",
-    "index": 274
+    "index": 276
   },
   {
     "welsh": "llwybr",
     "english": "path",
     "group": "5",
-    "index": 275
+    "index": 277
   },
   {
     "welsh": "llwybr troed",
     "english": "footpath",
     "group": "5",
-    "index": 276
+    "index": 278
   },
   {
     "welsh": "llyn",
     "english": "lake",
     "group": "5",
-    "index": 277
+    "index": 279
   },
   {
     "welsh": "gwesty",
     "english": "hotel",
     "group": "5",
-    "index": 278
+    "index": 280
   },
   {
     "welsh": "bwyty",
     "english": "restaurant",
     "group": "5",
-    "index": 279
+    "index": 281
   },
   {
     "welsh": "caffi",
     "english": "cafe",
     "group": "5",
-    "index": 280
+    "index": 282
   },
   {
     "welsh": "siop goffi",
     "english": "coffee shop",
     "group": "5",
-    "index": 281
+    "index": 283
   },
   {
     "welsh": "afal",
     "english": "apple",
     "group": "6",
-    "index": 282
+    "index": 284
   },
   {
     "welsh": "banana",
     "english": "banana",
     "group": "6",
-    "index": 283
+    "index": 285
   },
   {
     "welsh": "bara",
     "english": "bread",
     "group": "6",
-    "index": 284
+    "index": 286
   },
   {
     "welsh": "bisgedi",
     "english": "biscuits",
     "group": "6",
-    "index": 285
+    "index": 287
   },
   {
     "welsh": "brecwast",
     "english": "breakfast",
     "group": "6",
-    "index": 286
+    "index": 288
   },
   {
     "welsh": "bwyd",
     "english": "food",
     "group": "6",
-    "index": 287
+    "index": 289
   },
   {
     "welsh": "cacen",
     "english": "cake",
     "group": "6",
-    "index": 288
+    "index": 290
   },
   {
     "welsh": "caws",
     "english": "cheese",
     "group": "6",
-    "index": 289
+    "index": 291
   },
   {
     "welsh": "cig",
     "english": "meat",
     "group": "6",
-    "index": 290
+    "index": 292
   },
   {
     "welsh": "cinio",
     "english": "lunch",
     "group": "6",
-    "index": 291
+    "index": 293
   },
   {
     "welsh": "coffi",
     "english": "coffee",
     "group": "6",
-    "index": 292
+    "index": 294
   },
   {
     "welsh": "cwrw",
     "english": "beer",
     "group": "6",
-    "index": 293
+    "index": 295
   },
   {
     "welsh": "cwrw ysgafn",
     "english": "lager",
     "group": "6",
-    "index": 294
+    "index": 296
   },
   {
     "welsh": "diod",
     "english": "drink",
     "group": "6",
-    "index": 295
+    "index": 297
   },
   {
     "welsh": "diod boeth",
     "english": "hot drink",
     "group": "6",
-    "index": 296
+    "index": 298
   },
   {
     "welsh": "diod meddal",
     "english": "soft drink",
     "group": "6",
-    "index": 297
+    "index": 299
   },
   {
     "welsh": "diod oer",
     "english": "cold drink",
     "group": "6",
-    "index": 298
+    "index": 300
   },
   {
     "welsh": "d?r",
     "english": "water",
     "group": "6",
-    "index": 299
+    "index": 301
   },
   {
     "welsh": "finegr",
     "english": "vinegar",
     "group": "6",
-    "index": 300
+    "index": 302
   },
   {
     "welsh": "garlleg",
     "english": "garlic",
     "group": "6",
-    "index": 301
+    "index": 303
   },
   {
     "welsh": "grawnwin",
     "english": "grape",
     "group": "6",
-    "index": 302
+    "index": 304
   },
   {
     "welsh": "gwin",
     "english": "wine",
     "group": "6",
-    "index": 303
+    "index": 305
   },
   {
     "welsh": "gwin coch",
     "english": "red wine",
     "group": "6",
-    "index": 304
+    "index": 306
   },
   {
     "welsh": "gwin gwyn",
     "english": "white wine",
     "group": "6",
-    "index": 305
+    "index": 307
   },
   {
     "welsh": "halen",
     "english": "salt",
     "group": "6",
-    "index": 306
+    "index": 308
   },
   {
     "welsh": "hufen",
     "english": "cream",
     "group": "6",
-    "index": 307
+    "index": 309
   },
   {
-    "welsh": "hufen iâ",
+    "welsh": "hufen i",
     "english": "ice cream",
     "group": "6",
-    "index": 308
+    "index": 310
   },
   {
     "welsh": "llaeth",
     "english": "milk",
     "group": "6",
-    "index": 309
+    "index": 311
   },
   {
     "welsh": "llysiau",
     "english": "vegetables",
     "group": "6",
-    "index": 310
+    "index": 312
   },
   {
     "welsh": "melon",
     "english": "melon",
     "group": "6",
-    "index": 311
+    "index": 313
   },
   {
     "welsh": "menyn",
     "english": "butter",
     "group": "6",
-    "index": 312
+    "index": 314
   },
   {
     "welsh": "moron",
     "english": "carrots",
     "group": "6",
-    "index": 313
+    "index": 315
   },
   {
     "welsh": "nionyn",
     "english": "onion",
     "group": "6",
-    "index": 314
+    "index": 316
   },
   {
     "welsh": "olew",
     "english": "oil",
     "group": "6",
-    "index": 315
+    "index": 317
   },
   {
     "welsh": "pasta",
     "english": "pasta",
     "group": "6",
-    "index": 316
+    "index": 318
   },
   {
     "welsh": "pryd",
     "english": "meal",
     "group": "6",
-    "index": 317
+    "index": 319
   },
   {
     "welsh": "pupur",
     "english": "pepper",
     "group": "6",
-    "index": 318
+    "index": 320
   },
   {
     "welsh": "pysgod",
     "english": "fish",
     "group": "6",
-    "index": 319
+    "index": 321
   },
   {
     "welsh": "reis",
     "english": "rice",
     "group": "6",
-    "index": 320
+    "index": 322
   },
   {
     "welsh": "saws",
     "english": "sauce",
     "group": "6",
-    "index": 321
+    "index": 323
   },
   {
     "welsh": "siwgr",
     "english": "sugar",
     "group": "6",
-    "index": 322
+    "index": 324
   },
   {
     "welsh": "sudd",
     "english": "juice",
     "group": "6",
-    "index": 323
+    "index": 325
   },
   {
     "welsh": "sudd afal",
     "english": "apple juice",
     "group": "6",
-    "index": 324
+    "index": 326
   },
   {
     "welsh": "sudd oren",
     "english": "orange juice",
     "group": "6",
-    "index": 325
+    "index": 327
   },
   {
     "welsh": "swper",
     "english": "dinner",
     "group": "6",
-    "index": 326
+    "index": 328
   },
   {
     "welsh": "tafarn",
     "english": "pub",
     "group": "6",
-    "index": 327
+    "index": 329
   },
   {
     "welsh": "tatws",
     "english": "potatoes",
     "group": "6",
-    "index": 328
+    "index": 330
   },
   {
     "welsh": "te",
     "english": "tea",
     "group": "6",
-    "index": 329
+    "index": 331
   },
   {
     "welsh": "tost",
     "english": "toast",
     "group": "6",
-    "index": 330
-  },
-  {
-    "welsh": "arian",
-    "english": "silver",
-    "group": "9",
-    "index": 331
-  },
-  {
-    "welsh": "aur",
-    "english": "gold",
-    "group": "9",
     "index": 332
-  },
-  {
-    "welsh": "brown",
-    "english": "brown",
-    "group": "9",
-    "index": 333
-  },
-  {
-    "welsh": "coch",
-    "english": "red",
-    "group": "9",
-    "index": 334
-  },
-  {
-    "welsh": "du",
-    "english": "black",
-    "group": "9",
-    "index": 335
-  },
-  {
-    "welsh": "dufrown",
-    "english": "dark brown",
-    "group": "9",
-    "index": 336
-  },
-  {
-    "welsh": "glas",
-    "english": "blue",
-    "group": "9",
-    "index": 337
-  },
-  {
-    "welsh": "glasdywyll",
-    "english": "dark blue",
-    "group": "9",
-    "index": 338
-  },
-  {
-    "welsh": "glasgolau",
-    "english": "light blue",
-    "group": "9",
-    "index": 339
-  },
-  {
-    "welsh": "gwyn",
-    "english": "white",
-    "group": "9",
-    "index": 340
-  },
-  {
-    "welsh": "gwyrdd",
-    "english": "green",
-    "group": "9",
-    "index": 341
-  },
-  {
-    "welsh": "gwyrddgolau",
-    "english": "light green",
-    "group": "9",
-    "index": 342
-  },
-  {
-    "welsh": "gwyrddlas",
-    "english": "teal",
-    "group": "9",
-    "index": 343
-  },
-  {
-    "welsh": "gwyrddtywyll",
-    "english": "dark green",
-    "group": "9",
-    "index": 344
-  },
-  {
-    "welsh": "las",
-    "english": "light blue",
-    "group": "9",
-    "index": 345
-  },
-  {
-    "welsh": "llwyd",
-    "english": "grey",
-    "group": "9",
-    "index": 346
   },
   {
     "welsh": "llwydfelyn",
     "english": "beige",
     "group": "9",
+    "index": 333
+  },
+  {
+    "welsh": "du",
+    "english": "black",
+    "group": "9",
+    "index": 334
+  },
+  {
+    "welsh": "glas",
+    "english": "blue",
+    "group": "9",
+    "index": 335
+  },
+  {
+    "welsh": "brown",
+    "english": "brown",
+    "group": "9",
+    "index": 336
+  },
+  {
+    "welsh": "tywyll",
+    "english": "dark",
+    "group": "9",
+    "index": 337
+  },
+  {
+    "welsh": "aur",
+    "english": "gold",
+    "group": "9",
+    "index": 338
+  },
+  {
+    "welsh": "gwyrdd",
+    "english": "green",
+    "group": "9",
+    "index": 339
+  },
+  {
+    "welsh": "llwyd",
+    "english": "grey",
+    "group": "9",
+    "index": 340
+  },
+  {
+    "welsh": "golau",
+    "english": "light",
+    "group": "9",
+    "index": 341
+  },
+  {
+    "welsh": "glas",
+    "english": "blue",
+    "group": "9",
+    "index": 342
+  },
+  {
+    "welsh": "llwyd",
+    "english": "grey",
+    "group": "9",
+    "index": 343
+  },
+  {
+    "welsh": "oren",
+    "english": "orange",
+    "group": "9",
+    "index": 344
+  },
+  {
+    "welsh": "pinc",
+    "english": "pink",
+    "group": "9",
+    "index": 345
+  },
+  {
+    "welsh": "porffor",
+    "english": "purple",
+    "group": "9",
+    "index": 346
+  },
+  {
+    "welsh": "coch",
+    "english": "red",
+    "group": "9",
     "index": 347
   },
   {
-    "welsh": "llwydgolau",
-    "english": "light grey",
+    "welsh": "arian",
+    "english": "silver",
     "group": "9",
     "index": 348
   },
@@ -2100,2799 +2100,2739 @@
     "index": 349
   },
   {
-    "welsh": "llwydtywyll",
-    "english": "dark grey",
+    "welsh": "gwyrddlas",
+    "english": "teal",
     "group": "9",
     "index": 350
-  },
-  {
-    "welsh": "melyn",
-    "english": "yellow",
-    "group": "9",
-    "index": 351
-  },
-  {
-    "welsh": "oren",
-    "english": "orange",
-    "group": "9",
-    "index": 352
-  },
-  {
-    "welsh": "pinc",
-    "english": "pink",
-    "group": "9",
-    "index": 353
-  },
-  {
-    "welsh": "porffor",
-    "english": "purple",
-    "group": "9",
-    "index": 354
   },
   {
     "welsh": "turquoise",
     "english": "turquoise",
     "group": "9",
-    "index": 355
+    "index": 351
+  },
+  {
+    "welsh": "gwyn",
+    "english": "white",
+    "group": "9",
+    "index": 352
+  },
+  {
+    "welsh": "melyn",
+    "english": "yellow",
+    "group": "9",
+    "index": 353
   },
   {
     "welsh": "ac",
     "english": "and",
     "group": "10",
-    "index": 356
+    "index": 354
   },
   {
     "welsh": "allan",
     "english": "out",
     "group": "10",
-    "index": 357
+    "index": 355
   },
   {
     "welsh": "allanfa",
     "english": "exit",
     "group": "10",
-    "index": 358
+    "index": 356
   },
   {
     "welsh": "am",
     "english": "about",
     "group": "10",
-    "index": 359
+    "index": 357
   },
   {
     "welsh": "ar",
     "english": "on",
     "group": "10",
-    "index": 360
+    "index": 358
   },
   {
     "welsh": "ar ben",
     "english": "on top",
     "group": "10",
-    "index": 361
+    "index": 359
   },
   {
     "welsh": "ar draws",
     "english": "across",
     "group": "10",
-    "index": 362
+    "index": 360
   },
   {
     "welsh": "ar hyd",
     "english": "along",
     "group": "10",
-    "index": 363
+    "index": 361
   },
   {
     "welsh": "ar ochr",
     "english": "on side",
     "group": "10",
-    "index": 364
+    "index": 362
   },
   {
     "welsh": "ar waelod",
     "english": "at bottom",
     "group": "10",
-    "index": 365
+    "index": 363
   },
   {
     "welsh": "at",
     "english": "to",
     "group": "10",
-    "index": 366
+    "index": 364
   },
   {
     "welsh": "cyfeiriad",
     "english": "direction",
     "group": "10",
-    "index": 367
+    "index": 365
   },
   {
     "welsh": "cyn",
     "english": "before",
     "group": "10",
-    "index": 368
+    "index": 366
   },
   {
     "welsh": "dan",
     "english": "under",
     "group": "10",
-    "index": 369
+    "index": 367
   },
   {
     "welsh": "draw",
     "english": "across",
     "group": "10",
-    "index": 370
+    "index": 368
   },
   {
     "welsh": "dros",
     "english": "over",
     "group": "10",
-    "index": 371
+    "index": 369
   },
   {
     "welsh": "drwy",
     "english": "through",
     "group": "10",
-    "index": 372
+    "index": 370
   },
   {
     "welsh": "er",
     "english": "though",
     "group": "10",
-    "index": 373
+    "index": 371
   },
   {
     "welsh": "eto",
     "english": "again",
     "group": "10",
-    "index": 374
+    "index": 372
   },
   {
     "welsh": "felly",
     "english": "so",
     "group": "10",
-    "index": 375
+    "index": 373
   },
   {
     "welsh": "ger",
     "english": "near",
     "group": "10",
-    "index": 376
+    "index": 374
   },
   {
     "welsh": "gyda",
     "english": "with",
     "group": "10",
-    "index": 377
+    "index": 375
   },
   {
     "welsh": "heb",
     "english": "without",
     "group": "10",
-    "index": 378
+    "index": 376
   },
   {
     "welsh": "hefyd",
     "english": "also",
     "group": "10",
-    "index": 379
+    "index": 377
   },
   {
     "welsh": "hyd",
     "english": "until",
     "group": "10",
-    "index": 380
+    "index": 378
   },
   {
     "welsh": "i",
     "english": "to",
     "group": "10",
-    "index": 381
+    "index": 379
   },
   {
     "welsh": "is",
     "english": "below",
     "group": "10",
-    "index": 382
+    "index": 380
   },
   {
     "welsh": "islaw",
     "english": "below",
     "group": "10",
-    "index": 383
+    "index": 381
   },
   {
     "welsh": "lleoliad",
     "english": "location",
     "group": "10",
-    "index": 384
+    "index": 382
   },
   {
     "welsh": "mewn",
     "english": "in",
     "group": "10",
-    "index": 385
+    "index": 383
   },
   {
     "welsh": "mynediad",
     "english": "entry",
     "group": "10",
-    "index": 386
+    "index": 384
   },
   {
     "welsh": "nes",
     "english": "until",
     "group": "10",
-    "index": 387
+    "index": 385
   },
   {
     "welsh": "neu",
     "english": "or",
     "group": "10",
-    "index": 388
+    "index": 386
   },
   {
     "welsh": "o",
     "english": "from",
     "group": "10",
-    "index": 389
+    "index": 387
   },
   {
     "welsh": "o fewn",
     "english": "within",
     "group": "10",
-    "index": 390
+    "index": 388
   },
   {
     "welsh": "oddiwrth",
     "english": "from",
     "group": "10",
-    "index": 391
+    "index": 389
   },
   {
     "welsh": "oherwydd",
     "english": "because",
     "group": "10",
-    "index": 392
+    "index": 390
   },
   {
     "welsh": "ond",
     "english": "but",
     "group": "10",
-    "index": 393
+    "index": 391
   },
   {
     "welsh": "os",
     "english": "if",
     "group": "10",
-    "index": 394
+    "index": 392
   },
   {
     "welsh": "rhwng",
     "english": "between",
     "group": "10",
-    "index": 395
+    "index": 393
   },
   {
     "welsh": "sefyllfa",
     "english": "situation",
     "group": "10",
-    "index": 396
+    "index": 394
   },
   {
     "welsh": "tan",
     "english": "until",
     "group": "10",
-    "index": 397
+    "index": 395
   },
   {
     "welsh": "tra",
     "english": "while",
     "group": "10",
-    "index": 398
+    "index": 396
   },
   {
     "welsh": "tros",
     "english": "over",
     "group": "10",
-    "index": 399
+    "index": 397
   },
   {
     "welsh": "trwy",
     "english": "through",
     "group": "10",
-    "index": 400
+    "index": 398
   },
   {
     "welsh": "tua",
     "english": "towards",
     "group": "10",
-    "index": 401
+    "index": 399
   },
   {
     "welsh": "tua'r",
     "english": "towards the",
     "group": "10",
-    "index": 402
+    "index": 400
   },
   {
     "welsh": "uwch",
     "english": "above",
     "group": "10",
-    "index": 403
+    "index": 401
   },
   {
     "welsh": "uwchben",
     "english": "above",
     "group": "10",
-    "index": 404
+    "index": 402
   },
   {
     "welsh": "wedyn",
     "english": "then",
     "group": "10",
-    "index": 405
+    "index": 403
   },
   {
     "welsh": "wrth",
     "english": "by",
     "group": "10",
-    "index": 406
+    "index": 404
   },
   {
     "welsh": "ym",
     "english": "in",
     "group": "10",
-    "index": 407
+    "index": 405
   },
   {
     "welsh": "yn",
     "english": "in",
     "group": "10",
-    "index": 408
+    "index": 406
   },
   {
     "welsh": "yn erbyn",
     "english": "against",
     "group": "10",
-    "index": 409
+    "index": 407
   },
   {
     "welsh": "addysgu",
     "english": "teach",
     "group": "11",
-    "index": 410
+    "index": 408
   },
   {
     "welsh": "agor",
     "english": "open",
     "group": "11",
-    "index": 411
+    "index": 409
   },
   {
     "welsh": "aros",
     "english": "wait",
     "group": "11",
-    "index": 412
+    "index": 410
   },
   {
     "welsh": "brwsio",
     "english": "brush",
     "group": "11",
-    "index": 413
+    "index": 411
   },
   {
     "welsh": "bwyta",
     "english": "eat",
     "group": "11",
-    "index": 414
+    "index": 412
   },
   {
     "welsh": "cau",
     "english": "close",
     "group": "11",
-    "index": 415
+    "index": 413
   },
   {
     "welsh": "chwilio",
     "english": "search",
     "group": "11",
-    "index": 416
+    "index": 414
   },
   {
     "welsh": "clywed",
     "english": "hear",
     "group": "11",
-    "index": 417
+    "index": 415
   },
   {
     "welsh": "codi",
     "english": "get-up",
     "group": "11",
-    "index": 418
+    "index": 416
   },
   {
     "welsh": "cofnodi",
     "english": "record",
     "group": "11",
-    "index": 419
+    "index": 417
   },
   {
     "welsh": "coginio",
     "english": "cook",
     "group": "11",
-    "index": 420
+    "index": 418
   },
   {
     "welsh": "cyfrifo",
     "english": "calculate",
     "group": "11",
-    "index": 421
+    "index": 419
   },
   {
     "welsh": "cynllunio",
     "english": "plan",
     "group": "11",
-    "index": 422
+    "index": 420
   },
   {
     "welsh": "cysgu",
     "english": "sleep",
     "group": "11",
-    "index": 423
+    "index": 421
   },
   {
     "welsh": "darllen",
     "english": "read",
     "group": "11",
-    "index": 424
+    "index": 422
   },
   {
     "welsh": "deffro",
     "english": "wake",
     "group": "11",
-    "index": 425
+    "index": 423
   },
   {
     "welsh": "dweud",
     "english": "say",
     "group": "11",
-    "index": 426
+    "index": 424
   },
   {
     "welsh": "dysgu",
     "english": "learn",
     "group": "11",
-    "index": 427
+    "index": 425
   },
   {
     "welsh": "eistedd",
     "english": "sit",
     "group": "11",
-    "index": 428
+    "index": 426
   },
   {
     "welsh": "glanhau",
     "english": "clean",
     "group": "11",
-    "index": 429
+    "index": 427
   },
   {
     "welsh": "gofyn",
     "english": "ask",
     "group": "11",
-    "index": 430
+    "index": 428
   },
   {
     "welsh": "gorffwys",
     "english": "rest",
     "group": "11",
-    "index": 431
+    "index": 429
   },
   {
     "welsh": "gweithio",
     "english": "work",
     "group": "11",
-    "index": 432
+    "index": 430
   },
   {
     "welsh": "gweld",
     "english": "see",
     "group": "11",
-    "index": 433
+    "index": 431
   },
   {
     "welsh": "gwisgo",
     "english": "dress",
     "group": "11",
-    "index": 434
+    "index": 432
   },
   {
     "welsh": "helpu",
     "english": "help",
     "group": "11",
-    "index": 435
+    "index": 433
   },
   {
     "welsh": "paratoi",
     "english": "prepare",
     "group": "11",
-    "index": 436
+    "index": 434
   },
   {
     "welsh": "sefyll",
     "english": "stand",
     "group": "11",
-    "index": 437
+    "index": 435
   },
   {
     "welsh": "siarad",
     "english": "speak",
     "group": "11",
-    "index": 438
+    "index": 436
   },
   {
     "welsh": "siopa",
     "english": "shop",
     "group": "11",
-    "index": 439
+    "index": 437
   },
   {
     "welsh": "smwddio",
     "english": "iron",
     "group": "11",
-    "index": 440
+    "index": 438
   },
   {
     "welsh": "symud",
     "english": "move",
     "group": "11",
-    "index": 441
+    "index": 439
   },
   {
     "welsh": "trefnu",
     "english": "organize",
     "group": "11",
-    "index": 442
+    "index": 440
   },
   {
     "welsh": "yfed",
     "english": "drink",
     "group": "11",
-    "index": 443
+    "index": 441
   },
   {
     "welsh": "ymolchi",
     "english": "wash",
     "group": "11",
-    "index": 444
+    "index": 442
   },
   {
     "welsh": "ysgrifennu",
     "english": "write",
     "group": "11",
-    "index": 445
+    "index": 443
   },
   {
     "welsh": "anghywir",
     "english": "incorrect",
     "group": "12",
-    "index": 446
+    "index": 444
   },
   {
     "welsh": "anodd",
     "english": "hard",
     "group": "12",
-    "index": 447
+    "index": 445
   },
   {
     "welsh": "bach",
     "english": "small",
     "group": "12",
-    "index": 448
+    "index": 446
   },
   {
     "welsh": "braidd",
     "english": "rather",
     "group": "12",
-    "index": 449
+    "index": 447
   },
   {
     "welsh": "budr",
     "english": "dirty",
     "group": "12",
-    "index": 450
+    "index": 448
   },
   {
     "welsh": "byr",
     "english": "short",
     "group": "12",
-    "index": 451
+    "index": 449
   },
   {
     "welsh": "caled",
     "english": "hard",
     "group": "12",
-    "index": 452
+    "index": 450
   },
   {
     "welsh": "cas",
     "english": "unfriendly",
     "group": "12",
-    "index": 453
+    "index": 451
   },
   {
     "welsh": "cryn",
     "english": "fairly",
     "group": "12",
-    "index": 454
+    "index": 452
   },
   {
     "welsh": "cyffredin",
     "english": "common",
     "group": "12",
-    "index": 455
+    "index": 453
   },
   {
     "welsh": "cyfoethog",
     "english": "rich",
     "group": "12",
-    "index": 456
+    "index": 454
   },
   {
     "welsh": "cymhleth",
     "english": "complex",
     "group": "12",
-    "index": 457
+    "index": 455
   },
   {
     "welsh": "cywir",
     "english": "correct",
     "group": "12",
-    "index": 458
+    "index": 456
   },
   {
     "welsh": "da",
     "english": "good",
     "group": "12",
-    "index": 459
+    "index": 457
   },
   {
     "welsh": "di-bwys",
     "english": "unimportant",
     "group": "12",
-    "index": 460
+    "index": 458
   },
   {
     "welsh": "distaw",
     "english": "quiet",
     "group": "12",
-    "index": 461
+    "index": 459
   },
   {
     "welsh": "drud",
     "english": "expensive",
     "group": "12",
-    "index": 462
+    "index": 460
   },
   {
     "welsh": "eitha",
     "english": "quite",
     "group": "12",
-    "index": 463
+    "index": 461
   },
   {
     "welsh": "garw",
     "english": "rough",
     "group": "12",
-    "index": 464
+    "index": 462
   },
   {
-    "welsh": "glân",
+    "welsh": "gln",
     "english": "clean",
     "group": "12",
-    "index": 465
+    "index": 463
   },
   {
     "welsh": "gwael",
     "english": "bad",
     "group": "12",
-    "index": 466
+    "index": 464
   },
   {
     "welsh": "gwag",
     "english": "empty",
     "group": "12",
-    "index": 467
+    "index": 465
   },
   {
     "welsh": "gwlyb",
     "english": "wet",
     "group": "12",
-    "index": 468
+    "index": 466
   },
   {
     "welsh": "hardd",
     "english": "beautiful",
     "group": "12",
-    "index": 469
+    "index": 467
   },
   {
     "welsh": "hawdd",
     "english": "easy",
     "group": "12",
-    "index": 470
+    "index": 468
   },
   {
     "welsh": "hen",
     "english": "old",
     "group": "12",
-    "index": 471
+    "index": 469
   },
   {
     "welsh": "hir",
     "english": "long",
     "group": "12",
-    "index": 472
+    "index": 470
   },
   {
     "welsh": "hyll",
     "english": "ugly",
     "group": "12",
-    "index": 473
+    "index": 471
   },
   {
     "welsh": "iawn",
     "english": "very",
     "group": "12",
-    "index": 474
+    "index": 472
   },
   {
     "welsh": "ifanc",
     "english": "young",
     "group": "12",
-    "index": 475
+    "index": 473
   },
   {
     "welsh": "isel",
     "english": "low",
     "group": "12",
-    "index": 476
+    "index": 474
   },
   {
     "welsh": "llawn",
     "english": "full",
     "group": "12",
-    "index": 477
+    "index": 475
   },
   {
     "welsh": "llyfn",
     "english": "smooth",
     "group": "12",
-    "index": 478
+    "index": 476
   },
   {
     "welsh": "mawr",
     "english": "big",
     "group": "12",
-    "index": 479
+    "index": 477
   },
   {
     "welsh": "meddal",
     "english": "soft",
     "group": "12",
-    "index": 480
+    "index": 478
   },
   {
     "welsh": "newydd",
     "english": "new",
     "group": "12",
-    "index": 481
+    "index": 479
   },
   {
     "welsh": "oer",
     "english": "cold",
     "group": "12",
-    "index": 482
+    "index": 480
   },
   {
     "welsh": "poeth",
     "english": "hot",
     "group": "12",
-    "index": 483
+    "index": 481
   },
   {
     "welsh": "prin",
     "english": "rare",
     "group": "12",
-    "index": 484
+    "index": 482
   },
   {
     "welsh": "pwysig",
     "english": "important",
     "group": "12",
-    "index": 485
+    "index": 483
   },
   {
     "welsh": "rhad",
     "english": "cheap",
     "group": "12",
-    "index": 486
+    "index": 484
   },
   {
     "welsh": "rili",
     "english": "really",
     "group": "12",
-    "index": 487
+    "index": 485
   },
   {
     "welsh": "swnllyd",
     "english": "noisy",
     "group": "12",
-    "index": 488
+    "index": 486
   },
   {
     "welsh": "sych",
     "english": "dry",
     "group": "12",
-    "index": 489
+    "index": 487
   },
   {
     "welsh": "syml",
     "english": "simple",
     "group": "12",
-    "index": 490
+    "index": 488
   },
   {
     "welsh": "tenau",
     "english": "thin",
     "group": "12",
-    "index": 491
+    "index": 489
   },
   {
     "welsh": "tlawd",
     "english": "poor",
     "group": "12",
-    "index": 492
+    "index": 490
   },
   {
     "welsh": "trwchus",
     "english": "thick",
     "group": "12",
-    "index": 493
+    "index": 491
   },
   {
     "welsh": "trwm",
     "english": "heavy",
     "group": "12",
-    "index": 494
+    "index": 492
   },
   {
     "welsh": "uchel",
     "english": "high",
     "group": "12",
-    "index": 495
+    "index": 493
   },
   {
     "welsh": "ysgafn",
     "english": "light",
     "group": "12",
-    "index": 496
-  },
-  {
-    "welsh": "amau",
-    "english": "doubt",
-    "group": "13",
-    "index": 497
-  },
-  {
-    "welsh": "anghytuno",
-    "english": "disagree",
-    "group": "13",
-    "index": 498
-  },
-  {
-    "welsh": "anodd",
-    "english": "difficult",
-    "group": "13",
-    "index": 499
-  },
-  {
-    "welsh": "balch",
-    "english": "proud",
-    "group": "13",
-    "index": 500
-  },
-  {
-    "welsh": "beirniadu",
-    "english": "criticize",
-    "group": "13",
-    "index": 501
-  },
-  {
-    "welsh": "blinedig",
-    "english": "tired",
-    "group": "13",
-    "index": 502
-  },
-  {
-    "welsh": "caru",
-    "english": "love",
-    "group": "13",
-    "index": 503
-  },
-  {
-    "welsh": "cas",
-    "english": "hateful",
-    "group": "13",
-    "index": 504
-  },
-  {
-    "welsh": "casineb",
-    "english": "hatred",
-    "group": "13",
-    "index": 505
-  },
-  {
-    "welsh": "casáu",
-    "english": "hate",
-    "group": "13",
-    "index": 506
-  },
-  {
-    "welsh": "codi",
-    "english": "rise",
-    "group": "13",
-    "index": 507
-  },
-  {
-    "welsh": "colli",
-    "english": "lose",
-    "group": "13",
-    "index": 508
-  },
-  {
-    "welsh": "credu",
-    "english": "believe",
-    "group": "13",
-    "index": 509
-  },
-  {
-    "welsh": "cydymdeimlo",
-    "english": "sympathize",
-    "group": "13",
-    "index": 510
-  },
-  {
-    "welsh": "cyffrous",
-    "english": "excited",
-    "group": "13",
-    "index": 511
-  },
-  {
-    "welsh": "cyfrannu",
-    "english": "contribute",
-    "group": "13",
-    "index": 512
-  },
-  {
-    "welsh": "cymeradwy",
-    "english": "approved",
-    "group": "13",
-    "index": 513
-  },
-  {
-    "welsh": "cymeradwyo",
-    "english": "endorse",
-    "group": "13",
-    "index": 514
-  },
-  {
-    "welsh": "cynhyrfus",
-    "english": "anxious",
-    "group": "13",
-    "index": 515
-  },
-  {
-    "welsh": "cytuno",
-    "english": "agree",
-    "group": "13",
-    "index": 516
-  },
-  {
-    "welsh": "cywilyddus",
-    "english": "ashamed",
-    "group": "13",
-    "index": 517
+    "index": 494
   },
   {
     "welsh": "derbyn",
     "english": "accept",
     "group": "13",
-    "index": 518
-  },
-  {
-    "welsh": "dibwys",
-    "english": "unimportant",
-    "group": "13",
-    "index": 519
-  },
-  {
-    "welsh": "dig",
-    "english": "angry",
-    "group": "13",
-    "index": 520
+    "index": 495
   },
   {
     "welsh": "edmygu",
     "english": "admire",
     "group": "13",
-    "index": 521
-  },
-  {
-    "welsh": "ennill",
-    "english": "win",
-    "group": "13",
-    "index": 522
-  },
-  {
-    "welsh": "galaru",
-    "english": "grieve",
-    "group": "13",
-    "index": 523
-  },
-  {
-    "welsh": "gobeithio",
-    "english": "hope",
-    "group": "13",
-    "index": 524
-  },
-  {
-    "welsh": "gwrthod",
-    "english": "reject",
-    "group": "13",
-    "index": 525
-  },
-  {
-    "welsh": "hapus",
-    "english": "happy",
-    "group": "13",
-    "index": 526
-  },
-  {
-    "welsh": "hoff",
-    "english": "fond",
-    "group": "13",
-    "index": 527
-  },
-  {
-    "welsh": "hwylus",
-    "english": "pleasant",
-    "group": "13",
-    "index": 528
-  },
-  {
-    "welsh": "llwglyd",
-    "english": "hungry",
-    "group": "13",
-    "index": 529
-  },
-  {
-    "welsh": "meddwl",
-    "english": "think",
-    "group": "13",
-    "index": 530
-  },
-  {
-    "welsh": "nerfus",
-    "english": "nervous",
-    "group": "13",
-    "index": 531
+    "index": 496
   },
   {
     "welsh": "ofnus",
     "english": "afraid",
     "group": "13",
-    "index": 532
+    "index": 497
   },
   {
-    "welsh": "poeni",
-    "english": "worry",
+    "welsh": "cytuno",
+    "english": "agree",
     "group": "13",
-    "index": 533
+    "index": 498
   },
   {
-    "welsh": "poenus",
-    "english": "sore",
+    "welsh": "dig",
+    "english": "angry",
     "group": "13",
-    "index": 534
+    "index": 499
   },
   {
-    "welsh": "rhagorol",
-    "english": "excellent",
+    "welsh": "cynhyrfus",
+    "english": "anxious",
     "group": "13",
-    "index": 535
+    "index": 500
+  },
+  {
+    "welsh": "cythruddo",
+    "english": "annoyed",
+    "group": "13",
+    "index": 501
+  },
+  {
+    "welsh": "cywilyddus",
+    "english": "ashamed",
+    "group": "13",
+    "index": 502
+  },
+  {
+    "welsh": "credu",
+    "english": "believe",
+    "group": "13",
+    "index": 503
+  },
+  {
+    "welsh": "cythrwfl",
+    "english": "confusion",
+    "group": "15",
+    "index": 504
+  },
+  {
+    "welsh": "beirniadu",
+    "english": "criticize",
+    "group": "13",
+    "index": 505
+  },
+  {
+    "welsh": "anodd",
+    "english": "difficult",
+    "group": "13",
+    "index": 506
+  },
+  {
+    "welsh": "anghytuno",
+    "english": "disagree",
+    "group": "13",
+    "index": 507
   },
   {
     "welsh": "siomedig",
     "english": "disappointed",
     "group": "13",
-    "index": 536
+    "index": 508
   },
   {
-    "welsh": "sychedig",
-    "english": "thirsty",
+    "welsh": "amau",
+    "english": "doubt",
     "group": "13",
-    "index": 537
+    "index": 509
   },
   {
-    "welsh": "syrthio",
-    "english": "fall",
+    "welsh": "cywilyddus",
+    "english": "embarrassed",
     "group": "13",
-    "index": 538
+    "index": 510
+  },
+  {
+    "welsh": "gwag",
+    "english": "empty",
+    "group": "13",
+    "index": 511
+  },
+  {
+    "welsh": "cymeradwyo",
+    "english": "endorse",
+    "group": "13",
+    "index": 512
+  },
+  {
+    "welsh": "arddechog",
+    "english": "excellent",
+    "group": "13",
+    "index": 513
+  },
+  {
+    "welsh": "cyffrous",
+    "english": "excited",
+    "group": "13",
+    "index": 514
   },
   {
     "welsh": "teimlo",
     "english": "feel",
     "group": "13",
-    "index": 539
+    "index": 515
   },
   {
-    "welsh": "trist",
-    "english": "sad",
+    "welsh": "hoff",
+    "english": "fond",
     "group": "13",
-    "index": 540
+    "index": 516
+  },
+  {
+    "welsh": "braw",
+    "english": "fear",
+    "group": "13",
+    "index": 517
+  },
+  {
+    "welsh": "rhydd",
+    "english": "free",
+    "group": "13",
+    "index": 518
+  },
+  {
+    "welsh": "cyfeillgar",
+    "english": "friendly",
+    "group": "13",
+    "index": 519
+  },
+  {
+    "welsh": "llawn",
+    "english": "full",
+    "group": "13",
+    "index": 520
+  },
+  {
+    "welsh": "galaru",
+    "english": "grieve",
+    "group": "13",
+    "index": 521
+  },
+  {
+    "welsh": "hapus",
+    "english": "happy",
+    "group": "13",
+    "index": 522
+  },
+  {
+    "welsh": "cas u",
+    "english": "hate",
+    "group": "13",
+    "index": 523
+  },
+  {
+    "welsh": "casineb",
+    "english": "hatred",
+    "group": "13",
+    "index": 524
+  },
+  {
+    "welsh": "gobeithio",
+    "english": "hope",
+    "group": "13",
+    "index": 525
+  },
+  {
+    "welsh": "llwglyd",
+    "english": "hungry",
+    "group": "13",
+    "index": 526
+  },
+  {
+    "welsh": "colli",
+    "english": "lose",
+    "group": "13",
+    "index": 527
+  },
+  {
+    "welsh": "caru",
+    "english": "love",
+    "group": "13",
+    "index": 528
+  },
+  {
+    "welsh": "nerfus",
+    "english": "nervous",
+    "group": "13",
+    "index": 529
+  },
+  {
+    "welsh": "hwylus",
+    "english": "pleasant",
+    "group": "13",
+    "index": 530
+  },
+  {
+    "welsh": "balch",
+    "english": "proud",
+    "group": "13",
+    "index": 531
+  },
+  {
+    "welsh": "gwrthod",
+    "english": "reject",
+    "group": "13",
+    "index": 532
   },
   {
     "welsh": "ymatebgar",
     "english": "responsive",
     "group": "13",
-    "index": 541
+    "index": 533
+  },
+  {
+    "welsh": "codi",
+    "english": "rise",
+    "group": "13",
+    "index": 534
+  },
+  {
+    "welsh": "trist",
+    "english": "sad",
+    "group": "13",
+    "index": 535
+  },
+  {
+    "welsh": "sl",
+    "english": "sick",
+    "group": "13",
+    "index": 536
+  },
+  {
+    "welsh": "poenus",
+    "english": "painful",
+    "group": "13",
+    "index": 537
+  },
+  {
+    "welsh": "meddwl",
+    "english": "think",
+    "group": "13",
+    "index": 538
+  },
+  {
+    "welsh": "sychedig",
+    "english": "thirsty",
+    "group": "13",
+    "index": 539
+  },
+  {
+    "welsh": "blinedig",
+    "english": "tired",
+    "group": "13",
+    "index": 540
   },
   {
     "welsh": "ymddiried",
     "english": "trust",
     "group": "13",
+    "index": 541
+  },
+  {
+    "welsh": "dibwys",
+    "english": "unimportant",
+    "group": "13",
     "index": 542
   },
   {
-    "welsh": "ymfalchïo",
-    "english": "rejoice",
+    "welsh": "ennill",
+    "english": "win",
     "group": "13",
     "index": 543
+  },
+  {
+    "welsh": "poeni",
+    "english": "worry",
+    "group": "13",
+    "index": 544
+  },
+  {
+    "welsh": "hiraeth",
+    "english": "yearning",
+    "group": "13",
+    "index": 545
   },
   {
     "welsh": "blows",
     "english": "blouse",
     "group": "15",
-    "index": 544
+    "index": 546
   },
   {
     "welsh": "bol",
     "english": "belly",
     "group": "15",
-    "index": 545
+    "index": 547
   },
   {
     "welsh": "braich",
     "english": "arm",
     "group": "15",
-    "index": 546
+    "index": 548
   },
   {
     "welsh": "bys",
     "english": "finger",
     "group": "15",
-    "index": 547
+    "index": 549
   },
   {
     "welsh": "cadwyn",
     "english": "necklace",
     "group": "15",
-    "index": 548
+    "index": 550
   },
   {
     "welsh": "calon",
     "english": "heart",
     "group": "15",
-    "index": 549
+    "index": 551
   },
   {
     "welsh": "cefn",
     "english": "back",
     "group": "15",
-    "index": 550
+    "index": 552
   },
   {
     "welsh": "clust",
     "english": "ear",
     "group": "15",
-    "index": 551
+    "index": 553
   },
   {
     "welsh": "clustdlws",
     "english": "earring",
     "group": "15",
-    "index": 552
+    "index": 554
   },
   {
     "welsh": "coes",
     "english": "leg",
     "group": "15",
-    "index": 553
+    "index": 555
   },
   {
     "welsh": "costiwm nofio",
     "english": "swimsuit",
     "group": "15",
-    "index": 554
+    "index": 556
   },
   {
     "welsh": "cot",
     "english": "coat",
     "group": "15",
-    "index": 555
+    "index": 557
   },
   {
     "welsh": "croen",
     "english": "skin",
     "group": "15",
-    "index": 556
+    "index": 558
   },
   {
     "welsh": "crys",
     "english": "shirt",
     "group": "15",
-    "index": 557
+    "index": 559
   },
   {
     "welsh": "dant",
     "english": "tooth",
     "group": "15",
-    "index": 558
+    "index": 560
   },
   {
     "welsh": "dillad",
     "english": "clothes",
     "group": "15",
-    "index": 559
+    "index": 561
   },
   {
     "welsh": "esgid",
     "english": "shoe",
     "group": "15",
-    "index": 560
+    "index": 562
   },
   {
     "welsh": "geg",
     "english": "mouth",
     "group": "15",
-    "index": 561
+    "index": 563
   },
   {
     "welsh": "gwisg",
     "english": "outfit",
     "group": "15",
-    "index": 562
+    "index": 564
   },
   {
     "welsh": "gwregys",
     "english": "belt",
     "group": "15",
-    "index": 563
+    "index": 565
   },
   {
     "welsh": "g?n",
     "english": "gown",
     "group": "15",
-    "index": 564
+    "index": 566
   },
   {
     "welsh": "het",
     "english": "hat",
     "group": "15",
-    "index": 565
+    "index": 567
   },
   {
     "welsh": "het haul",
     "english": "sunhat",
     "group": "15",
-    "index": 566
+    "index": 568
   },
   {
     "welsh": "hosan",
     "english": "stocking",
     "group": "15",
-    "index": 567
+    "index": 569
   },
   {
     "welsh": "hwdi",
     "english": "hoodie",
     "group": "15",
-    "index": 568
+    "index": 570
   },
   {
     "welsh": "jacet",
     "english": "jacket",
     "group": "15",
-    "index": 569
+    "index": 571
   },
   {
     "welsh": "llaw",
     "english": "hand",
     "group": "15",
-    "index": 570
+    "index": 572
   },
   {
     "welsh": "llygad",
     "english": "eye",
     "group": "15",
-    "index": 571
+    "index": 573
   },
   {
     "welsh": "menig",
     "english": "gloves",
     "group": "15",
-    "index": 572
+    "index": 574
   },
   {
     "welsh": "modrwy",
     "english": "ring",
     "group": "15",
-    "index": 573
+    "index": 575
   },
   {
     "welsh": "pen",
     "english": "head",
     "group": "15",
-    "index": 574
+    "index": 576
   },
   {
     "welsh": "pyjamas",
     "english": "pyjamas",
     "group": "15",
-    "index": 575
+    "index": 577
   },
   {
     "welsh": "san",
     "english": "sock",
     "group": "15",
-    "index": 576
+    "index": 578
   },
   {
     "welsh": "sbectol",
     "english": "glasses",
     "group": "15",
-    "index": 577
+    "index": 579
   },
   {
     "welsh": "sbectol haul",
     "english": "sunglasses",
     "group": "15",
-    "index": 578
+    "index": 580
   },
   {
     "welsh": "sgert",
     "english": "skirt",
     "group": "15",
-    "index": 579
+    "index": 581
   },
   {
     "welsh": "sgid anghyfforddus",
     "english": "uncomfortable shoe",
     "group": "15",
-    "index": 580
+    "index": 582
   },
   {
     "welsh": "sgid budr",
     "english": "dirty shoe",
     "group": "15",
-    "index": 581
+    "index": 583
   },
   {
     "welsh": "sgid chwaraeon",
     "english": "sports shoe",
     "group": "15",
-    "index": 582
+    "index": 584
   },
   {
     "welsh": "sgid ddrud",
     "english": "expensive shoe",
     "group": "15",
-    "index": 583
+    "index": 585
   },
   {
     "welsh": "sgid eira",
     "english": "snowboot",
     "group": "15",
-    "index": 584
+    "index": 586
   },
   {
     "welsh": "sgid fach",
     "english": "small shoe",
     "group": "15",
-    "index": 585
+    "index": 587
   },
   {
     "welsh": "sgid fawr",
     "english": "big shoe",
     "group": "15",
-    "index": 586
+    "index": 588
   },
   {
     "welsh": "sgid ffasiwn",
     "english": "fashion shoe",
     "group": "15",
-    "index": 587
+    "index": 589
   },
   {
     "welsh": "sgid fflat",
     "english": "flat shoe",
     "group": "15",
-    "index": 588
+    "index": 590
   },
   {
     "welsh": "sgid gwaith",
     "english": "workboot",
     "group": "15",
-    "index": 589
+    "index": 591
   },
   {
     "welsh": "sgid gyfforddus",
     "english": "comfortable shoe",
     "group": "15",
-    "index": 590
+    "index": 592
   },
   {
     "welsh": "sgid hen",
     "english": "old shoe",
     "group": "15",
-    "index": 591
+    "index": 593
   },
   {
     "welsh": "sgid lledr",
     "english": "leather shoe",
     "group": "15",
-    "index": 592
+    "index": 594
   },
   {
-    "welsh": "sgid lân",
+    "welsh": "sgid ln",
     "english": "clean shoe",
     "group": "15",
-    "index": 593
+    "index": 595
   },
   {
     "welsh": "sgid newydd",
     "english": "new shoe",
     "group": "15",
-    "index": 594
+    "index": 596
   },
   {
     "welsh": "sgid nofio",
     "english": "swimshoe",
     "group": "15",
-    "index": 595
+    "index": 597
   },
   {
     "welsh": "sgid rhad",
     "english": "cheap shoe",
     "group": "15",
-    "index": 596
+    "index": 598
   },
   {
     "welsh": "sgid rhedeg",
     "english": "trainer",
     "group": "15",
-    "index": 597
+    "index": 599
   },
   {
     "welsh": "sgid uchel",
     "english": "heel",
     "group": "15",
-    "index": 598
+    "index": 600
   },
   {
     "welsh": "sgid ymarfer",
     "english": "training shoe",
     "group": "15",
-    "index": 599
+    "index": 601
   },
   {
     "welsh": "sgid ymlacio",
     "english": "slipper",
     "group": "15",
-    "index": 600
+    "index": 602
   },
   {
     "welsh": "sgid ysgol",
     "english": "school shoe",
     "group": "15",
-    "index": 601
+    "index": 603
   },
   {
     "welsh": "sgidiau",
     "english": "shoes",
     "group": "15",
-    "index": 602
+    "index": 604
   },
   {
     "welsh": "siorts",
     "english": "shorts",
     "group": "15",
-    "index": 603
+    "index": 605
   },
   {
     "welsh": "siwmper",
     "english": "jumper",
     "group": "15",
-    "index": 604
+    "index": 606
   },
   {
     "welsh": "troed",
     "english": "foot",
     "group": "15",
-    "index": 605
+    "index": 607
   },
   {
     "welsh": "trowsus",
     "english": "trousers",
     "group": "15",
-    "index": 606
+    "index": 608
   },
   {
     "welsh": "trowsus byr",
     "english": "shorts",
     "group": "15",
-    "index": 607
+    "index": 609
   },
   {
     "welsh": "trwyn",
     "english": "nose",
     "group": "15",
-    "index": 608
+    "index": 610
   },
   {
     "welsh": "bod",
     "english": "be",
     "group": "16",
-    "index": 609
+    "index": 611
   },
   {
     "welsh": "byw",
     "english": "live",
     "group": "16",
-    "index": 610
+    "index": 612
   },
   {
     "welsh": "cael",
     "english": "get",
     "group": "16",
-    "index": 611
+    "index": 613
   },
   {
     "welsh": "canu",
     "english": "sing",
     "group": "16",
-    "index": 612
+    "index": 614
   },
   {
     "welsh": "chwarae",
     "english": "play",
     "group": "16",
-    "index": 613
+    "index": 615
   },
   {
     "welsh": "codi",
     "english": "get up",
     "group": "16",
-    "index": 614
+    "index": 616
   },
   {
     "welsh": "dawnsio",
     "english": "dance",
     "group": "16",
-    "index": 615
+    "index": 617
   },
   {
     "welsh": "derbyn",
     "english": "receive",
     "group": "16",
-    "index": 616
+    "index": 618
   },
   {
     "welsh": "eisiau",
     "english": "want",
     "group": "16",
-    "index": 617
+    "index": 619
   },
   {
     "welsh": "gallu",
     "english": "can",
     "group": "16",
-    "index": 618
+    "index": 620
   },
   {
     "welsh": "gwneud",
     "english": "do",
     "group": "16",
-    "index": 619
+    "index": 621
   },
   {
     "welsh": "gwybod",
     "english": "know",
     "group": "16",
-    "index": 620
+    "index": 622
   },
   {
     "welsh": "hoffi",
     "english": "like",
     "group": "16",
-    "index": 621
+    "index": 623
   },
   {
     "welsh": "ofni",
     "english": "fear",
     "group": "16",
-    "index": 622
+    "index": 624
   },
   {
     "welsh": "peintio",
     "english": "paint",
     "group": "16",
-    "index": 623
+    "index": 625
   },
   {
     "welsh": "rhaid",
     "english": "must",
     "group": "16",
-    "index": 624
+    "index": 626
   },
   {
     "welsh": "rhoi",
     "english": "give",
     "group": "16",
-    "index": 625
+    "index": 627
   },
   {
     "welsh": "bin",
     "english": "bin",
     "group": "17",
-    "index": 626
+    "index": 628
   },
   {
     "welsh": "blanced",
     "english": "blanket",
     "group": "17",
-    "index": 627
+    "index": 629
   },
   {
     "welsh": "bwrdd",
     "english": "table",
     "group": "17",
-    "index": 628
+    "index": 630
   },
   {
     "welsh": "cadach",
     "english": "cloth",
     "group": "17",
-    "index": 629
+    "index": 631
   },
   {
     "welsh": "cadair",
     "english": "chair",
     "group": "17",
-    "index": 630
+    "index": 632
   },
   {
     "welsh": "canhwyllbren",
     "english": "candlestick",
     "group": "17",
-    "index": 631
+    "index": 633
   },
   {
     "welsh": "canwyll",
     "english": "candle",
     "group": "17",
-    "index": 632
+    "index": 634
   },
   {
     "welsh": "carped",
     "english": "carpet",
     "group": "17",
-    "index": 633
+    "index": 635
   },
   {
     "welsh": "casgen",
     "english": "barrel",
     "group": "17",
-    "index": 634
+    "index": 636
   },
   {
     "welsh": "cist",
     "english": "chest",
     "group": "17",
-    "index": 635
+    "index": 637
   },
   {
     "welsh": "cloc",
     "english": "clock",
     "group": "17",
-    "index": 636
+    "index": 638
   },
   {
     "welsh": "cwpan",
     "english": "cup",
     "group": "17",
-    "index": 637
+    "index": 639
   },
   {
     "welsh": "cwpwrdd",
     "english": "cupboard",
     "group": "17",
-    "index": 638
+    "index": 640
   },
   {
     "welsh": "cyfrifiadur",
     "english": "computer",
     "group": "17",
-    "index": 639
+    "index": 641
   },
   {
     "welsh": "cyllell",
     "english": "knife",
     "group": "17",
-    "index": 640
+    "index": 642
   },
   {
     "welsh": "drws",
     "english": "door",
     "group": "17",
-    "index": 641
+    "index": 643
   },
   {
     "welsh": "drych",
     "english": "mirror",
     "group": "17",
-    "index": 642
+    "index": 644
   },
   {
     "welsh": "ffenestr",
     "english": "window",
     "group": "17",
-    "index": 643
+    "index": 645
   },
   {
     "welsh": "fforc",
     "english": "fork",
     "group": "17",
-    "index": 644
+    "index": 646
   },
   {
-    "welsh": "ffrâm",
+    "welsh": "ffrm",
     "english": "frame",
     "group": "17",
-    "index": 645
+    "index": 647
   },
   {
     "welsh": "ffwrn",
     "english": "stove",
     "group": "17",
-    "index": 646
+    "index": 648
   },
   {
-    "welsh": "ffôn",
+    "welsh": "ffn",
     "english": "phone",
     "group": "17",
-    "index": 647
+    "index": 649
   },
   {
     "welsh": "gobennydd",
     "english": "pillow",
     "group": "17",
-    "index": 648
+    "index": 650
   },
   {
     "welsh": "golchwr",
     "english": "washer",
     "group": "17",
-    "index": 649
+    "index": 651
   },
   {
     "welsh": "gwely",
     "english": "bed",
     "group": "17",
-    "index": 650
+    "index": 652
   },
   {
     "welsh": "lamp",
     "english": "lamp",
     "group": "17",
-    "index": 651
+    "index": 653
   },
   {
     "welsh": "llawr",
     "english": "floor",
     "group": "17",
-    "index": 652
+    "index": 654
   },
   {
     "welsh": "llen",
     "english": "curtain",
     "group": "17",
-    "index": 653
+    "index": 655
   },
   {
     "welsh": "llusern",
     "english": "lantern",
     "group": "17",
-    "index": 654
+    "index": 656
   },
   {
     "welsh": "llwy",
     "english": "spoon",
     "group": "17",
-    "index": 655
+    "index": 657
   },
   {
     "welsh": "mat",
     "english": "mat",
     "group": "17",
-    "index": 656
+    "index": 658
   },
   {
     "welsh": "microdon",
     "english": "microwave",
     "group": "17",
-    "index": 657
+    "index": 659
   },
   {
     "welsh": "oergell",
     "english": "fridge",
     "group": "17",
-    "index": 658
+    "index": 660
   },
   {
     "welsh": "padell",
     "english": "pan",
     "group": "17",
-    "index": 659
+    "index": 661
   },
   {
     "welsh": "plat",
     "english": "plate",
     "group": "17",
-    "index": 660
+    "index": 662
   },
   {
     "welsh": "popty",
     "english": "oven",
     "group": "17",
-    "index": 661
+    "index": 663
   },
   {
     "welsh": "potel",
     "english": "bottle",
     "group": "17",
-    "index": 662
+    "index": 664
   },
   {
     "welsh": "rheolydd",
     "english": "remote",
     "group": "17",
-    "index": 663
+    "index": 665
   },
   {
     "welsh": "rhewgell",
     "english": "freezer",
     "group": "17",
-    "index": 664
+    "index": 666
   },
   {
     "welsh": "sbwriel",
     "english": "rubbish",
     "group": "17",
-    "index": 665
+    "index": 667
   },
   {
     "welsh": "silff",
     "english": "shelf",
     "group": "17",
-    "index": 666
+    "index": 668
   },
   {
     "welsh": "sinc",
     "english": "sink",
     "group": "17",
-    "index": 667
+    "index": 669
   },
   {
     "welsh": "soffa",
     "english": "sofa",
     "group": "17",
-    "index": 668
+    "index": 670
   },
   {
     "welsh": "sychwr",
     "english": "dryer",
     "group": "17",
-    "index": 669
+    "index": 671
   },
   {
     "welsh": "tap",
     "english": "tap",
     "group": "17",
-    "index": 670
+    "index": 672
   },
   {
     "welsh": "tegell",
     "english": "kettle",
     "group": "17",
-    "index": 671
+    "index": 673
   },
   {
     "welsh": "teledu",
     "english": "television",
     "group": "17",
-    "index": 672
+    "index": 674
   },
   {
     "welsh": "to",
     "english": "roof",
     "group": "17",
-    "index": 673
+    "index": 675
   },
   {
     "welsh": "tywel",
     "english": "towel",
     "group": "17",
-    "index": 674
+    "index": 676
   },
   {
     "welsh": "Awst",
     "english": "August",
     "group": "18",
-    "index": 675
+    "index": 677
   },
   {
     "welsh": "Chwefror",
     "english": "February",
     "group": "18",
-    "index": 676
+    "index": 678
   },
   {
     "welsh": "Ebrill",
     "english": "April",
     "group": "18",
-    "index": 677
+    "index": 679
   },
   {
     "welsh": "Gorffennaf",
     "english": "July",
     "group": "18",
-    "index": 678
+    "index": 680
   },
   {
     "welsh": "Gwener",
     "english": "Friday",
     "group": "18",
-    "index": 679
+    "index": 681
   },
   {
     "welsh": "Hydref",
     "english": "October",
     "group": "18",
-    "index": 680
+    "index": 682
   },
   {
     "welsh": "Iau",
     "english": "Thursday",
     "group": "18",
-    "index": 681
+    "index": 683
   },
   {
     "welsh": "Ionawr",
     "english": "January",
     "group": "18",
-    "index": 682
+    "index": 684
   },
   {
     "welsh": "Llun",
     "english": "Monday",
     "group": "18",
-    "index": 683
+    "index": 685
   },
   {
     "welsh": "Mai",
     "english": "May",
     "group": "18",
-    "index": 684
+    "index": 686
   },
   {
     "welsh": "Mawrth",
     "english": "Tuesday",
     "group": "18",
-    "index": 685
+    "index": 687
   },
   {
     "welsh": "Medi",
     "english": "September",
     "group": "18",
-    "index": 686
+    "index": 688
   },
   {
     "welsh": "Mehefin",
     "english": "June",
     "group": "18",
-    "index": 687
+    "index": 689
   },
   {
     "welsh": "Mercher",
     "english": "Wednesday",
     "group": "18",
-    "index": 688
+    "index": 690
   },
   {
     "welsh": "Rhagfyr",
     "english": "December",
     "group": "18",
-    "index": 689
+    "index": 691
   },
   {
     "welsh": "Sadwrn",
     "english": "Saturday",
     "group": "18",
-    "index": 690
+    "index": 692
   },
   {
     "welsh": "Sul",
     "english": "Sunday",
     "group": "18",
-    "index": 691
+    "index": 693
   },
   {
     "welsh": "Tachwedd",
     "english": "November",
     "group": "18",
-    "index": 692
+    "index": 694
   },
   {
     "welsh": "aml",
     "english": "often",
     "group": "18",
-    "index": 693
+    "index": 695
   },
   {
     "welsh": "amser",
     "english": "time",
     "group": "18",
-    "index": 694
+    "index": 696
   },
   {
     "welsh": "awr",
     "english": "hour",
     "group": "18",
-    "index": 695
+    "index": 697
   },
   {
     "welsh": "blwyddyn",
     "english": "year",
     "group": "18",
-    "index": 696
+    "index": 698
   },
   {
     "welsh": "bron",
     "english": "almost",
     "group": "18",
-    "index": 697
+    "index": 699
   },
   {
     "welsh": "byth",
     "english": "never",
     "group": "18",
-    "index": 698
+    "index": 700
   },
   {
     "welsh": "calendar",
     "english": "calendar",
     "group": "18",
-    "index": 699
+    "index": 701
   },
   {
     "welsh": "chwarter",
     "english": "quarter",
     "group": "18",
-    "index": 700
+    "index": 702
   },
   {
     "welsh": "cyfnod",
     "english": "period",
     "group": "18",
-    "index": 701
+    "index": 703
   },
   {
     "welsh": "ddoe",
     "english": "yesterday",
     "group": "18",
-    "index": 702
+    "index": 704
   },
   {
     "welsh": "diwrnod",
     "english": "daytime",
     "group": "18",
-    "index": 703
+    "index": 705
   },
   {
     "welsh": "dydd",
     "english": "day",
     "group": "18",
-    "index": 704
+    "index": 706
   },
   {
     "welsh": "dyddiol",
     "english": "daily",
     "group": "18",
-    "index": 705
+    "index": 707
   },
   {
     "welsh": "eiliad",
     "english": "second",
     "group": "18",
-    "index": 706
+    "index": 708
   },
   {
     "welsh": "fore",
     "english": "morning",
     "group": "18",
-    "index": 707
+    "index": 709
   },
   {
     "welsh": "hanner",
     "english": "half",
     "group": "18",
-    "index": 708
+    "index": 710
   },
   {
     "welsh": "hanner dydd",
     "english": "midday",
     "group": "18",
-    "index": 709
+    "index": 711
   },
   {
     "welsh": "hanner nos",
     "english": "midnight",
     "group": "18",
-    "index": 710
+    "index": 712
   },
   {
     "welsh": "heddiw",
     "english": "today",
     "group": "18",
-    "index": 711
+    "index": 713
   },
   {
     "welsh": "mis",
     "english": "month",
     "group": "18",
-    "index": 712
+    "index": 714
   },
   {
     "welsh": "munud",
     "english": "minute",
     "group": "18",
-    "index": 713
+    "index": 715
   },
   {
     "welsh": "prin",
     "english": "rarely",
     "group": "18",
-    "index": 714
+    "index": 716
   },
   {
     "welsh": "tymor",
     "english": "season",
     "group": "18",
-    "index": 715
+    "index": 717
   },
   {
     "welsh": "unarddeg",
     "english": "eleven",
     "group": "18",
-    "index": 716
+    "index": 718
   },
   {
     "welsh": "weithiau",
     "english": "sometimes",
     "group": "18",
-    "index": 717
+    "index": 719
   },
   {
     "welsh": "wythnos",
     "english": "week",
     "group": "18",
-    "index": 718
+    "index": 720
   },
   {
     "welsh": "yfory",
     "english": "tomorrow",
     "group": "18",
-    "index": 719
-  },
-  {
-    "welsh": "arweinydd",
-    "english": "leader",
-    "group": "19",
-    "index": 720
+    "index": 721
   },
   {
     "welsh": "babi",
     "english": "baby",
     "group": "19",
-    "index": 721
+    "index": 722
   },
   {
     "welsh": "bachgen",
     "english": "boy",
     "group": "19",
-    "index": 722
+    "index": 723
   },
   {
     "welsh": "brawd",
     "english": "brother",
     "group": "19",
-    "index": 723
-  },
-  {
-    "welsh": "bôs",
-    "english": "boss",
-    "group": "19",
     "index": 724
   },
   {
-    "welsh": "cefnder",
-    "english": "cousin (male)",
+    "welsh": "bs",
+    "english": "boss",
     "group": "19",
     "index": 725
+  },
+  {
+    "welsh": "cariad",
+    "english": "sweetheart",
+    "group": "19",
+    "index": 726
+  },
+  {
+    "welsh": "cefnder",
+    "english": "male cousin",
+    "group": "19",
+    "index": 727
   },
   {
     "welsh": "chwaer",
     "english": "sister",
     "group": "19",
-    "index": 726
-  },
-  {
-    "welsh": "cleient",
-    "english": "client",
-    "group": "19",
-    "index": 727
+    "index": 728
   },
   {
     "welsh": "cyd-letywr",
     "english": "flatmate",
     "group": "19",
-    "index": 728
-  },
-  {
-    "welsh": "cydweithiwr",
-    "english": "coworker",
-    "group": "19",
     "index": 729
   },
   {
-    "welsh": "cydymaith",
-    "english": "associate",
+    "welsh": "cyfnither",
+    "english": "female cousin",
     "group": "19",
     "index": 730
-  },
-  {
-    "welsh": "cydymaith teithio",
-    "english": "travel companion",
-    "group": "19",
-    "index": 731
-  },
-  {
-    "welsh": "cyfaill",
-    "english": "companion",
-    "group": "19",
-    "index": 732
-  },
-  {
-    "welsh": "cyflogai",
-    "english": "employee",
-    "group": "19",
-    "index": 733
-  },
-  {
-    "welsh": "cyfnither",
-    "english": "cousin (female)",
-    "group": "19",
-    "index": 734
   },
   {
     "welsh": "cymydog",
     "english": "neighbour",
     "group": "19",
-    "index": 735
-  },
-  {
-    "welsh": "dilynwr",
-    "english": "follower",
-    "group": "19",
-    "index": 736
+    "index": 731
   },
   {
     "welsh": "dyn",
     "english": "man",
     "group": "19",
-    "index": 737
+    "index": 732
   },
   {
     "welsh": "ewythr",
     "english": "uncle",
     "group": "19",
-    "index": 738
+    "index": 733
   },
   {
     "welsh": "ffrind",
     "english": "friend",
     "group": "19",
-    "index": 739
+    "index": 734
   },
   {
     "welsh": "geneth",
     "english": "girl",
     "group": "19",
-    "index": 740
-  },
-  {
-    "welsh": "gweithiwr",
-    "english": "worker",
-    "group": "19",
-    "index": 741
-  },
-  {
-    "welsh": "gwraig",
-    "english": "spouse",
-    "group": "19",
-    "index": 742
+    "index": 735
   },
   {
     "welsh": "gwraig",
     "english": "wife",
     "group": "19",
-    "index": 743
+    "index": 736
   },
   {
-    "welsh": "gwraig y tad",
+    "welsh": "llysfama",
     "english": "stepmother",
     "group": "19",
-    "index": 744
+    "index": 737
   },
   {
     "welsh": "g?r",
     "english": "husband",
     "group": "19",
-    "index": 745
-  },
-  {
-    "welsh": "g?r",
-    "english": "spouse",
-    "group": "19",
-    "index": 746
+    "index": 738
   },
   {
     "welsh": "g?r y fam",
     "english": "stepfather",
     "group": "19",
-    "index": 747
+    "index": 739
   },
   {
     "welsh": "hen",
     "english": "elder",
     "group": "19",
-    "index": 748
+    "index": 740
   },
   {
     "welsh": "llysfab",
     "english": "stepson",
     "group": "19",
-    "index": 749
+    "index": 741
   },
   {
     "welsh": "llysferch",
     "english": "stepdaughter",
     "group": "19",
-    "index": 750
+    "index": 742
   },
   {
     "welsh": "mab",
     "english": "son",
     "group": "19",
-    "index": 751
+    "index": 743
   },
   {
     "welsh": "mam",
     "english": "mother",
     "group": "19",
-    "index": 752
+    "index": 744
   },
   {
     "welsh": "menyw",
     "english": "woman",
     "group": "19",
-    "index": 753
+    "index": 745
   },
   {
     "welsh": "merch",
     "english": "daughter",
     "group": "19",
-    "index": 754
+    "index": 746
   },
   {
     "welsh": "modryb",
     "english": "aunt",
     "group": "19",
-    "index": 755
+    "index": 747
   },
   {
-    "welsh": "nain",
+    "welsh": "mamgu",
     "english": "grandmother",
     "group": "19",
-    "index": 756
+    "index": 748
   },
   {
     "welsh": "oedolyn",
     "english": "adult",
     "group": "19",
-    "index": 757
+    "index": 749
   },
   {
     "welsh": "partner",
     "english": "partner",
     "group": "19",
-    "index": 758
+    "index": 750
+  },
+  {
+    "welsh": "plantos bach",
+    "english": "children",
+    "group": "19",
+    "index": 751
   },
   {
     "welsh": "plentyn",
     "english": "child",
     "group": "19",
-    "index": 759
+    "index": 752
   },
   {
     "welsh": "rhiant",
     "english": "parent",
     "group": "19",
-    "index": 760
-  },
-  {
-    "welsh": "rhiant biolegol",
-    "english": "biological parent",
-    "group": "19",
-    "index": 761
-  },
-  {
-    "welsh": "rhiant mabwysiadol",
-    "english": "adoptive parent",
-    "group": "19",
-    "index": 762
-  },
-  {
-    "welsh": "rhiant maeth",
-    "english": "foster parent",
-    "group": "19",
-    "index": 763
+    "index": 753
   },
   {
     "welsh": "tad",
     "english": "father",
     "group": "19",
-    "index": 764
+    "index": 754
   },
   {
-    "welsh": "taid",
+    "welsh": "tadcu",
     "english": "grandfather",
     "group": "19",
-    "index": 765
+    "index": 755
   },
   {
     "welsh": "teulu",
     "english": "family",
     "group": "19",
-    "index": 766
+    "index": 756
   },
   {
     "welsh": "balconi",
     "english": "balcony",
-    "group": "20",
-    "index": 767
+    "group": "#N/A",
+    "index": 757
   },
   {
     "welsh": "cegin",
     "english": "kitchen",
-    "group": "20",
-    "index": 768
+    "group": "#N/A",
+    "index": 758
   },
   {
     "welsh": "cyntedd",
     "english": "hallway",
-    "group": "20",
-    "index": 769
+    "group": "#N/A",
+    "index": 759
   },
   {
     "welsh": "dinas",
     "english": "city",
-    "group": "20",
-    "index": 770
+    "group": "#N/A",
+    "index": 760
   },
   {
     "welsh": "eglwys",
     "english": "church",
-    "group": "20",
-    "index": 771
+    "group": "#N/A",
+    "index": 761
   },
   {
     "welsh": "fflat",
     "english": "flat",
-    "group": "20",
-    "index": 772
+    "group": "#N/A",
+    "index": 762
   },
   {
     "welsh": "ffordd",
     "english": "road",
-    "group": "20",
-    "index": 773
+    "group": "#N/A",
+    "index": 763
   },
   {
     "welsh": "garej",
     "english": "garage",
-    "group": "20",
-    "index": 774
+    "group": "#N/A",
+    "index": 764
   },
   {
     "welsh": "grisiau",
     "english": "stairs",
-    "group": "20",
-    "index": 775
+    "group": "#N/A",
+    "index": 765
   },
   {
     "welsh": "llawr moethus",
     "english": "luxury floor",
-    "group": "20",
-    "index": 776
+    "group": "#N/A",
+    "index": 766
   },
   {
     "welsh": "llawr pren",
     "english": "wooden floor",
-    "group": "20",
-    "index": 777
+    "group": "#N/A",
+    "index": 767
   },
   {
     "welsh": "llawr teils",
     "english": "tiled floor",
-    "group": "20",
-    "index": 778
+    "group": "#N/A",
+    "index": 768
   },
   {
     "welsh": "llenni",
     "english": "curtains",
-    "group": "20",
-    "index": 779
+    "group": "#N/A",
+    "index": 769
   },
   {
     "welsh": "mynydd",
     "english": "mountain",
-    "group": "20",
-    "index": 780
+    "group": "#N/A",
+    "index": 770
   },
   {
     "welsh": "parc",
     "english": "park",
-    "group": "20",
-    "index": 781
+    "group": "#N/A",
+    "index": 771
   },
   {
     "welsh": "pentref",
     "english": "village",
-    "group": "20",
-    "index": 782
+    "group": "#N/A",
+    "index": 772
   },
   {
     "welsh": "stryd",
     "english": "street",
-    "group": "20",
-    "index": 783
+    "group": "#N/A",
+    "index": 773
   },
   {
     "welsh": "swyddfa",
     "english": "office",
-    "group": "20",
-    "index": 784
+    "group": "#N/A",
+    "index": 774
   },
   {
     "welsh": "toiled",
     "english": "toilet",
-    "group": "20",
-    "index": 785
+    "group": "#N/A",
+    "index": 775
   },
   {
     "welsh": "traeth",
     "english": "beach",
-    "group": "20",
-    "index": 786
+    "group": "#N/A",
+    "index": 776
   },
   {
     "welsh": "tref",
     "english": "town",
-    "group": "20",
-    "index": 787
+    "group": "#N/A",
+    "index": 777
   },
   {
     "welsh": "t?",
     "english": "house",
-    "group": "20",
-    "index": 788
+    "group": "#N/A",
+    "index": 778
   },
   {
     "welsh": "ysbyty",
     "english": "hospital",
-    "group": "20",
-    "index": 789
+    "group": "#N/A",
+    "index": 779
   },
   {
     "welsh": "ystafell",
     "english": "room",
-    "group": "20",
-    "index": 790
+    "group": "#N/A",
+    "index": 780
   },
   {
     "welsh": "ystafell wely",
     "english": "bedroom",
-    "group": "20",
-    "index": 791
+    "group": "#N/A",
+    "index": 781
   },
   {
     "welsh": "ystafell ymolchi",
     "english": "bathroom",
-    "group": "20",
-    "index": 792
+    "group": "#N/A",
+    "index": 782
   },
   {
     "welsh": "ach",
     "english": "ugh",
     "group": "#N/A",
-    "index": 793
+    "index": 783
   },
   {
     "welsh": "aw",
     "english": "aw",
     "group": "#N/A",
-    "index": 794
+    "index": 784
   },
   {
     "welsh": "de",
     "english": "right",
     "group": "#N/A",
-    "index": 795
+    "index": 785
   },
   {
     "welsh": "hai",
     "english": "come-on",
     "group": "#N/A",
-    "index": 796
+    "index": 786
   },
   {
     "welsh": "hei",
     "english": "hey",
     "group": "#N/A",
-    "index": 797
+    "index": 787
   },
   {
     "welsh": "hew",
     "english": "hey",
     "group": "#N/A",
-    "index": 798
+    "index": 788
   },
   {
     "welsh": "hmm",
     "english": "hmm",
     "group": "#N/A",
-    "index": 799
+    "index": 789
   },
   {
     "welsh": "ho",
     "english": "ho",
     "group": "#N/A",
-    "index": 800
+    "index": 790
   },
   {
     "welsh": "ia",
     "english": "yes",
     "group": "#N/A",
-    "index": 801
+    "index": 791
   },
   {
     "welsh": "ie",
     "english": "yes",
     "group": "#N/A",
-    "index": 802
+    "index": 792
   },
   {
     "welsh": "iwa",
     "english": "wow",
     "group": "#N/A",
-    "index": 803
+    "index": 793
   },
   {
     "welsh": "na",
     "english": "no",
     "group": "#N/A",
-    "index": 804
+    "index": 794
   },
   {
     "welsh": "o",
     "english": "oh",
     "group": "#N/A",
-    "index": 805
+    "index": 795
   },
   {
     "welsh": "oi",
     "english": "hey",
     "group": "#N/A",
-    "index": 806
+    "index": 796
   },
   {
     "welsh": "ops",
     "english": "oops",
     "group": "#N/A",
-    "index": 807
+    "index": 797
   },
   {
     "welsh": "ow",
     "english": "ow",
     "group": "#N/A",
-    "index": 808
+    "index": 798
   },
   {
     "welsh": "pst",
     "english": "psst",
     "group": "#N/A",
-    "index": 809
+    "index": 799
   },
   {
     "welsh": "reit",
     "english": "right",
     "group": "#N/A",
-    "index": 810
+    "index": 800
   },
   {
     "welsh": "shh",
     "english": "shh",
     "group": "#N/A",
-    "index": 811
+    "index": 801
   },
   {
     "welsh": "ta",
     "english": "then",
     "group": "#N/A",
-    "index": 812
+    "index": 802
   },
   {
     "welsh": "waw",
     "english": "wow",
     "group": "#N/A",
-    "index": 813
+    "index": 803
   },
   {
     "welsh": "wel",
     "english": "well",
     "group": "#N/A",
-    "index": 814
+    "index": 804
   },
   {
     "welsh": "ych",
     "english": "yuck",
     "group": "#N/A",
-    "index": 815
+    "index": 805
   }
 ]

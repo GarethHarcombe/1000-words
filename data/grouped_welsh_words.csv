@@ -51,7 +51,7 @@ Group,Welsh,English
 0,til,till
 0,tocyn,ticket
 0,trol,trolley
-0,trên,train
+0,trˆn,train
 0,werthu,sell
 0,agos,near
 0,amserlen,timetable
@@ -76,7 +76,7 @@ Group,Welsh,English
 0,gyrru,drive
 0,llwybr,path
 0,llwybrau,routes
-0,lôn,lane
+0,l“n,lane
 0,maesawyr,airport
 0,map,map
 0,modur,motor
@@ -109,7 +109,7 @@ Group,Welsh,English
 0,llyn,lake
 0,mellt,lightning
 0,mwd,mud
-0,môr,sea
+0,m“r,sea
 0,niwl,fog
 0,oerfel,cold
 0,pridd,soil
@@ -163,7 +163,7 @@ Group,Welsh,English
 0,targed,target
 0,tasg,task
 0,terfyn,deadline
-0,tîm,team
+0,tŒm,team
 0,ysgol,school
 1,bore da,good morning
 1,croeso,welcome
@@ -178,6 +178,8 @@ Group,Welsh,English
 1,noswaith dda,good evening
 1,prynhawn da,good afternoon
 1,shwmae,how are you
+1,plŒs,please
+1,maer,excuse me
 1,sori,sorry
 2,ti,you
 2,wyt ti,you are
@@ -307,7 +309,7 @@ Group,Welsh,English
 6,gwin gwyn,white wine
 6,halen,salt
 6,hufen,cream
-6,hufen iâ,ice cream
+6,hufen iƒ,ice cream
 6,llaeth,milk
 6,llysiau,vegetables
 6,melon,melon
@@ -330,31 +332,27 @@ Group,Welsh,English
 6,tatws,potatoes
 6,te,tea
 6,tost,toast
-9,arian,silver
-9,aur,gold
-9,brown,brown
-9,coch,red
-9,du,black
-9,dufrown,dark brown
-9,glas,blue
-9,glasdywyll,dark blue
-9,glasgolau,light blue
-9,gwyn,white
-9,gwyrdd,green
-9,gwyrddgolau,light green
-9,gwyrddlas,teal
-9,gwyrddtywyll,dark green
-9,las,light blue
-9,llwyd,grey
 9,llwydfelyn,beige
-9,llwydgolau,light grey
-9,llwydlas,slate
-9,llwydtywyll,dark grey
-9,melyn,yellow
+9,du,black
+9,glas,blue
+9,brown,brown
+9,tywyll,dark
+9,aur,gold
+9,gwyrdd,green
+9,llwyd,grey
+9,golau,light
+9,glas,blue
+9,llwyd,grey
 9,oren,orange
 9,pinc,pink
 9,porffor,purple
+9,coch,red
+9,arian,silver
+9,llwydlas,slate
+9,gwyrddlas,teal
 9,turquoise,turquoise
+9,gwyn,white
+9,melyn,yellow
 10,ac,and
 10,allan,out
 10,allanfa,exit
@@ -464,7 +462,7 @@ Group,Welsh,English
 12,drud,expensive
 12,eitha,quite
 12,garw,rough
-12,glân,clean
+12,glƒn,clean
 12,gwael,bad
 12,gwag,empty
 12,gwlyb,wet
@@ -496,53 +494,57 @@ Group,Welsh,English
 12,trwm,heavy
 12,uchel,high
 12,ysgafn,light
-13,amau,doubt
-13,anghytuno,disagree
-13,anodd,difficult
-13,balch,proud
-13,beirniadu,criticize
-13,blinedig,tired
-13,caru,love
-13,cas,hateful
-13,casineb,hatred
-13,casáu,hate
-13,codi,rise
-13,colli,lose
-13,credu,believe
-13,cydymdeimlo,sympathize
-13,cyffrous,excited
-13,cyfrannu,contribute
-13,cymeradwy,approved
-13,cymeradwyo,endorse
-13,cynhyrfus,anxious
-13,cytuno,agree
-13,cywilyddus,ashamed
 13,derbyn,accept
-13,dibwys,unimportant
-13,dig,angry
 13,edmygu,admire
-13,ennill,win
-13,galaru,grieve
-13,gobeithio,hope
-13,gwrthod,reject
-13,hapus,happy
-13,hoff,fond
-13,hwylus,pleasant
-13,llwglyd,hungry
-13,meddwl,think
-13,nerfus,nervous
 13,ofnus,afraid
-13,poeni,worry
-13,poenus,sore
-13,rhagorol,excellent
+13,cytuno,agree
+13,dig,angry
+13,cynhyrfus,anxious
+13,cythruddo,annoyed
+13,cywilyddus,ashamed
+13,credu,believe
+15,cythrwfl,confusion
+13,beirniadu,criticize
+13,anodd,difficult
+13,anghytuno,disagree
 13,siomedig,disappointed
-13,sychedig,thirsty
-13,syrthio,fall
+13,amau,doubt
+13,cywilyddus,embarrassed
+13,gwag,empty
+13,cymeradwyo,endorse
+13,arddechog,excellent
+13,cyffrous,excited
 13,teimlo,feel
-13,trist,sad
+13,hoff,fond
+13,braw,fear
+13,rhydd,free
+13,cyfeillgar,friendly
+13,llawn,full
+13,galaru,grieve
+13,hapus,happy
+13,cas u,hate
+13,casineb,hatred
+13,gobeithio,hope
+13,llwglyd,hungry
+13,colli,lose
+13,caru,love
+13,nerfus,nervous
+13,hwylus,pleasant
+13,balch,proud
+13,gwrthod,reject
 13,ymatebgar,responsive
+13,codi,rise
+13,trist,sad
+13,sƒl,sick
+13,poenus,painful
+13,meddwl,think
+13,sychedig,thirsty
+13,blinedig,tired
 13,ymddiried,trust
-13,ymfalchïo,rejoice
+13,dibwys,unimportant
+13,ennill,win
+13,poeni,worry
+13,hiraeth,yearning
 15,blows,blouse
 15,bol,belly
 15,braich,arm
@@ -592,7 +594,7 @@ Group,Welsh,English
 15,sgid gyfforddus,comfortable shoe
 15,sgid hen,old shoe
 15,sgid lledr,leather shoe
-15,sgid lân,clean shoe
+15,sgid lƒn,clean shoe
 15,sgid newydd,new shoe
 15,sgid nofio,swimshoe
 15,sgid rhad,cheap shoe
@@ -644,9 +646,9 @@ Group,Welsh,English
 17,drych,mirror
 17,ffenestr,window
 17,fforc,fork
-17,ffrâm,frame
+17,ffrƒm,frame
 17,ffwrn,stove
-17,ffôn,phone
+17,ff“n,phone
 17,gobennydd,pillow
 17,golchwr,washer
 17,gwely,bed
@@ -719,33 +721,23 @@ Group,Welsh,English
 18,weithiau,sometimes
 18,wythnos,week
 18,yfory,tomorrow
-19,arweinydd,leader
 19,babi,baby
 19,bachgen,boy
 19,brawd,brother
-19,bôs,boss
-19,cefnder,cousin (male)
+19,b“s,boss
+19,cariad,sweetheart
+19,cefnder,male cousin
 19,chwaer,sister
-19,cleient,client
 19,cyd-letywr,flatmate
-19,cydweithiwr,coworker
-19,cydymaith,associate
-19,cydymaith teithio,travel companion
-19,cyfaill,companion
-19,cyflogai,employee
-19,cyfnither,cousin (female)
+19,cyfnither,female cousin
 19,cymydog,neighbour
-19,dilynwr,follower
 19,dyn,man
 19,ewythr,uncle
 19,ffrind,friend
 19,geneth,girl
-19,gweithiwr,worker
-19,gwraig,spouse
 19,gwraig,wife
-19,gwraig y tad,stepmother
+19,llysfama,stepmother
 19,g?r,husband
-19,g?r,spouse
 19,g?r y fam,stepfather
 19,hen,elder
 19,llysfab,stepson
@@ -755,43 +747,41 @@ Group,Welsh,English
 19,menyw,woman
 19,merch,daughter
 19,modryb,aunt
-19,nain,grandmother
+19,mamgu,grandmother
 19,oedolyn,adult
 19,partner,partner
+19,plantos bach,children
 19,plentyn,child
 19,rhiant,parent
-19,rhiant biolegol,biological parent
-19,rhiant mabwysiadol,adoptive parent
-19,rhiant maeth,foster parent
 19,tad,father
-19,taid,grandfather
+19,tadcu,grandfather
 19,teulu,family
-20,balconi,balcony
-20,cegin,kitchen
-20,cyntedd,hallway
-20,dinas,city
-20,eglwys,church
-20,fflat,flat
-20,ffordd,road
-20,garej,garage
-20,grisiau,stairs
-20,llawr moethus,luxury floor
-20,llawr pren,wooden floor
-20,llawr teils,tiled floor
-20,llenni,curtains
-20,mynydd,mountain
-20,parc,park
-20,pentref,village
-20,stryd,street
-20,swyddfa,office
-20,toiled,toilet
-20,traeth,beach
-20,tref,town
-20,t?,house
-20,ysbyty,hospital
-20,ystafell,room
-20,ystafell wely,bedroom
-20,ystafell ymolchi,bathroom
+#N/A,balconi,balcony
+#N/A,cegin,kitchen
+#N/A,cyntedd,hallway
+#N/A,dinas,city
+#N/A,eglwys,church
+#N/A,fflat,flat
+#N/A,ffordd,road
+#N/A,garej,garage
+#N/A,grisiau,stairs
+#N/A,llawr moethus,luxury floor
+#N/A,llawr pren,wooden floor
+#N/A,llawr teils,tiled floor
+#N/A,llenni,curtains
+#N/A,mynydd,mountain
+#N/A,parc,park
+#N/A,pentref,village
+#N/A,stryd,street
+#N/A,swyddfa,office
+#N/A,toiled,toilet
+#N/A,traeth,beach
+#N/A,tref,town
+#N/A,t?,house
+#N/A,ysbyty,hospital
+#N/A,ystafell,room
+#N/A,ystafell wely,bedroom
+#N/A,ystafell ymolchi,bathroom
 #N/A,ach,ugh
 #N/A,aw,aw
 #N/A,de,right

@@ -30,12 +30,12 @@ interface Position {
 }
 
 const townImages: Record<string, any> = {
-  "1": require('@/assets/images/town-icons/copper-mines.png'),
-  "2": require('@/assets/images/town-icons/conwy.png'),
-  "3": require('@/assets/images/town-icons/snowdonia.png'),
-  "4": require('@/assets/images/town-icons/portmeirion.png'),
-  "5": require('@/assets/images/town-icons/llanfairpg.png'),
-  "6": require('@/assets/images/town-icons/welsh_cakes.png'),
+  "1": require('@/assets/images/good-icons/CHURCH.png'),  // conwy
+  "2": require('@/assets/images/town-icons/armchair.png'),
+  "3": require('@/assets/images/town-icons/love_spoons.png'),
+  "4": require('@/assets/images/town-icons/llanfairpg.png'),
+  "5": require('@/assets/images/town-icons/welsh_cakes.png'),
+  "6": require('@/assets/images/town-icons/portmeirion.png'),
   "7": require('@/assets/images/town-icons/pembrokeshire-coast.png'),
   "8": require('@/assets/images/town-icons/st-davids.png'),
   "9": require('@/assets/images/town-icons/swansea.png'),
@@ -79,7 +79,7 @@ const towns: Town[] = rawTowns
   .map(town => ({
     ...town, 
   }))
-  .slice(1, 6);
+  .slice(0, 5);
 
 const bottomSheetHeight = height * 0.5; // 40% of screen height
 

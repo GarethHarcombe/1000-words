@@ -1,56 +1,63 @@
 [
     {
     "stage": 1,
-    "name": "Wrecsam",
-    "group": "Greetings",
-    "x": 1570,
-    "y": 1120,
-    "description": ""
-  },
-    {
-    "stage": 2,
     "name": "Conwy",
-    "group": "Pronouns",
-    "x": 400,
-    "y": 50,
+    "group": "Greetings",
+    "groupID": 1,
+    "x": 1300,
+    "y": 400,
     "description": "A picturesque medieval walled town dominated by the imposing Conwy Castle, a UNESCO World Heritage Site. The remarkably intact town walls, historic suspension bridge, and quaint harbor make this one of North Wales' most photogenic destinations."
   },
   {
+    "stage": 2,
+    "name": "Cwtch",
+    "group": "Family",
+    "groupID": 19,
+    "x": 1600,
+    "y": 2900,
+    "description": "A Cwtch is a cosy spot in Wales known for its warm, homely atmosphere. It's also a term for a hug with a sense of comfort and affection that goes beyond a simple hug. The English can cuddle, but only the Welsh Cwtch."
+  },
+  {
     "stage": 3,
-    "name": "The Great Orme Copper Mines",
-    "group": "Question Words",
-    "x": 400,
-    "y": 20,
-    "description": "Bronze Age copper mines in Llandudno dating back 4,000 years that form the largest prehistoric mine discovered in the world. Visitors can explore the ancient underground passages where miners as young as children once worked."
+    "name": "Love Spoon Carving",
+    "group": "Feelings",
+    "groupID": 13,
+    "x": 1300,
+    "y": 1200,
+    "description": "Love spoons are traditional hand-carved wooden spoons from Wales, historically given as tokens of affection and courtship. Each spoon features intricate designs and symbols, such as hearts or knots, representing love, commitment, and good fortune."
   },
   {
     "stage": 4,
-    "name": "Betws-y-Coed",
-    "group": "Numbers",
-    "x": 410,
-    "y": 110,
-    "description": ""
-  },
-  {
-    "stage": 5,
     "name": "Llanfairpwllgwyngyllgogerychwyrndrobwllllantysiliogogogoch",
     "group": "Places",
+    "groupID": 5,
     "x": 940,
     "y": 520,
     "description": "The village with the longest place name in Europe (and second longest in the world) at 58 characters. Originally a publicity stunt in the 1860s, the name translates to 'St Mary's Church in the hollow of the white hazel near a rapid whirlpool and the Church of St. Tysilio near the red cave.'"
   },
   {
-    "stage": 6,
+    "stage": 5,
     "name": "Welsh Bakery",
     "group": "Food & Drink",
-    "x": 700,
-    "y": 400,
+    "groupID": 6,
+    "x": 1000,
+    "y": 2000,
     "description": "Welsh cakes are soft, buttery griddle cakes studded with currants, offering a delicate balance of sweetness and spice with a melt-in-the-mouth texture. They hold a cherished place in Welsh culture as a traditional treat served at gatherings and celebrations, symbolizing warmth, hospitality, and heritage."
+  },
+  {
+    "stage": 6,
+    "name": "Betws-y-Coed",
+    "group": "Numbers",
+    "groupID": 1,
+    "x": 410,
+    "y": 110,
+    "description": ""
   },
   {
     "stage": 7,
     "name": "Pembrokeshire Coast",
     "group": "",
+    "groupID": 1,
     "x": 220,
     "y": 450,
     "description": "Britain's only coastal national park features 186 miles of spectacular limestone cliffs, golden beaches, and hidden coves. The Pembrokeshire Coast Path offers breathtaking views while the waters host diverse marine life including seals, dolphins, and puffins on nearby islands."
@@ -59,6 +66,7 @@
     "stage": 8,
     "name": "St. Davids",
     "group": "",
+    "groupID": 1,
     "x": 240,
     "y": 500,
     "description": "The UK's smallest city contains the magnificent 12th-century St. Davids Cathedral built in a valley to hide it from Viking raiders. Despite its city status, this charming settlement has the population of a small village and sits within the spectacular Pembrokeshire Coast National Park."
@@ -67,6 +75,7 @@
     "stage": 9,
     "name": "Swansea",
     "group": "",
+    "groupID": 1,
     "x": 350,
     "y": 520,
     "description": "Wales' second city offers the beautiful sweep of Swansea Bay, the historic Mumbles lighthouse, and the birthplace of poet Dylan Thomas. The renovated maritime quarter and nearby Gower Peninsula (the UK's first Area of Outstanding Natural Beauty) attract visitors year-round."
@@ -75,16 +84,18 @@
     "stage": 10,
     "name": "Cardiff",
     "group": "",
+    "groupID": 1,
     "x": 400,
     "y": 560,
     "description": "Wales' capital city features the stunning Cardiff Castle, ultra-modern Cardiff Bay waterfront, and the iconic Principality Stadium. This vibrant metropolis blends medieval heritage with contemporary architecture and hosts major sporting and cultural events throughout the year."
   },
   {
     "stage": 11,
-    "name": "Cwtch",
-    "group": "Family",
+    "name": "The Great Orme Copper Mines",
+    "group": "Question Words",
+    "groupID": 3,
     "x": 400,
-    "y": 560,
-    "description": "Wales' capital city features the stunning Cardiff Castle, ultra-modern Cardiff Bay waterfront, and the iconic Principality Stadium. This vibrant metropolis blends medieval heritage with contemporary architecture and hosts major sporting and cultural events throughout the year."
+    "y": 20,
+    "description": "Bronze Age copper mines in Llandudno dating back 4,000 years that form the largest prehistoric mine discovered in the world. Visitors can explore the ancient underground passages where miners as young as children once worked."
   }
 ]

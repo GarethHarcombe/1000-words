@@ -39,13 +39,13 @@ export default function TownInfo ({ town, action }: TownInfoProps) {
           case 1:
             return require('@/assets/images/town-images/conwy.jpg');
           case 2:
-            return require('@/assets/images/caravan.jpg');
+            return require('@/assets/images/town-images/cwtch.jpg');
           case 3:
-            return require('@/assets/images/caravan.jpg');
+            return require('@/assets/images/town-images/love_spoons.jpg');
           case 4:
             return require('@/assets/images/town-images/llanfaipg.jpg');
           case 5:
-            return require('@/assets/images/town-images/llanfaipg.jpg');
+            return require('@/assets/images/town-images/bakery.jpg');
           case 6:
             return require('@/assets/images/town-images/bakery.jpg');
           default:
@@ -76,7 +76,7 @@ export default function TownInfo ({ town, action }: TownInfoProps) {
             
             <TouchableOpacity
               style={styles.actionButton}
-              onPress={() => router.push({ pathname: '/TownFlashcardsScreen', params: { id: town.stage } })}
+              onPress={() => router.push({ pathname: '/TownFlashcardsScreen', params: { id: town.groupID } })}
             >
               <Text style={styles.actionButtonText}>Travel Here and Learn {town.group}</Text>
             </TouchableOpacity>
