@@ -14,11 +14,16 @@ const WRONG_INTERVAL_MS = 10_000; // 10 seconds for wrong answers
 const SOONEST_POOL_SIZE = 3;
 
 function getIntervalMs(stage: number, streak: number): number {
-  if (stage === 0) return 10_000;
+  if (stage === 0) return 1_000;
   if (stage === 1) {
-    if (streak === 0) return 1;
-    if (streak === 1) return 2;
-    if (streak === 2) return 3;
+    if (streak === 0) return 3_000;
+    if (streak === 1) return 6_000;
+    if (streak === 2) return 10_000;
+  }
+  if (stage === 2) {
+    if (streak === 0) return 60_000;
+    if (streak === 1) return 120_000;
+    if (streak === 2) return 240_000;
   }
   return 0;
 }
