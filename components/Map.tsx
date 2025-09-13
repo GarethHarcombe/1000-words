@@ -1,92 +1,76 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { View, ImageBackground, StyleSheet, Dimensions, Text, TouchableOpacity, Image, Platform } from 'react-native';
+import React, { useState, useRef } from 'react';
+import {
+  View,
+  ImageBackground,
+  StyleSheet,
+  Dimensions,
+  TouchableOpacity,
+  Image,
+} from 'react-native';
 import { GestureDetector, Gesture } from 'react-native-gesture-handler';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
-  withTiming,
-  withSpring,
   clamp,
-  Easing,
-  runOnJS,
-  useDerivedValue,
 } from 'react-native-reanimated';
-import { Town } from '@/constants/Types'
-import rawTowns from '@/data/welsh-towns.json'
-import BottomSheet from './BottomSheet'
-import TownInfo from './mapComponents/townInfo'
+import { Town } from '@/constants/Types';
+import rawTowns from '@/data/welsh-towns.json';
+import BottomSheet from './BottomSheet';
+import TownInfo from './mapComponents/townInfo';
+import Caravan, { Position } from './mapComponents/Caravan';
 
-// Define types for the gesture events
-interface TapGestureEvent {
-  x: number;
-  y: number;
-  absoluteX: number;
-  absoluteY: number;
-}
-
-interface Position {
-  x: number;
-  y: number;
-}
-
-const townImages: Record<string, any> = {
-  "1": require('@/assets/images/good-icons/CHURCH.png'),  // conwy
-  "2": require('@/assets/images/town-icons/armchair.png'),
-  "3": require('@/assets/images/town-icons/love_spoons.png'),
-  "4": require('@/assets/images/town-icons/llanfairpg.png'),
-  "5": require('@/assets/images/town-icons/welsh_cakes.png'),
-  "6": require('@/assets/images/town-icons/portmeirion.png'),
-  "7": require('@/assets/images/town-icons/pembrokeshire-coast.png'),
-  "8": require('@/assets/images/town-icons/st-davids.png'),
-  "9": require('@/assets/images/town-icons/swansea.png'),
-  "10": require('@/assets/images/town-icons/cardiff.png'),
-  "default": require('@/assets/images/adaptive-icon.png')
-};
-
+// Window and map geometry
 const { width, height } = Dimensions.get('window');
 const viewportWidth = width;
 const viewportHeight = height;
+
 const MIN_SCALE = 1;
 const MAX_SCALE = 4;
 
-// Define the original image aspect ratio (width/height)
+// Background image intrinsic size
 const imgWidth = 2481;
 const imgHeight = 3508;
-const IMAGE_ASPECT_RATIO = imgWidth / imgHeight // Your welsh-map-background.jpeg aspect ratio
+const IMAGE_ASPECT_RATIO = imgWidth / imgHeight;
 
-// Calculate initial map dimensions
+// Rendered size of the map at base scale 1
 const mapHeight = viewportHeight;
 const mapWidth = mapHeight * IMAGE_ASPECT_RATIO;
 
+// Convert from image pixel coords -> rendered coords
 const scaleX = mapWidth / imgWidth;
 const scaleY = mapHeight / imgHeight;
 
-
+// UI sizes
 const ICON_SIZE = 20;
 const ICON_HALF = ICON_SIZE / 2;
 
+// Bottom sheet height
+const bottomSheetHeight = height * 0.5;
 
-// Navbar adjustment
-const NAVBAR_HEIGHT = 0;
-const EFFECTIVE_HEIGHT = viewportHeight;
-
-// Caravan settings
-const CARAVAN_SIZE = 40;
-const CARAVAN_SPEED = 100; // pixels per second (in unscaled map coordinates)
-
-// Town data with descriptions
+// Town data
 const towns: Town[] = rawTowns
-  .map(town => ({
-    ...town, 
-  }))
+  .map(t => ({ ...t }))
   .slice(0, 5);
 
-const bottomSheetHeight = height * 0.5; // 40% of screen height
-
+// Per-stage icon mapping restored
+const townImages: Record<string, any> = {
+  '1': require('@/assets/images/good-icons/CHURCH.png'),
+  '2': require('@/assets/images/town-icons/armchair.png'),
+  '3': require('@/assets/images/town-icons/love_spoons.png'),
+  '4': require('@/assets/images/town-icons/llanfairpg.png'),
+  '5': require('@/assets/images/town-icons/welsh_cakes.png'),
+  '6': require('@/assets/images/town-icons/portmeirion.png'),
+  '7': require('@/assets/images/town-icons/pembrokeshire-coast.png'),
+  '8': require('@/assets/images/town-icons/st-davids.png'),
+  '9': require('@/assets/images/town-icons/swansea.png'),
+  '10': require('@/assets/images/town-icons/cardiff.png'),
+  default: require('@/assets/images/adaptive-icon.png'),
+};
 
 export default function Map() {
   const mapContainerRef = useRef(null);
-  
+
+  // Pan and zoom
   const scale = useSharedValue(1);
   const savedScale = useSharedValue(1);
   const translateX = useSharedValue(0);
@@ -94,132 +78,91 @@ export default function Map() {
   const savedTranslateX = useSharedValue(0);
   const savedTranslateY = useSharedValue(0);
 
-  // Caravan state and animation values - much simpler now!
+  // Caravan movement intent is owned by Map
   const [targetPosition, setTargetPosition] = useState<Position>({ x: 150, y: 150 });
   const [isMoving, setIsMoving] = useState(false);
-  const [isFacingLeft, setIsFacingLeft] = useState(false);
-  const caravanX = useSharedValue(400);
-  const caravanY = useSharedValue(150);
-  
-  // Selected town state
+
+  // Town selection state
   const [selectedTown, setSelectedTown] = useState<Town | null>(null);
   const [isTownPopup, setIsTownPopup] = useState(false);
-  
-  // Debug state - simplified
-  const [lastTap, setLastTap] = useState<Position | null>(null);
-  const [lastCalculatedMapPosition, setLastCalculatedMapPosition] = useState<Position | null>(null);
 
-  // Move caravan effect - unchanged
-  useEffect(() => {
-    if (isMoving) {
-      const currentX = caravanX.value;
-      const currentY = caravanY.value;
-      const dx = targetPosition.x - currentX;
-      const dy = targetPosition.y - currentY;
-      
-      // Determine facing direction
-      if (dx > 0) {
-        setIsFacingLeft(true);
-      } else if (dx < 0) {
-        setIsFacingLeft(false);
-      }
-      
-      const distance = Math.sqrt(dx * dx + dy * dy);
-      const duration = (distance / CARAVAN_SPEED) * 1000;
-      
-      caravanX.value = withTiming(targetPosition.x, { 
-        duration,
-        easing: Easing.linear
-      }, (finished) => {
-        if (finished) {
-          runOnJS(setIsMoving)(false);
-        }
-      });
-      
-      caravanY.value = withTiming(targetPosition.y, { 
-        duration,
-        easing: Easing.linear
-      });
-    }
-  }, [targetPosition, isMoving]);
+  // Helpers to convert towns to rendered space
+  const townToRendered = (t: Town) => ({
+    x: t.x * scaleX,
+    y: t.y * scaleY,
+  });
 
-  const screenToMapCoordinates = (screenX: number, screenY: number) => {
-    // Since we're inside the transformed container, we need to account for the map's position
-    // The map is centered in the animated container
-    const mapCenterX = mapWidth / 2;
-    const mapCenterY = mapHeight / 2;
-    
-    // Convert screen coordinates relative to the animated container to map coordinates
-    const mapX = screenX;
-    const mapY = screenY;
-    
-    return { x: mapX, y: mapY };
+  const getTownImage = (t: Town) => {
+    // If stage can be number or string, coerce to string for lookup
+    const key = String((t as any).stage ?? 'default');
+    return townImages[key] || townImages.default;
   };
 
-  const handleMapTap = (event: TapGestureEvent) => {
+  // Hit testing in rendered space to match how markers are placed and caravan moves
+  const findTownAtRenderedPoint = (rx: number, ry: number): Town | null => {
+    const tapThreshold = 10; // pixels in rendered space
+    for (const t of towns) {
+      const { x, y } = townToRendered(t);
+      if (Math.abs(x - rx) <= tapThreshold && Math.abs(y - ry) <= tapThreshold) {
+        return t;
+      }
+    }
+    return null;
+  };
+
+  // Taps arrive with event.x, event.y relative to the GestureDetector child.
+  // Since we render markers and caravan in that same coordinate space,
+  // we can use event.x, event.y directly as "rendered" coordinates.
+  const handleMapTap = (event: { x: number; y: number }) => {
     if (selectedTown) {
       setIsTownPopup(false);
       setSelectedTown(null);
-      // return;
     }
-    
-    setLastTap({ x: event.x, y: event.y });
-    
-    // Much simpler - event coordinates are already in map coordinate space!
-    const mapX = Math.round(event.x);
-    const mapY = Math.round(event.y);
-    
-    // Check bounds
-    if (mapX < 0 || mapX > mapWidth || mapY < 0 || mapY > mapHeight) {
-      return;
-    }
-    
-    // Check if tap is on a town
-    const tappedTown = findTownAtPosition(mapX, mapY);
+
+    const rx = Math.round(event.x);
+    const ry = Math.round(event.y);
+
+    const tappedTown = findTownAtRenderedPoint(rx, ry);
     if (tappedTown) {
       onTownPress(tappedTown);
       return;
     }
-    
-    setLastCalculatedMapPosition({ x: mapX, y: mapY });
-    setTargetPosition({ x: mapX, y: mapY });
+
+    // Move caravan to tap location in rendered space
+    setTargetPosition({ x: rx, y: ry });
     setIsMoving(true);
   };
 
-  // Gestures remain the same
+  // Gestures
   const pinchGesture = Gesture.Pinch()
-    .onUpdate((event) => {
-      scale.value = clamp(savedScale.value * event.scale, MIN_SCALE, MAX_SCALE);
+    .onUpdate(e => {
+      scale.value = clamp(savedScale.value * e.scale, MIN_SCALE, MAX_SCALE);
     })
     .onEnd(() => {
       savedScale.value = scale.value;
     });
 
   const panGesture = Gesture.Pan()
-    .onUpdate((event) => {
-      // if (selectedTown) return;
-      
+    .onUpdate(e => {
       const currentScale = scale.value;
       const scaledMapWidth = mapWidth * currentScale;
       const scaledMapHeight = mapHeight * currentScale;
-      
+
       const horizontalExcess = Math.max(0, scaledMapWidth - viewportWidth);
-      const verticalExcess = Math.max(0, scaledMapHeight - EFFECTIVE_HEIGHT);
-      
+      const verticalExcess = Math.max(0, scaledMapHeight - viewportHeight);
+
       const maxTranslateX = horizontalExcess / 2;
       const minTranslateX = -maxTranslateX;
       const maxTranslateY = verticalExcess / 2;
-      const adjustedMaxY = maxTranslateY + (NAVBAR_HEIGHT / 2) * currentScale;
-      
+
       translateX.value = clamp(
-        savedTranslateX.value + event.translationX,
+        savedTranslateX.value + e.translationX,
         minTranslateX,
         maxTranslateX
       );
-      
       translateY.value = clamp(
-        savedTranslateY.value + event.translationY,
-        -adjustedMaxY,
+        savedTranslateY.value + e.translationY,
+        -maxTranslateY,
         maxTranslateY
       );
     })
@@ -230,8 +173,8 @@ export default function Map() {
 
   const mapBackgroundTapGesture = Gesture.Tap()
     .maxDuration(600)
-    .onEnd((event) => {
-      runOnJS(handleMapTap)(event as unknown as TapGestureEvent);
+    .onEnd(e => {
+      handleMapTap(e as any);
     });
 
   const combinedGesture = Gesture.Exclusive(
@@ -247,64 +190,23 @@ export default function Map() {
     ],
   }));
 
-  const caravanStyle = useAnimatedStyle(() => ({
-    position: 'absolute',
-    width: CARAVAN_SIZE,
-    height: CARAVAN_SIZE,
-    left: caravanX.value - CARAVAN_SIZE / 2,
-    top: caravanY.value - CARAVAN_SIZE / 2,
-    transform: [
-      { scaleX: isFacingLeft ? -1 : 1 },
-    ],
-    zIndex: 30,
-  }));
-
-  // Helper functions remain the same
-  const findTownAtPosition = (mapX: number, mapY: number): Town | null => {
-    const tapThreshold = 5;
-    for (const town of towns) {
-      const distanceX = Math.abs(town.x - mapX);
-      const distanceY = Math.abs(town.y - mapY);
-      if (distanceX <= tapThreshold && distanceY <= tapThreshold) {
-        return town;
-      }
-    }
-    return null;
-  };
-
   const onTownPress = (town: Town) => {
-    console.log(`Town selected: ${town.name}`);
     setIsTownPopup(true);
     setSelectedTown(town);
-  };
 
-  const townAction = (town: Town) => {
-    setSelectedTown(null);
-    setIsTownPopup(false);
-    setTargetPosition({ x: town.x, y: town.y });
+    const rendered = townToRendered(town);
+    setTargetPosition(rendered);
     setIsMoving(true);
   };
 
-  const getTownImage = (town: Town) => {
-    return townImages[town.stage] || townImages.default;
-  };
+  // When user chooses to go to a town from the bottom sheet, move caravan to the town’s rendered position
+  const townAction = (town: Town) => {
+    setSelectedTown(null);
+    setIsTownPopup(false);
 
-  // Simple debug overlay
-  const renderDebugOverlay = () => {
-    if (!lastCalculatedMapPosition) return null;
-    
-    return (
-      <View style={{
-        position: 'absolute',
-        width: 14,
-        height: 14,
-        borderRadius: 7,
-        backgroundColor: 'rgba(0, 0, 255, 0.5)',
-        left: lastCalculatedMapPosition.x - 7,
-        top: lastCalculatedMapPosition.y - 7,
-        zIndex: 15,
-      }} />
-    );
+    const rendered = townToRendered(town);
+    setTargetPosition(rendered);
+    setIsMoving(true);
   };
 
   return (
@@ -316,69 +218,61 @@ export default function Map() {
             style={[styles.imageBackground, { width: mapWidth, height: mapHeight }]}
             resizeMode="contain"
           >
-            {/* Town markers */}
-            {towns.map((town, idx) => (
-              <TouchableOpacity
-                key={idx}
-                style={[
-                  styles.townMarker, 
-                  { 
-                    
-                    top: town.y * scaleY - ICON_HALF,
-                    left: town.x * scaleX - ICON_HALF,
-                    // backgroundColor: getStageColor(town.stage),
-                    zIndex: 20
-                  }
-                ]}
-                onPress={() => onTownPress(town)}
-                activeOpacity={0.7}
-                hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
-              >
-                <Image
-                  source={getTownImage(town)}
-                  style={{ width: 20, height: 20 }}
-                  resizeMode="contain"
-                />
-              </TouchableOpacity>
-            ))}
-            
-            <Animated.Image
-              source={require('@/assets/images/caravan_new.png')}
-              style={caravanStyle}
-              resizeMode="contain"
+            {/* Town markers in rendered coordinates */}
+            {towns.map((town, idx) => {
+              const rendered = townToRendered(town);
+              return (
+                <TouchableOpacity
+                  key={idx}
+                  style={[
+                    styles.townMarker,
+                    {
+                      top: rendered.y - ICON_HALF,
+                      left: rendered.x - ICON_HALF,
+                      zIndex: 20,
+                    },
+                  ]}
+                  onPress={() => onTownPress(town)}
+                  activeOpacity={0.7}
+                  hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+                >
+                  <Image
+                    source={getTownImage(town)}
+                    style={{ width: ICON_SIZE, height: ICON_SIZE }}
+                    resizeMode="contain"
+                  />
+                </TouchableOpacity>
+              );
+            })}
+
+            {/* Caravan renders in the same space as markers */}
+            <Caravan
+              targetPosition={targetPosition}
+              isMoving={isMoving}
+              setIsMoving={setIsMoving}
+              caravanSize={40}
+              speed={100}
+              initialPosition={{ x: 400, y: 150 }}
             />
           </ImageBackground>
         </Animated.View>
       </GestureDetector>
-      
-      <BottomSheet bottomSheetHeight={bottomSheetHeight} isBottomSheetUp={isTownPopup} setIsTownPopup={setIsTownPopup}>
-        {selectedTown && (
-          <TownInfo town={selectedTown} action={townAction} />
-        )}
+
+      <BottomSheet
+        bottomSheetHeight={bottomSheetHeight}
+        isBottomSheetUp={isTownPopup}
+        setIsTownPopup={setIsTownPopup}
+      >
+        {selectedTown && <TownInfo town={selectedTown} action={townAction} />}
       </BottomSheet>
     </View>
   );
 }
 
-function getStageColor(stage: number): string {
-  switch (stage) {
-    case 0:
-      return '#ccc';
-    case 1:
-      return '#ffcc00';
-    case 2:
-      return '#3399ff';
-    case 3:
-      return '#33cc66';
-    default:
-      return '#ccc';
-  }
-}
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#000', // Background color for areas not covered by the map
+    backgroundColor: '#000',
   },
   animatedContainer: {
     alignItems: 'center',
@@ -391,20 +285,14 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     borderWidth: 1,
     borderColor: '#222',
-    elevation: 5, // Android elevation
-    shadowColor: '#000', // iOS shadow
+    elevation: 5,
+    shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
-  },
-  townText: {
-    fontWeight: 'bold',
-    color: '#fff',
-    textShadowColor: 'rgba(0, 0, 0, 0.5)',
-    textShadowOffset: { width: 1, height: 1 },
-    textShadowRadius: 2,
+    backgroundColor: 'transparent',
   },
   imageBackground: {
-    // Dimensions are set dynamically in the component
+    // width and height set dynamically
   },
 });
