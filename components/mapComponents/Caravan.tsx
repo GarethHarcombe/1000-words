@@ -36,6 +36,11 @@ const Caravan: React.FC<CaravanProps> = ({
 
   useEffect(() => {
     if (!isMoving) return;
+    
+    if (!Number.isFinite(targetPosition.x) || !Number.isFinite(targetPosition.y)) {
+    runOnJS(setIsMoving)(false);
+    return;
+    }
 
     const dx = targetPosition.x - caravanX.value;
     const dy = targetPosition.y - caravanY.value;
@@ -44,7 +49,9 @@ const Caravan: React.FC<CaravanProps> = ({
     isFacingLeft.value = dx > 0;
 
     const distance = Math.hypot(dx, dy);
-    const duration = (distance / speed) * 1000;
+    const safeSpeed = speed > 0 ? speed : 1;
+    let duration = (distance / safeSpeed) * 1000;
+    if (!Number.isFinite(duration) || duration < 0) duration = 1;
 
     caravanX.value = withTiming(
       targetPosition.x,

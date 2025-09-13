@@ -12,6 +12,7 @@ import Animated, {
   useSharedValue,
   useAnimatedStyle,
   clamp,
+  runOnJS,
 } from 'react-native-reanimated';
 import { Town } from '@/constants/Types';
 import rawTowns from '@/data/welsh-towns.json';
@@ -121,6 +122,10 @@ export default function Map() {
 
     const rx = Math.round(event.x);
     const ry = Math.round(event.y);
+    
+    if (!Number.isFinite(rx) || !Number.isFinite(ry)) return;
+    if (rx < 0 || rx > mapWidth || ry < 0 || ry > mapHeight) return;
+
 
     const tappedTown = findTownAtRenderedPoint(rx, ry);
     if (tappedTown) {
@@ -173,9 +178,15 @@ export default function Map() {
 
   const mapBackgroundTapGesture = Gesture.Tap()
     .maxDuration(600)
-    .onEnd(e => {
-      handleMapTap(e as any);
+    .onEnd((e, success) => {
+      'worklet';
+      if (!success) return;
+        const x = Number.isFinite(e.x) ? e.x : e.absoluteX;
+        const y = Number.isFinite(e.y) ? e.y : e.absoluteY;
+        if (!Number.isFinite(x) || !Number.isFinite(y)) return;
+        runOnJS(handleMapTap)({ x, y });
     });
+
 
   const combinedGesture = Gesture.Exclusive(
     Gesture.Simultaneous(pinchGesture, panGesture),
