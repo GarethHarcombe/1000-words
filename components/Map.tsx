@@ -19,6 +19,7 @@ import rawTowns from '@/data/welsh-towns.json';
 import BottomSheet from './BottomSheet';
 import TownInfo from './mapComponents/townInfo';
 import Caravan, { Position } from './mapComponents/Caravan';
+import { useCaravanAccessories } from '@/contexts/CaravanContext';
 
 // Window and map geometry
 const { width, height } = Dimensions.get('window');
@@ -86,6 +87,8 @@ export default function Map() {
   // Town selection state
   const [selectedTown, setSelectedTown] = useState<Town | null>(null);
   const [isTownPopup, setIsTownPopup] = useState(false);
+
+  const { accessories } = useCaravanAccessories();
 
   // Helpers to convert towns to rendered space
   const townToRendered = (t: Town) => ({
@@ -261,6 +264,7 @@ export default function Map() {
               targetPosition={targetPosition}
               isMoving={isMoving}
               setIsMoving={setIsMoving}
+              accessories={accessories}
               caravanSize={40}
               speed={100}
               initialPosition={{ x: 400, y: 150 }}
