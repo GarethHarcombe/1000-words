@@ -8,6 +8,8 @@ import { useEffect } from 'react';
 import 'react-native-reanimated';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { UserProvider } from '@/contexts/UserContext';
+import { CaravanProvider } from '@/contexts/CaravanContext';
+
 
 import Colors from '@/constants/Colors';
 import { useColorScheme } from '@/components/useColorScheme';
@@ -45,7 +47,9 @@ export default function RootLayout() {
 
   return (
     <UserProvider>
-      <RootLayoutNav />
+      <CaravanProvider>
+        <RootLayoutNav />
+      </CaravanProvider>
     </UserProvider>
   );
 }
