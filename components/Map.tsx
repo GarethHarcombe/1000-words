@@ -195,6 +195,8 @@ export default function Map() {
   const onTownPress = (town: Town) => {
     setIsTownPopup(true);
     setSelectedTown(town);
+    setTargetPosition({ x: town.x, y: town.y });
+    setIsMoving(true);
   };
 
   const townAction = (town: Town) => {
@@ -246,6 +248,8 @@ export default function Map() {
               targetPosition={targetPosition}
               isMoving={isMoving}
               setIsMoving={setIsMoving}
+              scaleX={scaleX}
+              scaleY={scaleY}
             />
           </ImageBackground>
         </Animated.View>

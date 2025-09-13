@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Image, StyleSheet } from 'react-native';
+import { scheduleOnRN, scheduleOnUI } from 'react-native-worklets';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
@@ -8,7 +9,7 @@ import Animated, {
   withSequence,
   withSpring,
   Easing,
-  runOnJS,
+  // runOnJS,
   cancelAnimation,
 } from 'react-native-reanimated';
 
@@ -21,6 +22,8 @@ interface CaravanProps {
   targetPosition: Position;
   isMoving: boolean;
   setIsMoving: (moving: boolean) => void;
+  scaleX: number;
+  scaleY: number;
   /** Overall rendered size of the caravan composite in px */
   size?: number;
   /** Linear travel speed in px/s on the map */
@@ -32,7 +35,7 @@ interface CaravanProps {
 }
 
 const DEFAULT_SIZE = 40;
-const DEFAULT_SPEED = 100; // px/s
+const DEFAULT_SPEED = 300; // px/s
 const DEFAULT_WHEEL_SIZE = 8;
 
 // Spring configs
@@ -56,10 +59,13 @@ export default function Caravan({
   targetPosition,
   isMoving,
   setIsMoving,
+  scaleX,
+  scaleY,
   size = DEFAULT_SIZE,
   speed = DEFAULT_SPEED,
   wheelSize = DEFAULT_WHEEL_SIZE,
-  initial = { x: 400, y: 150 },
+  initial = { x: 1500, y: 400 },
+  
 }: CaravanProps) {
   // Position values in map coordinates
   const caravanX = useSharedValue(initial.x);
@@ -67,6 +73,10 @@ export default function Caravan({
 
   // Facing left-right
   const [isFacingLeft, setIsFacingLeft] = useState(false);
+
+  // keep JS refs in sync to avoid reading .value
+  const lastX = useRef(initial.x);
+  const lastY = useRef(initial.y);
 
   // Wheel rotation values (degrees)
   const frontWheelRotation = useSharedValue(0);
@@ -88,92 +98,85 @@ export default function Caravan({
   };
 
   useEffect(() => {
+    // start/stop logic runs on UI runtime to safely access shared values
     if (isMoving) {
-      // Determine direction for facing
-      const dx = targetPosition.x - caravanX.value;
-      const dy = targetPosition.y - caravanY.value;
-      setIsFacingLeft(dx > 0);
+      scheduleOnUI(() => {
+        'worklet';
 
-      // Constant-speed linear motion
-      const distance = Math.sqrt(dx * dx + dy * dy);
-      const durationMs = (distance / speed) * 1000;
+        // compute dx/dy using shared values on UI runtime (safe)
+        const dx = targetPosition.x - caravanX.value;
+        const dy = targetPosition.y - caravanY.value;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        const durationMs = (distance / speed) * 1000;
 
-      // Start moving linearly
-      caravanX.value = withTiming(targetPosition.x, {
-        duration: durationMs,
-        easing: Easing.linear,
-      }, (finished) => {
-        if (finished) {
-          // On complete, trigger a landing bounce and stop
-          // Use a small suspension compress then spring back
-          suspensionY.value = withSequence(
-            withTiming(LANDING_BOUNCE, { duration: 120, easing: Easing.out(Easing.quad) }),
-            withSpring(0, SPRING_RETURN)
-          );
-          // Return tilt to zero with a spring
-          tiltDeg.value = withSpring(0, SPRING_RETURN);
+        // tell RN about facing direction
+        scheduleOnRN(() => {
+          // runs on RN runtime / JS thread
+          setIsFacingLeft(dx < 0); // choose <0 or >0 to match your convention
+        });
 
-          runOnJS(setIsMoving)(false);
-        }
+        // start linear motion on UI runtime (safe)
+        caravanX.value = withTiming(
+          targetPosition.x,
+          { duration: durationMs, easing: Easing.linear },
+          (finished) => {
+            if (finished) {
+              suspensionY.value = withSequence(
+                withTiming(LANDING_BOUNCE, { duration: 120, easing: Easing.out(Easing.quad) }),
+                withSpring(0, SPRING_RETURN)
+              );
+              tiltDeg.value = withSpring(0, SPRING_RETURN);
+              scheduleOnRN(() => setIsMoving(false));
+            }
+          }
+        );
+
+        caravanY.value = withTiming(targetPosition.y, { duration: durationMs, easing: Easing.linear });
+
+        // wheels: reset then repeat (on UI runtime)
+        frontWheelRotation.value = 0;
+        backWheelRotation.value = 0;
+        const revMs = computeWheelRevolutionMs(speed);
+        frontWheelRotation.value = withRepeat(withTiming(360, { duration: revMs, easing: Easing.linear }), -1, false);
+        backWheelRotation.value = withRepeat(withTiming(360, { duration: revMs, easing: Easing.linear }), -1, false);
+
+        // bob and tilt
+        cancelAnimation(suspensionY);
+        suspensionY.value = withRepeat(
+          withSequence(
+            withTiming(BOB_AMPLITUDE, { duration: 350, easing: Easing.inOut(Easing.quad) }),
+            withTiming(-BOB_AMPLITUDE, { duration: 350, easing: Easing.inOut(Easing.quad) })
+          ),
+          -1,
+          true
+        );
+
+        cancelAnimation(tiltDeg);
+        tiltDeg.value = withRepeat(
+          withSequence(
+            withTiming(TILT_AMPLITUDE, { duration: 400, easing: Easing.inOut(Easing.quad) }),
+            withTiming(-TILT_AMPLITUDE, { duration: 400, easing: Easing.inOut(Easing.quad) })
+          ),
+          -1,
+          true
+        );
       });
-
-      caravanY.value = withTiming(targetPosition.y, {
-        duration: durationMs,
-        easing: Easing.linear,
-      });
-
-      // Start wheel spinning
-      const revMs = computeWheelRevolutionMs(speed);
-      frontWheelRotation.value = withRepeat(
-        withTiming(360, { duration: revMs, easing: Easing.linear }),
-        -1,
-        false
-      );
-      backWheelRotation.value = withRepeat(
-        withTiming(360, { duration: revMs, easing: Easing.linear }),
-        -1,
-        false
-      );
-
-      // Start continuous bobbing and gentle tilt oscillation
-      cancelAnimation(suspensionY);
-      suspensionY.value = withRepeat(
-        withSequence(
-          withTiming(BOB_AMPLITUDE, { duration: 350, easing: Easing.inOut(Easing.quad) }),
-          withTiming(-BOB_AMPLITUDE, { duration: 350, easing: Easing.inOut(Easing.quad) })
-        ),
-        -1,
-        true
-      );
-
-      cancelAnimation(tiltDeg);
-      // Slight tilt alternating while in motion
-      tiltDeg.value = withRepeat(
-        withSequence(
-          withTiming(TILT_AMPLITUDE, { duration: 400, easing: Easing.inOut(Easing.quad) }),
-          withTiming(-TILT_AMPLITUDE, { duration: 400, easing: Easing.inOut(Easing.quad) })
-        ),
-        -1,
-        true
-      );
     } else {
-      // Gracefully stop wheel rotation and bobbing
-      cancelAnimation(frontWheelRotation);
-      cancelAnimation(backWheelRotation);
-      cancelAnimation(suspensionY);
+      // stopping: read current rotation & finish on UI thread
+      scheduleOnUI(() => {
+        'worklet';
+        cancelAnimation(frontWheelRotation);
+        cancelAnimation(backWheelRotation);
+        cancelAnimation(suspensionY);
 
-      // Optionally finish wheels to a neat angle
-      const frontNow = frontWheelRotation.value % 360;
-      const backNow = backWheelRotation.value % 360;
-      frontWheelRotation.value = withTiming(frontNow + 120, { duration: 200, easing: Easing.out(Easing.cubic) });
-      backWheelRotation.value = withTiming(backNow + 120, { duration: 200, easing: Easing.out(Easing.cubic) });
+        const frontNow = frontWheelRotation.value % 360;
+        const backNow = backWheelRotation.value % 360;
+        frontWheelRotation.value = withTiming(frontNow + 120, { duration: 200, easing: Easing.out(Easing.cubic) });
+        backWheelRotation.value = withTiming(backNow + 120, { duration: 200, easing: Easing.out(Easing.cubic) });
 
-      // Return tilt to zero with a spring
-      tiltDeg.value = withSpring(0, SPRING_RETURN);
-      // Suspension returns to zero via spring if not already handled on completion
-      if (suspensionY.value !== 0) {
-        suspensionY.value = withSpring(0, SPRING_SOFT);
-      }
+        tiltDeg.value = withSpring(0, SPRING_RETURN);
+        if (suspensionY.value !== 0) suspensionY.value = withSpring(0, SPRING_SOFT);
+      });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [targetPosition, isMoving, speed, wheelSize]);
@@ -182,11 +185,16 @@ export default function Caravan({
     position: 'absolute',
     width: size,
     height: size,
-    left: caravanX.value - size / 2,
-    top: caravanY.value - size / 2 + suspensionY.value,
+    left: Number.isFinite(caravanX.value) ? (caravanX.value - size/2) * scaleX : 0,
+    top: Number.isFinite(caravanY.value) ? (caravanY.value - size/2 + suspensionY.value) * scaleY : 0,
+
+    // and for deg strings:
+    rotateZ: `${Number.isFinite(tiltDeg.value) ? tiltDeg.value : 0}deg`,
+    // left: (caravanX.value - size / 2) * scaleX,
+    // top: (caravanY.value - size / 2 + suspensionY.value) * scaleY,
     transform: [
       { scaleX: isFacingLeft ? -1 : 1 },
-      { rotateZ: `${tiltDeg.value}deg` },
+      // { rotateZ: `${tiltDeg.value}deg` },
     ],
     zIndex: 30,
   }));
