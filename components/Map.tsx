@@ -12,73 +12,66 @@ import Animated, {
   useSharedValue,
   useAnimatedStyle,
   clamp,
+  runOnJS,
 } from 'react-native-reanimated';
 import { Town } from '@/constants/Types';
 import rawTowns from '@/data/welsh-towns.json';
 import BottomSheet from './BottomSheet';
 import TownInfo from './mapComponents/townInfo';
-import Caravan from './mapComponents/caravan';
+import Caravan, { Position } from './mapComponents/Caravan';
 
-// Define types for the gesture events
-interface TapGestureEvent {
-  x: number;
-  y: number;
-  absoluteX: number;
-  absoluteY: number;
-}
-
-interface Position {
-  x: number;
-  y: number;
-}
-
-const townImages: Record<string, any> = {
-  "1": require('@/assets/images/good-icons/CHURCH.png'),
-  "2": require('@/assets/images/town-icons/armchair.png'),
-  "3": require('@/assets/images/town-icons/love_spoons.png'),
-  "4": require('@/assets/images/town-icons/llanfairpg.png'),
-  "5": require('@/assets/images/town-icons/welsh_cakes.png'),
-  "6": require('@/assets/images/town-icons/portmeirion.png'),
-  "7": require('@/assets/images/town-icons/pembrokeshire-coast.png'),
-  "8": require('@/assets/images/town-icons/st-davids.png'),
-  "9": require('@/assets/images/town-icons/swansea.png'),
-  "10": require('@/assets/images/town-icons/cardiff.png'),
-  "default": require('@/assets/images/adaptive-icon.png'),
-};
-
+// Window and map geometry
 const { width, height } = Dimensions.get('window');
 const viewportWidth = width;
 const viewportHeight = height;
+
 const MIN_SCALE = 1;
 const MAX_SCALE = 4;
 
-// Original image aspect ratio
+// Background image intrinsic size
 const imgWidth = 2481;
 const imgHeight = 3508;
 const IMAGE_ASPECT_RATIO = imgWidth / imgHeight;
 
-// Calculate initial map dimensions
+// Rendered size of the map at base scale 1
 const mapHeight = viewportHeight;
 const mapWidth = mapHeight * IMAGE_ASPECT_RATIO;
 
+// Convert from image pixel coords -> rendered coords
 const scaleX = mapWidth / imgWidth;
 const scaleY = mapHeight / imgHeight;
 
+// UI sizes
 const ICON_SIZE = 20;
 const ICON_HALF = ICON_SIZE / 2;
 
-// Navbar adjustment
-const NAVBAR_HEIGHT = 0;
-const EFFECTIVE_HEIGHT = viewportHeight;
+// Bottom sheet height
+const bottomSheetHeight = height * 0.5;
 
 // Town data
-const towns: Town[] = rawTowns.map(town => ({ ...town })).slice(0, 5);
+const towns: Town[] = rawTowns
+  .map(t => ({ ...t }))
+  .slice(0, 5);
 
-const bottomSheetHeight = height * 0.5;
+// Per-stage icon mapping restored
+const townImages: Record<string, any> = {
+  '1': require('@/assets/images/good-icons/CHURCH.png'),
+  '2': require('@/assets/images/town-icons/armchair.png'),
+  '3': require('@/assets/images/town-icons/love_spoons.png'),
+  '4': require('@/assets/images/town-icons/llanfairpg.png'),
+  '5': require('@/assets/images/town-icons/welsh_cakes.png'),
+  '6': require('@/assets/images/town-icons/portmeirion.png'),
+  '7': require('@/assets/images/town-icons/pembrokeshire-coast.png'),
+  '8': require('@/assets/images/town-icons/st-davids.png'),
+  '9': require('@/assets/images/town-icons/swansea.png'),
+  '10': require('@/assets/images/town-icons/cardiff.png'),
+  default: require('@/assets/images/adaptive-icon.png'),
+};
 
 export default function Map() {
   const mapContainerRef = useRef(null);
 
+  // Pan and zoom
   const scale = useSharedValue(1);
   const savedScale = useSharedValue(1);
   const translateX = useSharedValue(0);
@@ -86,73 +79,95 @@ export default function Map() {
   const savedTranslateX = useSharedValue(0);
   const savedTranslateY = useSharedValue(0);
 
-  // Caravan state
+  // Caravan movement intent is owned by Map
   const [targetPosition, setTargetPosition] = useState<Position>({ x: 150, y: 150 });
   const [isMoving, setIsMoving] = useState(false);
 
-  // Selected town state
+  // Town selection state
   const [selectedTown, setSelectedTown] = useState<Town | null>(null);
   const [isTownPopup, setIsTownPopup] = useState(false);
 
-  // Debug state
-  const [lastCalculatedMapPosition, setLastCalculatedMapPosition] = useState<Position | null>(null);
+  // Helpers to convert towns to rendered space
+  const townToRendered = (t: Town) => ({
+    x: t.x * scaleX,
+    y: t.y * scaleY,
+  });
 
-  const handleMapTap = (event: TapGestureEvent) => {
+  const getTownImage = (t: Town) => {
+    // If stage can be number or string, coerce to string for lookup
+    const key = String((t as any).stage ?? 'default');
+    return townImages[key] || townImages.default;
+  };
+
+  // Hit testing in rendered space to match how markers are placed and caravan moves
+  const findTownAtRenderedPoint = (rx: number, ry: number): Town | null => {
+    const tapThreshold = 10; // pixels in rendered space
+    for (const t of towns) {
+      const { x, y } = townToRendered(t);
+      if (Math.abs(x - rx) <= tapThreshold && Math.abs(y - ry) <= tapThreshold) {
+        return t;
+      }
+    }
+    return null;
+  };
+
+  // Taps arrive with event.x, event.y relative to the GestureDetector child.
+  // Since we render markers and caravan in that same coordinate space,
+  // we can use event.x, event.y directly as "rendered" coordinates.
+  const handleMapTap = (event: { x: number; y: number }) => {
     if (selectedTown) {
       setIsTownPopup(false);
       setSelectedTown(null);
     }
 
-    const mapX = Math.round(event.x);
-    const mapY = Math.round(event.y);
+    const rx = Math.round(event.x);
+    const ry = Math.round(event.y);
+    
+    if (!Number.isFinite(rx) || !Number.isFinite(ry)) return;
+    if (rx < 0 || rx > mapWidth || ry < 0 || ry > mapHeight) return;
 
-    if (mapX < 0 || mapX > mapWidth || mapY < 0 || mapY > mapHeight) {
-      return;
-    }
 
-    const tappedTown = findTownAtPosition(mapX, mapY);
+    const tappedTown = findTownAtRenderedPoint(rx, ry);
     if (tappedTown) {
       onTownPress(tappedTown);
       return;
     }
 
-    setLastCalculatedMapPosition({ x: mapX, y: mapY });
-    setTargetPosition({ x: mapX, y: mapY });
+    // Move caravan to tap location in rendered space
+    setTargetPosition({ x: rx, y: ry });
     setIsMoving(true);
   };
 
   // Gestures
   const pinchGesture = Gesture.Pinch()
-    .onUpdate((event) => {
-      scale.value = clamp(savedScale.value * event.scale, MIN_SCALE, MAX_SCALE);
+    .onUpdate(e => {
+      scale.value = clamp(savedScale.value * e.scale, MIN_SCALE, MAX_SCALE);
     })
     .onEnd(() => {
       savedScale.value = scale.value;
     });
 
   const panGesture = Gesture.Pan()
-    .onUpdate((event) => {
+    .onUpdate(e => {
       const currentScale = scale.value;
       const scaledMapWidth = mapWidth * currentScale;
       const scaledMapHeight = mapHeight * currentScale;
 
       const horizontalExcess = Math.max(0, scaledMapWidth - viewportWidth);
-      const verticalExcess = Math.max(0, scaledMapHeight - EFFECTIVE_HEIGHT);
+      const verticalExcess = Math.max(0, scaledMapHeight - viewportHeight);
 
       const maxTranslateX = horizontalExcess / 2;
       const minTranslateX = -maxTranslateX;
       const maxTranslateY = verticalExcess / 2;
-      const adjustedMaxY = maxTranslateY + (NAVBAR_HEIGHT / 2) * currentScale;
 
       translateX.value = clamp(
-        savedTranslateX.value + event.translationX,
+        savedTranslateX.value + e.translationX,
         minTranslateX,
         maxTranslateX
       );
-
       translateY.value = clamp(
-        savedTranslateY.value + event.translationY,
-        -adjustedMaxY,
+        savedTranslateY.value + e.translationY,
+        -maxTranslateY,
         maxTranslateY
       );
     })
@@ -163,9 +178,15 @@ export default function Map() {
 
   const mapBackgroundTapGesture = Gesture.Tap()
     .maxDuration(600)
-    .onEnd((event) => {
-      handleMapTap(event as unknown as TapGestureEvent);
+    .onEnd((e, success) => {
+      'worklet';
+      if (!success) return;
+        const x = Number.isFinite(e.x) ? e.x : e.absoluteX;
+        const y = Number.isFinite(e.y) ? e.y : e.absoluteY;
+        if (!Number.isFinite(x) || !Number.isFinite(y)) return;
+        runOnJS(handleMapTap)({ x, y });
     });
+
 
   const combinedGesture = Gesture.Exclusive(
     Gesture.Simultaneous(pinchGesture, panGesture),
@@ -180,34 +201,23 @@ export default function Map() {
     ],
   }));
 
-  const findTownAtPosition = (mapX: number, mapY: number): Town | null => {
-    const tapThreshold = 5;
-    for (const town of towns) {
-      const distanceX = Math.abs(town.x - mapX);
-      const distanceY = Math.abs(town.y - mapY);
-      if (distanceX <= tapThreshold && distanceY <= tapThreshold) {
-        return town;
-      }
-    }
-    return null;
-  };
-
   const onTownPress = (town: Town) => {
     setIsTownPopup(true);
     setSelectedTown(town);
-    setTargetPosition({ x: town.x, y: town.y });
+
+    const rendered = townToRendered(town);
+    setTargetPosition(rendered);
     setIsMoving(true);
   };
 
+  // When user chooses to go to a town from the bottom sheet, move caravan to the town’s rendered position
   const townAction = (town: Town) => {
     setSelectedTown(null);
     setIsTownPopup(false);
-    setTargetPosition({ x: town.x, y: town.y });
-    setIsMoving(true);
-  };
 
-  const getTownImage = (town: Town) => {
-    return townImages[town.stage] || townImages.default;
+    const rendered = townToRendered(town);
+    setTargetPosition(rendered);
+    setIsMoving(true);
   };
 
   return (
@@ -219,46 +229,52 @@ export default function Map() {
             style={[styles.imageBackground, { width: mapWidth, height: mapHeight }]}
             resizeMode="contain"
           >
-            {/* Town markers */}
-            {towns.map((town, idx) => (
-              <TouchableOpacity
-                key={idx}
-                style={[
-                  styles.townMarker,
-                  {
-                    top: town.y * scaleY - ICON_HALF,
-                    left: town.x * scaleX - ICON_HALF,
-                    zIndex: 20,
-                  },
-                ]}
-                onPress={() => onTownPress(town)}
-                activeOpacity={0.7}
-                hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
-              >
-                <Image
-                  source={getTownImage(town)}
-                  style={{ width: 20, height: 20 }}
-                  resizeMode="contain"
-                />
-              </TouchableOpacity>
-            ))}
+            {/* Town markers in rendered coordinates */}
+            {towns.map((town, idx) => {
+              const rendered = townToRendered(town);
+              return (
+                <TouchableOpacity
+                  key={idx}
+                  style={[
+                    styles.townMarker,
+                    {
+                      top: rendered.y - ICON_HALF,
+                      left: rendered.x - ICON_HALF,
+                      zIndex: 20,
+                    },
+                  ]}
+                  onPress={() => onTownPress(town)}
+                  activeOpacity={0.7}
+                  hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+                >
+                  <Image
+                    source={getTownImage(town)}
+                    style={{ width: ICON_SIZE, height: ICON_SIZE }}
+                    resizeMode="contain"
+                  />
+                </TouchableOpacity>
+              );
+            })}
 
-            {/* Caravan Component */}
+            {/* Caravan renders in the same space as markers */}
             <Caravan
               targetPosition={targetPosition}
               isMoving={isMoving}
               setIsMoving={setIsMoving}
-              scaleX={scaleX}
-              scaleY={scaleY}
+              caravanSize={40}
+              speed={100}
+              initialPosition={{ x: 400, y: 150 }}
             />
           </ImageBackground>
         </Animated.View>
       </GestureDetector>
 
-      <BottomSheet bottomSheetHeight={bottomSheetHeight} isBottomSheetUp={isTownPopup} setIsTownPopup={setIsTownPopup}>
-        {selectedTown && (
-          <TownInfo town={selectedTown} action={townAction} />
-        )}
+      <BottomSheet
+        bottomSheetHeight={bottomSheetHeight}
+        isBottomSheetUp={isTownPopup}
+        setIsTownPopup={setIsTownPopup}
+      >
+        {selectedTown && <TownInfo town={selectedTown} action={townAction} />}
       </BottomSheet>
     </View>
   );
@@ -285,6 +301,9 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
+    backgroundColor: 'transparent',
   },
-  imageBackground: {},
+  imageBackground: {
+    // width and height set dynamically
+  },
 });
