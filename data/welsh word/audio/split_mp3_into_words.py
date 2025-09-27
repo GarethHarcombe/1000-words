@@ -25,7 +25,7 @@ labels = lines.strip().split('\n')
 
 # Load MP3 file
 input_file = "greetings_coral.mp3"  # Replace with your MP3 file path
-audio = AudioSegment.from_mp3(input_file)
+audio = AudioSegment.from_file(input_file)
 
 # Split audio on silence (0.5 sec silence, threshold relative to dBFS)
 chunks = split_on_silence(
