@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { StyleSheet } from 'react-native';
 import { Text, View } from '@/components/Themed';
 import { Word } from '@/constants/Types';
@@ -8,6 +8,7 @@ type IntroductionStageProps = {
 };
 
 export default function IntroductionStage({ word }: IntroductionStageProps) {
+  
   return (
     <View style={styles.cardContainer}>
       <Text style={styles.cardText}>{word.english}</Text>

@@ -1,0 +1,17 @@
+export const soundMap: Record<string, any> = {
+  "bore da": require("@/data/welsh word/audio/audio_chunks/bore_da.mp3"),
+  "croeso": require("@/data/welsh word/audio/audio_chunks/croeso.mp3"),
+  "da bo": require("@/data/welsh word/audio/audio_chunks/da_bo.mp3"),
+  "dim": require("@/data/welsh word/audio/audio_chunks/dim.mp3"),
+  "diolch": require("@/data/welsh word/audio/audio_chunks/diolch.mp3"),
+  "helo": require("@/data/welsh word/audio/audio_chunks/helo.mp3"),
+  "hwyl": require("@/data/welsh word/audio/audio_chunks/hwyl.mp3"),
+  "iawn": require("@/data/welsh word/audio/audio_chunks/iawn.mp3"),
+  "ie": require("@/data/welsh word/audio/audio_chunks/ie.mp3"),
+  "maer": require("@/data/welsh word/audio/audio_chunks/maer.mp3"),
+  "noswaith dda": require("@/data/welsh word/audio/audio_chunks/noswaith_dda.mp3"),
+  "nos da": require("@/data/welsh word/audio/audio_chunks/nos_da.mp3"),
+  "plîs": require("@/data/welsh word/audio/audio_chunks/plîs.mp3"),
+  "prynhawn da": require("@/data/welsh word/audio/audio_chunks/prynhawn_da.mp3"),
+  "shwmae": require("@/data/welsh word/audio/audio_chunks/shwmae.mp3"),
+};

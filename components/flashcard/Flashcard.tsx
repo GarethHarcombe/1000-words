@@ -1,5 +1,5 @@
 // Flashcard.tsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, View as RNView } from 'react-native';
 import { Heading } from '@/components/StyledText';
 import { View, Text } from '@/components/Themed';
@@ -11,6 +11,8 @@ import { Word } from '@/constants/Types';
 // Import custom components
 import ProgressBar from './common/ProgressBar';
 import StageControls from './common/StageControls';
+import { usePlayWord } from './common/SoundManager';
+
 import InfoButton from './common/InfoButton';
 import InfoBottomSheet from './info/InfoBottomSheet';
 
@@ -52,7 +54,16 @@ export default function Flashcard({ word, fillerAnswers, onCorrectAnswer, onFals
     handleNextAfterFeedback,
     handleKeyPress,
   } = useFlashcardState(word, fillerAnswers, computeFraction, animateProgressTo, onCorrectAnswer, onFalseAnswer);
+
   
+  const { playAudioWord } = usePlayWord(word.welsh);
+
+  useEffect(() => {
+    // Auto-play when the word changes
+    playAudioWord();
+  }, [playAudioWord, word.welsh]);
+
+
   // Render the appropriate stage component based on word.stage
   const renderStageContent = () => {
     switch (word.stage) {
@@ -110,7 +121,18 @@ export default function Flashcard({ word, fillerAnswers, onCorrectAnswer, onFals
         />
       </View>
       
-      <Heading style={styles.welshWord}>{word.welsh}</Heading>
+      
+      <View style={styles.welshContainer}>
+        <Heading style={styles.welshWord}>{word.welsh}</Heading>
+        <RNTouchableOpacity
+          onPress={playAudioWord}
+          style={styles.iconButton}
+          accessibilityLabel="Play Welsh word"
+        >
+          <Ionicons name="volume-high-outline" size={40} color={Colors.light.text} />
+        </RNTouchableOpacity>
+      </View>
+
 
       {/* {word.stage === 0 && (
         <Text style={styles.newWordText}>
@@ -143,16 +165,25 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
   },
-  welshWord: {
+  
+  welshContainer: {
     position: 'absolute',
-    top: '27%', // Increased from percentage to fixed value
+    top: '27%',
     left: 0,
     right: 0,
-    textAlign: 'center',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: 12,
+    zIndex: 10,
+  },
+  welshWord: {
     fontSize: 26,
     fontWeight: '600',
-    zIndex: 10, // Add z-index
-    backgroundColor: 'transparent', // Ensure background is transparent
+    backgroundColor: 'transparent',
+  },
+  iconButton: {
+    padding: 8,
   },
   newWordText: {
     textAlign: 'center',
