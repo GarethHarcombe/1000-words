@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity, ScrollView } from '@/components/Themed';
 import { StyleSheet, Image } from 'react-native';
 import Colors from '@/constants/Colors';
 import { useRouter } from 'expo-router';
+import { GradientButton } from '../StyledButtons';
 
 
 type TownInfoProps = {
@@ -17,17 +18,18 @@ export default function TownInfo ({ town, action }: TownInfoProps) {
     function getStageColor(stage: number): string {
         switch (stage) {
             case 0:
-              return '#ccc';
+              return '#a998a5';
             case 1:
-              return '#ffcc00';
+              return '#c5a3a3';
             case 2:
-              return '#3399ff';
+              return '#e6d6a9';
             case 3:
-              return '#33cc66';
+              return '#a3b0ad';
             case 6:
-              return '#dc9b44';
+              return '#93a7b1';
             default:
-              return '#ccc';
+              return '#e4dad1';
+              // #7d6e79, #55666f, #c5a46d
         }
     }
 
@@ -74,12 +76,12 @@ export default function TownInfo ({ town, action }: TownInfoProps) {
         
         <View style={styles.actionsContainer}>
             
-            <TouchableOpacity
+            <GradientButton
               style={styles.actionButton}
               onPress={() => router.push({ pathname: '/TownFlashcardsScreen', params: { id: town.groupID } })}
             >
               <Text style={styles.actionButtonText}>Travel Here and Learn {town.group}</Text>
-            </TouchableOpacity>
+            </GradientButton>
         </View>
     </ScrollView>
     )
@@ -128,17 +130,19 @@ const styles = StyleSheet.create({
   },
   actionsContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginTop: 'auto', // Push to bottom
-    height: 40, // Fixed height for buttons
+    // The container has a fixed height; keep it
+    height: 40,
   },
   actionButton: {
-    flex: 1,
-    backgroundColor: '#3399ff',
-    paddingVertical: 12,
+    flex: 1,              // fill available horizontal space
+    alignSelf: 'stretch', // fill the container’s height
+    height: '100%',       // defensive when parent has explicit height
     borderRadius: 8,
     marginHorizontal: 5,
     alignItems: 'center',
+    justifyContent: 'center',
+    // remove paddingVertical if you want exact 40px tall
+    // paddingVertical: 12,
   },
   actionButtonText: {
     color: '#fff',

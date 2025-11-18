@@ -17,6 +17,7 @@ export interface Position {
 }
 
 interface CaravanProps {
+  scale: number;
   targetPosition: Position;
   isMoving: boolean;
   setIsMoving: (moving: boolean) => void;
@@ -27,6 +28,7 @@ interface CaravanProps {
 }
 
 const Caravan: React.FC<CaravanProps> = ({
+  scale,
   targetPosition,
   isMoving,
   setIsMoving,
@@ -74,13 +76,15 @@ const Caravan: React.FC<CaravanProps> = ({
     });
   }, [targetPosition, isMoving, speed]);
 
+
+  const s = scale ?? 1;
   // Container style
   const caravanStyle = useAnimatedStyle(() => ({
     position: 'absolute',
-    width: caravanSize,
-    height: caravanSize,
-    left: caravanX.value - caravanSize / 2,
-    top: caravanY.value - caravanSize / 2,
+    width: caravanSize * s,
+    height: caravanSize * s,
+    left: (caravanX.value - caravanSize / 2) * s,
+    top: (caravanY.value - caravanSize / 2) * s,
     transform: [{ scaleX: isFacingLeft.value ? -1 : 1 }],
     zIndex: 30,
   }));
