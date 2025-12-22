@@ -83,8 +83,8 @@ const Caravan: React.FC<CaravanProps> = ({
     position: 'absolute',
     width: caravanSize * s,
     height: caravanSize * s,
-    left: (caravanX.value - caravanSize / 2) * s,
-    top: (caravanY.value - caravanSize / 2) * s,
+    left: (caravanX.value - caravanSize / 2),
+    top: (caravanY.value - caravanSize / 2),
     transform: [{ scaleX: isFacingLeft.value ? -1 : 1 }],
     zIndex: 30,
   }));

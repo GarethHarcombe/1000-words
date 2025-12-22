@@ -92,7 +92,7 @@ const ICON_SIZE = 40;
 const ICON_HALF = ICON_SIZE / 2;
 const sheetH = winH * 0.5;
 
-const towns: Town[] = rawTowns.map(t => ({ ...t })).slice(0, 5);
+const towns: Town[] = rawTowns.map(t => ({ ...t })).slice(0, 14);
 
 const townImages: Record<string, any> = {
   '1': require('@/assets/images/good-icons/CHURCH.png'),
@@ -100,11 +100,15 @@ const townImages: Record<string, any> = {
   '3': require('@/assets/images/town-icons/love_spoons.png'),
   '4': require('@/assets/images/town-icons/llanfairpg.png'),
   '5': require('@/assets/images/town-icons/welsh_cakes.png'),
-  '6': require('@/assets/images/town-icons/portmeirion.png'),
-  '7': require('@/assets/images/town-icons/pembrokeshire-coast.png'),
-  '8': require('@/assets/images/town-icons/st-davids.png'),
-  '9': require('@/assets/images/town-icons/swansea.png'),
-  '10': require('@/assets/images/town-icons/cardiff.png'),
+  '6': require('@/assets/images/town-icons/rugby.png'),
+  '7': require('@/assets/images/town-icons/cottage.png'),
+  '8': require('@/assets/images/town-icons/coastal_path.png'),
+  '9': require('@/assets/images/town-icons/braces.png'),
+  '10': require('@/assets/images/town-icons/snowdonia.png'),
+  '11': require('@/assets/images/town-icons/tenby.png'),
+  '12': require('@/assets/images/town-icons/music.png'),
+  '13': require('@/assets/images/town-icons/gelert.png'),
+  '14': require('@/assets/images/town-icons/dafard.png'),
   default: require('@/assets/images/adaptive-icon.png'),
 };
 

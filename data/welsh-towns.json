@@ -46,56 +46,83 @@
   },
   {
     "stage": 6,
-    "name": "Betws-y-Coed",
-    "group": "Numbers",
-    "groupID": 1,
-    "x": 410,
-    "y": 110,
-    "description": ""
+    "name": "Principality Stadium",
+    "group": "Sports",
+    "groupID": 23,
+    "x": 1970,
+    "y": 2850,
+    "description": "The rugby stadium near Wales' capital, Cardiff. Rugby is a source of national pride for the Welsh. When the team wins, the whole country celebrates; when they lose, everyone suddenly becomes an expert coach!"
   },
   {
     "stage": 7,
-    "name": "Pembrokeshire Coast",
-    "group": "",
-    "groupID": 1,
-    "x": 220,
-    "y": 450,
-    "description": "Britain's only coastal national park features 186 miles of spectacular limestone cliffs, golden beaches, and hidden coves. The Pembrokeshire Coast Path offers breathtaking views while the waters host diverse marine life including seals, dolphins, and puffins on nearby islands."
+    "name": "Cartref - Welsh Cottage",
+    "group": "HouseholdObjects",
+    "groupID": 17,
+    "x": 2150,
+    "y": 2700,
+    "description": "The humble Welsh cottage is something of a staple in Wales. "
   },
   {
     "stage": 8,
-    "name": "St. Davids",
-    "group": "",
-    "groupID": 1,
-    "x": 240,
-    "y": 500,
-    "description": "The UK's smallest city contains the magnificent 12th-century St. Davids Cathedral built in a valley to hide it from Viking raiders. Despite its city status, this charming settlement has the population of a small village and sits within the spectacular Pembrokeshire Coast National Park."
+    "name": "Wales Coastal Path",
+    "group": "TravelDirections",
+    "groupID": 25,
+    "x": 600,
+    "y": 1050,
+    "description": "The Wales Coast Path is a walking route that stretches around the entire Welsh coastline. Offering stunning views and beaches, some people walk or run the around the entire country of Wales using the Wales Coast Path and Offa's Dyke (which follows the border between Wales and England)."
   },
   {
     "stage": 9,
-    "name": "Swansea",
-    "group": "",
-    "groupID": 1,
-    "x": 350,
-    "y": 520,
-    "description": "Wales' second city offers the beautiful sweep of Swansea Bay, the historic Mumbles lighthouse, and the birthplace of poet Dylan Thomas. The renovated maritime quarter and nearby Gower Peninsula (the UK's first Area of Outstanding Natural Beauty) attract visitors year-round."
+    "name": "Clothing and Body",
+    "group": "BodyClothes",
+    "groupID": 15,
+    "x": 1050,
+    "y": 2770,
+    "description": ""
   },
   {
     "stage": 10,
-    "name": "Cardiff",
-    "group": "",
-    "groupID": 1,
-    "x": 400,
-    "y": 560,
-    "description": "Wales' capital city features the stunning Cardiff Castle, ultra-modern Cardiff Bay waterfront, and the iconic Principality Stadium. This vibrant metropolis blends medieval heritage with contemporary architecture and hosts major sporting and cultural events throughout the year."
+    "name": "Yr Wyddfa - Snowdonia",
+    "group": "WeatherNature",
+    "groupID": 7,
+    "x": 1150,
+    "y": 720,
+    "description": "Snowdon - Yr Wyddfa is the highest mountain in Wales, standing at 1,085 metres, and is located in Snowdonia National Park. It is famous for its stunning views and is a popular destination for walkers and climbers."
   },
   {
     "stage": 11,
-    "name": "The Great Orme Copper Mines",
-    "group": "Question Words",
-    "groupID": 3,
-    "x": 400,
-    "y": 20,
-    "description": "Bronze Age copper mines in Llandudno dating back 4,000 years that form the largest prehistoric mine discovered in the world. Visitors can explore the ancient underground passages where miners as young as children once worked."
+    "name": "Dinbych Y Pysgod - Tenby",
+    "group": "Colour",
+    "groupID": 9,
+    "x": 600,
+    "y": 2650,
+    "description": "Tenby is a cute colourful seaside village with colourful beach houses. Once a year, the entire village rallys together for the Ironman Wales - Cymru, and the Mayor congratulates every finisher personally as they cross the finish line."
+  },
+  {
+    "stage": 12,
+    "name": "Welsh Choir",
+    "group": "Hobbies",
+    "groupID": 24,
+    "x": 1600,
+    "y": 2350,
+    "description": ""
+  },
+  {
+    "stage": 13,
+    "name": "Beddgelert",
+    "group": "DescribingThings",
+    "groupID": 12,
+    "x": 1150,
+    "y": 840,
+    "description": "Beddgelert is the home of Gelert, a Welsh legend about Prince Llywelyn and his loyal dog. Tragically, Llywelyn mistakenly kills Gelert, thinking the dog harmed his child, only to discover Gelert had loyally saved the child from a wolf."
+  },
+  {
+    "stage": 14,
+    "name": "Harcombe farm",
+    "group": "Animals",
+    "groupID": 22,
+    "x": 1550,
+    "y": 1640,
+    "description": "Farming and sheep are a big part of Welsh culture. There are more sheep than people in Wales! There are even Welsh specific idioms around sheep, such as 'mynd yn draed defaid,' literally meaning 'to turn into sheep's feet', similar to how something has 'gone to the dogs' in English."
   }
 ]

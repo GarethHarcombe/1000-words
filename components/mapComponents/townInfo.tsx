@@ -25,11 +25,16 @@ export default function TownInfo ({ town, action }: TownInfoProps) {
               return '#e6d6a9';
             case 3:
               return '#a3b0ad';
-            case 6:
+            case 4:
               return '#93a7b1';
+            case 5:
+              return '#7d6e79';
+            case 6:
+              return '#55666f';
+            case 7:
+              return '#c5a46d';
             default:
               return '#e4dad1';
-              // #7d6e79, #55666f, #c5a46d
         }
     }
 
@@ -49,9 +54,9 @@ export default function TownInfo ({ town, action }: TownInfoProps) {
           case 5:
             return require('@/assets/images/town-images/bakery.jpg');
           case 6:
-            return require('@/assets/images/town-images/bakery.jpg');
+            return require('@/assets/images/town-images/principality_stadium.jpg');
           default:
-            return require('@/assets/images/caravan.jpg');
+            return require('@/assets/images/splash-icon.png');
         }
     };
 
@@ -80,7 +85,7 @@ export default function TownInfo ({ town, action }: TownInfoProps) {
               style={styles.actionButton}
               onPress={() => router.push({ pathname: '/TownFlashcardsScreen', params: { id: town.groupID } })}
             >
-              <Text style={styles.actionButtonText}>Travel Here and Learn {town.group}</Text>
+              <Text style={styles.actionButtonText}>Travel Here and Learn {town.group} themed words!</Text>
             </GradientButton>
         </View>
     </ScrollView>
