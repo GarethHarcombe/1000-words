@@ -16,19 +16,19 @@ export interface Position {
   y: number;
 }
 
+
 interface CaravanProps {
-  scale: number;
   targetPosition: Position;
   isMoving: boolean;
   setIsMoving: (moving: boolean) => void;
-  accessories?: AccessoryKey[];        // <-- new
+  accessories?: AccessoryKey[];
   caravanSize?: number;
   speed?: number;
   initialPosition?: Position;
 }
 
+
 const Caravan: React.FC<CaravanProps> = ({
-  scale,
   targetPosition,
   isMoving,
   setIsMoving,
@@ -77,17 +77,17 @@ const Caravan: React.FC<CaravanProps> = ({
   }, [targetPosition, isMoving, speed]);
 
 
-  const s = scale ?? 1;
   // Container style
   const caravanStyle = useAnimatedStyle(() => ({
     position: 'absolute',
-    width: caravanSize * s,
-    height: caravanSize * s,
-    left: (caravanX.value - caravanSize / 2),
-    top: (caravanY.value - caravanSize / 2),
+    width: caravanSize,
+    height: caravanSize,
+    left: caravanX.value - caravanSize / 2,
+    top: caravanY.value - caravanSize / 2,
     transform: [{ scaleX: isFacingLeft.value ? -1 : 1 }],
     zIndex: 30,
   }));
+
 
   // Wheel rotation - 1 full rotation per 50 px traveled
   const wheelRotation = useDerivedValue(() => {

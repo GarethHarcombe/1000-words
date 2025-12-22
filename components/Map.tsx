@@ -1,11 +1,5 @@
-import { Town } from '@/constants/Types';
-import rawTowns from '@/data/welsh-towns.json';
-import BottomSheet from './BottomSheet';
-import TownInfo from './mapComponents/townInfo';
-import Caravan, { Position } from './mapComponents/Caravan';
-import { useCaravanAccessories } from '@/contexts/CaravanContext';
 
-import React, { useState, useRef, useCallback } from 'react';
+import React, { useRef, useState, useCallback } from 'react';
 import {
   View,
   ImageBackground,
@@ -17,58 +11,15 @@ import {
   Platform,
 } from 'react-native';
 import { GestureDetector, Gesture } from 'react-native-gesture-handler';
-import Animated, {
-  useSharedValue,
-  useAnimatedStyle,
-  clamp,
-  runOnJS,
-} from 'react-native-reanimated';
+import Animated, { useSharedValue, useAnimatedStyle, clamp, runOnJS } from 'react-native-reanimated';
 
+import rawTowns from '@/data/welsh-towns.json';
+import { Town } from '@/constants/Types';
 
-// at the top, after your imports
-const AnimatedTouchableOpacity = Animated.createAnimatedComponent(TouchableOpacity);
-const AnimatedImage = Animated.createAnimatedComponent(Image);
-
-// A minimal marker that follows layout-scale
-function TownMarker({
-  rendered,           // { x, y } in BASE rendered coords from townToRendered
-  source,
-  onPress,
-  scale,              // shared value from parent
-}: {
-  rendered: { x: number; y: number };
-  source: any;
-  onPress: () => void;
-  scale: Animated.SharedValue<number>;
-}) {
-  const style = useAnimatedStyle(() => {
-    const s = scale.value;
-    return {
-      position: 'absolute',
-      top: (rendered.y - ICON_HALF) * s,
-      left: (rendered.x - ICON_HALF) * s,
-      width: ICON_SIZE * s,
-      height: ICON_SIZE * s,
-      zIndex: 20,
-    };
-  });
-
-  return (
-    <AnimatedTouchableOpacity
-      onPress={onPress}
-      activeOpacity={0.7}
-      style={[styles.townMarker, style]}
-      hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
-    >
-      <AnimatedImage
-        source={source}
-        style={{ width: '100%', height: '100%' }}
-        resizeMode="contain"
-      />
-    </AnimatedTouchableOpacity>
-  );
-}
-
+import BottomSheet from './BottomSheet';
+import TownInfo from './mapComponents/townInfo';
+import Caravan, { Position } from './mapComponents/Caravan';
+import { useCaravanAccessories } from '@/contexts/CaravanContext';
 
 const { width: winW, height: winH } = Dimensions.get('window');
 
@@ -112,8 +63,42 @@ const townImages: Record<string, any> = {
   default: require('@/assets/images/adaptive-icon.png'),
 };
 
+function TownMarker({
+  rendered,
+  source,
+  onPress,
+}: {
+  rendered: { x: number; y: number };
+  source: any;
+  onPress: () => void;
+}) {
+  return (
+    <TouchableOpacity
+      onPress={onPress}
+      activeOpacity={0.7}
+      style={[
+        styles.townMarker,
+        {
+          top: rendered.y - ICON_HALF,
+          left: rendered.x - ICON_HALF,
+          width: ICON_SIZE,
+          height: ICON_SIZE,
+        },
+      ]}
+      hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+    >
+      <Image source={source} style={{ width: '100%', height: '100%' }} resizeMode="contain" />
+    </TouchableOpacity>
+  );
+}
+
 export default function Map() {
   const { accessories } = useCaravanAccessories();
+
+  
+  const containerRef = useRef<View>(null);
+  const containerWin = useRef({ x: 0, y: 0 });
+
 
   // Container layout for local coords and bounds
   const [container, setContainer] = useState({ x: 0, y: 0, w: winW, h: winH });
@@ -121,9 +106,15 @@ export default function Map() {
   const onLayout = useCallback((e: LayoutChangeEvent) => {
     const { x, y, width, height } = e.nativeEvent.layout;
     setContainer({ x, y, w: width, h: height });
+
+    if (Platform.OS === 'web') {
+      containerRef.current?.measureInWindow((pageX, pageY) => {
+        containerWin.current = { x: pageX, y: pageY };
+      });
+    }
   }, []);
 
-  // Pan and zoom
+  // Pan and zoom (screen-space translate, world-space scale)
   const scale = useSharedValue(1);
   const savedScale = useSharedValue(1);
   const tx = useSharedValue(0);
@@ -138,7 +129,8 @@ export default function Map() {
   const [isMoving, setIsMoving] = useState(false);
 
   const townToRendered = (t: Town) => ({ x: t.x * scaleX, y: t.y * scaleY });
-  const getTownImage = (t: Town) => townImages[String((t as any).stage ?? 'default')] || townImages.default;
+  const getTownImage = (t: Town) =>
+    townImages[String((t as any).stage ?? 'default')] || townImages.default;
 
   const findTownAtRenderedPoint = (rx: number, ry: number): Town | null => {
     const tapThreshold = 10;
@@ -149,59 +141,82 @@ export default function Map() {
     return null;
   };
 
-  const toLocal = useCallback((clientX: number, clientY: number) => {
-    return { x: clientX - container.x, y: clientY - container.y };
-  }, [container]);
+  const toLocal = useCallback(
+    (clientX: number, clientY: number) => {
+      return { x: clientX - container.x, y: clientY - container.y };
+    },
+    [container]
+  );
 
-  /** Bounds for current container and given scale, top-left origin, layout-scale */
-  const bounds = useCallback((s: number) => {
-    const scaledW = baseW * s;
-    const scaledH = baseH * s;
+  /** Bounds for current container and given scale, clamp translate in screen pixels */
+  const bounds = useCallback(
+    (s: number) => {
+      const scaledW = baseW * s;
+      const scaledH = baseH * s;
 
-    const effW = container.w;
-    // If you want the bottom sheet to reduce visible area while open, use:
-    // const effH = container.h - (isTownPopup ? sheetH : 0);
-    const effH = container.h;
+      const effW = container.w;
+      const effH = container.h;
 
-    const minTX = effW - scaledW; // align right edge
-    const maxTX = 0;              // align left edge
-    const minTY = effH - scaledH; // align bottom edge
-    const maxTY = 0;              // align top edge
+      const minTX = effW - scaledW;
+      const maxTX = 0;
+      const minTY = effH - scaledH;
+      const maxTY = 0;
 
-    return {
-      minTX: scaledW <= effW ? 0 : minTX,
-      maxTX: scaledW <= effW ? 0 : maxTX,
-      minTY: scaledH <= effH ? 0 : minTY,
-      maxTY: scaledH <= effH ? 0 : maxTY,
-    };
-  }, [container /*, isTownPopup*/]);
+      return {
+        minTX: scaledW <= effW ? 0 : minTX,
+        maxTX: scaledW <= effW ? 0 : maxTX,
+        minTY: scaledH <= effH ? 0 : minTY,
+        maxTY: scaledH <= effH ? 0 : maxTY,
+      };
+    },
+    [container]
+  );
 
-  const handleMapTap = useCallback((p: { localX?: number; localY?: number; absoluteX?: number; absoluteY?: number }) => {
-    if (selectedTown) {
-      setIsTownPopup(false);
-      setSelectedTown(null);
-    }
-    const { x, y } =
-      Number.isFinite(p.localX) && Number.isFinite(p.localY)
-        ? { x: Math.round(p.localX as number), y: Math.round(p.localY as number) }
-        : toLocal(p.absoluteX as number, p.absoluteY as number);
-
-    if (!Number.isFinite(x) || !Number.isFinite(y)) return;
-    if (x < 0 || x > baseW || y < 0 || y > baseH) return;
-
-    const tapped = findTownAtRenderedPoint(x, y);
-    if (tapped) { onTownPress(tapped); return; }
-
-    setTargetPosition({ x, y });
+  const onTownPress = (town: Town) => {
+    setIsTownPopup(true);
+    setSelectedTown(town);
+    const rendered = townToRendered(town);
+    setTargetPosition(rendered);
     setIsMoving(true);
-  }, [selectedTown, toLocal]);
+  };
 
-  /** Pinch: layout-scale plus pointer anchoring, clamp inline with NEW scale */
+  const townAction = (town: Town) => {
+    setSelectedTown(null);
+    setIsTownPopup(false);
+    const rendered = townToRendered(town);
+    setTargetPosition(rendered);
+    setIsMoving(true);
+  };
+
+  /** Handle tap in world coordinates (base rendered space) */
+  const handleMapTapWorld = useCallback(
+    (x: number, y: number) => {
+      if (selectedTown) {
+        setIsTownPopup(false);
+        setSelectedTown(null);
+      }
+
+      if (!Number.isFinite(x) || !Number.isFinite(y)) return;
+      if (x < 0 || x > baseW || y < 0 || y > baseH) return;
+
+      const tapped = findTownAtRenderedPoint(x, y);
+      if (tapped) {
+        onTownPress(tapped);
+        return;
+      }
+
+      setTargetPosition({ x, y });
+      setIsMoving(true);
+    },
+    [selectedTown]
+  );
+
+  /** Pinch: anchored zoom, clamp using NEW scale */
   const pinchGesture = Gesture.Pinch()
     .onUpdate(e => {
       const newS = clamp(savedScale.value * e.scale, MIN_SCALE, MAX_SCALE);
-
       const ratio = newS / scale.value;
+
       const px = Number.isFinite(e.focalX) ? e.focalX : container.w / 2;
       const py = Number.isFinite(e.focalY) ? e.focalY : container.h / 2;
 
@@ -239,17 +254,17 @@ export default function Map() {
       savedTY.value = ty.value;
     });
 
+  /** Tap: invert transform to world coordinates */
   const tapGesture = Gesture.Tap()
     .maxDuration(600)
     .onEnd((e, success) => {
       'worklet';
       if (!success) return;
-      runOnJS(handleMapTap)({
-        localX: e.x,
-        localY: e.y,
-        absoluteX: e.absoluteX,
-        absoluteY: e.absoluteY,
-      });
+
+      const worldX = (e.x - tx.value) / scale.value;
+      const worldY = (e.y - ty.value) / scale.value;
+
+      runOnJS(handleMapTapWorld)(worldX, worldY);
     });
 
   const combinedGesture = Gesture.Exclusive(
@@ -257,19 +272,34 @@ export default function Map() {
     tapGesture
   );
 
-  /** Wheel zoom: layout-scale, clamp inline with NEW scale */
+  /** Wheel zoom (web): anchored on cursor, clamp using NEW scale */
+  
+  
   const onWheel = useCallback((evt: any) => {
     if (Platform.OS !== 'web') return;
-    const { deltaY, clientX, clientY, ctrlKey } = evt.nativeEvent ?? evt;
+
+    // React synthetic wheel event
+    const e = evt.nativeEvent ?? evt;
+
+    // If you want to prevent page scroll while zooming:
+    if (typeof evt.preventDefault === 'function') evt.preventDefault();
+
+    const { deltaY, ctrlKey, clientX, clientY } = e;
 
     const intensity = 0.08 * (ctrlKey ? 2 : 1);
     const dir = deltaY > 0 ? -1 : 1; // wheel up -> zoom in
     const factor = 1 + dir * intensity;
 
-    const newS = clamp(savedScale.value * factor, MIN_SCALE, MAX_SCALE);
-    const ratio = newS / savedScale.value;
+    const oldS = scale.value;
+    const newS = clamp(oldS * factor, MIN_SCALE, MAX_SCALE);
+    const ratio = newS / oldS;
 
-    const { x: px, y: py } = toLocal(clientX, clientY);
+    // Compute mouse position relative to the element that has the onWheel handler
+    const rect = (evt.currentTarget as any)?.getBoundingClientRect?.();
+    if (!rect) return;
+
+    const px = clientX - rect.left;
+    const py = clientY - rect.top;
 
     let nextTX = (1 - ratio) * px + ratio * tx.value;
     let nextTY = (1 - ratio) * py + ratio * ty.value;
@@ -281,75 +311,66 @@ export default function Map() {
     tx.value = nextTX;
     ty.value = nextTY;
     scale.value = newS;
+
     savedScale.value = newS;
     savedTX.value = nextTX;
     savedTY.value = nextTY;
-  }, [toLocal, bounds, savedScale, tx, ty]);
 
-  /** Layout-scale: animate width/height, translate in screen pixels (top-left origin) */
-  const mapStyle = useAnimatedStyle(() => {
-    const w = baseW * scale.value;
-    const h = baseH * scale.value;
+    console.log('scale', scale.value, 'tx', tx.value, 'ty', ty.value, bounds(scale.value));
+  }, [bounds]);
+
+
+  /**
+   * World transform:
+   * screen = world * scale + translate
+   * Use scale first, then translate so tx/ty are screen pixels and bounds stay simple.
+   */
+  
+  const worldStyle = useAnimatedStyle(() => {
     return {
       position: 'absolute',
       top: 0,
       left: 0,
-      width: w,
-      height: h,
+      width: baseW,
+      height: baseH,
+      transformOrigin: Platform.OS === 'web' ? ('0px 0px' as any) : undefined,
       transform: [
         { translateX: tx.value },
         { translateY: ty.value },
+        { scale: scale.value },
       ],
     };
   });
 
-  const onTownPress = (town: Town) => {
-    setIsTownPopup(true);
-    setSelectedTown(town);
-    const rendered = townToRendered(town);
-    setTargetPosition(rendered);
-    setIsMoving(true);
-  };
-
-  const townAction = (town: Town) => {
-    setSelectedTown(null);
-    setIsTownPopup(false);
-    const rendered = townToRendered(town);
-    setTargetPosition(rendered);
-    setIsMoving(true);
-  };
-
   return (
     <View
+      ref={containerRef}
       onLayout={onLayout}
-      {...(Platform.OS === 'web' ? ({ onWheel: onWheel as unknown as (evt: any) => void } as any) : {})}
+      {...(Platform.OS === 'web'
+        ? ({ onWheel: onWheel as unknown as (evt: any) => void } as any)
+        : {})}
       style={styles.container}
     >
       <GestureDetector gesture={combinedGesture}>
-        <Animated.View style={mapStyle}>
+        <Animated.View style={worldStyle}>
           <ImageBackground
             source={require('@/assets/images/welsh-map-background.png')}
             style={{ width: '100%', height: '100%' }}
-            resizeMode="stretch"  // we already size by layout to exact aspect
+            resizeMode="stretch"
           >
-            {/* Town markers (now scale-aware) */}
             {towns.map((town, idx) => {
-              const rendered = townToRendered(town); // base coords (unchanged)
+              const rendered = townToRendered(town);
               return (
                 <TownMarker
                   key={idx}
                   rendered={rendered}
                   source={getTownImage(town)}
                   onPress={() => onTownPress(town)}
-                  scale={scale} // pass the shared value
                 />
               );
             })}
 
-
-            {/* Caravan (unchanged) */}
             <Caravan
-              scale={scale.value}
               targetPosition={targetPosition}
               isMoving={isMoving}
               setIsMoving={setIsMoving}
@@ -395,5 +416,6 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
     backgroundColor: 'transparent',
     cursor: Platform.OS === 'web' ? 'pointer' : undefined,
+    zIndex: 20,
   },
 });
