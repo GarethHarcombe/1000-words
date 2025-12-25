@@ -1,82 +1,96 @@
-// npx expo start
 
+import React from "react";
+import FontAwesome from "@expo/vector-icons/FontAwesome";
+import { Tabs } from "expo-router";
 
-import React from 'react';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { Link, Tabs } from 'expo-router';
-import { Pressable } from 'react-native';
+import { AnimatedTabButton } from "@/components/AnimatedTabButton";
 
-import Colors from '@/constants/Colors';
-import { useColorScheme } from '@/components/useColorScheme';
-import { useClientOnlyValue } from '@/components/useClientOnlyValue';
+import { StyleSheet, useWindowDimensions } from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
 
-import { LinearGradient } from 'expo-linear-gradient';
-
-
-// You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
-function TabBarIcon(props: {
-  name: React.ComponentProps<typeof FontAwesome>['name'];
-  color: string;
-}) {
-  return <FontAwesome size={28} style={{ marginBottom: -20 }} {...props} />;
-}
+import Colors from "@/constants/Colors";
+import { useColorScheme } from "@/components/useColorScheme";
+import { useClientOnlyValue } from "@/components/useClientOnlyValue";
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
+  const { width } = useWindowDimensions();
+
+  const MAX_ICON_GROUP_WIDTH = 550; // change this
+  const sidePadding = Math.max(0, (width - MAX_ICON_GROUP_WIDTH) / 2);
 
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tabIconSelected,
+      
+        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tabIconDefault,
         tabBarInactiveTintColor: Colors[colorScheme ?? 'light'].tabIconDefault,
+
+        tabBarShowLabel: false,
+
+        tabBarStyle: {
+          height: 80,
+          paddingLeft: sidePadding,
+          paddingRight: sidePadding,
+          overflow: "visible",
+        },
+
+        tabBarItemStyle: {
+          justifyContent: "center",
+          alignItems: "center",
+          overflow: "visible",
+        },
+
         // Disable the static render of the header on web
         // to prevent a hydration error in React Navigation v6.
         headerShown: useClientOnlyValue(false, false),
+
         tabBarBackground: () => (
           <LinearGradient
-            colors={[Colors['light']['upperButtonGradient'], 
-              Colors['light']['lowerButtonGradient']]}
-            style={{ flex: 1 }}
+            colors={[
+              Colors["light"]["upperButtonGradient"],
+              Colors["light"]["lowerButtonGradient"],
+            ]}
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 0 }}
+            style={StyleSheet.absoluteFillObject}
           />
         ),
-      }}>
+      }}
+    >
       <Tabs.Screen
         name="index"
         options={{
-          title: '',
-          tabBarIcon: ({ color }) => <TabBarIcon name="clone" color={color} />,
-          // headerRight: () => (
-          //   <Link href="/modal" asChild>
-          //     <Pressable>
-          //       {({ pressed }) => (
-          //         <FontAwesome
-          //           name="info-circle"
-          //           size={25}
-          //           color={Colors[colorScheme ?? 'light'].text}
-          //           style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-          //         />
-          //       )}
-          //     </Pressable>
-          //   </Link>
-          // ),
+          title: "",
+          tabBarIcon: ({ color, focused }) => 
+{
+  // console.log("index focused", focused);
+  return <AnimatedTabButton name="clone" color={color} focused={focused} />;
+}
+
         }}
       />
       <Tabs.Screen
         name="mapTab"
         options={{
-          title: '',
-          tabBarIcon: ({ color }) => <TabBarIcon name="map" color={color} />,
+          title: "",
+          tabBarIcon: ({ color, focused }) => {
+  // console.log("map focused", focused);
+  return <AnimatedTabButton name="map" color={color} focused={focused} />;
+},
         }}
       />
       <Tabs.Screen
         name="profileTab"
         options={{
-          title: '',
-          tabBarIcon: ({ color }) => <TabBarIcon name="user" color={color} />,
+          title: "",
+          tabBarIcon: ({ color, focused }) => {
+  // console.log("profile focused", focused);
+  return <AnimatedTabButton name="user" color={color} focused={focused} />;
+}
         }}
       />
     </Tabs>
+
   );
 }

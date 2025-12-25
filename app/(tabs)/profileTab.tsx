@@ -9,6 +9,7 @@ import WeeklyProgressChart from '@/components/profile/WeeklyProgressChart';
 import WordProgressPieChart from '@/components/profile/WordProgressPieChart';
 import CustomisableCaravan from '@/components/caravan/customisableCaravan';
 import AccessoryCarousel from '@/components/profile/CaravanAccessoryCarousel';
+import { ProgressCarousel } from '@/components/profile/ProgressCarousel';
 import { useCaravanAccessories } from '@/contexts/CaravanContext';
 import Colors from '@/constants/Colors';
 
@@ -22,6 +23,7 @@ export default function ProfileScreen() {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.main}>
+        <ProgressCarousel />
         <WordProgressPieChart words={words} />
         <WeeklyProgressChart />
 

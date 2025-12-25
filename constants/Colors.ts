@@ -8,6 +8,7 @@ export default {
     background: '#fff',
     upperButtonGradient: '#93A7B1',
     lowerButtonGradient: '#BACAC1',
+    midButtonGradient: '#A8BAB9',
     correct: '#92A56E',
     incorrect: '#9D491B',
     button: "#A8BABA",
