@@ -1,6 +1,6 @@
 
 import * as React from "react";
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, useWindowDimensions, View, PixelRatio  } from "react-native";
 import Animated, {
   Extrapolation,
   interpolate,
@@ -13,28 +13,38 @@ import Colors from "@/constants/Colors";
 
 import { Word } from "../../constants/Types";
 import { useWords } from "@/contexts/UserContext";
+import { Text } from "@/components/Themed";
+import { ButtonText, Heading } from "@/components/StyledText";
+
+// npm config set strict-ssl false
 
 type Props = {
-  height?: number;
+  mapHeight?: number;
 };
 
 const MAP_BW = require("@/assets/images/welsh-map-no-background-bw.png");
 const MAP_COLOUR = require("@/assets/images/welsh-map-no-background.png");
 
-export function ProgressCarousel({ height = 400 }: Props) {
+export function ProgressCarousel({ mapHeight = 286 }: Props) {
   const imgW = 2481;
   const imgH = 3508;
   const ASPECT = imgW / imgH;
-  const width = ASPECT * height;
+  const mapWidth = ASPECT * mapHeight;
+
+  const width = Math.min(useWindowDimensions().width, 390);
+
+  const leftMap = (width - mapWidth) / 2;
+
+  const MAPTOPOFFSET = 273;
 
   const { words } = useWords();
 
 //   const wordsSeen = words.filter((w: Word) => w.stage >= 1).length;
 //   const wordsPracticed = words.filter((w: Word) => w.stage >= 2).length;
 //   const wordsMastered = words.filter((w: Word) => w.stage >= 3).length;
-  const wordsSeen = 500;
+  const wordsSeen = words.length;
   const wordsPracticed = 300;
-  const wordsMastered = 100;
+  const wordsMastered = 10;
   const totalWords = words.length || 1;
 
   const metrics = React.useMemo(
@@ -54,6 +64,7 @@ export function ProgressCarousel({ height = 400 }: Props) {
     const input = metrics.map((_, i) => i);          // [0, 1, 2]
     const output = metrics.map((m) => m.ratio);      // [seenRatio, practisedRatio, masteredRatio]
     const r = interpolate(progress.value, input, output, Extrapolation.CLAMP);
+
     return Math.max(0, Math.min(1, r));
   }, [metrics]);
 
@@ -64,44 +75,50 @@ export function ProgressCarousel({ height = 400 }: Props) {
     });
   };
 
+  
   return (
-    <View style={{ width }}>
-      {/* Metric carousel (text only) */}
+  <View>
+    {/* One container that defines the gesture surface size */}
+    <View style={{ position: "relative", height: mapHeight + MAPTOPOFFSET }}>
+      <View pointerEvents="none" style={[styles.metricPercentContainer, { width }]}/>
+
+      {/* Carousel covers metric + map area so you can drag anywhere */}
       <Carousel
         ref={ref}
+        height={mapHeight + MAPTOPOFFSET}
         width={width}
-        height={140}
         data={metrics}
         loop={false}
         onProgressChange={progress}
-
         renderItem={({ item, animationValue }) => (
-            <View style={{ width, height: height + 140 }}>
-            <MetricCard width={width} item={item} animationValue={animationValue} />
-            <MapFill width={width} height={height} fillRatio={fillRatio} />
-            </View>
+          <View style={{ height: mapHeight + MAPTOPOFFSET, alignItems: "center" }}>
+            <MetricCard width={mapWidth} item={item} animationValue={animationValue} />
+          </View>
         )}
-
       />
 
-      {/* Map fill (single map, driven by carousel progress) */}
-      <MapFill
-        width={width}
-        height={height}
-        fillRatio={fillRatio}
-      />
-
-      {/* Dots */}
-      <Pagination.Basic
-        progress={progress}
-        data={metrics}
-        onPress={onPressPagination}
-        containerStyle={styles.dotsContainer}
-        dotStyle={styles.dot}
-        activeDotStyle={styles.activeDot}
-      />
+      {/* Static map overlay, visually fixed, but touch passes through */}
+      <View
+        pointerEvents="none"
+        style={{ position: "absolute", left: leftMap, top: MAPTOPOFFSET, width: mapWidth, height: mapHeight }}
+      >
+        <MapFill width={mapWidth} height={mapHeight} fillRatio={fillRatio} />
+      </View>
     </View>
+
+    {/* Dots */}
+    <Pagination.Basic
+      progress={progress}
+      data={metrics}
+      size={15}
+      onPress={onPressPagination}
+      containerStyle={styles.dotsContainer}
+      dotStyle={styles.dot}
+      activeDotStyle={styles.activeDot}
+    />
+  </View>
   );
+
 }
 
 function MetricCard({
@@ -125,9 +142,9 @@ function MetricCard({
 
   return (
     <Animated.View style={[styles.metricCard, { width }, animStyle]}>
-      <Text style={styles.metricPercent}>{percent}%</Text>
-      <Text style={styles.metricSub}>of total words</Text>
-      <Text style={styles.metricLabel}>{item.label}</Text>
+      <Heading style={styles.metricPercent}>{percent}%</Heading>
+      <ButtonText style={styles.metricSub}>of total words</ButtonText>
+      <Heading style={styles.metricLabel}>{item.label}</Heading>
     </Animated.View>
   );
 }
@@ -141,34 +158,43 @@ function MapFill({
   height: number;
   fillRatio: Animated.SharedValue<number>;
 }) {
-  // Height of the visible coloured region
-  const maskStyle = useAnimatedStyle(() => {
-    return {
-      height: height * fillRatio.value,
-    };
-  });
 
-  // Keep the coloured image anchored to the bottom as the mask grows
-  const colourImageStyle = useAnimatedStyle(() => {
-    const y = height * (1 - fillRatio.value);
-    return {
-      transform: [{ translateY: -y }],
-    };
-  });
+    const PAD_BOTTOM = 0.06; // tune this
+    const PAD_TOP = 0.06;    // tune this
+    const EFFECTIVE = 1 - PAD_TOP - PAD_BOTTOM;
+
+
+  // Height of the visible coloured region
+const maskStyle = useAnimatedStyle(() => {
+  const fill = PAD_BOTTOM + EFFECTIVE * fillRatio.value;
+  const maskHeight = PixelRatio.roundToNearestPixel(height * fill);
+  return { height: maskHeight };
+});
+
+const colourImageStyle = useAnimatedStyle(() => {
+  const fill = PAD_BOTTOM + EFFECTIVE * fillRatio.value;
+  const maskHeight = PixelRatio.roundToNearestPixel(height * fill);
+  const ty = PixelRatio.roundToNearestPixel(-(height - maskHeight));
+  return { transform: [{ translateY: ty }] };
+});
+
+
+
+  
   
   return (
-    <View style={[styles.mapContainer, { width, height }]} pointerEvents="box-none">
-      <Image pointerEvents="none" source={MAP_BW} style={[styles.mapImage, { width, height }]} />
+  <View style={[styles.mapContainer, { width, height }]} pointerEvents="none">
+    <Animated.Image source={MAP_BW} style={[styles.mapImage, { width, height }]} />
 
-      <Animated.View pointerEvents="none" style={[styles.colourMask, { width }, maskStyle]}>
-        <Animated.Image
-          pointerEvents="none"
-          source={MAP_COLOUR}
-          style={[styles.mapImage, { width, height }, colourImageStyle]}
-        />
-      </Animated.View>
-    </View>
+    <Animated.View style={[styles.colourMask, { width }, maskStyle]}>
+      <Animated.Image
+        source={MAP_COLOUR}
+        style={[styles.mapImage, { width, height }, colourImageStyle]}
+      />
+    </Animated.View>
+  </View>
   );
+
 }
 
 const styles = StyleSheet.create({
@@ -176,13 +202,22 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  metricPercentContainer: {
+    position: "absolute",
+    height: 121,
+    top: 0,
+    zIndex: -1000,
+    backgroundColor: Colors.light.darkBackground,
+    width: '100%',
+    borderBottomLeftRadius: 20,
+    borderBottomRightRadius: 20,
+  },
   metricPercent: {
-    fontSize: 52,
-    fontWeight: "700",
-    color: "#2F3A3D",
+    color: "#FFFFFF",
+    margin: 22,
   },
   metricSub: {
-    marginTop: 4,
+    marginTop: 20,
     fontSize: 16,
     color: "#5F6A6D",
   },
@@ -190,14 +225,13 @@ const styles = StyleSheet.create({
     marginTop: 6,
     fontSize: 34,
     fontWeight: "700",
-    color: "#9AA5A8",
+    color: Colors.light.midButtonGradient,
     letterSpacing: 1,
   },
 
   mapContainer: {
     position: "relative",
     overflow: "hidden",
-    borderRadius: 12,
     alignSelf: "center",
   },
   mapImage: {
@@ -214,8 +248,8 @@ const styles = StyleSheet.create({
   },
 
   dotsContainer: {
-    gap: 6,
-    marginTop: 10,
+    gap: 14,
+    marginTop: 35.89,
     justifyContent: "center",
   },
   dot: {

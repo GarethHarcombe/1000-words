@@ -24,8 +24,8 @@ export default function ProfileScreen() {
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.main}>
         <ProgressCarousel />
-        <WordProgressPieChart words={words} />
-        <WeeklyProgressChart />
+        {/* <WordProgressPieChart words={words} /> */}
+        {/* <WeeklyProgressChart /> */}
 
         <View style={styles.card}>
           <Heading style={styles.cardTitle}>Your Caravan</Heading>
@@ -65,6 +65,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.light.background, 
     borderRadius: 12, 
     padding: 16, 
+    marginTop: 20,
     shadowColor: '#000', 
     shadowOffset: { width: 0, height: 4 }, 
     shadowOpacity: 0.1, 
