@@ -1,31 +1,28 @@
 
+// app/(tabs)/_layout.tsx (or wherever TabLayout lives)
 import React from "react";
-import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { Tabs } from "expo-router";
-
-import { AnimatedTabButton } from "@/components/AnimatedTabButton";
-
 import { StyleSheet, useWindowDimensions } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
 import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
 import { useClientOnlyValue } from "@/components/useClientOnlyValue";
+import { AnimatedTabButton } from "@/components/AnimatedTabButton";
+import { LiftedTabBarButton } from "@/components/LiftedTabBarButton";
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
   const { width } = useWindowDimensions();
 
-  const MAX_ICON_GROUP_WIDTH = 550; // change this
+  const MAX_ICON_GROUP_WIDTH = 550;
   const sidePadding = Math.max(0, (width - MAX_ICON_GROUP_WIDTH) / 2);
 
   return (
     <Tabs
       screenOptions={{
-      
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tabIconDefault,
-        tabBarInactiveTintColor: Colors[colorScheme ?? 'light'].tabIconDefault,
-
+        tabBarActiveTintColor: Colors[colorScheme ?? "light"].tabIconDefault,
+        tabBarInactiveTintColor: Colors[colorScheme ?? "light"].tabIconDefault,
         tabBarShowLabel: false,
 
         tabBarStyle: {
@@ -41,12 +38,11 @@ export default function TabLayout() {
           overflow: "visible",
         },
 
-        // Disable the static render of the header on web
-        // to prevent a hydration error in React Navigation v6.
         headerShown: useClientOnlyValue(false, false),
 
         tabBarBackground: () => (
           <LinearGradient
+            pointerEvents="none"
             colors={[
               Colors["light"]["upperButtonGradient"],
               Colors["light"]["lowerButtonGradient"],
@@ -58,39 +54,46 @@ export default function TabLayout() {
         ),
       }}
     >
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: "",
-          tabBarIcon: ({ color, focused }) => 
-{
-  // console.log("index focused", focused);
-  return <AnimatedTabButton name="clone" color={color} focused={focused} />;
-}
+      
+    <Tabs.Screen
+      name="mapTab"
+      options={{
+        title: "",
+        tabBarButton: (props) => (
+          <LiftedTabBarButton {...props} routeName="mapTab" liftBy={40} />
+        ),
+        tabBarIcon: ({ color, focused }) => (
+          <AnimatedTabButton name="map-outline" color={color} focused={focused} />
+        ),
+      }}
+    />
 
-        }}
-      />
-      <Tabs.Screen
-        name="mapTab"
-        options={{
-          title: "",
-          tabBarIcon: ({ color, focused }) => {
-  // console.log("map focused", focused);
-  return <AnimatedTabButton name="map" color={color} focused={focused} />;
-},
-        }}
-      />
-      <Tabs.Screen
-        name="profileTab"
-        options={{
-          title: "",
-          tabBarIcon: ({ color, focused }) => {
-  // console.log("profile focused", focused);
-  return <AnimatedTabButton name="user" color={color} focused={focused} />;
-}
-        }}
-      />
+    <Tabs.Screen
+      name="index"
+      options={{
+        title: "",
+        tabBarButton: (props) => (
+          <LiftedTabBarButton {...props} routeName="index" liftBy={40} />
+        ),
+        tabBarIcon: ({ color, focused }) => (
+          <AnimatedTabButton name="cards-outline" color={color} focused={focused} />
+        ),
+      }}
+    />
+
+    <Tabs.Screen
+      name="profileTab"
+      options={{
+        title: "",
+        tabBarButton: (props) => (
+          <LiftedTabBarButton {...props} routeName="profileTab" liftBy={40} />
+        ),
+        tabBarIcon: ({ color, focused }) => (
+          <AnimatedTabButton name="account-outline" color={color} focused={focused} />
+        ),
+      }}
+    />
+
     </Tabs>
-
   );
 }

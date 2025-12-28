@@ -1,7 +1,8 @@
 
+// components/AnimatedTabButton.tsx
 import React, { useEffect } from "react";
 import { StyleSheet } from "react-native";
-import FontAwesome from "@expo/vector-icons/FontAwesome";
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -12,7 +13,7 @@ import Animated, {
 import Colors from "@/constants/Colors";
 
 type Props = {
-  name: React.ComponentProps<typeof FontAwesome>["name"];
+  name: React.ComponentProps<typeof MaterialCommunityIcons>["name"];
   color: string;
   focused: boolean;
 };
@@ -20,17 +21,10 @@ type Props = {
 const SIZE = 92;
 
 export function AnimatedTabButton({ name, color, focused }: Props) {
-  const lift = useSharedValue(0);
   const circle = useSharedValue(0);
 
   useEffect(() => {
-    cancelAnimation(lift);
     cancelAnimation(circle);
-
-    lift.value = withTiming(focused ? -40 : 0, {
-      duration: 220,
-      easing: Easing.out(Easing.cubic),
-    });
 
     circle.value = withTiming(focused ? 1 : 0, {
       duration: 180,
@@ -38,19 +32,15 @@ export function AnimatedTabButton({ name, color, focused }: Props) {
     });
   }, [focused]);
 
-  const iconStyle = useAnimatedStyle(() => ({
-    transform: [{ translateY: lift.value }],
-  }));
-
   const circleStyle = useAnimatedStyle(() => ({
     transform: [{ scale: circle.value }],
     opacity: circle.value,
   }));
 
   return (
-    <Animated.View style={[styles.wrap, iconStyle]}>
-      <Animated.View style={[styles.circle, circleStyle]} />
-      <FontAwesome size={48} name={name} color={color} />
+    <Animated.View pointerEvents="none" style={styles.wrap}>
+      <Animated.View pointerEvents="none" style={[styles.circle, circleStyle]} />
+      <MaterialCommunityIcons name={name} size={60} color={color} />
     </Animated.View>
   );
 }
