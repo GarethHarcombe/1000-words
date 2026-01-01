@@ -136,12 +136,12 @@ const Caravan: React.FC<CaravanProps> = ({
       {/* Wheels */}
       <Animated.Image
         source={require('@/assets/images/good-icons/front_wheel_caravan.png')}
-        style={[styles.wheel, styles.frontWheel, wheelStyle]}
+        style={[styles.wheel, styles.frontWheel, wheelStyle, { width: caravanSize * 0.2, height: caravanSize * 0.2 }]}
         resizeMode="contain"
       />
       <Animated.Image
         source={require('@/assets/images/good-icons/back_wheel_caravan.png')}
-        style={[styles.wheel, styles.backWheel, wheelStyle]}
+        style={[styles.wheel, styles.backWheel, wheelStyle, { width: caravanSize * 0.2, height: caravanSize * 0.2 }]}
         resizeMode="contain"
       />
     </Animated.View>
@@ -155,15 +155,15 @@ const styles = StyleSheet.create({
   },
   wheel: {
     position: 'absolute',
-    width: 7,
-    height: 15,
-    bottom: 5,
+    alignSelf: 'center',
+    bottom: '20%',
+    zIndex: -1,
   },
   frontWheel: {
-    right: 27.5,
+    right: '6.5%',
   },
   backWheel: {
-    left: 29.5,
+    left: '11.5%',
   },
 });
 

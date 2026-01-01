@@ -6,6 +6,8 @@ import { Word } from '@/constants/Types';
 import ExitButton from '@/components/flashcard/common/ExitButton';
 import { useWords } from '@/contexts/UserContext';
 
+import TownProgress from '@/components/flashcard/townFlashcard/TownProgress';
+
 // ---------------------
 // Spaced repetition helpers
 // ---------------------
@@ -133,6 +135,17 @@ export default function TownFlashcardsScreen() {
     <View style={styles.container}>
       <Stack.Screen options={{ headerShown: false }} />
       <ExitButton onPress={() => router.back()} />
+
+      <TownProgress
+        wordsSeen={groupWords.filter(w => w.stage >= 1).length}
+        wordsPracticed={groupWords.filter(w => w.stage === 2).length}
+        wordsMastered={groupWords.filter(w => w.stage === 2 && w.streak > 2).length}
+        totalWords={groupWords.length}
+        groupKey={groupKey}
+        showLabel={false}
+        showRings={false}
+        style={{ position: 'absolute', top: 25, right: 25, zIndex: 10, }}
+      />
 
       <Flashcard
         word={groupWords[index]}

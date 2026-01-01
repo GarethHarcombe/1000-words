@@ -24,14 +24,17 @@ export default function BottomSheet (props: BottomSheetProps) {
     const { style, bottomSheetHeight, isBottomSheetUp, setIsTownPopup, ...otherProps } = props;
     // const backgroundColor = useThemeColor({ light: lightColor, dark: darkColor }, 'background');
 
+    const DAMPING = 55;
+    const STIFFNESS = 300;
+
     const bottomSheetTranslateY = useSharedValue(bottomSheetHeight);
 
 
     // Function to close the bottom sheet
     const closeBottomSheet = () => {
         bottomSheetTranslateY.value = withSpring(bottomSheetHeight, {
-        damping: 15,
-        stiffness: 150,
+        damping: DAMPING,
+        stiffness: STIFFNESS,
     });
         setIsTownPopup(false);
     // setSelectedTown(null);
@@ -39,8 +42,8 @@ export default function BottomSheet (props: BottomSheetProps) {
 
     const openBottomSheet = () => {
         bottomSheetTranslateY.value = withSpring(0, {
-        damping: 15,
-        stiffness: 150,
+        damping: DAMPING,
+        stiffness: STIFFNESS,
         });
     };
 
@@ -78,8 +81,8 @@ export default function BottomSheet (props: BottomSheetProps) {
         } else {
         // Otherwise snap back to open position
         bottomSheetTranslateY.value = withSpring(0, {
-            damping: 15,
-            stiffness: 150,
+            damping: DAMPING,
+            stiffness: STIFFNESS,
         });
         }
     });

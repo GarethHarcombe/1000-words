@@ -16,10 +16,12 @@ import Animated, { useSharedValue, useAnimatedStyle, clamp, runOnJS } from 'reac
 import rawTowns from '@/data/welsh-towns.json';
 import { Town } from '@/constants/Types';
 
-import BottomSheet from './BottomSheet';
-import TownInfo from './mapComponents/townInfo';
-import Caravan, { Position } from './mapComponents/Caravan';
+import BottomSheet from '../BottomSheet';
+import TownInfo from './townInfo';
+import Caravan, { Position } from './Caravan';
 import { useCaravanAccessories } from '@/contexts/CaravanContext';
+
+import { TownMarker } from './townMarker';
 
 const { width: winW, height: winH } = Dimensions.get('window');
 
@@ -63,34 +65,34 @@ const townImages: Record<string, any> = {
   default: require('@/assets/images/adaptive-icon.png'),
 };
 
-function TownMarker({
-  rendered,
-  source,
-  onPress,
-}: {
-  rendered: { x: number; y: number };
-  source: any;
-  onPress: () => void;
-}) {
-  return (
-    <TouchableOpacity
-      onPress={onPress}
-      activeOpacity={0.7}
-      style={[
-        styles.townMarker,
-        {
-          top: rendered.y - ICON_HALF,
-          left: rendered.x - ICON_HALF,
-          width: ICON_SIZE,
-          height: ICON_SIZE,
-        },
-      ]}
-      hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
-    >
-      <Image source={source} style={{ width: '100%', height: '100%' }} resizeMode="contain" />
-    </TouchableOpacity>
-  );
-}
+// function TownMarker({
+//   rendered,
+//   source,
+//   onPress,
+// }: {
+//   rendered: { x: number; y: number };
+//   source: any;
+//   onPress: () => void;
+// }) {
+//   return (
+//     <TouchableOpacity
+//       onPress={onPress}
+//       activeOpacity={0.7}
+//       style={[
+//         styles.townMarker,
+//         {
+//           top: rendered.y - ICON_HALF,
+//           left: rendered.x - ICON_HALF,
+//           width: ICON_SIZE,
+//           height: ICON_SIZE,
+//         },
+//       ]}
+//       hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+//     >
+//       <Image source={source} style={{ width: '100%', height: '100%' }} resizeMode="contain" />
+//     </TouchableOpacity>
+//   );
+// }
 
 export default function Map() {
   const { accessories } = useCaravanAccessories();
@@ -375,7 +377,7 @@ export default function Map() {
               isMoving={isMoving}
               setIsMoving={setIsMoving}
               accessories={accessories}
-              caravanSize={40}
+              caravanSize={92}
               speed={100}
               initialPosition={{ x: 400, y: 150 }}
             />
@@ -401,21 +403,5 @@ const styles = StyleSheet.create({
     width: '100%',
     backgroundColor: '#000',
     overflow: 'hidden',
-  },
-  townMarker: {
-    position: 'absolute',
-    paddingVertical: 4,
-    paddingHorizontal: 4,
-    borderRadius: 12,
-    borderWidth: 1,
-    borderColor: '#222',
-    elevation: 5,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    backgroundColor: 'transparent',
-    cursor: Platform.OS === 'web' ? 'pointer' : undefined,
-    zIndex: 20,
   },
 });

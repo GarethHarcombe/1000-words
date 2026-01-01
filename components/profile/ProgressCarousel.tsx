@@ -253,7 +253,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   dot: {
-    backgroundColor: "rgba(0,0,0,0.2)",
+    backgroundColor: Colors.light.backgroundGrey,
     borderRadius: 999,
   },
   activeDot: {

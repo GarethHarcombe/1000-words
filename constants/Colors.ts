@@ -15,6 +15,7 @@ export default {
     tint: tintColorLight,
     tabIconDefault: '#fff',
     tabIconSelected: tintColorLight,
+    backgroundGrey: '#e0e0e0',
     darkBackground: '#4C595B',
   },
   dark: {
