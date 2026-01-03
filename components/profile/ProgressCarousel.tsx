@@ -1,5 +1,7 @@
 
 import * as React from "react";
+import { useMemo } from "react";
+
 import { Image, StyleSheet, useWindowDimensions, View, PixelRatio  } from "react-native";
 import Animated, {
   Extrapolation,
@@ -16,14 +18,22 @@ import { useWords } from "@/contexts/WordContext";
 import { Text } from "@/components/Themed";
 import { ButtonText, Heading } from "@/components/StyledText";
 
+import { useUserContext } from "@/contexts/UserContext";
+import { images, ImageKey } from "@/assets/images/catalogue";
+
+import { useImageDimensions } from "@/hooks/useImageDimensions";
+
+
+export function useImage(key: ImageKey) {
+  const { language } = useUserContext();
+  return images[language]?.[key] ?? images.welsh[key]; // optional fallback
+}
+
 // npm config set strict-ssl false
 
 type Props = {
   mapHeight?: number;
 };
-
-const MAP_BW = require("@/assets/images/welsh-map-no-background-bw.png");
-const MAP_COLOUR = require("@/assets/images/welsh-map-no-background.png");
 
 export function ProgressCarousel({ mapHeight = 286 }: Props) {
   const imgW = 2481;
@@ -149,6 +159,7 @@ function MetricCard({
   );
 }
 
+
 function MapFill({
   width,
   height,
@@ -158,44 +169,86 @@ function MapFill({
   height: number;
   fillRatio: Animated.SharedValue<number>;
 }) {
+  const MAP_BW = useImage("progressMapBw");
+  const MAP_COLOUR = useImage("progressMapColour");
 
-    const PAD_BOTTOM = 0.06; // tune this
-    const PAD_TOP = 0.06;    // tune this
-    const EFFECTIVE = 1 - PAD_TOP - PAD_BOTTOM;
+  const dims = useImageDimensions(MAP_COLOUR);
 
+  const layout = useMemo(() => {
+    if (!dims) return null;
 
-  // Height of the visible coloured region
-const maskStyle = useAnimatedStyle(() => {
-  const fill = PAD_BOTTOM + EFFECTIVE * fillRatio.value;
-  const maskHeight = PixelRatio.roundToNearestPixel(height * fill);
-  return { height: maskHeight };
-});
+    const imgW = dims.width;
+    const imgH = dims.height;
 
-const colourImageStyle = useAnimatedStyle(() => {
-  const fill = PAD_BOTTOM + EFFECTIVE * fillRatio.value;
-  const maskHeight = PixelRatio.roundToNearestPixel(height * fill);
-  const ty = PixelRatio.roundToNearestPixel(-(height - maskHeight));
-  return { transform: [{ translateY: ty }] };
-});
+    const scale = Math.min(width / imgW, height / imgH);
+    const renderedW = imgW * scale;
+    const renderedH = imgH * scale;
 
+    const offsetX = (width - renderedW) / 2;
+    const offsetY = (height - renderedH) / 2;
 
+    return { renderedW, renderedH, offsetX, offsetY };
+  }, [dims, width, height]);
 
-  
-  
+  const maskStyle = useAnimatedStyle(() => {
+    if (!layout) return { height: 0 };
+    const maskHeight = PixelRatio.roundToNearestPixel(layout.renderedH * fillRatio.value);
+    return { height: maskHeight };
+  }, [layout]);
+
+  const colourImageStyle = useAnimatedStyle(() => {
+    if (!layout) return { transform: [{ translateY: 0 }] };
+    const maskHeight = PixelRatio.roundToNearestPixel(layout.renderedH * fillRatio.value);
+    const ty = PixelRatio.roundToNearestPixel(-(layout.renderedH - maskHeight));
+    return { transform: [{ translateY: ty }] };
+  }, [layout]);
+
+  if (!layout) {
+    // Optional: render nothing or a placeholder until dimensions are known
+    return <View style={{ width, height }} />;
+  }
+
   return (
-  <View style={[styles.mapContainer, { width, height }]} pointerEvents="none">
-    <Animated.Image source={MAP_BW} style={[styles.mapImage, { width, height }]} />
-
-    <Animated.View style={[styles.colourMask, { width }, maskStyle]}>
+    <View style={[styles.mapContainer, { width, height }]} pointerEvents="none">
       <Animated.Image
-        source={MAP_COLOUR}
-        style={[styles.mapImage, { width, height }, colourImageStyle]}
+        source={MAP_BW}
+        resizeMode="contain"
+        style={[
+          styles.mapImage,
+          {
+            width: layout.renderedW,
+            height: layout.renderedH,
+            left: layout.offsetX,
+            top: layout.offsetY,
+          },
+        ]}
       />
-    </Animated.View>
-  </View>
-  );
 
+      <Animated.View
+        style={[
+          styles.colourMask,
+          {
+            width: layout.renderedW,
+            left: layout.offsetX,
+            bottom: layout.offsetY, // anchor to bottom of rendered image
+          },
+          maskStyle,
+        ]}
+      >
+        <Animated.Image
+          source={MAP_COLOUR}
+          resizeMode="contain"
+          style={[
+            styles.mapImage,
+            { width: layout.renderedW, height: layout.renderedH, left: 0, top: 0 },
+            colourImageStyle,
+          ]}
+        />
+      </Animated.View>
+    </View>
+  );
 }
+
 
 const styles = StyleSheet.create({
   metricCard: {
