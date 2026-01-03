@@ -1,7 +1,7 @@
 
 import React, { createContext, useContext, useEffect, useMemo, useState, ReactNode } from 'react';
 
-export type Language = 'welsh' | 'spanish'; // add more as you add datasets
+export type Language = 'welsh' | 'spanish' | 'maori'; // add more as you add datasets
 
 type UserContextType = {
   language: Language;

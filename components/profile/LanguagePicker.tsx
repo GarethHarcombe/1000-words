@@ -14,6 +14,7 @@ export const LanguagePicker = () => {
       >
         <option value="welsh">Welsh</option>
         <option value="spanish">Spanish</option>
+        <option value="maori">Te reo Maori</option>
       </select>
     </label>
   );

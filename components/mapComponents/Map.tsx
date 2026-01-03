@@ -23,6 +23,18 @@ import { useCaravanAccessories } from '@/contexts/CaravanContext';
 
 import { TownMarker } from './townMarker';
 
+import { useUserContext } from "@/contexts/UserContext";
+import { images, ImageKey } from "@/assets/images/catalogue";
+
+import { useImageDimensions } from "@/hooks/useImageDimensions";
+
+
+export function useImage(key: ImageKey) {
+  const { language } = useUserContext();
+  return images[language]?.[key] ?? images.welsh[key]; // optional fallback
+}
+
+
 const { width: winW, height: winH } = Dimensions.get('window');
 
 const MIN_SCALE = 1;
@@ -327,7 +339,7 @@ export default function Map() {
       <GestureDetector gesture={combinedGesture}>
         <Animated.View style={worldStyle}>
           <ImageBackground
-            source={require('@/assets/images/welsh-map-background.png')}
+            source={useImage("mapColour")}
             style={{ width: '100%', height: '100%' }}
             resizeMode="stretch"
           >

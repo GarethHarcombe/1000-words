@@ -16,12 +16,14 @@ import { useUserContext, Language } from '@/contexts/UserContext';
 
 import welshWordsByGroup from '@/data/grouped_welsh_words.json';
 import spanishWordsByGroup from '@/data/grouped_spanish_words.json';
+import maoriWordsByGroup from '@/data/grouped_maori_words.json';
 
 type WordGroupRow = Omit<Word, 'numCorrect' | 'streak' | 'stage' >;
 
 const WORD_DATASETS: Record<Language, WordGroupRow[]> = {
   welsh: welshWordsByGroup as WordGroupRow[],
   spanish: spanishWordsByGroup as WordGroupRow[],
+  maori: maoriWordsByGroup as WordGroupRow[],
 };
 
 type WordProgress = Pick<Word, 'numCorrect' | 'streak' | 'stage' >;
@@ -36,8 +38,8 @@ const STORAGE_KEY = (language: Language) => `wordsProgress:${language}`;
 
 
 type WordRow = {
-  welsh: string;
-  english: string;
+  foreign: string;
+  native: string;
   group: string;
   index: number;
 };
@@ -49,7 +51,7 @@ const getWordKey = (w: Partial<WordRow>) => {
   if (typeof w.index === 'number') return String(w.index);
 
   // Fallback if index is missing or not reliable
-  if (w.welsh && w.english && w.group) return `${w.welsh}|${w.english}|${w.group}`;
+  if (w.foreign && w.native && w.group) return `${w.foreign}|${w.native}|${w.group}`;
 
   // Last resort
   return JSON.stringify(w);

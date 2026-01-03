@@ -1,0 +1,32 @@
+[
+  {
+    "foreign": "haere mai",
+    "native": "welcome",
+    "group": "0",
+    "index": 0
+  },
+  {
+    "foreign": "kia ora",
+    "native": "hello",
+    "group": "0",
+    "index": 1
+  },
+  {
+    "foreign": "haere ra",
+    "native": "goodbye",
+    "group": "0",
+    "index": 2
+  },
+  {
+    "foreign": "tena koa",
+    "native": "please",
+    "group": "0",
+    "index": 3
+  },
+  {
+    "foreign": "nga mihi",
+    "native": "thank you",
+    "group": "0",
+    "index": 4
+  }
+]
