@@ -65,35 +65,6 @@ const townImages: Record<string, any> = {
   default: require('@/assets/images/adaptive-icon.png'),
 };
 
-// function TownMarker({
-//   rendered,
-//   source,
-//   onPress,
-// }: {
-//   rendered: { x: number; y: number };
-//   source: any;
-//   onPress: () => void;
-// }) {
-//   return (
-//     <TouchableOpacity
-//       onPress={onPress}
-//       activeOpacity={0.7}
-//       style={[
-//         styles.townMarker,
-//         {
-//           top: rendered.y - ICON_HALF,
-//           left: rendered.x - ICON_HALF,
-//           width: ICON_SIZE,
-//           height: ICON_SIZE,
-//         },
-//       ]}
-//       hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
-//     >
-//       <Image source={source} style={{ width: '100%', height: '100%' }} resizeMode="contain" />
-//     </TouchableOpacity>
-//   );
-// }
-
 export default function Map() {
   const { accessories } = useCaravanAccessories();
 
@@ -318,7 +289,7 @@ export default function Map() {
     savedTX.value = nextTX;
     savedTY.value = nextTY;
 
-    console.log('scale', scale.value, 'tx', tx.value, 'ty', ty.value, bounds(scale.value));
+    // console.log('scale', scale.value, 'tx', tx.value, 'ty', ty.value, bounds(scale.value));
   }, [bounds]);
 
 

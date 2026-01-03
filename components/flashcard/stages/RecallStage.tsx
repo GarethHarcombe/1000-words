@@ -72,7 +72,7 @@ export default function RecallStage({
       {showFeedback && !isCorrect && (
         <View style={styles.correctAnswerContainer}>
           <Text style={styles.correctAnswerText}>
-            <Text style={styles.correctAnswer}>{word.english}</Text>
+            <Text style={styles.correctAnswer}>{word.native}</Text>
           </Text>
         </View>
       )}

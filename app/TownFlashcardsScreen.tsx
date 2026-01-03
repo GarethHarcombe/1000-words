@@ -4,7 +4,8 @@ import { Stack, useLocalSearchParams, router } from 'expo-router';
 import Flashcard from '@/components/flashcard/Flashcard';
 import { Word } from '@/constants/Types';
 import ExitButton from '@/components/flashcard/common/ExitButton';
-import { useWords } from '@/contexts/UserContext';
+import { useWords } from '@/contexts/WordContext';
+import { useUserContext } from '@/contexts/UserContext';
 
 import TownProgress from '@/components/flashcard/townFlashcard/TownProgress';
 
@@ -49,7 +50,7 @@ function pickNextIndex(groupWords: Word[], currentIndex: number, now: number): n
     const candidateIndices = candidates
       .map(w =>
         groupWords.findIndex(
-          gw => gw.welsh === w.welsh && gw.group === w.group
+          gw => gw.foreign === w.foreign && gw.group === w.group
         )
       )
       .filter(i => i >= 0);
@@ -86,10 +87,19 @@ export default function TownFlashcardsScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const { words, setWords } = useWords();
 
+  const { language } = useUserContext();
+
   const groupKey = id || '1';
   const groupWords = words.filter(w => String(w.group) === groupKey);
 
   const [index, setIndex] = useState(0);
+
+    
+  useEffect(() => {
+    // Reset when language changes
+    setIndex(0);
+  }, [language]);
+
 
   // Seed nextDue for this group
   useEffect(() => {
@@ -114,9 +124,9 @@ export default function TownFlashcardsScreen() {
   }
 
   function getFillerAnswers(words: Word[], selectedWord: Word): string[] {
-    const candidates = words.filter(w => w.welsh !== selectedWord.welsh);
+    const candidates = words.filter(w => w.foreign !== selectedWord.foreign);
 
-    const shuffled = shuffle(candidates.map(w => w.english));
+    const shuffled = shuffle(candidates.map(w => w.native));
 
     // Take 3 random fillers from the shuffled list
     return shuffled.slice(0, 3);
@@ -151,7 +161,7 @@ export default function TownFlashcardsScreen() {
         word={groupWords[index]}
         fillerAnswers={getFillerAnswers(groupWords, groupWords[index])}
         onCorrectAnswer={() => {
-          const globalIndex = words.findIndex(w => w.welsh === groupWords[index].welsh);
+          const globalIndex = words.findIndex(w => w.foreign === groupWords[index].foreign);
           const updated = [...words];
           const now = Date.now();
 
@@ -178,7 +188,7 @@ export default function TownFlashcardsScreen() {
           nextWord();
         }}
         onFalseAnswer={() => {
-          const globalIndex = words.findIndex(w => w.welsh === groupWords[index].welsh);
+          const globalIndex = words.findIndex(w => w.foreign === groupWords[index].foreign);
           const updated = [...words];
           const now = Date.now();
 

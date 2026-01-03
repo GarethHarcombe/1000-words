@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { TextInput, FlatList, StyleSheet, TouchableOpacity, Animated } from 'react-native';
 import { Text, View } from '@/components/Themed';
 
-import { useWords } from '@/contexts/UserContext';
+import { useWords } from '@/contexts/WordContext';
 import ProgressBar from '@/components/flashcard/common/ProgressBar';
 
 export default function AllWordsScreen() {
@@ -12,9 +12,9 @@ export default function AllWordsScreen() {
   const [sortBy, setSortBy] = useState<'welsh' | 'stage'>('stage');
 
   const filtered = words
-    .filter(w => w.welsh.toLowerCase().includes(query.toLowerCase()) && w.stage > 0)
+    .filter(w => w.foreign.toLowerCase().includes(query.toLowerCase()) && w.stage > 0)
     .sort((a, b) => {
-      if (sortBy === 'welsh') return a.welsh.localeCompare(b.welsh);
+      if (sortBy === 'welsh') return a.foreign.localeCompare(b.foreign);
       return b.stage - a.stage;
   }); 
 
@@ -56,7 +56,7 @@ export default function AllWordsScreen() {
           
           return (
             <View style={styles.wordItem}>
-              <Text style={styles.wordText}>{item.welsh} — {item.english}</Text>
+              <Text style={styles.wordText}>{item.foreign} — {item.native}</Text>
               <View style={styles.stageProgressContainer}>
                 <ProgressBar word={item} widthInterpolated={widthInterpolated} />
               </View>

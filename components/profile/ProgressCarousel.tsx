@@ -12,7 +12,7 @@ import Carousel, { ICarouselInstance, Pagination } from "react-native-reanimated
 import Colors from "@/constants/Colors";
 
 import { Word } from "../../constants/Types";
-import { useWords } from "@/contexts/UserContext";
+import { useWords } from "@/contexts/WordContext";
 import { Text } from "@/components/Themed";
 import { ButtonText, Heading } from "@/components/StyledText";
 
@@ -39,12 +39,12 @@ export function ProgressCarousel({ mapHeight = 286 }: Props) {
 
   const { words } = useWords();
 
-//   const wordsSeen = words.filter((w: Word) => w.stage >= 1).length;
-//   const wordsPracticed = words.filter((w: Word) => w.stage >= 2).length;
-//   const wordsMastered = words.filter((w: Word) => w.stage >= 3).length;
-  const wordsSeen = words.length;
-  const wordsPracticed = 300;
-  const wordsMastered = 10;
+  const wordsSeen = words.filter((w: Word) => w.stage >= 1).length;
+  const wordsPracticed = words.filter((w: Word) => w.stage >= 2).length;
+  const wordsMastered = words.filter((w: Word) => w.stage >= 3).length;
+  // const wordsSeen = words.length;
+  // const wordsPracticed = 300;
+  // const wordsMastered = 10;
   const totalWords = words.length || 1;
 
   const metrics = React.useMemo(

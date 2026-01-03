@@ -139,7 +139,7 @@ export function useFlashcardProgress(words: Word[], setWords: (words: Word[]) =>
   const getFillerAnswers = (selectedWord: Word) => {
     const selectedWords: string[] = words
       .filter(w => w.stage >= 0 && w !== selectedWord)
-      .map(word => word.english);
+      .map(word => word.native);
     return [...selectedWords, "hello", "thank you", "goodbye"].slice(0, 3);
   };
 

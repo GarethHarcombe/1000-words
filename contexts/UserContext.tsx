@@ -1,39 +1,36 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
-import rawWords from '@/data/welsh-words.json';
-import { Word } from '@/constants/Types';
-import wordsByGroup from '@/data/grouped_welsh_words.json'; // converted JSON
 
+import React, { createContext, useContext, useEffect, useMemo, useState, ReactNode } from 'react';
 
-const initialWords: Word[] = wordsByGroup.map(word => ({
-  ...word,
-  numCorrect: 0,
-  streak: 0,
-  stage: 0,
-  nextReview: 1000000000000000,
-}));
+export type Language = 'welsh' | 'spanish'; // add more as you add datasets
 
 type UserContextType = {
-  words: Word[];
-  setWords: React.Dispatch<React.SetStateAction<Word[]>>;
+  language: Language;
+  setLanguage: React.Dispatch<React.SetStateAction<Language>>;
 };
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
 
+const STORAGE_KEY = 'selectedLanguage';
+
 export const UserProvider = ({ children }: { children: ReactNode }) => {
-  const [words, setWords] = useState<Word[]>(initialWords);
+  const [language, setLanguage] = useState<Language>(() => {
+    if (typeof window === 'undefined') return 'welsh';
+    const saved = window.localStorage.getItem(STORAGE_KEY);
+    return (saved as Language) || 'welsh';
+  });
 
-  return (
-    <UserContext.Provider value={{ words, setWords }}>
-      {children}
-    </UserContext.Provider>
-  );
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    window.localStorage.setItem(STORAGE_KEY, language);
+  }, [language]);
+
+  const value = useMemo(() => ({ language, setLanguage }), [language]);
+
+  return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 };
 
-export const useWords = () => {
-  const context = useContext(UserContext);
-  if (!context) {
-    throw new Error('useWords must be used within a UserProvider');
-  }
-  return context;
+export const useUserContext = () => {
+  const ctx = useContext(UserContext);
+  if (!ctx) throw new Error('useUserContext must be used within a UserProvider');
+  return ctx;
 };
-

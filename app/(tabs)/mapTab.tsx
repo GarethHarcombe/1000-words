@@ -4,7 +4,7 @@ import { useState } from 'react';
 import EditScreenInfo from '@/components/EditScreenInfo';
 import { Text, View } from '@/components/Themed';
 import { Word } from '../../constants/Types';
-import { useWords } from '@/contexts/UserContext';
+import { useWords } from '@/contexts/WordContext';
 
 import Map from '@/components/mapComponents/Map';
 

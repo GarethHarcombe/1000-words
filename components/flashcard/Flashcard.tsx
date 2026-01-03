@@ -56,12 +56,12 @@ export default function Flashcard({ word, fillerAnswers, onCorrectAnswer, onFals
   } = useFlashcardState(word, fillerAnswers, computeFraction, animateProgressTo, onCorrectAnswer, onFalseAnswer);
 
   
-  const { playAudioWord } = usePlayWord(word.welsh);
+  const { playAudioWord } = usePlayWord(word.foreign);
 
   useEffect(() => {
     // Auto-play when the word changes
     playAudioWord();
-  }, [playAudioWord, word.welsh]);
+  }, [playAudioWord, word.foreign]);
 
 
   // Render the appropriate stage component based on word.stage
@@ -123,7 +123,7 @@ export default function Flashcard({ word, fillerAnswers, onCorrectAnswer, onFals
       
       
       <View style={styles.welshContainer}>
-        <Heading style={styles.welshWord}>{word.welsh}</Heading>
+        <Heading style={styles.welshWord}>{word.foreign}</Heading>
         <RNTouchableOpacity
           onPress={playAudioWord}
           style={styles.iconButton}

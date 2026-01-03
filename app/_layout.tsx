@@ -7,8 +7,9 @@ import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 import 'react-native-reanimated';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { UserProvider } from '@/contexts/UserContext';
+import { WordProvider } from '@/contexts/WordContext';
 import { CaravanProvider } from '@/contexts/CaravanContext';
+import { UserProvider } from '@/contexts/UserContext';
 
 
 import Colors from '@/constants/Colors';
@@ -47,9 +48,11 @@ export default function RootLayout() {
 
   return (
     <UserProvider>
-      <CaravanProvider>
-        <RootLayoutNav />
-      </CaravanProvider>
+      <WordProvider>
+        <CaravanProvider>
+            <RootLayoutNav />
+        </CaravanProvider>
+      </WordProvider>
     </UserProvider>
   );
 }

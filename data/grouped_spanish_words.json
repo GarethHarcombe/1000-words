@@ -1,0 +1,32 @@
+[
+  {
+    "foreign": "espanol",
+    "native": "spanish",
+    "group": "0",
+    "index": 0
+  },
+  {
+    "foreign": "hola",
+    "native": "hello",
+    "group": "0",
+    "index": 1
+  },
+  {
+    "foreign": "adios",
+    "native": "goodbye",
+    "group": "0",
+    "index": 2
+  },
+  {
+    "foreign": "por favor",
+    "native": "please",
+    "group": "0",
+    "index": 3
+  },
+  {
+    "foreign": "gracias",
+    "native": "thank you",
+    "group": "0",
+    "index": 4
+  }
+]

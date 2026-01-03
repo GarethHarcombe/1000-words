@@ -11,7 +11,7 @@ export default function IntroductionStage({ word }: IntroductionStageProps) {
   
   return (
     <View style={styles.cardContainer}>
-      <Text style={styles.cardText}>{word.english}</Text>
+      <Text style={styles.cardText}>{word.native}</Text>
     </View>
   );
 }

@@ -25,8 +25,8 @@ export function useFlashcardState(
     setShowFeedback(false);
     setIsCorrect(false);
 
-    setShuffledOptions(shuffle([word.english, ...fillerAnswers]));
-    
+    setShuffledOptions(shuffle([word.native, ...fillerAnswers]));
+
     // Focus the input for stage 2
     if (word.stage === 2 && inputRef.current) {
       setTimeout(() => {
@@ -48,7 +48,7 @@ export function useFlashcardState(
       case 1:
         if (!showFeedback) {
           // For stage 1, immediately show feedback after selection
-          const correct = option === word.english;
+          const correct = option === word.native;
           setShowFeedback(true);
           
           const nextStreak = correct ? word.streak + 1 : 0;
@@ -59,7 +59,7 @@ export function useFlashcardState(
       case 2:
         // Check text input
         if (input.trim()) {
-          const correct = input.trim().toLowerCase() === word.english.toLowerCase();
+          const correct = input.trim().toLowerCase() === word.native.toLowerCase();
           setIsCorrect(correct);
           setShowFeedback(true);
 

@@ -1,11 +1,12 @@
 // index.tsx
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet } from 'react-native';
 import { Text, View } from '@/components/Themed';
 
 import Flashcard from '@/components/flashcard/Flashcard';
 import { Word } from '../../constants/Types';
-import { useWords } from '@/contexts/UserContext';
+import { useWords } from '@/contexts/WordContext';
+import { useUserContext } from '@/contexts/UserContext';
 
 
 // https://geiriadur.uwtsd.ac.uk/
@@ -14,6 +15,13 @@ export default function CardsScreen() {
   const {words, setWords} = useWords();
   const [index, setIndex] = useState(0);
   const [wordHistory, setWordHistory] = useState<{index: number, timestamp: number}[]>([]);
+
+  const { language } = useUserContext();
+
+  useEffect(() => {
+    // Reset when language changes
+    setIndex(0);
+  }, [language]);
 
   const suggestNextWord = () => {
     const now = Date.now();
@@ -159,7 +167,7 @@ function shuffle(array: string[]) {
 
 function getFillerAnswers(words: Word[], selectedWord: Word){
   const selectedWords: string[] = shuffle(words.filter(w => w.stage > 0 && w != selectedWord)
-                                          .map(word => word.english));
+                                          .map(word => word.native));
   return [...selectedWords, "hello", "thank you", "goodbye"].slice(0, 3);
 }
 

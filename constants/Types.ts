@@ -1,7 +1,7 @@
 export type Word = {
     index: number;
-    welsh: string;
-    english: string;
+    foreign: string;
+    native: string;
     group: string; 
     numCorrect: number;
     streak: number;

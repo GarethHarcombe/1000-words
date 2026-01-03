@@ -29,7 +29,7 @@ export default function MultipleChoiceStage({
   handleConfirmAnswer,
 }: MultipleChoiceStageProps) {
   const { animateProgressTo, computeFraction } = useFlashcardAnimations(word);
-  
+
   return (
     <View style={styles.optionsContainer}>
       {options.map((option) => (
@@ -37,11 +37,11 @@ export default function MultipleChoiceStage({
           key={option}
           style={[
             styles.optionCard,
-            showFeedback && selectedOption === option && option !== word.english && styles.incorrectOption,
-            showFeedback && option === word.english && styles.correctOption  // e.g. if correct
+            showFeedback && selectedOption === option && option !== word.native && styles.incorrectOption,
+            showFeedback && option === word.native && styles.correctOption  // e.g. if correct
           ]}
           onPress={() => {
-            const correct = option === word.english;
+            const correct = option === word.native;
             setIsCorrect(correct);
             setSelectedOption(option);
             handleConfirmAnswer(option);
@@ -49,7 +49,7 @@ export default function MultipleChoiceStage({
           disabled={showFeedback}
         >
           <Text style={styles.cardText}>{option}</Text>
-          {showFeedback && option === word.english && (
+          {showFeedback && option === word.native && (
             <Text style={styles.checkMark}>✓</Text>
           )}
         </TouchableOpacity>

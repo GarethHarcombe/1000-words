@@ -4,13 +4,14 @@ import { StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import { Text, View } from '@/components/Themed';
 import { Heading } from '@/components/StyledText';
 import { useRouter } from 'expo-router';
-import { useWords } from '@/contexts/UserContext';
+import { useWords } from '@/contexts/WordContext';
 import WeeklyProgressChart from '@/components/profile/WeeklyProgressChart';
 import WordProgressPieChart from '@/components/profile/WordProgressPieChart';
 import CustomisableCaravan from '@/components/caravan/customisableCaravan';
 import AccessoryCarousel from '@/components/profile/CaravanAccessoryCarousel';
 import { ProgressCarousel } from '@/components/profile/ProgressCarousel';
 import { useCaravanAccessories } from '@/contexts/CaravanContext';
+import { LanguagePicker } from '@/components/profile/LanguagePicker';
 import Colors from '@/constants/Colors';
 
 export default function ProfileScreen() {
@@ -40,11 +41,14 @@ export default function ProfileScreen() {
           </View>
         </View>
 
+        <LanguagePicker />
+
         <TouchableOpacity style={styles.button} onPress={() => router.push('/all-words')}>
           <Text style={styles.buttonText}>View All Words</Text>
         </TouchableOpacity>
 
         <Text style={styles.memoir}>In memory of Tadcu<br></br>Cymro balch - a proud Welshman</Text>
+        
       </View>
     </ScrollView>
   );
