@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Stack, useLocalSearchParams, router } from 'expo-router';
 import Flashcard from '@/components/flashcard/Flashcard';
@@ -68,9 +68,19 @@ function pickNextIndex(groupWords: Word[], currentIndex: number, now: number): n
   }
 
   // None due: pick from soonest N
-  const soonest = [...pool]
+  var soonest = [...pool]
     .filter(w => w.stage === 0 )
     // .slice(0, Math.min(SOONEST_POOL_SIZE, pool.length));
+
+  if (soonest.length === 0) {
+    soonest = [...pool]
+    .filter(w => w.stage === 1 )
+  }
+
+  if (soonest.length === 0) {
+    // All words are at stage 2 or higher, just pick any word
+    return pickRandomIndexFromSet(groupWords);
+  }
 
   return pickRandomIndexFromSet(soonest);
 
@@ -85,7 +95,10 @@ export default function TownFlashcardsScreen() {
   const { words, setWords } = useWords();
 
   const groupKey = id || '1';
-  const groupWords = words.filter(w => String(w.group) === groupKey);
+  const groupWords = useMemo(
+    () => words.filter(w => String(w.group) === groupKey),
+    [words, groupKey]
+  );
 
   const [index, setIndex] = useState(0);
 
@@ -155,7 +168,7 @@ export default function TownFlashcardsScreen() {
 
           // Schedule nextDue
           if (updated[globalIndex].stage >= 2) {
-            updated[globalIndex].nextDue = now + 3//Number.POSITIVE_INFINITY;
+            updated[globalIndex].nextDue = now + 3000//Number.POSITIVE_INFINITY;
           } else {
             updated[globalIndex].nextDue = now + getIntervalMs(updated[globalIndex].stage, updated[globalIndex].streak);
           }

@@ -1,114 +1,132 @@
-import { View, Text, ScrollView } from '@/components/Themed';
+// BottomSheet.tsx
+import React, { useEffect, useRef } from 'react';
 import { StyleSheet } from 'react-native';
-import { useEffect } from 'react';
-import Colors from '@/constants/Colors';
-import { GestureDetector, Gesture } from 'react-native-gesture-handler';
+import { View, ScrollView } from '@/components/Themed';
+import { View as DefaultView } from 'react-native';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
   withSpring,
   runOnJS,
 } from 'react-native-reanimated';
-import { View as DefaultView } from 'react-native';
+import {
+  PanGestureHandler,
+  NativeViewGestureHandler,
+  PanGestureHandlerGestureEvent,
+} from 'react-native-gesture-handler';
+import Colors from '@/constants/Colors';
 
-
+const DAMPING = 35;
+const STIFFNESS = 300;
 
 export type BottomSheetProps = {
-        bottomSheetHeight: number;
-        isBottomSheetUp: boolean;
-        setIsTownPopup: (value: React.SetStateAction<boolean>) => void;
-    } & DefaultView['props'];
+  bottomSheetHeight: number;
+  isBottomSheetUp: boolean;
+  setIsTownPopup: (value: React.SetStateAction<boolean>) => void;
+  children?: React.ReactNode;
+} & DefaultView['props'];
 
-    
-export default function BottomSheet (props: BottomSheetProps) {
-    const { style, bottomSheetHeight, isBottomSheetUp, setIsTownPopup, ...otherProps } = props;
-    // const backgroundColor = useThemeColor({ light: lightColor, dark: darkColor }, 'background');
+export default function BottomSheet(props: BottomSheetProps) {
+  const { style, bottomSheetHeight, isBottomSheetUp, setIsTownPopup, children, ...otherProps } = props;
 
-    const bottomSheetTranslateY = useSharedValue(bottomSheetHeight);
+  // Animated shared values
+  const translateY = useSharedValue(bottomSheetHeight);
+  const scrollY = useSharedValue(0);
 
+  // Refs for gesture handlers so they can coordinate
+  const panRef = useRef<any>(null);
+  const nativeRef = useRef<any>(null);
 
-    // Function to close the bottom sheet
-    const closeBottomSheet = () => {
-        bottomSheetTranslateY.value = withSpring(bottomSheetHeight, {
-        damping: 15,
-        stiffness: 150,
-    });
-        setIsTownPopup(false);
-    // setSelectedTown(null);
-    };
+  // Open/close
+  const openBottomSheet = () => {
+    translateY.value = withSpring(0, { damping: DAMPING, stiffness: STIFFNESS });
+  };
+  const closeBottomSheet = () => {
+    translateY.value = withSpring(bottomSheetHeight, { damping: DAMPING, stiffness: STIFFNESS });
+    setIsTownPopup(false);
+  };
 
-    const openBottomSheet = () => {
-        bottomSheetTranslateY.value = withSpring(0, {
-        damping: 15,
-        stiffness: 150,
-        });
-    };
+  useEffect(() => {
+    if (isBottomSheetUp) openBottomSheet();
+    else closeBottomSheet();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isBottomSheetUp]);
 
-    useEffect(() => {
-        if(isBottomSheetUp)
-        {
-            openBottomSheet();
-        } else {
-            closeBottomSheet();
-        }
-    }, [isBottomSheetUp])
+  // Animated style for the sheet container
+  const sheetStyle = useAnimatedStyle(() => ({
+    transform: [{ translateY: translateY.value }],
+  }));
 
-    // Bottom sheet drag gesture
-    const bottomSheetGesture = Gesture.Pan()
-    .onUpdate((event) => {
-        let newTranslateY = event.translationY;
+  // Pan gesture (sheet) handlers using classic event shape
+  const onPanGestureEvent = (event: PanGestureHandlerGestureEvent) => {
+    // event.nativeEvent.translationY is the drag distance on the active pointer
+    const tY = event.nativeEvent.translationY;
 
-        if (newTranslateY <= 0) {
-            // Overextending upwards, apply resistance
-            const resistance = 0.5; // Lower = more resistance
-            const overdrag = Math.abs(newTranslateY);
-            // Use a non-linear function for resistance
-            newTranslateY = -Math.pow(overdrag, resistance);
-        } else {
-            // Dragging down, allow up to bottomSheetHeight (which is negative)
-            newTranslateY = Math.min(newTranslateY, Math.abs(bottomSheetHeight));
-        }
+    // Only allow parent dragging down when scroll is at top (scrollY <= 0)
+    const isAtTop = scrollY.value <= 0;
 
-        bottomSheetTranslateY.value = newTranslateY;
-    })
-    .onEnd((event) => {
-        if (event.translationY > bottomSheetHeight / 3) {
-        // Close the sheet if dragged down more than 1/3
+    if (isAtTop || tY < 0) {
+      // allow dragging
+      if (tY <= 0) {
+        // upward drag -> small negative translate (apply resistance)
+        const resistance = 0.5;
+        const overdrag = Math.abs(tY);
+        translateY.value = -Math.pow(overdrag, resistance);
+      } else {
+        // dragging down, clamp to bottomSheetHeight
+        translateY.value = Math.min(tY, bottomSheetHeight);
+      }
+    }
+  };
+
+  const onPanHandlerStateChange = (evt: any) => {
+    const { nativeEvent } = evt;
+    // when gesture ends, decide snap or close
+    if (nativeEvent.state === 5 /* END */ || nativeEvent.oldState === 4 /* ACTIVE -> END */) {
+      const endTranslationY = nativeEvent.translationY ?? 0;
+      if (endTranslationY > bottomSheetHeight / 3) {
         runOnJS(closeBottomSheet)();
-        } else {
-        // Otherwise snap back to open position
-        bottomSheetTranslateY.value = withSpring(0, {
-            damping: 15,
-            stiffness: 150,
-        });
-        }
-    });
+      } else {
+        translateY.value = withSpring(0, { damping: DAMPING, stiffness: STIFFNESS });
+      }
+    }
+  };
 
-    // Animated style for the bottom sheet
-    const bottomSheetStyle = useAnimatedStyle(() => {
-        return {
-        transform: [{ translateY: bottomSheetTranslateY.value }],
-        };
-    });
-    
-    return (
-    <GestureDetector gesture={bottomSheetGesture}>
-        <Animated.View style={[styles.bottomSheet, { height: bottomSheetHeight}, bottomSheetStyle]}>
-            <View style={[styles.bottomSheetHandle]}/>
-            
-            <ScrollView style={[style]} {...otherProps} >
+  // ScrollView onScroll -> update scrollY shared value
+  const onScroll = (e: any) => {
+    scrollY.value = e.nativeEvent.contentOffset.y;
+  };
 
+  return (
+    <PanGestureHandler
+      ref={panRef}
+      simultaneousHandlers={nativeRef}
+      onGestureEvent={onPanGestureEvent}
+      onHandlerStateChange={onPanHandlerStateChange}
+    >
+      <Animated.View style={[styles.bottomSheet, { height: bottomSheetHeight }, sheetStyle]}>
+        <View style={styles.bottomSheetHandle} />
 
-            </ScrollView>
-        </Animated.View>
-    </GestureDetector>
-    )};
+        <NativeViewGestureHandler ref={nativeRef} simultaneousHandlers={panRef}>
+          <ScrollView
+            onScroll={onScroll}
+            scrollEventThrottle={16}
+            showsVerticalScrollIndicator={false}
+            style={[style]}
+            {...otherProps}
+          >
+            {children}
+          </ScrollView>
+        </NativeViewGestureHandler>
+      </Animated.View>
+    </PanGestureHandler>
+  );
+}
 
 const styles = StyleSheet.create({
-      // Bottom sheet styles
   bottomSheet: {
     position: 'absolute',
-    bottom: -5,
+    bottom: -15,
     width: '100%',
     maxHeight: '100%',
     alignSelf: 'center',
@@ -130,6 +148,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#ccc',
     borderRadius: 3,
     alignSelf: 'center',
-    // marginBottom: 5,
+    marginBottom: 8,
   },
 });
