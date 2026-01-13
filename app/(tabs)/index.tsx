@@ -1,6 +1,6 @@
 // index.tsx
 import React, { useEffect, useState } from 'react';
-import { StyleSheet } from 'react-native';
+import { ActivityIndicator, StyleSheet } from 'react-native';
 import { Text, View } from '@/components/Themed';
 
 import Flashcard from '@/components/flashcard/Flashcard';
@@ -135,6 +135,14 @@ export default function CardsScreen() {
     // Move to next word
     suggestNextWord();
   };
+
+  if (!words.length) {
+    return (
+      <View style={styles.container}>
+        <ActivityIndicator size="large" />
+      </View>
+    );
+  }
 
   return (
     <View style={styles.container}>

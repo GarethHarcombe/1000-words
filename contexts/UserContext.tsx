@@ -1,7 +1,14 @@
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+  ReactNode,
+} from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import React, { createContext, useContext, useEffect, useMemo, useState, ReactNode } from 'react';
-
-export type Language = 'welsh' | 'spanish' | 'maori'; // add more as you add datasets
+export type Language = 'welsh' | 'spanish' | 'maori';
 
 type UserContextType = {
   language: Language;
@@ -9,24 +16,30 @@ type UserContextType = {
 };
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
-
 const STORAGE_KEY = 'selectedLanguage';
 
 export const UserProvider = ({ children }: { children: ReactNode }) => {
-  const [language, setLanguage] = useState<Language>(() => {
-    if (typeof window === 'undefined') return 'welsh';
-    const saved = window.localStorage.getItem(STORAGE_KEY);
-    return (saved as Language) || 'welsh';
-  });
+  const [language, setLanguage] = useState<Language>('welsh');
 
+  // Load saved language
   useEffect(() => {
-    if (typeof window === 'undefined') return;
-    window.localStorage.setItem(STORAGE_KEY, language);
+    AsyncStorage.getItem(STORAGE_KEY).then(saved => {
+      if (saved) setLanguage(saved as Language);
+    });
+  }, []);
+
+  // Persist language
+  useEffect(() => {
+    AsyncStorage.setItem(STORAGE_KEY, language);
   }, [language]);
 
   const value = useMemo(() => ({ language, setLanguage }), [language]);
 
-  return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
+  return (
+    <UserContext.Provider value={value}>
+      {children}
+    </UserContext.Provider>
+  );
 };
 
 export const useUserContext = () => {

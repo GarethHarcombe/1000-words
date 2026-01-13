@@ -11,12 +11,18 @@ import { useClientOnlyValue } from "@/components/useClientOnlyValue";
 import { AnimatedTabButton } from "@/components/AnimatedTabButton";
 import { LiftedTabBarButton } from "@/components/LiftedTabBarButton";
 
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+
+
 export default function TabLayout() {
   const colorScheme = useColorScheme();
   const { width } = useWindowDimensions();
 
   const MAX_ICON_GROUP_WIDTH = 550;
   const sidePadding = Math.max(0, (width - MAX_ICON_GROUP_WIDTH) / 2);
+
+  const insets = useSafeAreaInsets();
+
 
   return (
     <Tabs
@@ -26,10 +32,10 @@ export default function TabLayout() {
         tabBarShowLabel: false,
 
         tabBarStyle: {
-          height: 80,
+          height: 80 + insets.bottom,
+          paddingBottom: insets.bottom,
           paddingLeft: sidePadding,
           paddingRight: sidePadding,
-          overflow: "visible",
         },
 
         tabBarItemStyle: {

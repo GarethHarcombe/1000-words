@@ -1,6 +1,6 @@
 // ProfileScreen.tsx - use the context so selections sync with Map
 import React, { useCallback } from 'react';
-import { StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { StyleSheet, ScrollView, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { Text, View } from '@/components/Themed';
 import { Heading } from '@/components/StyledText';
 import { useRouter } from 'expo-router';
@@ -12,14 +12,26 @@ import AccessoryCarousel from '@/components/profile/CaravanAccessoryCarousel';
 import { ProgressCarousel } from '@/components/profile/ProgressCarousel';
 import { useCaravanAccessories } from '@/contexts/CaravanContext';
 import { LanguagePicker } from '@/components/profile/LanguagePicker';
+import { useUserContext } from "@/contexts/UserContext";
+
 import Colors from '@/constants/Colors';
 
 export default function ProfileScreen() {
   const { words } = useWords();
+  const { language, setLanguage } = useUserContext();
   const router = useRouter();
   const { accessories, toggleAccessory } = useCaravanAccessories();
+  console.log('Current language in LanguagePicker:', language);
 
   const onToggle = useCallback((k: any) => toggleAccessory(k), [toggleAccessory]);
+
+  if (language === undefined || !words.length) {
+    return (
+      <View style={styles.container}>
+        <ActivityIndicator size="large" />
+      </View>
+    );
+  }
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
@@ -28,7 +40,7 @@ export default function ProfileScreen() {
         {/* <WordProgressPieChart words={words} /> */}
         {/* <WeeklyProgressChart /> */}
 
-        <View style={styles.card}>
+        {/* <View style={styles.card}>
           <Heading style={styles.cardTitle}>Your Caravan</Heading>
           <Text style={styles.cardSubtitle}>Personalise your ride</Text>
 
@@ -39,15 +51,15 @@ export default function ProfileScreen() {
           <View style={{ marginTop: 12 }}>
             <AccessoryCarousel selected={accessories} onToggle={onToggle} />
           </View>
-        </View>
+        </View> */}
 
-        <LanguagePicker />
+        {/* <LanguagePicker /> */}
 
-        <TouchableOpacity style={styles.button} onPress={() => router.push('/all-words')}>
+        {/* <TouchableOpacity style={styles.button} onPress={() => router.push('/all-words')}>
           <Text style={styles.buttonText}>View All Words</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
 
-        <Text style={styles.memoir}>In memory of Tadcu<br></br>Cymro balch - a proud Welshman</Text>
+        {/* <Text style={styles.memoir}>In memory of Tadcu. Cymro balch - a proud Welshman</Text> */}
         
       </View>
     </ScrollView>
@@ -56,13 +68,18 @@ export default function ProfileScreen() {
 
 const styles = StyleSheet.create({
   main: {
-    maxWidth: 1000,
+    maxWidth: 1200,
     alignItems: 'center',
+    padding: 0,
+    margin: 0,
   },
   container: {
     backgroundColor: Colors.light.background, 
     alignItems: 'center', 
-    gap: 16,
+    // gap: 16,
+    padding: 0,
+    margin: 0,
+
   },
   card: { 
     width: '100%', 
