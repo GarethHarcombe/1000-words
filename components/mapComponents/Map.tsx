@@ -1,14 +1,12 @@
-
-import React, { useRef, useState, useCallback } from 'react';
+import React, { useRef, useState, useCallback, useMemo, useEffect } from 'react';
 import {
   View,
   ImageBackground,
   StyleSheet,
   Dimensions,
-  TouchableOpacity,
-  Image,
   LayoutChangeEvent,
   Platform,
+  Image,
 } from 'react-native';
 import { GestureDetector, Gesture } from 'react-native-gesture-handler';
 import Animated, { useSharedValue, useAnimatedStyle, clamp, runOnJS } from 'react-native-reanimated';
@@ -26,14 +24,10 @@ import { TownMarker } from './townMarker';
 import { useUserContext } from "@/contexts/UserContext";
 import { images, ImageKey } from "@/assets/images/catalogue";
 
-import { useImageDimensions } from "@/hooks/useImageDimensions";
-
-
 export function useImage(key: ImageKey) {
   const { language } = useUserContext();
-  return images[language]?.[key] ?? images.welsh[key]; // optional fallback
+  return images[language]?.[key] ?? images.welsh?.[key];
 }
-
 
 const { width: winW, height: winH } = Dimensions.get('window');
 
@@ -54,7 +48,6 @@ const scaleX = baseW / imgW;
 const scaleY = baseH / imgH;
 
 const ICON_SIZE = 40;
-const ICON_HALF = ICON_SIZE / 2;
 const sheetH = winH * 0.5;
 
 const towns: Town[] = rawTowns.map(t => ({ ...t })).slice(0, 14);
@@ -80,17 +73,51 @@ const townImages: Record<string, any> = {
 export default function Map() {
   const { accessories } = useCaravanAccessories();
 
-  
   const containerRef = useRef<View>(null);
   const containerWin = useRef({ x: 0, y: 0 });
 
-
   // Container layout for local coords and bounds
   const [container, setContainer] = useState({ x: 0, y: 0, w: winW, h: winH });
+  const [hasLayout, setHasLayout] = useState(false);
+
+  // Image safety state
+  const mapSource = useImage('mapColour');
+  const [mapImageError, setMapImageError] = useState<string | null>(null);
+
+  // Resolve and validate map source before rendering it (prevents iOS native crashes)
+  const resolvedMap = useMemo(() => {
+    if (!mapSource) return null;
+    try {
+      return Image.resolveAssetSource(mapSource) ?? null;
+    } catch (e: any) {
+      return null;
+    }
+  }, [mapSource]);
+
+  // Dev-only logs that trigger only on changes
+  const lastLogRef = useRef<string>('');
+  useEffect(() => {
+    if (!__DEV__) return;
+
+    const msg = JSON.stringify({
+      hasMapSource: !!mapSource,
+      resolvedUri: resolvedMap?.uri,
+      resolvedW: resolvedMap?.width,
+      resolvedH: resolvedMap?.height,
+      mapImageError,
+    });
+
+    if (msg !== lastLogRef.current) {
+      lastLogRef.current = msg;
+      // eslint-disable-next-line no-console
+      console.log('[Map] image state', msg);
+    }
+  }, [mapSource, resolvedMap?.uri, resolvedMap?.width, resolvedMap?.height, mapImageError]);
 
   const onLayout = useCallback((e: LayoutChangeEvent) => {
     const { x, y, width, height } = e.nativeEvent.layout;
     setContainer({ x, y, w: width, h: height });
+    setHasLayout(width > 0 && height > 0);
 
     if (Platform.OS === 'web') {
       containerRef.current?.measureInWindow((pageX, pageY) => {
@@ -98,6 +125,25 @@ export default function Map() {
       });
     }
   }, []);
+
+  // If we do not have layout or a valid, resolvable map image source, do not mount the heavy gesture/image tree.
+  if (!hasLayout || !mapSource || !resolvedMap?.uri || mapImageError) {
+    return (
+      <View style={styles.container} onLayout={onLayout} ref={containerRef}>
+        {__DEV__ && (
+          <View style={styles.debugBanner}>
+            <Animated.Text style={styles.debugText}>
+              {mapImageError
+                ? `Map image error: ${mapImageError}`
+                : !hasLayout
+                  ? 'Map waiting for layout'
+                  : 'Map image source not resolvable'}
+            </Animated.Text>
+          </View>
+        )}
+      </View>
+    );
+  }
 
   // Pan and zoom (screen-space translate, world-space scale)
   const scale = useSharedValue(1);
@@ -126,36 +172,26 @@ export default function Map() {
     return null;
   };
 
-  const toLocal = useCallback(
-    (clientX: number, clientY: number) => {
-      return { x: clientX - container.x, y: clientY - container.y };
-    },
-    [container]
-  );
-
   /** Bounds for current container and given scale, clamp translate in screen pixels */
-  const bounds = useCallback(
-    (s: number) => {
-      const scaledW = baseW * s;
-      const scaledH = baseH * s;
+  const bounds = useCallback((s: number) => {
+    const scaledW = baseW * s;
+    const scaledH = baseH * s;
 
-      const effW = container.w;
-      const effH = container.h;
+    const effW = container.w;
+    const effH = container.h;
 
-      const minTX = effW - scaledW;
-      const maxTX = 0;
-      const minTY = effH - scaledH;
-      const maxTY = 0;
+    const minTX = effW - scaledW;
+    const maxTX = 0;
+    const minTY = effH - scaledH;
+    const maxTY = 0;
 
-      return {
-        minTX: scaledW <= effW ? 0 : minTX,
-        maxTX: scaledW <= effW ? 0 : maxTX,
-        minTY: scaledH <= effH ? 0 : minTY,
-        maxTY: scaledH <= effH ? 0 : maxTY,
-      };
-    },
-    [container]
-  );
+    return {
+      minTX: scaledW <= effW ? 0 : minTX,
+      maxTX: scaledW <= effW ? 0 : maxTX,
+      minTY: scaledH <= effH ? 0 : minTY,
+      maxTY: scaledH <= effH ? 0 : maxTY,
+    };
+  }, [container]);
 
   const onTownPress = (town: Town) => {
     setIsTownPopup(true);
@@ -174,27 +210,24 @@ export default function Map() {
   };
 
   /** Handle tap in world coordinates (base rendered space) */
-  const handleMapTapWorld = useCallback(
-    (x: number, y: number) => {
-      if (selectedTown) {
-        setIsTownPopup(false);
-        setSelectedTown(null);
-      }
+  const handleMapTapWorld = useCallback((x: number, y: number) => {
+    if (selectedTown) {
+      setIsTownPopup(false);
+      setSelectedTown(null);
+    }
 
-      if (!Number.isFinite(x) || !Number.isFinite(y)) return;
-      if (x < 0 || x > baseW || y < 0 || y > baseH) return;
+    if (!Number.isFinite(x) || !Number.isFinite(y)) return;
+    if (x < 0 || x > baseW || y < 0 || y > baseH) return;
 
-      const tapped = findTownAtRenderedPoint(x, y);
-      if (tapped) {
-        onTownPress(tapped);
-        return;
-      }
+    const tapped = findTownAtRenderedPoint(x, y);
+    if (tapped) {
+      onTownPress(tapped);
+      return;
+    }
 
-      setTargetPosition({ x, y });
-      setIsMoving(true);
-    },
-    [selectedTown]
-  );
+    setTargetPosition({ x, y });
+    setIsMoving(true);
+  }, [selectedTown]);
 
   /** Pinch: anchored zoom, clamp using NEW scale */
   const pinchGesture = Gesture.Pinch()
@@ -246,8 +279,12 @@ export default function Map() {
       'worklet';
       if (!success) return;
 
-      const worldX = (e.x - tx.value) / scale.value;
-      const worldY = (e.y - ty.value) / scale.value;
+      const s = Number.isFinite(scale.value) ? scale.value : 1;
+      const x = Number.isFinite(tx.value) ? tx.value : 0;
+      const y = Number.isFinite(ty.value) ? ty.value : 0;
+
+      const worldX = (e.x - x) / s;
+      const worldY = (e.y - y) / s;
 
       runOnJS(handleMapTapWorld)(worldX, worldY);
     });
@@ -258,28 +295,22 @@ export default function Map() {
   );
 
   /** Wheel zoom (web): anchored on cursor, clamp using NEW scale */
-  
-  
   const onWheel = useCallback((evt: any) => {
     if (Platform.OS !== 'web') return;
 
-    // React synthetic wheel event
     const e = evt.nativeEvent ?? evt;
-
-    // If you want to prevent page scroll while zooming:
     if (typeof evt.preventDefault === 'function') evt.preventDefault();
 
     const { deltaY, ctrlKey, clientX, clientY } = e;
 
     const intensity = 0.08 * (ctrlKey ? 2 : 1);
-    const dir = deltaY > 0 ? -1 : 1; // wheel up -> zoom in
+    const dir = deltaY > 0 ? -1 : 1;
     const factor = 1 + dir * intensity;
 
     const oldS = scale.value;
     const newS = clamp(oldS * factor, MIN_SCALE, MAX_SCALE);
     const ratio = newS / oldS;
 
-    // Compute mouse position relative to the element that has the onWheel handler
     const rect = (evt.currentTarget as any)?.getBoundingClientRect?.();
     if (!rect) return;
 
@@ -300,18 +331,18 @@ export default function Map() {
     savedScale.value = newS;
     savedTX.value = nextTX;
     savedTY.value = nextTY;
-
-    // console.log('scale', scale.value, 'tx', tx.value, 'ty', ty.value, bounds(scale.value));
   }, [bounds]);
-
 
   /**
    * World transform:
    * screen = world * scale + translate
    * Use scale first, then translate so tx/ty are screen pixels and bounds stay simple.
    */
-  
   const worldStyle = useAnimatedStyle(() => {
+    const s = Number.isFinite(scale.value) ? scale.value : 1;
+    const x = Number.isFinite(tx.value) ? tx.value : 0;
+    const y = Number.isFinite(ty.value) ? ty.value : 0;
+
     return {
       position: 'absolute',
       top: 0,
@@ -319,11 +350,7 @@ export default function Map() {
       width: baseW,
       height: baseH,
       transformOrigin: Platform.OS === 'web' ? ('0px 0px' as any) : undefined,
-      transform: [
-        { translateX: tx.value },
-        { translateY: ty.value },
-        { scale: scale.value },
-      ],
+      transform: [{ translateX: x }, { translateY: y }, { scale: s }],
     };
   });
 
@@ -339,9 +366,16 @@ export default function Map() {
       <GestureDetector gesture={combinedGesture}>
         <Animated.View style={worldStyle}>
           <ImageBackground
-            source={useImage("mapColour")}
-            style={{ width: '100%', height: '100%' }}
+            // Force remount if uri changes (language switch), avoids stale native references
+            key={resolvedMap.uri}
+            source={mapSource}
+            style={{ width: baseW, height: baseH }}
             resizeMode="stretch"
+            onError={(e: any) => {
+              const msg = e?.nativeEvent?.error || 'ImageBackground failed to load';
+              if (__DEV__) console.log('[Map] ImageBackground onError', msg);
+              setMapImageError(String(msg));
+            }}
           >
             {towns.map((town, idx) => {
               const rendered = townToRendered(town);
@@ -386,5 +420,20 @@ const styles = StyleSheet.create({
     width: '100%',
     backgroundColor: '#000',
     overflow: 'hidden',
+  },
+  debugBanner: {
+    position: 'absolute',
+    left: 12,
+    right: 12,
+    top: 12,
+    padding: 10,
+    backgroundColor: 'rgba(255, 80, 80, 0.2)',
+    borderColor: 'rgba(255, 80, 80, 0.6)',
+    borderWidth: 1,
+    borderRadius: 8,
+  },
+  debugText: {
+    color: '#fff',
+    fontSize: 12,
   },
 });
