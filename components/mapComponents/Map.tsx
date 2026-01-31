@@ -3,17 +3,16 @@ import {
   View,
   ImageBackground,
   StyleSheet,
-  Dimensions,
   LayoutChangeEvent,
   Platform,
   Image,
+  useWindowDimensions,
 } from 'react-native';
 import { GestureDetector, Gesture } from 'react-native-gesture-handler';
 import Animated, { useSharedValue, useAnimatedStyle, clamp, runOnJS } from 'react-native-reanimated';
 
 import rawTowns from '@/data/welsh-towns.json';
 import { Town } from '@/constants/Types';
-
 import BottomSheet from '../BottomSheet';
 import TownInfo from './townInfo';
 import Caravan, { Position } from './Caravan';
@@ -28,25 +27,15 @@ export function useImage(key: ImageKey) {
   return images[language]?.[key] ?? images.welsh?.[key];
 }
 
-const { width: winW, height: winH } = Dimensions.get('window');
-
 const MIN_SCALE = 1;
 const MAX_SCALE = 4;
 
-// Portrait image intrinsic size
+// Map image intrinsic size
 const imgW = 2481;
 const imgH = 3508;
 const ASPECT = imgW / imgH;
 
-// Base rendered size
-const baseW = winW;
-const baseH = Math.round(baseW / ASPECT);
-
-// Town pixel conversion at base scale
-const scaleX = baseW / imgW;
-const scaleY = baseH / imgH;
-
-const sheetH = winH * 0.5;
+const sheetFrac = 0.5;
 
 const towns: Town[] = rawTowns.map(t => ({ ...t })).slice(0, 14);
 
@@ -70,14 +59,16 @@ const townImages: Record<string, any> = {
 
 export default function Map() {
   const { accessories } = useCaravanAccessories();
+  const windowDims = useWindowDimensions();
+  const sheetH = windowDims.height * sheetFrac;
 
-  const containerRef = useRef<View>(null);
+  // Layout stabilisation state
+  const [container, setContainer] = useState({ w: 0, h: 0 });
+  const [stableContainer, setStableContainer] = useState<{ w: number; h: number } | null>(null);
+  const layoutTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const lastLayout = useRef<{ w: number; h: number; count: number }>({ w: 0, h: 0, count: 0 });
 
-  // Layout in React state (only used to decide readiness and pass to inner)
-  const [container, setContainer] = useState({ x: 0, y: 0, w: winW, h: winH });
-  const [hasLayout, setHasLayout] = useState(false);
-
-  // Image resolution gating
+  // Image safety
   const mapSource = useImage('mapColour');
   const [mapImageError, setMapImageError] = useState<string | null>(null);
 
@@ -90,37 +81,59 @@ export default function Map() {
     }
   }, [mapSource]);
 
-  const mapReady = hasLayout && !!mapSource && !!resolvedMap?.uri && !mapImageError;
+  // Consider map “ready” only when we have a stabilised layout AND a valid image source
+  const mapReady = !!stableContainer && !!mapSource && !!resolvedMap?.uri && !mapImageError;
 
   const onLayout = useCallback((e: LayoutChangeEvent) => {
-    const { x, y, width, height } = e.nativeEvent.layout;
-    setContainer({ x, y, w: width, h: height });
-    setHasLayout(width > 0 && height > 0);
+    const { width, height } = e.nativeEvent.layout;
+
+    setContainer({ w: width, h: height });
+
+    // iOS can fire multiple onLayout events quickly with different heights
+    // (common with native-stack). We wait for the layout to “settle” before mounting MapInner. [1](https://github.com/software-mansion/react-native-screens/issues/1504)
+    if (layoutTimer.current) clearTimeout(layoutTimer.current);
+
+    lastLayout.current = { w: width, h: height, count: lastLayout.current.count + 1 };
+
+    layoutTimer.current = setTimeout(() => {
+      setStableContainer({ w: width, h: height });
+    }, 80); // small settle window, enough to skip the first transient layout
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (layoutTimer.current) clearTimeout(layoutTimer.current);
+    };
   }, []);
 
   useEffect(() => {
     if (!__DEV__) return;
-    // Only log on meaningful changes
-    console.log('[Map] readiness', {
-      hasLayout,
-      hasMapSource: !!mapSource,
+    console.log('[Map] layout events', {
+      lastLayout: lastLayout.current,
+      container,
+      stableContainer,
       resolvedUri: resolvedMap?.uri,
       mapImageError,
-      containerW: container.w,
-      containerH: container.h,
+      mapReady,
     });
-  }, [hasLayout, mapSource, resolvedMap?.uri, mapImageError, container.w, container.h]);
+  }, [container, stableContainer, resolvedMap?.uri, mapImageError, mapReady]);
+
+  // Debug switch: set to true to confirm if crashes are gesture-related
+  const DISABLE_GESTURES = false;
 
   return (
-    <View ref={containerRef} onLayout={onLayout} style={styles.container}>
+    <View onLayout={onLayout} style={styles.container}>
       {mapReady ? (
         <MapInner
+          key={`${stableContainer!.w}x${stableContainer!.h}`} // remount only when stable dims change
           mapSource={mapSource}
           resolvedUri={resolvedMap!.uri}
-          containerW={container.w}
-          containerH={container.h}
+          containerW={stableContainer!.w}
+          containerH={stableContainer!.h}
           accessories={accessories}
-          onMapImageError={(msg) => setMapImageError(msg)}
+          sheetH={sheetH}
+          disableGestures={DISABLE_GESTURES}
+          onMapImageError={setMapImageError}
         />
       ) : (
         __DEV__ ? (
@@ -128,8 +141,8 @@ export default function Map() {
             <Animated.Text style={styles.debugText}>
               {mapImageError
                 ? `Map image error: ${mapImageError}`
-                : !hasLayout
-                  ? 'Map waiting for layout'
+                : !stableContainer
+                  ? `Waiting for stable layout (last h=${container.h})`
                   : 'Map image not resolvable'}
             </Animated.Text>
           </View>
@@ -145,11 +158,30 @@ function MapInner(props: {
   containerW: number;
   containerH: number;
   accessories: any;
-  onMapImageError: (msg: string) => void;
+  sheetH: number;
+  disableGestures: boolean;
+  onMapImageError: (msg: string | null) => void;
 }) {
-  const { mapSource, resolvedUri, containerW, containerH, accessories, onMapImageError } = props;
+  const {
+    mapSource,
+    resolvedUri,
+    containerW,
+    containerH,
+    accessories,
+    sheetH,
+    disableGestures,
+    onMapImageError,
+  } = props;
 
-  // Shared values for container dims so worklets do not depend on React state
+  // Base rendered size derived from container width (not cached Dimensions)
+  const baseW = Math.max(1, containerW);
+  const baseH = Math.round(baseW / ASPECT);
+
+  // Town pixel conversion at base scale
+  const scaleX = baseW / imgW;
+  const scaleY = baseH / imgH;
+
+  // Shared values for container dims (used by worklets)
   const cw = useSharedValue(Math.max(1, containerW));
   const ch = useSharedValue(Math.max(1, containerH));
 
@@ -172,7 +204,7 @@ function MapInner(props: {
   const [targetPosition, setTargetPosition] = useState<Position>({ x: 150, y: 150 });
   const [isMoving, setIsMoving] = useState(false);
 
-  const townToRendered = useCallback((t: Town) => ({ x: t.x * scaleX, y: t.y * scaleY }), []);
+  const townToRendered = useCallback((t: Town) => ({ x: t.x * scaleX, y: t.y * scaleY }), [scaleX, scaleY]);
   const getTownImage = useCallback((t: Town) => {
     return townImages[String((t as any).stage ?? 'default')] || townImages.default;
   }, []);
@@ -219,9 +251,8 @@ function MapInner(props: {
 
     setTargetPosition({ x, y });
     setIsMoving(true);
-  }, [selectedTown, findTownAtRenderedPoint, onTownPress]);
+  }, [selectedTown, baseW, baseH, findTownAtRenderedPoint, onTownPress]);
 
-  // Worklet bounds function using shared container dims
   const getBounds = useCallback((s: number) => {
     'worklet';
     const effW = cw.value;
@@ -241,7 +272,7 @@ function MapInner(props: {
       minTY: scaledH <= effH ? 0 : minTY,
       maxTY: scaledH <= effH ? 0 : maxTY,
     };
-  }, [cw, ch]);
+  }, [cw, ch, baseW, baseH]);
 
   const pinchGesture = useMemo(() => {
     return Gesture.Pinch()
@@ -331,7 +362,7 @@ function MapInner(props: {
 
   return (
     <>
-      <GestureDetector gesture={combinedGesture}>
+      {disableGestures ? (
         <Animated.View style={worldStyle}>
           <ImageBackground
             key={resolvedUri}
@@ -343,31 +374,47 @@ function MapInner(props: {
               if (__DEV__) console.log('[MapInner] ImageBackground onError', msg);
               onMapImageError(String(msg));
             }}
-          >
-            {towns.map((town, idx) => {
-              const rendered = townToRendered(town);
-              return (
-                <TownMarker
-                  key={idx}
-                  rendered={rendered}
-                  source={getTownImage(town)}
-                  onPress={() => onTownPress(town)}
-                />
-              );
-            })}
-
-            <Caravan
-              targetPosition={targetPosition}
-              isMoving={isMoving}
-              setIsMoving={setIsMoving}
-              accessories={accessories}
-              caravanSize={92}
-              speed={100}
-              initialPosition={{ x: 400, y: 150 }}
-            />
-          </ImageBackground>
+          />
         </Animated.View>
-      </GestureDetector>
+      ) : (
+        <GestureDetector gesture={combinedGesture}>
+          <Animated.View style={worldStyle}>
+            <ImageBackground
+              key={resolvedUri}
+              source={mapSource}
+              style={{ width: baseW, height: baseH }}
+              resizeMode="stretch"
+              onError={(e: any) => {
+                const msg = e?.nativeEvent?.error || 'ImageBackground failed to load';
+                if (__DEV__) console.log('[MapInner] ImageBackground onError', msg);
+                onMapImageError(String(msg));
+              }}
+            >
+              {towns.map((town, idx) => {
+                const rendered = townToRendered(town);
+                return (
+                  <TownMarker
+                    key={idx}
+                    rendered={rendered}
+                    source={getTownImage(town)}
+                    onPress={() => onTownPress(town)}
+                  />
+                );
+              })}
+
+              <Caravan
+                targetPosition={targetPosition}
+                isMoving={isMoving}
+                setIsMoving={setIsMoving}
+                accessories={accessories}
+                caravanSize={92}
+                speed={100}
+                initialPosition={{ x: 400, y: 150 }}
+              />
+            </ImageBackground>
+          </Animated.View>
+        </GestureDetector>
+      )}
 
       <BottomSheet
         bottomSheetHeight={sheetH}
