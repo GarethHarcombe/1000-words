@@ -18,7 +18,6 @@ import BottomSheet from '../BottomSheet';
 import TownInfo from './townInfo';
 import Caravan, { Position } from './Caravan';
 import { useCaravanAccessories } from '@/contexts/CaravanContext';
-
 import { TownMarker } from './townMarker';
 
 import { useUserContext } from "@/contexts/UserContext";
@@ -47,7 +46,6 @@ const baseH = Math.round(baseW / ASPECT);
 const scaleX = baseW / imgW;
 const scaleY = baseH / imgH;
 
-const ICON_SIZE = 40;
 const sheetH = winH * 0.5;
 
 const towns: Town[] = rawTowns.map(t => ({ ...t })).slice(0, 14);
@@ -76,76 +74,26 @@ export default function Map() {
   const containerRef = useRef<View>(null);
   const containerWin = useRef({ x: 0, y: 0 });
 
-  // Container layout for local coords and bounds
+  // Layout state
   const [container, setContainer] = useState({ x: 0, y: 0, w: winW, h: winH });
   const [hasLayout, setHasLayout] = useState(false);
 
-  // Image safety state
+  // Image safety
   const mapSource = useImage('mapColour');
   const [mapImageError, setMapImageError] = useState<string | null>(null);
 
-  // Resolve and validate map source before rendering it (prevents iOS native crashes)
   const resolvedMap = useMemo(() => {
     if (!mapSource) return null;
     try {
       return Image.resolveAssetSource(mapSource) ?? null;
-    } catch (e: any) {
+    } catch {
       return null;
     }
   }, [mapSource]);
 
-  // Dev-only logs that trigger only on changes
-  const lastLogRef = useRef<string>('');
-  useEffect(() => {
-    if (!__DEV__) return;
+  const mapReady = hasLayout && !!mapSource && !!resolvedMap?.uri && !mapImageError;
 
-    const msg = JSON.stringify({
-      hasMapSource: !!mapSource,
-      resolvedUri: resolvedMap?.uri,
-      resolvedW: resolvedMap?.width,
-      resolvedH: resolvedMap?.height,
-      mapImageError,
-    });
-
-    if (msg !== lastLogRef.current) {
-      lastLogRef.current = msg;
-      // eslint-disable-next-line no-console
-      console.log('[Map] image state', msg);
-    }
-  }, [mapSource, resolvedMap?.uri, resolvedMap?.width, resolvedMap?.height, mapImageError]);
-
-  const onLayout = useCallback((e: LayoutChangeEvent) => {
-    const { x, y, width, height } = e.nativeEvent.layout;
-    setContainer({ x, y, w: width, h: height });
-    setHasLayout(width > 0 && height > 0);
-
-    if (Platform.OS === 'web') {
-      containerRef.current?.measureInWindow((pageX, pageY) => {
-        containerWin.current = { x: pageX, y: pageY };
-      });
-    }
-  }, []);
-
-  // If we do not have layout or a valid, resolvable map image source, do not mount the heavy gesture/image tree.
-  if (!hasLayout || !mapSource || !resolvedMap?.uri || mapImageError) {
-    return (
-      <View style={styles.container} onLayout={onLayout} ref={containerRef}>
-        {__DEV__ && (
-          <View style={styles.debugBanner}>
-            <Animated.Text style={styles.debugText}>
-              {mapImageError
-                ? `Map image error: ${mapImageError}`
-                : !hasLayout
-                  ? 'Map waiting for layout'
-                  : 'Map image source not resolvable'}
-            </Animated.Text>
-          </View>
-        )}
-      </View>
-    );
-  }
-
-  // Pan and zoom (screen-space translate, world-space scale)
+  // Pan and zoom shared values
   const scale = useSharedValue(1);
   const savedScale = useSharedValue(1);
   const tx = useSharedValue(0);
@@ -159,18 +107,31 @@ export default function Map() {
   const [targetPosition, setTargetPosition] = useState<Position>({ x: 150, y: 150 });
   const [isMoving, setIsMoving] = useState(false);
 
-  const townToRendered = (t: Town) => ({ x: t.x * scaleX, y: t.y * scaleY });
-  const getTownImage = (t: Town) =>
-    townImages[String((t as any).stage ?? 'default')] || townImages.default;
+  const onLayout = useCallback((e: LayoutChangeEvent) => {
+    const { x, y, width, height } = e.nativeEvent.layout;
+    setContainer({ x, y, w: width, h: height });
+    setHasLayout(width > 0 && height > 0);
 
-  const findTownAtRenderedPoint = (rx: number, ry: number): Town | null => {
+    if (Platform.OS === 'web') {
+      containerRef.current?.measureInWindow((pageX, pageY) => {
+        containerWin.current = { x: pageX, y: pageY };
+      });
+    }
+  }, []);
+
+  const townToRendered = useCallback((t: Town) => ({ x: t.x * scaleX, y: t.y * scaleY }), []);
+  const getTownImage = useCallback((t: Town) => {
+    return townImages[String((t as any).stage ?? 'default')] || townImages.default;
+  }, []);
+
+  const findTownAtRenderedPoint = useCallback((rx: number, ry: number): Town | null => {
     const tapThreshold = 10;
     for (const t of towns) {
       const { x, y } = townToRendered(t);
       if (Math.abs(x - rx) <= tapThreshold && Math.abs(y - ry) <= tapThreshold) return t;
     }
     return null;
-  };
+  }, [townToRendered]);
 
   /** Bounds for current container and given scale, clamp translate in screen pixels */
   const bounds = useCallback((s: number) => {
@@ -193,21 +154,21 @@ export default function Map() {
     };
   }, [container]);
 
-  const onTownPress = (town: Town) => {
+  const onTownPress = useCallback((town: Town) => {
     setIsTownPopup(true);
     setSelectedTown(town);
     const rendered = townToRendered(town);
     setTargetPosition(rendered);
     setIsMoving(true);
-  };
+  }, [townToRendered]);
 
-  const townAction = (town: Town) => {
+  const townAction = useCallback((town: Town) => {
     setSelectedTown(null);
     setIsTownPopup(false);
     const rendered = townToRendered(town);
     setTargetPosition(rendered);
     setIsMoving(true);
-  };
+  }, [townToRendered]);
 
   /** Handle tap in world coordinates (base rendered space) */
   const handleMapTapWorld = useCallback((x: number, y: number) => {
@@ -227,74 +188,81 @@ export default function Map() {
 
     setTargetPosition({ x, y });
     setIsMoving(true);
-  }, [selectedTown]);
+  }, [selectedTown, findTownAtRenderedPoint, onTownPress]);
 
   /** Pinch: anchored zoom, clamp using NEW scale */
-  const pinchGesture = Gesture.Pinch()
-    .onUpdate(e => {
-      const newS = clamp(savedScale.value * e.scale, MIN_SCALE, MAX_SCALE);
-      const ratio = newS / scale.value;
+  const pinchGesture = useMemo(() => {
+    return Gesture.Pinch()
+      .onUpdate(e => {
+        const newS = clamp(savedScale.value * e.scale, MIN_SCALE, MAX_SCALE);
+        const ratio = newS / scale.value;
 
-      const px = Number.isFinite(e.focalX) ? e.focalX : container.w / 2;
-      const py = Number.isFinite(e.focalY) ? e.focalY : container.h / 2;
+        const px = Number.isFinite(e.focalX) ? e.focalX : container.w / 2;
+        const py = Number.isFinite(e.focalY) ? e.focalY : container.h / 2;
 
-      let nextTX = (1 - ratio) * px + ratio * tx.value;
-      let nextTY = (1 - ratio) * py + ratio * ty.value;
+        let nextTX = (1 - ratio) * px + ratio * tx.value;
+        let nextTY = (1 - ratio) * py + ratio * ty.value;
 
-      const { minTX, maxTX, minTY, maxTY } = bounds(newS);
-      nextTX = clamp(nextTX, minTX, maxTX);
-      nextTY = clamp(nextTY, minTY, maxTY);
+        const { minTX, maxTX, minTY, maxTY } = bounds(newS);
+        nextTX = clamp(nextTX, minTX, maxTX);
+        nextTY = clamp(nextTY, minTY, maxTY);
 
-      tx.value = nextTX;
-      ty.value = nextTY;
-      scale.value = newS;
-    })
-    .onEnd(() => {
-      savedScale.value = scale.value;
-      savedTX.value = tx.value;
-      savedTY.value = ty.value;
-    });
+        tx.value = nextTX;
+        ty.value = nextTY;
+        scale.value = newS;
+      })
+      .onEnd(() => {
+        savedScale.value = scale.value;
+        savedTX.value = tx.value;
+        savedTY.value = ty.value;
+      });
+  }, [bounds, container.w, container.h, scale, savedScale, savedTX, savedTY, tx, ty]);
 
   /** Pan: clamp per frame using current scale */
-  const panGesture = Gesture.Pan()
-    .onUpdate(e => {
-      const s = scale.value;
-      const { minTX, maxTX, minTY, maxTY } = bounds(s);
+  const panGesture = useMemo(() => {
+    return Gesture.Pan()
+      .onUpdate(e => {
+        const s = scale.value;
+        const { minTX, maxTX, minTY, maxTY } = bounds(s);
 
-      const nextTX = clamp(savedTX.value + e.translationX, minTX, maxTX);
-      const nextTY = clamp(savedTY.value + e.translationY, minTY, maxTY);
+        const nextTX = clamp(savedTX.value + e.translationX, minTX, maxTX);
+        const nextTY = clamp(savedTY.value + e.translationY, minTY, maxTY);
 
-      tx.value = nextTX;
-      ty.value = nextTY;
-    })
-    .onEnd(() => {
-      savedTX.value = tx.value;
-      savedTY.value = ty.value;
-    });
+        tx.value = nextTX;
+        ty.value = nextTY;
+      })
+      .onEnd(() => {
+        savedTX.value = tx.value;
+        savedTY.value = ty.value;
+      });
+  }, [bounds, savedTX, savedTY, scale, tx, ty]);
 
   /** Tap: invert transform to world coordinates */
-  const tapGesture = Gesture.Tap()
-    .maxDuration(600)
-    .onEnd((e, success) => {
-      'worklet';
-      if (!success) return;
+  const tapGesture = useMemo(() => {
+    return Gesture.Tap()
+      .maxDuration(600)
+      .onEnd((e, success) => {
+        'worklet';
+        if (!success) return;
 
-      const s = Number.isFinite(scale.value) ? scale.value : 1;
-      const x = Number.isFinite(tx.value) ? tx.value : 0;
-      const y = Number.isFinite(ty.value) ? ty.value : 0;
+        const s = Number.isFinite(scale.value) ? scale.value : 1;
+        const x = Number.isFinite(tx.value) ? tx.value : 0;
+        const y = Number.isFinite(ty.value) ? ty.value : 0;
 
-      const worldX = (e.x - x) / s;
-      const worldY = (e.y - y) / s;
+        const worldX = (e.x - x) / s;
+        const worldY = (e.y - y) / s;
 
-      runOnJS(handleMapTapWorld)(worldX, worldY);
-    });
+        runOnJS(handleMapTapWorld)(worldX, worldY);
+      });
+  }, [handleMapTapWorld, scale, tx, ty]);
 
-  const combinedGesture = Gesture.Exclusive(
-    Gesture.Simultaneous(pinchGesture, panGesture),
-    tapGesture
-  );
+  const combinedGesture = useMemo(() => {
+    return Gesture.Exclusive(
+      Gesture.Simultaneous(pinchGesture, panGesture),
+      tapGesture
+    );
+  }, [pinchGesture, panGesture, tapGesture]);
 
-  /** Wheel zoom (web): anchored on cursor, clamp using NEW scale */
   const onWheel = useCallback((evt: any) => {
     if (Platform.OS !== 'web') return;
 
@@ -331,13 +299,8 @@ export default function Map() {
     savedScale.value = newS;
     savedTX.value = nextTX;
     savedTY.value = nextTY;
-  }, [bounds]);
+  }, [bounds, scale, savedScale, savedTX, savedTY, tx, ty]);
 
-  /**
-   * World transform:
-   * screen = world * scale + translate
-   * Use scale first, then translate so tx/ty are screen pixels and bounds stay simple.
-   */
   const worldStyle = useAnimatedStyle(() => {
     const s = Number.isFinite(scale.value) ? scale.value : 1;
     const x = Number.isFinite(tx.value) ? tx.value : 0;
@@ -354,6 +317,19 @@ export default function Map() {
     };
   });
 
+  // Dev-only logs that trigger when readiness changes
+  useEffect(() => {
+    if (!__DEV__) return;
+    // eslint-disable-next-line no-console
+    console.log('[Map] mapReady', {
+      mapReady,
+      hasLayout,
+      hasMapSource: !!mapSource,
+      resolvedUri: resolvedMap?.uri,
+      mapImageError,
+    });
+  }, [mapReady, hasLayout, mapSource, resolvedMap?.uri, mapImageError]);
+
   return (
     <View
       ref={containerRef}
@@ -363,44 +339,58 @@ export default function Map() {
         : {})}
       style={styles.container}
     >
-      <GestureDetector gesture={combinedGesture}>
-        <Animated.View style={worldStyle}>
-          <ImageBackground
-            // Force remount if uri changes (language switch), avoids stale native references
-            key={resolvedMap.uri}
-            source={mapSource}
-            style={{ width: baseW, height: baseH }}
-            resizeMode="stretch"
-            onError={(e: any) => {
-              const msg = e?.nativeEvent?.error || 'ImageBackground failed to load';
-              if (__DEV__) console.log('[Map] ImageBackground onError', msg);
-              setMapImageError(String(msg));
-            }}
-          >
-            {towns.map((town, idx) => {
-              const rendered = townToRendered(town);
-              return (
-                <TownMarker
-                  key={idx}
-                  rendered={rendered}
-                  source={getTownImage(town)}
-                  onPress={() => onTownPress(town)}
-                />
-              );
-            })}
+      {/* Only mount the heavy image + gesture tree when the image is valid */}
+      {mapReady ? (
+        <GestureDetector gesture={combinedGesture}>
+          <Animated.View style={worldStyle}>
+            <ImageBackground
+              key={resolvedMap?.uri}
+              source={mapSource}
+              style={{ width: baseW, height: baseH }}
+              resizeMode="stretch"
+              onError={(e: any) => {
+                const msg = e?.nativeEvent?.error || 'ImageBackground failed to load';
+                if (__DEV__) console.log('[Map] ImageBackground onError', msg);
+                setMapImageError(String(msg));
+              }}
+            >
+              {towns.map((town, idx) => {
+                const rendered = townToRendered(town);
+                return (
+                  <TownMarker
+                    key={idx}
+                    rendered={rendered}
+                    source={getTownImage(town)}
+                    onPress={() => onTownPress(town)}
+                  />
+                );
+              })}
 
-            <Caravan
-              targetPosition={targetPosition}
-              isMoving={isMoving}
-              setIsMoving={setIsMoving}
-              accessories={accessories}
-              caravanSize={92}
-              speed={100}
-              initialPosition={{ x: 400, y: 150 }}
-            />
-          </ImageBackground>
-        </Animated.View>
-      </GestureDetector>
+              <Caravan
+                targetPosition={targetPosition}
+                isMoving={isMoving}
+                setIsMoving={setIsMoving}
+                accessories={accessories}
+                caravanSize={92}
+                speed={100}
+                initialPosition={{ x: 400, y: 150 }}
+              />
+            </ImageBackground>
+          </Animated.View>
+        </GestureDetector>
+      ) : (
+        __DEV__ ? (
+          <View style={styles.debugBanner}>
+            <Animated.Text style={styles.debugText}>
+              {mapImageError
+                ? `Map image error: ${mapImageError}`
+                : !hasLayout
+                  ? 'Map waiting for layout'
+                  : 'Map image not resolvable'}
+            </Animated.Text>
+          </View>
+        ) : null
+      )}
 
       <BottomSheet
         bottomSheetHeight={sheetH}
@@ -431,6 +421,7 @@ const styles = StyleSheet.create({
     borderColor: 'rgba(255, 80, 80, 0.6)',
     borderWidth: 1,
     borderRadius: 8,
+    zIndex: 999,
   },
   debugText: {
     color: '#fff',
